@@ -1,0 +1,11 @@
+{
+ "rules": [
+  {
+   "id": "roof-covers-floor",
+   "on": "always",
+   "require": "roof.west_eave_mm >= 0 [mm] and roof.north_eave_mm >= 0 [mm] and roof.width_mm - roof.west_eave_mm >= floor.width_mm and roof.depth_mm - roof.north_eave_mm >= floor.depth_mm",
+   "message": "the roof does not cover the floor: the roof's width or depth, less its west or north eave, is smaller than the floor's",
+   "note": "read from the type fields, the specification, so every placement checks it while no roof can stand on the walls"
+  }
+ ]
+}

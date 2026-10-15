@@ -1,0 +1,159 @@
+{
+ "object_types": [
+  {
+   "id": "post",
+   "label": "Post set in the ground; its height above grade is the sketch's '?', so the type states no height_mm",
+   "footprint": [
+    1,
+    1
+   ],
+   "tags": [
+    "support"
+   ],
+   "properties": [
+    {
+     "name": "embedment_mm",
+     "unit": "mm",
+     "default": 1219,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch, east elevation: '4' from grade to the post foot, read as 4 ft buried; a frost-depth figure for the site or Jim's word verifies it"
+     }
+    }
+   ]
+  },
+  {
+   "id": "floor",
+   "label": "Floor, 8 by 8 ft",
+   "footprint": [
+    8,
+    8
+   ],
+   "bears_on": "post",
+   "properties": [
+    {
+     "name": "width_mm",
+     "unit": "mm",
+     "default": 2438,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch, floor plan '8x8 floor': 8 ft east-west; a dimensioned plan verifies it"
+     }
+    },
+    {
+     "name": "depth_mm",
+     "unit": "mm",
+     "default": 2438,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch, floor plan '8x8 floor': 8 ft north-south; a dimensioned plan verifies it"
+     }
+    }
+   ]
+  },
+  {
+   "id": "wall",
+   "label": "Wall, one 8 ft face",
+   "footprint": [
+    8,
+    1
+   ],
+   "properties": [
+    {
+     "name": "length_mm",
+     "unit": "mm",
+     "default": 2438,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch: each face stands on one 8 ft side of the floor in the south, east and north elevations"
+     }
+    },
+    {
+     "name": "height_mm",
+     "unit": "mm",
+     "default": 3658,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "choice: the south elevation's '12' read as wall height, floor top to roof underside, because its lower tick meets the top of the floor band, not the grade; the other reading, 12 ft overall above grade, is open until Jim says which"
+     }
+    }
+   ]
+  },
+  {
+   "id": "roof",
+   "label": "Roof, 12 by 18 ft, flat in both elevations",
+   "footprint": [
+    12,
+    18
+   ],
+   "bears_on": "wall",
+   "properties": [
+    {
+     "name": "width_mm",
+     "unit": "mm",
+     "default": 3658,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch, roof plan '12x18 roof': 12 ft east-west, the plan's narrow side; a dimensioned plan verifies it"
+     }
+    },
+    {
+     "name": "depth_mm",
+     "unit": "mm",
+     "default": 5486,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch, roof plan '12x18 roof': 18 ft north-south, the plan's long side; a dimensioned plan verifies it"
+     }
+    },
+    {
+     "name": "west_eave_mm",
+     "unit": "mm",
+     "default": 610,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "choice: the floor centred east-west under the roof, 2 ft each side, as the south elevation draws the roof past both walls alike"
+     }
+    },
+    {
+     "name": "north_eave_mm",
+     "unit": "mm",
+     "default": 610,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "choice: a 2 ft north eave like the east and west ones, leaving 8 ft as the hatched 'hangover' strip, which is on the south because the plan carries no north arrow and the elevations are labelled with north up; centred, 5 ft each end, is the other reading"
+     }
+    }
+   ]
+  },
+  {
+   "id": "glazing",
+   "label": "Glass high on a south or east wall, under the roof",
+   "footprint": [
+    8,
+    1
+   ],
+   "properties": [
+    {
+     "name": "width_mm",
+     "unit": "mm",
+     "default": 2438,
+     "kind": "design",
+     "source": {
+      "placeholder": true,
+      "reason": "sketch: the glass band runs the full face in the south and east elevations, two panes each; the north elevation shows none; a window schedule verifies it"
+     }
+    }
+   ]
+  }
+ ]
+}

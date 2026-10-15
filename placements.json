@@ -1,0 +1,44 @@
+{
+ "seed": [
+  {
+   "id": "post-nw",
+   "action": "place",
+   "parameters": {
+    "type": "post",
+    "col": 2,
+    "row": 2,
+    "stack_level": 0
+   }
+  },
+  {
+   "id": "post-ne",
+   "action": "place",
+   "parameters": {
+    "type": "post",
+    "col": 9,
+    "row": 2,
+    "stack_level": 0
+   }
+  },
+  {
+   "id": "post-sw",
+   "action": "place",
+   "parameters": {
+    "type": "post",
+    "col": 2,
+    "row": 9,
+    "stack_level": 0
+   }
+  },
+  {
+   "id": "post-se",
+   "action": "place",
+   "parameters": {
+    "type": "post",
+    "col": 9,
+    "row": 9,
+    "stack_level": 0
+   }
+  }
+ ]
+}
