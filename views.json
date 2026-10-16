@@ -1,0 +1,29 @@
+{
+ "views": [
+  {
+   "id": "posts",
+   "label": "Posts",
+   "columns": [
+    {
+     "id": "above_grade",
+     "label": "Height above grade",
+     "unit": "mm",
+     "kind": "length"
+    },
+    {
+     "id": "length",
+     "label": "Whole length",
+     "unit": "mm",
+     "kind": "length"
+    }
+   ],
+   "per_object": {
+    "use": "post",
+    "values": {
+     "above_grade": "self.above_grade_mm",
+     "length": "post_length_mm"
+    }
+   }
+  }
+ ]
+}

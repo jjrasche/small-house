@@ -3,7 +3,7 @@
  "world_version": 2,
  "version": 1,
  "title": "Small house on posts, from Jim's pencil sketch",
- "description": "An 8 by 8 ft floor on four posts buried 4 ft, walls about 12 ft, a flat 12 by 18 ft roof with a hatched hangover strip, glass high on the south and east faces and none on the north, and '630 BF' unverified. One tile is 305 mm, about 1 ft. The two readings are choices in the field sources: 12 ft as wall height, and the hangover on the south. The sketch does not give: the post height above grade, the glass sizes, any member section, the material cost or the build hours; the engine holds no null for a type field, so none of them is a field yet. The seed places the four posts only: the engine cannot stand a square floor on four corner posts or a roof past its walls.",
+ "description": "An 8 by 8 ft floor on four posts buried 4 ft, walls about 12 ft, a flat 12 by 18 ft roof with a hatched hangover strip, glass high on the south and east faces and none on the north, and '630 BF' unverified. One tile is 305 mm, about 1 ft; the grid starts two tiles west and north of the floor, the roof's eaves. The two readings are choices in the field sources: 12 ft as wall height, and the hangover on the south. What the sketch does not give is a null with its reason: the post height above grade, the glass height and sill, each member's section; the material cost and the build hours wait for the tasks that build it. The seed places the four corner posts, the floor on them, the four walls on the floor and the roof over the walls.",
  "grid": {
   "cols": 12,
   "rows": 18,

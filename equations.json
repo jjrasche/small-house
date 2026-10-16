@@ -58,6 +58,31 @@
    "expr": "sketch_board_feet_volume / wall.height_mm",
    "unit": "square_metre",
    "note": "a reading, not a design: if all 630 board feet ran the 12 ft wall height, the members' cross-sections would total this, about 630 sq in; at another member length L it is 630 x 144 / L(in) sq in"
+  },
+  {
+   "id": "post_length_mm",
+   "on": "post",
+   "expr": "self.above_grade_mm + self.embedment_mm",
+   "unit": "mm",
+   "note": "the whole post, above grade and buried; null while the height above grade is"
+  },
+  {
+   "id": "post_above_grade_mm",
+   "on": "post",
+   "expr": "self.above_grade_mm",
+   "unit": "mm"
+  },
+  {
+   "id": "floor_thickness_mm",
+   "on": "floor",
+   "expr": "self.thickness_mm",
+   "unit": "mm"
+  },
+  {
+   "id": "wall_height",
+   "on": "#wall",
+   "expr": "self.height_mm",
+   "unit": "mm"
   }
  ]
 }
