@@ -1,69 +1,87 @@
 {
  "id": "small-house",
- "world_version": 2,
- "version": 1,
  "title": "Small house on posts, from Jim's pencil sketch",
- "description": "An 8 by 8 ft floor on four posts buried 4 ft, walls about 12 ft, a flat 12 by 18 ft roof with a hatched hangover strip, glass high on the south and east faces and none on the north, and '630 BF' unverified. One tile is 305 mm, about 1 ft; the grid starts two tiles west and north of the floor, the roof's eaves. The two readings are choices in the field sources: 12 ft as wall height, and the hangover on the south. What the sketch does not give is a null with its reason: the post height above grade, the glass height and sill, each member's section; the material cost and the build hours wait for the tasks that build it. The seed places the four corner posts, the floor on them, the four walls on the floor and the roof over the walls.",
- "grid": {
-  "cols": 12,
-  "rows": 18,
-  "tile_mm": 305,
-  "shape": "square",
-  "north": "row_0"
- },
- "clock": {
-  "tick_unit": "second",
-  "tick_length": 86400
- },
- "actions": [
+ "uses": [
   {
-   "verb": "place",
-   "label": "Place",
-   "parameters": [
-    {
-     "name": "type",
-     "type": "object_type"
-    },
-    {
-     "name": "col",
-     "type": "col"
-    },
-    {
-     "name": "row",
-     "type": "row"
-    },
-    {
-     "name": "stack_level",
-     "type": "stack_level"
-    }
-   ],
-   "emits": [
-    "place"
-   ]
-  },
-  {
-   "verb": "remove",
-   "label": "Remove",
-   "parameters": [
-    {
-     "name": "col",
-     "type": "col"
-    },
-    {
-     "name": "row",
-     "type": "row"
-    },
-    {
-     "name": "stack_level",
-     "type": "stack_level"
-    }
-   ],
-   "emits": [
-    "remove"
-   ]
+   "domain": "construction",
+   "file": "../domains/construction.domain.json",
+   "sha256": "d5a71644f9e7d39894de4e979b2248f27da88bcbe80149c07f8f73cc62f77d9a"
   }
  ],
- "agents": [],
- "scoring": [],
- "links": []
+ "systems": {
+  "foundation": {
+   "solution": "posts-at-corners",
+   "settings": {
+    "embedment_mm": 1219,
+    "above_grade_mm": null,
+    "section_mm": null
+   },
+   "reasons": {
+    "above_grade_mm": "the sketch's '?' from grade to the floor; Jim's word gives it",
+    "section_mm": "the sketch draws no post size; Jim's choice or a load check gives it"
+   }
+  },
+  "floor": {
+   "solution": "platform",
+   "settings": {
+    "width_mm": 2438,
+    "depth_mm": 2438,
+    "thickness_mm": null
+   },
+   "reasons": {
+    "thickness_mm": "the sketch draws no joist or deck; Jim's framing gives it"
+   },
+   "at": [
+    610,
+    610
+   ]
+  },
+  "walls": {
+   "solution": "walls-on-edges",
+   "settings": {
+    "height_mm": 3658,
+    "thickness_mm": null
+   },
+   "reasons": {
+    "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
+    "thickness_mm": "the sketch draws no stud or sheathing; Jim's framing gives it"
+   }
+  },
+  "roof": {
+   "solution": "flat-roof-over",
+   "settings": {
+    "width_mm": 3658,
+    "depth_mm": 5486,
+    "west_eave_mm": 610,
+    "north_eave_mm": 610,
+    "thickness_mm": null
+   },
+   "reasons": {
+    "north_eave_mm": "reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading",
+    "thickness_mm": "the sketch draws no rafter or deck; Jim's framing gives it"
+   }
+  },
+  "glazing": {
+   "solution": "high-band",
+   "settings": {
+    "sides": [
+     "south",
+     "east"
+    ],
+    "glass_height_mm": null,
+    "sill_height_mm": null
+   },
+   "reasons": {
+    "glass_height_mm": "the sketch draws the glass band with no height; the window Jim picks gives it",
+    "sill_height_mm": "the sketch puts the glass high under the roof with no sill; Jim's sill gives it"
+   }
+  }
+ },
+ "supplied": {
+  "board_feet": {
+   "value": 630,
+   "unit": "board_foot",
+   "reason": "'630 BF' on the sketch, unverified"
+  }
+ }
 }
