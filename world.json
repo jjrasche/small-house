@@ -3,9 +3,24 @@
  "title": "Small house on posts, from Jim's pencil sketch",
  "uses": [
   {
+   "domain": "physics",
+   "file": "domains/physics.domain.json",
+   "sha256": "4c52876bdaed64e3e801c48c17e16677204a9803d869cdeac8906d24dce1eb09"
+  },
+  {
    "domain": "construction",
-   "file": "../domains/construction.domain.json",
-   "sha256": "d5a71644f9e7d39894de4e979b2248f27da88bcbe80149c07f8f73cc62f77d9a"
+   "file": "domains/construction.jar",
+   "sha256": "0378a542565e0ca297c1e6b5e2787d64f84cfa849673f26a2ecf09ce182e294e"
+  },
+  {
+   "domain": "light",
+   "file": "domains/light.jar",
+   "sha256": "5797f40334ee74cc91481305f5c3fb89242537132f85053f1e58f02f6602b2c2"
+  },
+  {
+   "domain": "thermal",
+   "file": "domains/thermal.jar",
+   "sha256": "e1513d711139632a165bb9dae8299b0f240c6a27d2aa1f118f07f5b608147aad"
   }
  ],
  "systems": {
@@ -62,18 +77,50 @@
    }
   },
   "glazing": {
-   "solution": "high-band",
+   "solution": "windows-on-sides",
    "settings": {
     "sides": [
-     "south",
-     "east"
+     "south"
     ],
-    "glass_height_mm": null,
-    "sill_height_mm": null
+    "window_width_mm": 2438,
+    "windows_per_side": 1,
+    "glass_height_mm": 2438,
+    "sill_height_mm": 1219
    },
    "reasons": {
-    "glass_height_mm": "the sketch draws the glass band with no height; the window Jim picks gives it",
-    "sill_height_mm": "the sketch puts the glass high under the roof with no sill; Jim's sill gives it"
+    "glass_height_mm": "Jim, 2026-10-17: one 8 ft by 8 ft window on the south wall, the top 4 ft lighting a sleeping loft and the lower 4 ft the living space",
+    "sill_height_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the window",
+    "window_width_mm": "Jim: the window takes the 8 ft wall's whole width"
+   }
+  },
+  "weather": {
+   "solution": "conditions",
+   "settings": {
+    "u_value": 2.8,
+    "solar_heat_gain_coefficient": 0.6,
+    "inside_celsius": 20,
+    "outside_celsius": 0,
+    "sun_watt_per_square_metre": 500
+   },
+   "reasons": {
+    "u_value": "assumed: typical double glazing, not chosen by Jim",
+    "solar_heat_gain_coefficient": "assumed: typical double glazing, not chosen by Jim",
+    "inside_celsius": "assumed design day",
+    "outside_celsius": "assumed design day",
+    "sun_watt_per_square_metre": "assumed clear-sky peak; the solver applies it to every side"
+   }
+  },
+  "finish": {
+   "solution": "uniform",
+   "settings": {
+    "mean_reflectance": 0.5,
+    "glass_transmittance": 0.68,
+    "sky_angle_degrees": 65
+   },
+   "reasons": {
+    "mean_reflectance": "assumed mid-grey interior; Jim's wall finish gives it",
+    "glass_transmittance": "the BRE standard figure for double glazing as the Camden daylight reports quote it",
+    "sky_angle_degrees": "assumed open sky; the site gives it"
    }
   }
  },
@@ -83,5 +130,13 @@
    "unit": "board_foot",
    "reason": "'630 BF' on the sketch, unverified"
   }
+ },
+ "binds": {
+  "openings": "glazing",
+  "surfaces": [
+   "floor",
+   "walls"
+  ],
+  "finish": "finish"
  }
 }

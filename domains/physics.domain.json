@@ -1,0 +1,21 @@
+{
+ "id": "physics",
+ "label": "Units, constants, first-principles relations and the solvers that run them; no building words",
+ "source": {"jurisdiction": "first principles", "edition": "2026-10-16", "placeholder": true},
+ "units": [
+  {"id": "board_foot", "quantity": "volume", "in_cubic_metre": 0.002359737216,
+   "source": {"placeholder": true, "reason": "12 by 12 by 1 in, 144 cubic in at 16387.064 cubic mm each, exact"}}
+ ],
+ "constants": [
+  {"id": "standard_gravity", "value": 9806.65, "unit": "mm/second^2",
+   "source": {"placeholder": true, "reason": "BIPM standard acceleration of gravity, 9.80665 m/s^2, exact by definition"}}
+ ],
+ "interfaces": [
+  {"id": "span", "version": 1, "kind": "direct",
+   "inputs": {"supports_mm": "mm", "start_mm": "mm", "end_mm": "mm", "ei": "joule*mm", "load": "kg/second^2"},
+   "outputs": {"reactions": "newton", "moments_at_supports": "joule", "moment_max": "joule", "moment_min": "joule", "shear_max": "newton",
+               "deflection_max": "mm", "residual_force": "newton", "residual_moment": "joule"},
+   "implemented_by": "engine", "implementation": "span@1",
+   "source": {"placeholder": true, "reason": "a beam on vertical pin supports by the direct stiffness method on Euler-Bernoulli elements, as the engine's span solver runs it today; the code moves into this domain when Jim rules where solvers run"}}
+ ]
+}

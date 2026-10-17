@@ -1,100 +1,83 @@
-"""Check the small-house world's domain pins load on the pinned world engine, with the standard library alone.
+"""Check the small house world on the pinned world engine, with the standard library alone.
 
-world.json is Jim's small house as five systems, each with a chosen solution from the construction domain and the settings the sketch
-gives, written against a draft of the world config the engine does not read yet. What can be checked today: every domain the world `uses`
-is pinned by its current bytes and loads on the engine as a used domain. The check copies the domain files from ../domains (or
-DOMAINS_DIR) into a scratch directory, writes a world there that carries this world's own `uses` entries, and runs `we validate` on it, so a
-domain edited since the world pinned it, or one the engine's contract refuses, fails here.
-One line a pinned domain, the validator's own count, then '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the
-engine or the domains cannot be found. --plant domain-pin-stale changes one hex digit of the pin and must exit 1.
+world.json is Jim's small house: systems that pin the physics, construction, light and thermal domains by the sha256 of their bytes
+(the jars and the physics file are kept in domains/). The check runs the engine on it:
+  the pins match the bytes on disk;
+  `we expand` places 10 objects and 1 window and carries the sketch's 630 board feet;
+  `we solve` answers the daylight factor and the glazing heat balance with the figures worked by hand;
+  a pin changed by one digit is refused by the engine (plant domain-pin-stale).
+One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
 """
 import argparse
+import copy
+import hashlib
 import json
 import os
-import shutil
 import subprocess
 import sys
 import tempfile
+import shutil
 from pathlib import Path
 
 WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
-DOMAIN_FILE_GLOB = "*.domain.json"
-WRAPPER_ID = "small-house-uses"
-WRAPPER_GRID = {"cols": 1, "rows": 1, "tile_mm": 1000, "shape": "square"}
-WRAPPER_TYPES = [{"id": "marker", "label": "A type the world schema demands at least one of", "footprint": [1, 1]}]
 EXIT_REFUSED = 2
+OBJECTS_PLACED = 10
+WINDOWS_PLACED = 1
+BOARD_FEET = 630
+DAYLIGHT_FACTOR_PERCENT = 7.365
+HEAT_LOSS_WATT = 332.855
+SOLAR_GAIN_WATT = 1783.153
+DECIMALS = 3
 
 
 class Refused(Exception):
     pass
 
 
-def read_engine_pin() -> str:
-    return (WORLD / "engine.pin").read_text(encoding="utf-8").strip()
-
-
 def locate_engine() -> Path:
     return Path(os.environ.get("WORLD_ENGINE_DIR") or WORLD.parent / "world-engine").resolve()
 
 
-def locate_domains() -> Path:
-    return Path(os.environ.get("DOMAINS_DIR") or WORLD.parent / "domains").resolve()
-
-
-def find_launcher(engine: Path) -> Path:
-    return engine / "kotlin" / ("we.cmd" if os.name == "nt" else "we")
-
-
-def has_commit(engine: Path, pin: str) -> bool:
-    ancestry = subprocess.run(["git", "-C", str(engine), "merge-base", "--is-ancestor", pin, "HEAD"], capture_output=True)
-    return ancestry.returncode == 0
-
-
-def require_engine(engine: Path, pin: str) -> Path:
-    launcher = find_launcher(engine)
+def require_engine(engine: Path) -> Path:
+    pin = (WORLD / "engine.pin").read_text(encoding="utf-8").strip()
+    launcher = engine / "kotlin" / ("we.cmd" if os.name == "nt" else "we")
     if not launcher.is_file():
         raise Refused(f"no Kotlin launcher at {launcher}; set WORLD_ENGINE_DIR to a world-engine checkout")
-    if not has_commit(engine, pin):
+    ancestry = subprocess.run(["git", "-C", str(engine), "merge-base", "--is-ancestor", pin, "HEAD"], capture_output=True)
+    if ancestry.returncode != 0:
         raise Refused(f"the engine at {engine} does not contain engine.pin {pin}")
     return launcher
 
 
-def require_domains(domains: Path) -> list[Path]:
-    domain_files = sorted(domains.glob(DOMAIN_FILE_GLOB))
-    if not domain_files:
-        raise Refused(f"no {DOMAIN_FILE_GLOB} at {domains}; set DOMAINS_DIR to a domains checkout")
-    return domain_files
-
-
-def run_engine(launcher: Path, arguments: list[str]) -> str:
-    finished = subprocess.run([str(launcher), *arguments], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+def run_engine(launcher: Path, command: str, world: Path) -> tuple[int, dict]:
+    finished = subprocess.run([str(launcher), command, str(world)], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
     if not finished.stdout.strip():
-        raise Refused(f"`we {' '.join(arguments)}` answered nothing (exit {finished.returncode}): {finished.stderr.strip()}")
-    return finished.stdout
+        raise Refused(f"`we {command}` answered nothing (exit {finished.returncode}): {finished.stderr.strip()}")
+    return finished.returncode, json.loads(finished.stdout)
 
 
 def read_world() -> dict:
     return json.loads((WORLD / WORLD_FILE).read_text(encoding="utf-8"))
 
 
-def to_scratch_reference(reference: dict) -> dict:
-    return {**reference, "file": Path(reference["file"]).name}
+def stale_pin(sha: str) -> str:
+    return ("1" if sha[0] == "0" else "0") + sha[1:]
 
 
-def write_wrapper_world(uses: list[dict], worlds: Path) -> None:
-    world = {"id": WRAPPER_ID, "world_version": 2, "title": "The domains small-house pins", "grid": WRAPPER_GRID,
-             "object_types": WRAPPER_TYPES, "rules": [], "equations": [], "seed": [], "uses": [to_scratch_reference(entry) for entry in uses]}
-    (worlds / f"{WRAPPER_ID}.world.json").write_text(json.dumps(world, indent=1) + "\n", encoding="utf-8")
+def plant_domain_pin_stale(world: dict) -> None:
+    world["uses"][0]["sha256"] = stale_pin(world["uses"][0]["sha256"])
 
 
-def plant_stale_pin(uses: list[dict]) -> None:
-    pin = uses[0]["sha256"]
-    uses[0]["sha256"] = ("1" if pin[0] == "0" else "0") + pin[1:]
+PLANTS = {"domain-pin-stale": plant_domain_pin_stale}
 
 
-PLANTS = {"domain-pin-stale": plant_stale_pin}
+def write_world_copy(world: dict, scratch: Path) -> Path:
+    shutil.copytree(WORLD / "domains", scratch / "domains")
+    path = scratch / WORLD_FILE
+    path.write_text(json.dumps(world), encoding="utf-8")
+    return path
 
 
 def judge(expected, observed) -> str:
@@ -105,41 +88,50 @@ def state_line(what: str, expected, observed) -> str:
     return f"{what}: {expected} against {observed}: {judge(expected, observed)}"
 
 
-def validate_worlds(launcher: Path, worlds: Path) -> list[str]:
-    return run_engine(launcher, ["validate", "--worlds", str(worlds)]).strip().splitlines()
+def pin_lines(world: dict) -> list[str]:
+    return [state_line(f"{entry['file']} pinned by its bytes", entry["sha256"], hashlib.sha256((WORLD / entry["file"]).read_bytes()).hexdigest())
+            for entry in world["uses"]]
 
 
-def check_pins(launcher: Path, domain_files: list[Path], uses: list[dict]) -> list[str]:
-    with tempfile.TemporaryDirectory() as scratch:
-        worlds = Path(scratch) / "worlds"
-        worlds.mkdir()
-        for path in domain_files:
-            shutil.copy2(path, worlds / path.name)
-        write_wrapper_world(uses, worlds)
-        report = validate_worlds(launcher, worlds)
-    failures = [line for line in report if line.startswith("FAIL")]
-    lines = [state_line(f"{Path(entry['file']).name} as pinned by {WORLD_FILE} loads on the engine", [],
-                        [line for line in failures if entry["domain"] in line or WRAPPER_ID in line])
-             for entry in uses]
-    return lines + [state_line("worlds the validator accepts", ["1 worlds valid", "0 invalid"], report[-2:])]
+def solver_values(solved: dict, function: str) -> dict:
+    return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
+
+
+def rounded(values: dict) -> dict:
+    return {key: round(number, DECIMALS) for key, number in values.items()}
+
+
+def engine_lines(launcher: Path, world: Path) -> list[str]:
+    expand_exit, expanded = run_engine(launcher, "expand", world)
+    solve_exit, solved = run_engine(launcher, "solve", world)
+    return [
+        state_line("we expand exit, objects, windows, board feet", (0, OBJECTS_PLACED, WINDOWS_PLACED, BOARD_FEET),
+                   (expand_exit, len(expanded.get("objects", [])), len(expanded.get("instances", [])),
+                    expanded.get("supplied", {}).get("board_feet", {}).get("value"))),
+        state_line("we solve daylight factor percent", {"daylight_factor_percent": DAYLIGHT_FACTOR_PERCENT},
+                   rounded(solver_values(solved, "average-daylight-factor"))),
+        state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
+                   rounded(solver_values(solved, "glazing-balance"))),
+    ]
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--plant", choices=sorted(PLANTS), help="run on a copy carrying this defect; the check must exit 1")
     options = parser.parse_args()
-    pin, engine, domains = read_engine_pin(), locate_engine(), locate_domains()
+    engine = locate_engine()
     try:
-        launcher = require_engine(engine, pin)
-        domain_files = require_domains(domains)
-        uses = read_world()["uses"]
+        launcher = require_engine(engine)
+        world = read_world()
         if options.plant:
-            PLANTS[options.plant](uses)
-        lines = check_pins(launcher, domain_files, uses)
+            PLANTS[options.plant](world)
+        with tempfile.TemporaryDirectory() as scratch:
+            lines = pin_lines(world)
+            lines += engine_lines(launcher, write_world_copy(copy.deepcopy(world), Path(scratch)))
     except Refused as refusal:
         print(f"refused: {refusal}")
         return EXIT_REFUSED
-    print(f"engine {engine} contains engine.pin {pin}; domains at {domains}")
+    print(f"engine {engine} contains engine.pin")
     for line in lines:
         print(line)
     agreed = sum(line.endswith(": agrees") for line in lines)
