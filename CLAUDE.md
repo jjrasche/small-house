@@ -13,7 +13,7 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **Engine:** `../world-engine` (or `WORLD_ENGINE_DIR`); `engine.pin` names the commit whose commands this world needs. Never edit the engine.
 - **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects and 1 window and
   carries 630 board feet, `we solve` answers a daylight factor of 7.365 percent and 332.855 W lost, 1783.153 W gained through the glass.
-  `<n> of 7 small house checks agree`, exit 1 on any difference; `--plant domain-pin-stale` must exit 1.
+  `<n> of 9 small house checks agree`, exit 1 on any difference; `--plant domain-pin-stale` must exit 1.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).

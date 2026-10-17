@@ -4,7 +4,8 @@ world.json is Jim's small house: systems that pin the physics, construction, lig
 (the jars and the physics file are kept in domains/). The check runs the engine on it:
   the pins match the bytes on disk;
   `we expand` places 10 objects and 1 window and carries the sketch's 630 board feet;
-  `we solve` answers the daylight factor and the glazing heat balance with the figures worked by hand;
+  `we solve` answers the daylight factor, the glazing heat balance and the design-day load with the figures worked by hand, and the
+heating season as unknown until the site's degree days are chosen;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -29,6 +30,9 @@ BOARD_FEET = 630
 DAYLIGHT_FACTOR_PERCENT = 7.365
 HEAT_LOSS_WATT = 332.855
 SOLAR_GAIN_WATT = 1783.153
+DESIGN_DAY_LOSS_BTU_PER_HOUR = 1903.686
+DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
+SEASON_UNKNOWN_BECAUSE = "heating_degree_days_f is not chosen yet"
 DECIMALS = 3
 
 
@@ -97,6 +101,11 @@ def solver_values(solved: dict, function: str) -> dict:
     return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
 
 
+def season_status(solved: dict) -> tuple:
+    season = next((s for s in solved.get("solvers", []) if s["function"] == "heating-season"), {})
+    return season.get("status"), season.get("detail")
+
+
 def rounded(values: dict) -> dict:
     return {key: round(number, DECIMALS) for key, number in values.items()}
 
@@ -112,6 +121,10 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
+        state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
+                   rounded(solver_values(solved, "design-day-load"))),
+        state_line("we solve heating season is unknown until the site's degree days are chosen", ("unknown", SEASON_UNKNOWN_BECAUSE),
+                   season_status(solved)),
     ]
 
 

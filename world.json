@@ -20,7 +20,7 @@
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "e1513d711139632a165bb9dae8299b0f240c6a27d2aa1f118f07f5b608147aad"
+   "sha256": "cb9b943551e0ce1cded12990b6f242340ee06b792aea3294e66a3ded0011cda4"
   }
  ],
  "systems": {
@@ -121,6 +121,41 @@
     "mean_reflectance": "assumed mid-grey interior; Jim's wall finish gives it",
     "glass_transmittance": "the BRE standard figure for double glazing as the Camden daylight reports quote it",
     "sky_angle_degrees": "assumed open sky; the site gives it"
+   }
+  },
+  "envelope": {
+   "solution": "insulated-box",
+   "settings": {
+    "wall_r": 20,
+    "roof_r": 30,
+    "floor_r": 20
+   },
+   "reasons": {
+    "wall_r": "assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it",
+    "roof_r": "assumed R-30; the roof build-up gives it",
+    "floor_r": "assumed R-20; the floor build-up gives it"
+   }
+  },
+  "climate": {
+   "solution": "site-normals",
+   "settings": {
+    "heating_degree_days_f": null,
+    "glass_insolation_btu_per_ft2_season": null
+   },
+   "reasons": {
+    "heating_degree_days_f": "Traverse City's base-65F heating degree days: not found yet; NOAA climate normals for Cherry Capital Airport give it",
+    "glass_insolation_btu_per_ft2_season": "winter sun on a vertical south face at the site: not found yet; NREL PVWatts at tilt 90 azimuth 180 gives it"
+   }
+  },
+  "heating": {
+   "solution": "wood-boiler-hydronic",
+   "settings": {
+    "fuel_btu_per_unit": 20000000,
+    "boiler_efficiency": 0.7
+   },
+   "reasons": {
+    "fuel_btu_per_unit": "Jim: one grown tree is about 20 million BTU, a cord of oak is 24 to 26 million by hobby sources",
+    "boiler_efficiency": "assumed 70 percent; sources run 55 to 80 percent"
    }
   }
  },
