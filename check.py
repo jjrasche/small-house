@@ -5,7 +5,7 @@ world.json is Jim's small house: systems that pin the physics, construction, lig
   the pins match the bytes on disk;
   `we expand` places 10 objects and 1 window and carries the sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance and the design-day load with the figures worked by hand, and the
-heating season as unknown until the site's degree days are chosen;
+heating season from the site's degree days and winter sun;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -32,7 +32,7 @@ HEAT_LOSS_WATT = 332.855
 SOLAR_GAIN_WATT = 1783.153
 DESIGN_DAY_LOSS_BTU_PER_HOUR = 1903.686
 DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
-SEASON_UNKNOWN_BECAUSE = "heating_degree_days_f is not chosen yet"
+SEASON = {"season_loss_btu": 9015985.56, "season_solar_btu": 6159297.136, "solar_share_percent": 68.315, "fuel_units_needed": 0.204}
 DECIMALS = 3
 
 
@@ -101,11 +101,6 @@ def solver_values(solved: dict, function: str) -> dict:
     return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
 
 
-def season_status(solved: dict) -> tuple:
-    season = next((s for s in solved.get("solvers", []) if s["function"] == "heating-season"), {})
-    return season.get("status"), season.get("detail")
-
-
 def rounded(values: dict) -> dict:
     return {key: round(number, DECIMALS) for key, number in values.items()}
 
@@ -123,8 +118,7 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded(solver_values(solved, "glazing-balance"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
-        state_line("we solve heating season is unknown until the site's degree days are chosen", ("unknown", SEASON_UNKNOWN_BECAUSE),
-                   season_status(solved)),
+        state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
     ]
 
 

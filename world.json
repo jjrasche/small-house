@@ -139,12 +139,12 @@
   "climate": {
    "solution": "site-normals",
    "settings": {
-    "heating_degree_days_f": null,
-    "glass_insolation_btu_per_ft2_season": null
+    "heating_degree_days_f": 7104.1,
+    "glass_insolation_btu_per_ft2_season": 160451
    },
    "reasons": {
-    "heating_degree_days_f": "Traverse City's base-65F heating degree days: not found yet; NOAA climate normals for Cherry Capital Airport give it",
-    "glass_insolation_btu_per_ft2_season": "winter sun on a vertical south face at the site: not found yet; NREL PVWatts at tilt 90 azimuth 180 gives it"
+    "heating_degree_days_f": "NOAA NCEI 1991-2020 annual normal, base 65F, station USW00014850 TRAVERSE CITY CHERRY CPTL AP MI, read from the NCEI data service 2026-10-17",
+    "glass_insolation_btu_per_ft2_season": "PVGIS-NSRDB monthly irradiation on a vertical south plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed: 506.2 kWh/m2 = 160451 BTU/ft2; gross, with no shading and counting sun on days that need no heat"
    }
   },
   "heating": {
