@@ -40,6 +40,8 @@ def main() -> int:
         return 1
     print_placed(expansion)
     print_solvers(run_engine("solve", config))
+    for rule in run_engine("evaluate", config)["rules"]:
+        print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")
     return 0
 
 
