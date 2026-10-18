@@ -3,7 +3,7 @@
 world.json is Jim's small house: systems that pin the physics, construction, light and thermal domains by the sha256 of their bytes
 (the jars and the physics file are kept in domains/). The check runs the engine on it:
   the pins match the bytes on disk;
-  `we expand` places 10 objects and 1 window and carries the sketch's 630 board feet;
+  `we expand` places 10 objects, 4 windows and a door and carries the sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance and the design-day load with the figures worked by hand, and the
 heating season from the site's degree days and winter sun;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
@@ -25,14 +25,14 @@ WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
 EXIT_REFUSED = 2
 OBJECTS_PLACED = 10
-WINDOWS_PLACED = 1
+WINDOWS_PLACED = 5
 BOARD_FEET = 630
-DAYLIGHT_FACTOR_PERCENT = 7.365
-HEAT_LOSS_WATT = 332.855
-SOLAR_GAIN_WATT = 1783.153
-DESIGN_DAY_LOSS_BTU_PER_HOUR = 1903.686
-DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
-SEASON = {"season_loss_btu": 9015985.56, "season_solar_btu": 6159297.136, "solar_share_percent": 68.315, "fuel_units_needed": 0.204}
+DAYLIGHT_FACTOR_PERCENT = 14.73
+HEAT_LOSS_WATT = 665.711
+SOLAR_GAIN_WATT = 3566.306
+DESIGN_DAY_LOSS_BTU_PER_HOUR = 3097.017
+DESIGN_DAY_SOLAR_BTU_PER_HOUR = 12168.743
+SEASON = {"season_loss_btu": 14667678.251, "season_solar_btu": 9713951.424, "solar_share_percent": 66.227, "fuel_units_needed": 0.354}
 DECIMALS = 3
 
 

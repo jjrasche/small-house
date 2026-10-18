@@ -4,16 +4,18 @@ Jim's pencil sketch of a small house on posts as one world config on the world e
 roof, glazing, plus weather and finish for the solvers), each with the solution chosen for it from a domain and the settings the sketch gives,
 and the sketch's board feet as a supplied figure. It states no objects, overrides nothing and holds no logic: an 8 by 8 ft floor at 610 mm, 610 mm
 on four corner posts buried 4 ft, walls about 12 ft along its edges, a flat 12 by 18 ft roof over them with 2 ft west and north eaves, and (Jim,
-2026-10-17) one 8 by 8 ft window on the south wall over a 4 ft SIP knee wall. Charter: `~/.claude/brothers/charters/small-house-charter.md`.
+2026-10-17/18) stacked 4 by 8 ft windows on the south over a 4 ft SIP knee wall, one on the east, one on the west, a 4 by 8 ft door on the north. Charter: `~/.claude/brothers/charters/small-house-charter.md`.
 Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goal" and "job" are retired.
 
 - **Domains:** kotlin jars (construction, light, thermal) and `physics.domain.json`, kept in `domains/`, each pinned in `uses` by the sha256 of its
   bytes. They are built in `../domains/kotlin` (one Gradle project each, tests there). Never edit them to make this world pass; change the world
   or send the domain a request with a case. `binds` names which system fills each solver role.
 - **Engine:** `../world-engine` (or `WORLD_ENGINE_DIR`); `engine.pin` names the commit whose commands this world needs. Never edit the engine.
-- **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects and 1 window and
-  carries 630 board feet, `we solve` answers the heating season (9.0 million BTU lost, 68 percent of it met by the sun, 0.2 of a 20-million-BTU tree) and a daylight factor of 7.365 percent and 332.855 W lost, 1783.153 W gained through the glass.
-  `<n> of 9 small house checks agree`, exit 1 on any difference; `--plant domain-pin-stale` must exit 1.
+- **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects, 4 windows and a door
+  (south two stacked 4 by 8 ft bands over a 4 ft SIP knee wall, east one, west one, north a 4 by 8 ft door and no glass), and `we solve` answers
+  the daylight factor, the glass heat balance, the design-day load and the heating season (14.7 million BTU lost, 66 percent of it met by the sun,
+  0.35 of a 20-million-BTU tree), each figure compared with the value pinned in check.py. `<n> of 9 small house checks agree`, exit 1 on any
+  difference; `--plant domain-pin-stale` must exit 1.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).

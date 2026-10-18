@@ -10,17 +10,17 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "85715bba69550222b4459ea783f4e303de62fc00d7d5553125acecc7037de9f3"
+   "sha256": "0d722a2590aee0929d783f4a8807cd6771ab559d6194e982949209f68355e743"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "5797f40334ee74cc91481305f5c3fb89242537132f85053f1e58f02f6602b2c2"
+   "sha256": "38d709780f5f4738397ac4b43de476d21de6e4dabc010468adaa2ba148720fd8"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "cb9b943551e0ce1cded12990b6f242340ee06b792aea3294e66a3ded0011cda4"
+   "sha256": "871eb88163de4809504b19c8be75ddd1defde09f520702f33917b95e2b506eb7"
   }
  ],
  "systems": {
@@ -77,20 +77,22 @@
    }
   },
   "glazing": {
-   "solution": "windows-on-sides",
+   "solution": "stacked-bands",
    "settings": {
-    "sides": [
-     "south"
-    ],
-    "window_width_mm": 2438,
-    "windows_per_side": 1,
-    "glass_height_mm": 2438,
-    "sill_height_mm": 1219
+    "band_height_mm": 1219,
+    "first_sill_mm": 1219,
+    "south_bands": 2,
+    "east_bands": 1,
+    "west_bands": 1,
+    "north_bands": 0
    },
    "reasons": {
-    "glass_height_mm": "Jim, 2026-10-17: one 8 ft by 8 ft window on the south wall, the top 4 ft lighting a sleeping loft and the lower 4 ft the living space",
-    "sill_height_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the window",
-    "window_width_mm": "Jim: the window takes the 8 ft wall's whole width"
+    "band_height_mm": "Jim, 2026-10-18: every window is 4 ft by 8 ft, the 8s along the floor",
+    "first_sill_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the windows",
+    "south_bands": "Jim: two stacked 4x8 windows on the south, the upper one lighting the sleeping loft",
+    "east_bands": "Jim: a 4x8 on the east; which height is open",
+    "west_bands": "Jim: a 4x8 on the west; which height is open",
+    "north_bands": "Jim: no north glass"
    }
   },
   "weather": {
@@ -128,23 +130,31 @@
    "settings": {
     "wall_r": 20,
     "roof_r": 30,
-    "floor_r": 20
+    "floor_r": 20,
+    "door_r": 5
    },
    "reasons": {
     "wall_r": "assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it",
     "roof_r": "assumed R-30; the roof build-up gives it",
-    "floor_r": "assumed R-20; the floor build-up gives it"
+    "floor_r": "assumed R-20; the floor build-up gives it",
+    "door_r": "assumed R-5 for an insulated door, not checked against a source"
    }
   },
   "climate": {
    "solution": "site-normals",
    "settings": {
     "heating_degree_days_f": 7104.1,
-    "glass_insolation_btu_per_ft2_season": 160451
+    "north_glass_sun_btu_per_ft2_season": 32480,
+    "east_glass_sun_btu_per_ft2_season": 89761,
+    "south_glass_sun_btu_per_ft2_season": 160451,
+    "west_glass_sun_btu_per_ft2_season": 95438
    },
    "reasons": {
     "heating_degree_days_f": "NOAA NCEI 1991-2020 annual normal, base 65F, station USW00014850 TRAVERSE CITY CHERRY CPTL AP MI, read from the NCEI data service 2026-10-17",
-    "glass_insolation_btu_per_ft2_season": "PVGIS-NSRDB monthly irradiation on a vertical south plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed: 506.2 kWh/m2 = 160451 BTU/ft2; gross, with no shading and counting sun on days that need no heat"
+    "south_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 0 = south: 506.2 kWh/m2 = 160451 BTU/ft2), gross: no shading, counts sun on days that need no heat",
+    "east_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect -90 = east: 283.2 kWh/m2 = 89761 BTU/ft2), gross: no shading, counts sun on days that need no heat",
+    "west_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 90 = west: 301.1 kWh/m2 = 95438 BTU/ft2), gross: no shading, counts sun on days that need no heat",
+    "north_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 180 = north, which PVGIS echoed as -179: 102.5 kWh/m2 = 32480 BTU/ft2), gross: no shading, counts sun on days that need no heat"
    }
   },
   "heating": {
@@ -157,6 +167,22 @@
     "fuel_btu_per_unit": "Jim: one grown tree is about 20 million BTU, a cord of oak is 24 to 26 million by hobby sources",
     "boiler_efficiency": "assumed 70 percent; sources run 55 to 80 percent"
    }
+  },
+  "doors": {
+   "solution": "door-on-side",
+   "settings": {
+    "sides": [
+     "north"
+    ],
+    "width_mm": 1219,
+    "height_mm": 2438,
+    "offset_mm": 0
+   },
+   "reasons": {
+    "width_mm": "Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall",
+    "height_mm": "Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour",
+    "offset_mm": "open: which end of the north wall the door is at; the west end is a placeholder"
+   }
   }
  },
  "supplied": {
@@ -167,7 +193,10 @@
   }
  },
  "binds": {
-  "openings": "glazing",
+  "openings": [
+   "glazing",
+   "doors"
+  ],
   "surfaces": [
    "floor",
    "walls"
