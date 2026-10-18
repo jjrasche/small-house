@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "85fe25262891ecb7ab39b8f827be623965a26713ee2c2d69c7ab1b00c0c0b343"
+   "sha256": "2af1522dbb268fcf51d9046532531485a6a59dbeeae4f69772c25c6d826f0fdb"
   },
   {
    "domain": "light",
@@ -25,7 +25,7 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "559cb36bc29ddb24a2eae2c0be88cc6108669f73d2309b81024026f53cc89e3e"
+   "sha256": "0c97168a9f77b01b9d9f3a770e171375d6ad737e564a3f89d9dc4488af3e8207"
   }
  ],
  "systems": {
@@ -268,6 +268,14 @@
    "floor",
    "walls"
   ],
-  "finish": "finish"
+  "finish": "finish",
+  "supports": "foundation",
+  "supported_floor": "floor",
+  "enclosure": "walls",
+  "enclosed_floor": "floor",
+  "roof_cover": "roof",
+  "covered_floor": "floor",
+  "framing": "joists",
+  "deck": "loft_floor"
  }
 }
