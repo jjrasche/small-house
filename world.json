@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "0d722a2590aee0929d783f4a8807cd6771ab559d6194e982949209f68355e743"
+   "sha256": "09c2ee051dc92054bd040ff358f7b5ea3d8ad6a25052904cfdea4394def6505f"
   },
   {
    "domain": "light",
@@ -21,6 +21,11 @@
    "domain": "thermal",
    "file": "domains/thermal.jar",
    "sha256": "871eb88163de4809504b19c8be75ddd1defde09f520702f33917b95e2b506eb7"
+  },
+  {
+   "domain": "structural",
+   "file": "domains/structural.jar",
+   "sha256": "559cb36bc29ddb24a2eae2c0be88cc6108669f73d2309b81024026f53cc89e3e"
   }
  ],
  "systems": {
@@ -29,19 +34,23 @@
    "settings": {
     "embedment_mm": 1219,
     "above_grade_mm": null,
-    "section_mm": null
+    "section_mm": null,
+    "frost_line_mm": 1067
    },
    "reasons": {
     "above_grade_mm": "the sketch's '?' from grade to the floor; Jim's word gives it",
-    "section_mm": "the sketch draws no post size; Jim's choice or a load check gives it"
-   }
+    "section_mm": "the sketch draws no post size; Jim's choice or a load check gives it",
+    "frost_line_mm": "42 in, Michigan frost depth, research row site.frost_mrc"
+   },
+   "against": "floor"
   },
   "floor": {
    "solution": "platform",
    "settings": {
     "width_mm": 2438,
     "depth_mm": 2438,
-    "thickness_mm": null
+    "thickness_mm": null,
+    "elevation_mm": 0
    },
    "reasons": {
     "thickness_mm": "the sketch draws no joist or deck; Jim's framing gives it"
@@ -60,7 +69,8 @@
    "reasons": {
     "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
     "thickness_mm": "the sketch draws no stud or sheathing; Jim's framing gives it"
-   }
+   },
+   "against": "floor"
   },
   "roof": {
    "solution": "flat-roof-over",
@@ -182,6 +192,52 @@
     "width_mm": "Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall",
     "height_mm": "Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour",
     "offset_mm": "open: which end of the north wall the door is at; the west end is a placeholder"
+   }
+  },
+  "loft_floor": {
+   "solution": "platform",
+   "at": [
+    610,
+    610
+   ],
+   "settings": {
+    "width_mm": 2438,
+    "depth_mm": 2438,
+    "thickness_mm": null,
+    "elevation_mm": 2438
+   },
+   "reasons": {
+    "thickness_mm": "the deck thickness waits for the OSB choice",
+    "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor"
+   }
+  },
+  "joists": {
+   "solution": "joist-framing",
+   "against": "loft_floor",
+   "settings": {
+    "member_width_mm": 38,
+    "member_depth_mm": 140,
+    "spacing_mm": 406,
+    "modulus_mpa": null,
+    "elevation_mm": 2438
+   },
+   "reasons": {
+    "member_width_mm": "a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm",
+    "member_depth_mm": "assumed 2x6; the beam solver says whether it is enough",
+    "spacing_mm": "16 in on centre, assumed",
+    "modulus_mpa": "the wood's modulus of elasticity: research is banking the NDS design value for #2 SPF",
+    "elevation_mm": "under the loft deck"
+   }
+  },
+  "loads": {
+   "solution": "occupancy-load",
+   "settings": {
+    "live_load_psf": 30,
+    "dead_load_psf": 10
+   },
+   "reasons": {
+    "live_load_psf": "30 psf for sleeping rooms, research row site.live_sleeping",
+    "dead_load_psf": "10 psf, research row site.dead_ten_psf"
    }
   }
  },

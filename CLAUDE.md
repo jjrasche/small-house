@@ -17,7 +17,7 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects, 4 windows and a door
   (south two stacked 4 by 8 ft bands over a 4 ft SIP knee wall, east one, west one, north a 4 by 8 ft door and no glass), and `we solve` answers
   the daylight factor, the glass heat balance, the design-day load and the heating season (14.7 million BTU lost, 66 percent of it met by the sun,
-  0.35 of a 20-million-BTU tree), each figure compared with the value pinned in check.py. `<n> of 9 small house checks agree`, exit 1 on any
+  0.35 of a 20-million-BTU tree), each figure compared with the value pinned in check.py. `<n> of 11 small house checks agree`, exit 1 on any
   difference; `--plant domain-pin-stale` must exit 1.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof

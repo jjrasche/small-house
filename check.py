@@ -24,7 +24,7 @@ from pathlib import Path
 WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
 EXIT_REFUSED = 2
-OBJECTS_PLACED = 10
+OBJECTS_PLACED = 18
 WINDOWS_PLACED = 5
 BOARD_FEET = 630
 DAYLIGHT_FACTOR_PERCENT = 14.73
@@ -101,6 +101,11 @@ def solver_values(solved: dict, function: str) -> dict:
     return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
 
 
+def joist_status(solved: dict) -> tuple:
+    joist = next((s for s in solved.get("solvers", []) if s["function"] == "joist-deflection"), {})
+    return joist.get("status"), joist.get("detail")
+
+
 def rounded(values: dict) -> dict:
     return {key: round(number, DECIMALS) for key, number in values.items()}
 
@@ -116,6 +121,7 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
+        state_line("we solve joist deflection waits on the wood modulus", ("unknown", "modulus_mpa is not chosen yet"), joist_status(solved)),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
         state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
