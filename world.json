@@ -218,14 +218,14 @@
     "member_width_mm": 38,
     "member_depth_mm": 140,
     "spacing_mm": 406,
-    "modulus_mpa": null,
+    "modulus_mpa": 9653,
     "elevation_mm": 2438
    },
    "reasons": {
     "member_width_mm": "a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm",
     "member_depth_mm": "assumed 2x6; the beam solver says whether it is enough",
     "spacing_mm": "16 in on centre, assumed",
-    "modulus_mpa": "the wood's modulus of elasticity: research is banking the NDS design value for #2 SPF",
+    "modulus_mpa": "E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2 (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa",
     "elevation_mm": "under the loft deck"
    }
   },
