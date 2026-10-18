@@ -11,6 +11,9 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   bytes. They are built in `../domains/kotlin` (one Gradle project each, tests there). Never edit them to make this world pass; change the world
   or send the domain a request with a case. `binds` names which system fills each solver role.
 - **Engine:** `../world-engine` (or `WORLD_ENGINE_DIR`); `engine.pin` names the commit whose commands this world needs. Never edit the engine.
+- **How every simulation question is answered:** change `world.json` (a what-if is a git branch of it, never a temp copy), run `python3 fields.py`, and
+  report the fields it prints. It computes nothing; each line is a value `we expand` or `we solve` returned. A figure not printed there is not an answer
+  about the house; say so and say what config or domain piece would produce it.
 - **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects, 4 windows and a door
   (south two stacked 4 by 8 ft bands over a 4 ft SIP knee wall, east one, west one, north a 4 by 8 ft door and no glass), and `we solve` answers
   the daylight factor, the glass heat balance, the design-day load and the heating season (14.7 million BTU lost, 66 percent of it met by the sun,
