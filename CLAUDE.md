@@ -14,8 +14,6 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **How every simulation question is answered:** change `world.json` (a what-if is an edit of it; git history is the undo; one config file per world, no branch per world), run `python3 fields.py`, and
   report the fields it prints. It computes nothing; each line is a value `we expand` or `we solve` returned. A figure not printed there is not an answer
   about the house; say so and say what config or domain piece would produce it.
-- **World mutation test:** `python3 mutate.py` removes one system at a time (on throwaway copies) and prints what `we expand`, `we solve` and `we evaluate`
-  say; a removal that changes nothing the engine prints SURVIVED, which means no domain rule or solver notices that part.
 - **The one command:** `python3 check.py` (standard library only): the pins match the bytes, `we expand` places 10 objects, 4 windows and a door
   (south two stacked 4 by 8 ft bands over a 4 ft SIP knee wall, east one, west one, north a 4 by 8 ft door and no glass), and `we solve` answers
   the daylight factor, the glass heat balance, the design-day load and the heating season (14.7 million BTU lost, 66 percent of it met by the sun,
