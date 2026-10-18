@@ -92,16 +92,16 @@
     "band_height_mm": 1219,
     "first_sill_mm": 1219,
     "south_bands": 2,
-    "east_bands": 1,
-    "west_bands": 1,
+    "east_bands": 0,
+    "west_bands": 0,
     "north_bands": 0
    },
    "reasons": {
     "band_height_mm": "Jim, 2026-10-18: every window is 4 ft by 8 ft, the 8s along the floor",
     "first_sill_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the windows",
     "south_bands": "Jim: two stacked 4x8 windows on the south, the upper one lighting the sleeping loft",
-    "east_bands": "Jim: a 4x8 on the east; which height is open",
-    "west_bands": "Jim: a 4x8 on the west; which height is open",
+    "east_bands": "Jim, 2026-10-18: only south-facing glass; the east window was the earlier idea",
+    "west_bands": "Jim: only south-facing glass",
     "north_bands": "Jim: no north glass"
    }
   },
