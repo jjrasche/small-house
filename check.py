@@ -101,6 +101,11 @@ def solver_values(solved: dict, function: str) -> dict:
     return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
 
 
+def rule_statuses(launcher: Path, world: Path) -> dict:
+    _, evaluated = run_engine(launcher, "evaluate", world)
+    return {rule["id"]: rule["status"] for rule in evaluated.get("rules", [])}
+
+
 def rounded(values: dict) -> dict:
     return {key: round(number, DECIMALS) for key, number in values.items()}
 
@@ -116,6 +121,7 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 4.264, "span_over_deflection": 571.697, "bending_stress_mpa": 4.654}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),

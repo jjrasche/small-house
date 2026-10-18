@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "09c2ee051dc92054bd040ff358f7b5ea3d8ad6a25052904cfdea4394def6505f"
+   "sha256": "85fe25262891ecb7ab39b8f827be623965a26713ee2c2d69c7ab1b00c0c0b343"
   },
   {
    "domain": "light",
@@ -238,6 +238,17 @@
    "reasons": {
     "live_load_psf": "30 psf for sleeping rooms, research row site.live_sleeping",
     "dead_load_psf": "10 psf, research row site.dead_ten_psf"
+   }
+  },
+  "egress_code": {
+   "solution": "mrc-2015-egress",
+   "settings": {
+    "min_door_width_mm": 914,
+    "min_door_height_mm": 2032
+   },
+   "reasons": {
+    "min_door_width_mm": "3 ft, Michigan Residential Code 2015 R311.2, research row code.r311_2_door",
+    "min_door_height_mm": "6 ft 8 in, same row"
    }
   }
  },
