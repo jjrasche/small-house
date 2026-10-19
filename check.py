@@ -1,11 +1,11 @@
 """Check the small house world on the pinned world engine, with the standard library alone.
 
-world.json is Jim's small house: systems that pin the physics, construction, light and thermal domains by the sha256 of their bytes
-(the jars and the physics file are kept in domains/). The check runs the engine on it:
+world.json is Jim's small house: systems that pin the physics, construction, light, thermal, structural and catalog domains by the sha256
+of their bytes (the jars and the physics file are kept in domains/). The check runs the engine on it:
   the pins match the bytes on disk;
-  `we expand` places 10 objects, 4 windows and a door and carries the sketch's 630 board feet;
-  `we solve` answers the daylight factor, the glazing heat balance and the design-day load with the figures worked by hand, and the
-heating season from the site's degree days and winter sun;
+  `we expand` places 18 objects and 3 openings and carries the sketch's 630 board feet;
+  `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection and the
+gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown);
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -34,6 +34,18 @@ DESIGN_DAY_LOSS_BTU_PER_HOUR = 2076.43
 DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
 SEASON = {"season_loss_btu": 9834109.401, "season_solar_btu": 6159297.136, "solar_share_percent": 62.632, "fuel_units_needed": 0.262}
 DECIMALS = 3
+LOAD_PATH_COUNTS = {"pieces": 21, "pieces_weight_known": 2, "pieces_force_known": 0}
+FLOOR = "floor@610,2438,-114:1~2438x2438"
+LOFT = "floor@610,2438,2438:1~2438x2438"
+WEST_WALL = "wall@610,2552:2~114x2210"
+JOIST = "joist@610,2438,2438:1~38x2438"
+POST = "post@610,2438"
+KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.784, f"{WEST_WALL} weight_n": 1300.014, f"{LOFT} applied_n": 8537.784}
+UNKNOWN_PIECE_REASONS = {
+    f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
+    f"{POST} reaction_n": "not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm",
+    f"{LOFT} weight_n": "not measured (size-unknown): no figure for thickness_mm, height_mm",
+}
 
 
 class Refused(Exception):
@@ -101,6 +113,23 @@ def solver_values(solved: dict, function: str) -> dict:
     return next((s["values"] for s in solved.get("solvers", []) if s["function"] == function), {})
 
 
+def solver_answer(solved: dict, function: str) -> dict:
+    return next((s for s in solved.get("solvers", []) if s["function"] == function), {})
+
+
+def piece_figures(solved: dict, function: str, names: list[str]) -> dict:
+    pieces = solver_answer(solved, function).get("objects", {})
+    return {name: pieces.get(name.split(" ")[0], {}).get(name.split(" ")[1]) for name in names}
+
+
+def rounded_figures(figures: dict) -> dict:
+    return {name: round(value, DECIMALS) if isinstance(value, float) else value for name, value in figures.items()}
+
+
+def unknown_reasons(figures: dict) -> dict:
+    return {name: value.get("unknown") if isinstance(value, dict) else value for name, value in figures.items()}
+
+
 def rule_statuses(launcher: Path, world: Path) -> dict:
     _, evaluated = run_engine(launcher, "evaluate", world)
     return {rule["id"]: rule["status"] for rule in evaluated.get("rules", [])}
@@ -126,6 +155,12 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
         state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
+        state_line("we solve gravity load path status and piece counts", ("unknown", LOAD_PATH_COUNTS),
+                   (solver_answer(solved, "gravity-load-path").get("status"), solver_values(solved, "gravity-load-path"))),
+        state_line("we solve gravity load path newtons on the floor, the loft and the west wall", KNOWN_PIECE_NEWTONS,
+                   rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
+        state_line("we solve gravity load path pieces unknown and why", UNKNOWN_PIECE_REASONS,
+                   unknown_reasons(piece_figures(solved, "gravity-load-path", list(UNKNOWN_PIECE_REASONS)))),
     ]
 
 

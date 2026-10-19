@@ -30,6 +30,10 @@ def print_solvers(solved: dict) -> None:
     for solver in solved["solvers"]:
         values = ", ".join(f"{name}={value}" for name, value in solver["values"].items())
         print(f"solver {solver['function']} ({solver['domain']}) {solver['status']} {solver['detail']} {values}")
+        for piece, figures in solver.get("objects", {}).items():
+            print(f"  piece {piece} " + ", ".join(f"{name}={value}" for name, value in figures.items()))
+        for source in solver.get("sources", []):
+            print(f"  source {source['solution']}.{source['field']} {source['source']} ({source['evidence']})")
 
 
 def main() -> int:

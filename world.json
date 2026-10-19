@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "2af1522dbb268fcf51d9046532531485a6a59dbeeae4f69772c25c6d826f0fdb"
+   "sha256": "e660c84f45d98f2a2cb7d736ea678cff7baad6d33a077c67b70965cdc3e91fb1"
   },
   {
    "domain": "light",
@@ -25,7 +25,12 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "0c97168a9f77b01b9d9f3a770e171375d6ad737e564a3f89d9dc4488af3e8207"
+   "sha256": "346e3d307fbe145e3e633ee8b39c82e218ed24172097b300d4e0a2ecf694f22b"
+  },
+  {
+   "domain": "catalog",
+   "file": "domains/catalog.jar",
+   "sha256": "1962ec2ca7fc3f62ab137046bf34f6c77ea53c55ce8d7c7f76cb13364f87cf88"
   }
  ],
  "systems": {
@@ -49,11 +54,12 @@
    "settings": {
     "width_mm": 2438,
     "depth_mm": 2438,
-    "thickness_mm": null,
-    "elevation_mm": 0
+    "thickness_mm": 114,
+    "elevation_mm": -114
    },
    "reasons": {
-    "thickness_mm": "the sketch draws no joist or deck; Jim's framing gives it"
+    "thickness_mm": "assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it",
+    "elevation_mm": "the floor's top is the datum the walls and their 12 ft stand on, so its 114 mm panel lies below it"
    },
    "at": [
     610,
@@ -64,11 +70,11 @@
    "solution": "walls-on-edges",
    "settings": {
     "height_mm": 3658,
-    "thickness_mm": null
+    "thickness_mm": 114
    },
    "reasons": {
     "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
-    "thickness_mm": "the sketch draws no stud or sheathing; Jim's framing gives it"
+    "thickness_mm": "a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness"
    },
    "against": "floor"
   },
@@ -207,7 +213,7 @@
     "elevation_mm": 2438
    },
    "reasons": {
-    "thickness_mm": "the deck thickness waits for the OSB choice",
+    "thickness_mm": "the subfloor thickness is not banked; the deck thickness waits for the OSB choice",
     "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor"
    }
   },
@@ -250,6 +256,28 @@
     "min_door_width_mm": "3 ft, Michigan Residential Code 2015 R311.2, research row code.r311_2_door",
     "min_door_height_mm": "6 ft 8 in, same row"
    }
+  },
+  "house": {
+   "solution": "load-bearing-parts",
+   "settings": {},
+   "parts": [
+    "foundation",
+    "floor",
+    "walls",
+    "roof",
+    "loft_floor",
+    "joists",
+    "glazing",
+    "doors"
+   ]
+  },
+  "panel": {
+   "solution": "prs-610-sip-4-1-2",
+   "settings": {}
+  },
+  "lumber": {
+   "solution": "spf-no2",
+   "settings": {}
   }
  },
  "supplied": {
@@ -276,6 +304,18 @@
   "roof_cover": "roof",
   "covered_floor": "floor",
   "framing": "joists",
-  "deck": "loft_floor"
+  "deck": "loft_floor",
+  "panel_pieces": [
+   "floor",
+   "walls"
+  ],
+  "lumber_pieces": [
+   "joists"
+  ],
+  "occupied_floors": [
+   "floor",
+   "loft_floor"
+  ],
+  "ground": "foundation"
  }
 }
