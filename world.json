@@ -10,27 +10,27 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "16beea227434587c16f9e975f733fa4a6441a4679a8b94f1e0bef9cddad4e97e"
+   "sha256": "3503b66ffe5a805e4a8123a44493d4ea141a305cc3a129edb47e712a5a9b0152"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "6378753088a40d0a848e432e7279c13827e620d64ba759a8ece18c8363d3a9af"
+   "sha256": "96fbdb8213885626ff18ba2cd02c5037ffc0299a213140ab807d8397c40921a4"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "7ab5c37cc2f2b06f05cda2d66b581592f991c659ce2e30c5ba05118c971d13c2"
+   "sha256": "62d26aa618ea8741cf211139217300f6bb182889aea0eb4077ec63a647d81911"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "62cacff48cbdc6ee8a3004cc71dbbc91923925c76339c814eef169a67df402c8"
+   "sha256": "a7f66fd41412cb3ddcf6a81775c1ae0cd94707ba858500d7181e64ba584bb583"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "4f39ce05e41b5afd4a4d4d4e6e6e3bf923d869bfd455622f402fd1d9dcec2a12"
+   "sha256": "f7a475a1840451b51668d5760f58f922333c23e84fa3f7146ffbe1691104923f"
   }
  ],
  "systems": {
