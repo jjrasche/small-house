@@ -10,27 +10,27 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "29da46b6fc357d8de5d4d282f99a37059fb11369a503b0c27324e261cad47182"
+   "sha256": "38391d916da2827d97210bc2b91eb35dee40e4ed1a731eae0814257435427c95"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "268701beb56b5d5ed66a39619d9b02cf07e3bd6f104b22c033b85ed07c97eeca"
+   "sha256": "ecdd7888a7e852da48da8ac8f14db7bee4a6a98029029835761395b46d9a1e6f"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "2b0195769c2e59d76fdf7ad7cb3bfa2817a2321820750b16ab3986a8f8b499f5"
+   "sha256": "8a7cdf1104fe33dd8b501d82a4fe2d1eb96b7838e26ab7378adfdef236b0c560"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "06e36a89bbd251e82d77d2838ed24ddbb21fb750529f0f61e6be4eb60eb171f3"
+   "sha256": "5d52c37bbdb0b7293f0447910d949074ef6b173e1c5c03e3d550e04710f76451"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "990ccd272b77e182acfdc99f37533e657593ac3ae677edf29457f7cf98a045d2"
+   "sha256": "ce2b18370a826c7306500b1120ff6dcc4c92befce0167f3e66de984f99fee76b"
   }
  ],
  "systems": {
@@ -100,8 +100,7 @@
     "south_bands": 2,
     "east_bands": 0,
     "west_bands": 0,
-    "north_bands": 0,
-    "wall_thickness_mm": 114
+    "north_bands": 0
    },
    "reasons": {
     "band_height_mm": "Jim, 2026-10-18: every window is 4 ft by 8 ft, the 8s along the floor",
@@ -109,8 +108,7 @@
     "south_bands": "Jim: two stacked 4x8 windows on the south, the upper one lighting the sleeping loft",
     "east_bands": "Jim, 2026-10-18: only south-facing glass; the east window was the earlier idea",
     "west_bands": "Jim: only south-facing glass",
-    "north_bands": "Jim: no north glass",
-    "wall_thickness_mm": "the host wall's thickness, the 4-1/2 in SIP of walls.thickness_mm (research row sip.prs610_panel_thickness), so the opening lies inside its wall"
+    "north_bands": "Jim: no north glass"
    }
   },
   "weather": {
@@ -194,14 +192,12 @@
     ],
     "width_mm": 1219,
     "height_mm": 2438,
-    "offset_mm": 0,
-    "wall_thickness_mm": 114
+    "offset_mm": 0
    },
    "reasons": {
     "width_mm": "Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall",
     "height_mm": "Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour",
-    "offset_mm": "open: which end of the north wall the door is at; the west end is a placeholder",
-    "wall_thickness_mm": "the host wall's thickness, the 4-1/2 in SIP of walls.thickness_mm (research row sip.prs610_panel_thickness), so the opening lies inside its wall"
+    "offset_mm": "open: which end of the north wall the door is at; the west end is a placeholder"
    }
   },
   "loft_floor": {
