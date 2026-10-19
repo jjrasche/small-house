@@ -10,27 +10,27 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "38391d916da2827d97210bc2b91eb35dee40e4ed1a731eae0814257435427c95"
+   "sha256": "16beea227434587c16f9e975f733fa4a6441a4679a8b94f1e0bef9cddad4e97e"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "ecdd7888a7e852da48da8ac8f14db7bee4a6a98029029835761395b46d9a1e6f"
+   "sha256": "6378753088a40d0a848e432e7279c13827e620d64ba759a8ece18c8363d3a9af"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "8a7cdf1104fe33dd8b501d82a4fe2d1eb96b7838e26ab7378adfdef236b0c560"
+   "sha256": "7ab5c37cc2f2b06f05cda2d66b581592f991c659ce2e30c5ba05118c971d13c2"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "5d52c37bbdb0b7293f0447910d949074ef6b173e1c5c03e3d550e04710f76451"
+   "sha256": "62cacff48cbdc6ee8a3004cc71dbbc91923925c76339c814eef169a67df402c8"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "ce2b18370a826c7306500b1120ff6dcc4c92befce0167f3e66de984f99fee76b"
+   "sha256": "4f39ce05e41b5afd4a4d4d4e6e6e3bf923d869bfd455622f402fd1d9dcec2a12"
   }
  ],
  "systems": {
@@ -70,11 +70,13 @@
    "solution": "walls-on-edges",
    "settings": {
     "height_mm": 3658,
-    "thickness_mm": 114
+    "thickness_mm": 114,
+    "panel_width_mm": 1219
    },
    "reasons": {
     "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
-    "thickness_mm": "a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness"
+    "thickness_mm": "a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness",
+    "panel_width_mm": "4 ft is a sold width (sip.stock.premier_widths, sip.stock.acme_sizes); chosen narrow for handling and take-down; open for ranking"
    },
    "against": "floor"
   },

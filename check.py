@@ -3,7 +3,7 @@
 world.json is Jim's small house: systems that pin the physics, construction, light, thermal, structural and catalog domains by the sha256
 of their bytes (the jars and the physics file are kept in domains/). The check runs the engine on it:
   the pins match the bytes on disk;
-  `we expand` places 18 objects and 3 openings and carries the sketch's 630 board feet;
+  `we expand` places 22 objects (the walls as 4 ft SIP panels) and 3 openings and carries the sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection and the
 gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown);
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
@@ -24,7 +24,7 @@ from pathlib import Path
 WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
 EXIT_REFUSED = 2
-OBJECTS_PLACED = 18
+OBJECTS_PLACED = 22
 WINDOWS_PLACED = 3
 BOARD_FEET = 630
 DAYLIGHT_FACTOR_PERCENT = 7.365
@@ -34,17 +34,18 @@ DESIGN_DAY_LOSS_BTU_PER_HOUR = 2076.43
 DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
 SEASON = {"season_loss_btu": 9834109.401, "season_solar_btu": 6159297.136, "solar_share_percent": 62.632, "fuel_units_needed": 0.262}
 DECIMALS = 3
-LOAD_PATH_COUNTS = {"pieces": 21, "pieces_weight_known": 5, "pieces_force_known": 0}
+LOAD_PATH_COUNTS = {"pieces": 25, "pieces_weight_known": 9, "pieces_force_known": 0}
 FLOOR = "floor@610,2438,-114:1~2438x2438"
 LOFT = "floor@610,2438,2438:1~2438x2438"
-WEST_WALL = "wall@610,2552:2~114x2210"
-EAST_WALL = "wall@2934,2552:2~114x2210"
-SOUTH_WALL = "wall@610,2438:2~2438x114"
-NORTH_WALL = "wall@610,4762:2~2438x114"
 JOIST = "joist@610,2438,2438:1~38x2438"
-POST = "post@610,2438"
-KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.784, f"{WEST_WALL} weight_n": 1300.014, f"{EAST_WALL} weight_n": 1300.014,
-                       f"{SOUTH_WALL} weight_n": 478.306, f"{NORTH_WALL} weight_n": 956.219, f"{LOFT} applied_n": 8537.784}
+POST = "post@610,2438,-1219"
+SOUTH_PANELS = ("wall@610,2438:2~1219x114", "wall@1829,2438:2~1219x114")
+NORTH_PANELS = ("wall@610,4762:2~1219x114", "wall@1829,4762:2~1219x114")
+WEST_PANELS = ("wall@610,2552:2~114x1219", "wall@610,3771:2~114x991")
+KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.784, f"{LOFT} applied_n": 8537.784,
+                       f"{SOUTH_PANELS[0]} weight_n": 239.153, f"{SOUTH_PANELS[1]} weight_n": 239.153,
+                       f"{NORTH_PANELS[0]} weight_n": 239.153, f"{NORTH_PANELS[1]} weight_n": 717.066,
+                       f"{WEST_PANELS[0]} weight_n": 717.066, f"{WEST_PANELS[1]} weight_n": 582.947}
 UNKNOWN_PIECE_REASONS = {
     f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
     f"{POST} reaction_n": "not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm",
@@ -161,7 +162,7 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
         state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
         state_line("we solve gravity load path status and piece counts", ("unknown", LOAD_PATH_COUNTS),
                    (solver_answer(solved, "gravity-load-path").get("status"), solver_values(solved, "gravity-load-path"))),
-        state_line("we solve gravity load path newtons on the floor, the loft and each wall less its openings", KNOWN_PIECE_NEWTONS,
+        state_line("we solve gravity load path newtons on the floor, the loft and the wall panels less their openings", KNOWN_PIECE_NEWTONS,
                    rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
         state_line("we solve gravity load path pieces unknown and why", UNKNOWN_PIECE_REASONS,
                    unknown_reasons(piece_figures(solved, "gravity-load-path", list(UNKNOWN_PIECE_REASONS)))),

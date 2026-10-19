@@ -27,6 +27,6 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).
 - **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade and section, roof and loft deck
   thickness); SPF density is not banked, so no joist has a weight; the roof sits at elevation 0, not on the walls, and no
-  window or door has a material; the loft's own heat zone is not modelled; cost and hours wait for tasks.
+  window or door has a material; the wall panels are one system, so the engine gives no contact at a seam; the loft's own heat zone is not modelled; cost and hours wait for tasks.
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.
