@@ -10,27 +10,32 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "3503b66ffe5a805e4a8123a44493d4ea141a305cc3a129edb47e712a5a9b0152"
+   "sha256": "82e056a481a3e3044c4186c262f5c2eb08a3d639480f61f3d5159bbf92c799d5"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "96fbdb8213885626ff18ba2cd02c5037ffc0299a213140ab807d8397c40921a4"
+   "sha256": "103faf7da40d81c04eb4b5079fbbbef6ebad319c375cb7f763ea85b99867e397"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "62d26aa618ea8741cf211139217300f6bb182889aea0eb4077ec63a647d81911"
+   "sha256": "1fa10a642e21ad8175b655396d068e08b4cb501f295df51795b3b4790b60c423"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "a7f66fd41412cb3ddcf6a81775c1ae0cd94707ba858500d7181e64ba584bb583"
+   "sha256": "4bb85afb3e3fde8bba7d3ac71123026ac5fb31c8f357307c197c3b67b7dd6525"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "f7a475a1840451b51668d5760f58f922333c23e84fa3f7146ffbe1691104923f"
+   "sha256": "34064a0da0f77b3e1dcf7afc6fecb5ee805b67bb8e74ade87a2702150332d611"
+  },
+  {
+   "domain": "tasks",
+   "file": "domains/tasks.jar",
+   "sha256": "fb967f4aeed068624b0b960f0f609a9c5ad7af3f7eea74982bf74d768dd3a602"
   }
  ],
  "systems": {
@@ -280,6 +285,14 @@
   "lumber": {
    "solution": "spf-no2",
    "settings": {}
+  },
+  "labour": {
+   "solution": "published-rates",
+   "settings": {}
+  },
+  "prices": {
+   "solution": "listed-sip-blanks",
+   "settings": {}
   }
  },
  "supplied": {
@@ -319,5 +332,49 @@
    "loft_floor"
   ],
   "ground": "foundation"
+ },
+ "clock": {
+  "step": 1,
+  "unit": "minute",
+  "until": 1440
+ },
+ "stocks": {
+  "budget_usd": 20000
+ },
+ "people": {
+  "jim": {
+   "skills": {
+    "sip-setting": 1
+   },
+   "hours_per_step": 0.016666666666666666
+  },
+  "sip_lead": {
+   "skills": {
+    "sip-setting": 3
+   },
+   "hours_per_step": 0.016666666666666666
+  }
+ },
+ "optimizing": {
+  "weights": {
+   "labour_hours": 3,
+   "finish_time": 2,
+   "learning": 1,
+   "idle": 1
+  }
+ },
+ "people_rules": {
+  "learner_rate": {
+   "value": 0.5,
+   "reason": "inferred from task.t3.skills_deck_levels and task.t3.hours_per_sqft_joists: a beginner takes 2 to 3 times an advanced builder's time, so 0.5 is the faster end; assumed to hold for SIP setting, Jim to overturn"
+  },
+  "learn_rate": {
+   "value": 0.1,
+   "reason": "assumed: a tenth of a level for each hour worked beside someone who knows; no banked source measures it, Jim to overturn"
+  },
+  "level_max": {
+   "value": 3,
+   "reason": "task.t3.skills_deck_levels: the guide's three levels, beginner, intermediate and advanced"
+  }
  }
 }

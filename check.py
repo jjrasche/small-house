@@ -5,7 +5,10 @@ of their bytes (the jars and the physics file are kept in domains/). The check r
   the pins match the bytes on disk;
   `we expand` places 22 objects (the walls as 4 ft SIP panels) and 3 openings and carries the sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection and the
-gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown);
+gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown), and the hours and
+blank prices of the measured build tasks at their published rates;
+  `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
+and that the tasks with no published hours never run;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -46,6 +49,15 @@ KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.
                        f"{SOUTH_PANELS[0]} weight_n": 239.153, f"{SOUTH_PANELS[1]} weight_n": 239.153,
                        f"{NORTH_PANELS[0]} weight_n": 239.153, f"{NORTH_PANELS[1]} weight_n": 717.066,
                        f"{WEST_PANELS[0]} weight_n": 717.066, f"{WEST_PANELS[1]} weight_n": 582.947}
+PLACED_AT_MINUTE = {"post@3048,2438,-1219": 29, "post@3048,4876,-1219": 59, "post@610,2438,-1219": 89, "post@610,4876,-1219": 119, FLOOR: 159,
+                    "wall@1829,2438:2~1219x114": 199, "wall@1829,4762:2~1219x114": 219, "wall@2934,2552:2~114x1219": 259, "wall@2934,3771:2~114x991": 279,
+                    "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 339, "wall@610,3771:2~114x991": 359, "wall@610,4762:2~1219x114": 399,
+                    "roof@0,0:3~3658x5486": 479}
+BUILD_TOTALS = {"labour_hours": 14.0, "cost_usd": 3930.23, "budget_usd": 16069.77, "pieces_not_priced": 5.0}
+SKILLS_FINAL = {"jim": {"sip-setting": 1.6}, "sip_lead": {"sip-setting": 3.0}}
+NOT_MEASURED_TASKS = ("set-posts", "lay-subfloor", "cut-openings", "set-windows-and-door", "frame-loft", "install-boiler")
+WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.719, "roof_hours": 1.912, "measured_hours": 10.63, "panel_usd": 3930.23,
+                           "pieces_not_priced": 5}
 UNKNOWN_PIECE_REASONS = {
     f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
     f"{POST} reaction_n": "not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm",
@@ -144,6 +156,25 @@ def rounded(values: dict) -> dict:
     return {key: round(number, DECIMALS) for key, number in values.items()}
 
 
+def build_totals(simulated: dict) -> dict:
+    stocks = simulated.get("final_stocks", {})
+    return rounded({"labour_hours": simulated.get("objective_total", {}).get("labour_hours", 0.0), "cost_usd": stocks.get("cost_usd", 0.0),
+                    "budget_usd": stocks.get("budget_usd", 0.0), "pieces_not_priced": stocks.get("pieces_not_priced", 0.0)})
+
+
+def simulate_lines(launcher: Path, world: Path) -> list[str]:
+    simulate_exit, simulated = run_engine(launcher, "simulate", world)
+    totals = simulated.get("totals", {})
+    return [
+        state_line("we simulate exit, end and the minute each piece is placed", (0, "quiescent", PLACED_AT_MINUTE),
+                   (simulate_exit, simulated.get("ended"), simulated.get("placed_at"))),
+        state_line("we simulate labour hours, cost, budget left and pieces placed with no price", BUILD_TOTALS, build_totals(simulated)),
+        state_line("we simulate the skill each person ends with", SKILLS_FINAL, simulated.get("skills_final")),
+        state_line("we simulate runs of the tasks with no published hours", {flow: 0 for flow in NOT_MEASURED_TASKS},
+                   {flow: totals.get(flow, {}).get("runs") for flow in NOT_MEASURED_TASKS}),
+    ]
+
+
 def engine_lines(launcher: Path, world: Path) -> list[str]:
     expand_exit, expanded = run_engine(launcher, "expand", world)
     solve_exit, solved = run_engine(launcher, "solve", world)
@@ -166,7 +197,9 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
         state_line("we solve gravity load path pieces unknown and why", UNKNOWN_PIECE_REASONS,
                    unknown_reasons(piece_figures(solved, "gravity-load-path", list(UNKNOWN_PIECE_REASONS)))),
-    ]
+        state_line("we solve build task hours at published rates and the panel blanks' price", WORK_AT_PUBLISHED_RATES,
+                   rounded_figures({name: value for name, value in solver_values(solved, "work-at-published-rates").items() if name in WORK_AT_PUBLISHED_RATES})),
+    ] + simulate_lines(launcher, world)
 
 
 def main() -> int:

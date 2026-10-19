@@ -1,4 +1,5 @@
-"""Print every field the engine returns for a world config: what `we expand` places and what each solver in `we solve` says.
+"""Print every field the engine returns for a world config: what `we expand` places, what each solver in `we solve` says, each rule `we evaluate`
+judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end, each task's runs).
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
 Nothing here computes anything; every line is a value the engine printed.
@@ -36,6 +37,24 @@ def print_solvers(solved: dict) -> None:
             print(f"  source {source['solution']}.{source['field']} {source['source']} ({source['evidence']})")
 
 
+def print_simulation(simulated: dict) -> None:
+    if "refused" in simulated:
+        print("simulate refused:", simulated["refused"])
+        return
+    clock = simulated["clock"]
+    print(f"simulate clock step={clock['step']} unit={clock['unit']} until={clock['until']} ended={simulated['ended']} steps={len(simulated['steps'])}")
+    for piece, step in simulated["placed_at"].items():
+        print(f"simulate placed_at {piece} {clock['unit']}={step}")
+    for flow, total in simulated["totals"].items():
+        moved = ", ".join(f"{stock}={amount}" for stock, amount in total["moved"].items())
+        print(f"simulate flow {flow} runs={total['runs']} {moved}")
+    print("simulate final_stocks " + ", ".join(f"{stock}={amount}" for stock, amount in simulated["final_stocks"].items()))
+    if "objective_total" in simulated:
+        print("simulate objective_total " + ", ".join(f"{name}={value}" for name, value in simulated["objective_total"].items()))
+        for person, skills in simulated["skills_final"].items():
+            print(f"simulate skills_final {person} " + ", ".join(f"{skill}={level}" for skill, level in skills.items()))
+
+
 def main() -> int:
     config = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else WORLD / "world.json"
     expansion = run_engine("expand", config)
@@ -46,6 +65,8 @@ def main() -> int:
     print_solvers(run_engine("solve", config))
     for rule in run_engine("evaluate", config)["rules"]:
         print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")
+    if "clock" in json.loads(config.read_text(encoding="utf-8")):
+        print_simulation(run_engine("simulate", config))
     return 0
 
 
