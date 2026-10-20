@@ -33,7 +33,8 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **Build run** (`clock`, `stocks`, `people`, `optimizing`, `people_rules`): a step is one working minute; ten tasks dig and set the posts,
   set the floor, wall and roof panels, cut and fill the openings, frame and deck the loft and install the boiler. Each run works one piece,
   asks the engine for that piece's hours (area over the rate, or the tasks domain's hours each), and places it on the step it finishes.
-  Hours and prices are tasks-domain spec figures marked published, inferred or assumed; their ranges wait on the engine drawing spec figures.
+  Hours and prices are tasks-domain distributions read at their point; `we sample` draws them, and their quality comes from the rows they
+  cite (`python3 check.py --sample`: 500 runs at seed 1, about 50 minutes).
   `stocks.budget_usd` is Jim's $20,000 target, not a limit (Jim, 2026-10-20: "soft idea limits"): no task waits on it, and its final
   stock is the headroom, or below zero the overrun. Ranking does not score by it yet: the optimizing weight names are fixed in the engine.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side. The

@@ -13,9 +13,11 @@ measured build tasks at their published rates, and the header over each opening 
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
 how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
   the budget is a target, not a limit: with a $1,000 target every task still runs and budget_usd ends negative by the overrun;
+  with --sample, `we sample` 500 runs at seed 1 answers the quality tally of the drawn figures and the share of runs under the $20,000
+target and under the deterministic labour hours, alone and together;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
-Usage: python3 check.py [--plant domain-pin-stale]
+Usage: python3 check.py [--plant domain-pin-stale] [--sample]
 """
 import argparse
 import copy
@@ -64,6 +66,13 @@ PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     "joist@724,2552,2298:2~2210x38": 1103, "joist@724,2958,2298:2~2210x38": 1125, "joist@724,3364,2298:2~2210x38": 1147,
                     "joist@724,3770,2298:2~2210x38": 1169, "joist@724,4176,2298:2~2210x38": 1191, "joist@724,4582,2298:2~2210x38": 1213,
                     "joist@724,4724,2298:2~2210x38": 1235, LOFT: 1325}
+SAMPLE_ARGUMENTS = ["--runs", "500", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000",
+                    "--below", "simulation.objective_total.labour_hours=59.699418", "--joint"]
+SAMPLE_ANSWER = {"runs": 500, "seed": 1, "failed": {"count": 0, "first": None},
+                 "quality": {"assumed": {"inputs": 11, "draws": 5500}, "inferred": {"inputs": 4, "draws": 2000}, "published": {"inputs": 2, "draws": 1000}},
+                 "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 500},
+                           "simulation.objective_total.labour_hours": {"value": 59.699418, "fraction": 0.102, "n_with_value": 500}},
+                 "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.102}}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -5445.356
 BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 6445.356, "budget_usd": 13554.644, "pieces_not_priced": 11.0}
@@ -211,6 +220,13 @@ def target_lines(launcher: Path, world: Path) -> list[str]:
                        ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, round(simulated.get("final_stocks", {}).get("budget_usd", 0.0), DECIMALS)))]
 
 
+def sample_lines(launcher: Path, world: Path) -> list[str]:
+    finished = subprocess.run([str(launcher), "sample", str(world), *SAMPLE_ARGUMENTS], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+    answer = json.loads(finished.stdout) if finished.stdout.strip() else {}
+    return [state_line("we sample 500 runs at seed 1: failures, quality tally, share under $20,000 and under the deterministic labour hours, and both",
+                       SAMPLE_ANSWER, {key: answer.get(key) for key in SAMPLE_ANSWER})]
+
+
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
     simulate_exit, simulated = run_engine(launcher, "simulate", world)
     totals = simulated.get("totals", {})
@@ -224,7 +240,7 @@ def simulate_lines(launcher: Path, world: Path) -> list[str]:
     ]
 
 
-def engine_lines(launcher: Path, world: Path) -> list[str]:
+def engine_lines(launcher: Path, world: Path, is_sampling: bool) -> list[str]:
     expand_exit, expanded = run_engine(launcher, "expand", world)
     solve_exit, solved = run_engine(launcher, "solve", world)
     return [
@@ -253,12 +269,13 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
         rank_line(launcher, world),
-    ] + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world)
+    ] + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else [])
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--plant", choices=sorted(PLANTS), help="run on a copy carrying this defect; the check must exit 1")
+    parser.add_argument("--sample", action="store_true", help="also run the seeded 500-run sample (about 50 minutes)")
     options = parser.parse_args()
     engine = locate_engine()
     try:
@@ -268,7 +285,7 @@ def main() -> int:
             PLANTS[options.plant](world)
         with tempfile.TemporaryDirectory() as scratch:
             lines = pin_lines(world)
-            lines += engine_lines(launcher, write_world_copy(copy.deepcopy(world), Path(scratch)))
+            lines += engine_lines(launcher, write_world_copy(copy.deepcopy(world), Path(scratch)), options.sample)
     except Refused as refusal:
         print(f"refused: {refusal}")
         return EXIT_REFUSED
