@@ -42,8 +42,8 @@ DECIMALS = 3
 LOAD_PATH_COUNTS = {"pieces": 25, "pieces_weight_known": 9, "pieces_force_known": 0}
 FLOOR = "floor@610,2438,-114:1~2438x2438"
 LOFT = "floor@610,2438,2438:1~2438x2438"
-JOIST = "joist@610,2438,2438:1~38x2438"
-POST = "post@610,2438,-1219"
+JOIST = "joist@610,2438,2298:1~38x2438"
+POST = "post@610,2438,-1219~140x140"
 SOUTH_PANELS = ("wall@610,2438:2~1219x114", "wall@1829,2438:2~1219x114")
 NORTH_PANELS = ("wall@610,4762:2~1219x114", "wall@1829,4762:2~1219x114")
 WEST_PANELS = ("wall@610,2552:2~114x1219", "wall@610,3771:2~114x991")
@@ -51,28 +51,29 @@ KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.
                        f"{SOUTH_PANELS[0]} weight_n": 239.153, f"{SOUTH_PANELS[1]} weight_n": 239.153,
                        f"{NORTH_PANELS[0]} weight_n": 239.153, f"{NORTH_PANELS[1]} weight_n": 717.066,
                        f"{WEST_PANELS[0]} weight_n": 717.066, f"{WEST_PANELS[1]} weight_n": 582.947}
-PLACED_AT_MINUTE = {"post@3048,2438,-1219": 29, "post@3048,4876,-1219": 59, "post@610,2438,-1219": 89, "post@610,4876,-1219": 119, FLOOR: 159,
+PLACED_AT_MINUTE = {"post@3048,2438,-1219~140x140": 29, "post@3048,4876,-1219~140x140": 59, "post@610,2438,-1219~140x140": 89, "post@610,4876,-1219~140x140": 119, FLOOR: 159,
                     "wall@1829,2438:2~1219x114": 199, "wall@1829,4762:2~1219x114": 219, "wall@2934,2552:2~114x1219": 259, "wall@2934,3771:2~114x991": 279,
                     "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 339, "wall@610,3771:2~114x991": 359, "wall@610,4762:2~1219x114": 399,
-                    "roof@0,0:3~3658x5486": 479}
-BUILD_TOTALS = {"labour_hours": 14.0, "cost_usd": 3930.23, "budget_usd": 16069.77, "pieces_not_priced": 5.0}
+                    "roof@0,0,3658:3~3658x5486": 479}
+BUILD_TOTALS = {"labour_hours": 14.0, "cost_usd": 6293.356, "budget_usd": 13706.644, "pieces_not_priced": 4.0}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.6}, "sip_lead": {"sip-setting": 3.0}}
 NOT_MEASURED_TASKS = ("set-posts", "lay-subfloor", "cut-openings", "set-windows-and-door", "frame-loft", "install-boiler")
-WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.719, "roof_hours": 1.912, "measured_hours": 10.63, "panel_usd": 3930.23,
-                           "pieces_not_priced": 5}
+WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.719, "roof_hours": 1.912, "measured_hours": 10.63, "panel_usd": 6293.356,
+                           "pieces_not_priced": 4}
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
 HEADER_COUNTS = {"headers": 3, "headers_over_one": 0, "utilisation_max": 0.611}
-HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 2.335, f"{LOWER_BAND} utilisation": 0.081, f"{UPPER_BAND} load_n_per_mm": 17.598,
-                  f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 4.437, f"{NORTH_DOOR} utilisation": 0.077}
+HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation": 0.0, f"{UPPER_BAND} load_n_per_mm": 17.598,
+                  f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 2.102, f"{NORTH_DOOR} utilisation": 0.036,
+                  f"{LOWER_BAND} unsupported_load_n_per_mm": 2.335, f"{NORTH_DOOR} unsupported_load_n_per_mm": 2.335}
 HEADER_WEIGHT_UNKNOWN = {f"{UPPER_BAND} self_weight_n": "header-lvl-11-7-8 carries no density_lb_per_ft3 (gl.prop.lvl_density_unpublished)"}
 WINDOW_WALL_RANKS = {"four-4x4": (1, ["first_cost_usd", "build_hours"]), "one-8x8": (1, ["first_cost_usd", "build_hours"]),
                      "two-stacked-4x8": (1, ["first_cost_usd", "build_hours"])}
 UNKNOWN_PIECE_REASONS = {
     f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
-    f"{POST} reaction_n": "not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm",
-    f"{LOFT} weight_n": "not measured (size-unknown): no figure for thickness_mm, height_mm",
+    f"{POST} reaction_n": "roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces, lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it",
+    f"{LOFT} weight_n": "no material is bound to its system",
 }
 
 

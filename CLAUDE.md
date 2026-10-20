@@ -37,9 +37,12 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   overturn; `learner_rate` is inferred from the deck guide's levels.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).
-- **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade and section, roof and loft deck
-  thickness); SPF density is not banked, so no joist has a weight; the roof sits at elevation 0, not on the walls, and no
-  window or door has a material; the loft's own heat zone is not modelled; tasks with no published hours (set posts, subfloor, openings,
+- **Sizes from stock:** the posts take the catalog `post_stock` (6x6 UC4B, 140 mm) and the roof the catalog `roof_panel` (8-1/4 in SIP,
+  on the wall tops) wherever their own setting is null; the loft deck is 23/32 in subfloor on joists whose tops meet it at 8 ft. Every piece
+  is measured; the load path still cannot finish (below).
+- **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); SPF, LVL and post densities
+  are not banked, so no joist, header or post has a weight; the roof is in no load-path role, the joists rest on nothing (their ends sit
+  inside the walls), and no window or door has a material; the loft's own heat zone is not modelled; tasks with no published hours (set posts, subfloor, openings,
   windows and door, loft, boiler) never run, so hours and cost cover the holes and panels only, and cost is the panel blanks' list price.
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.

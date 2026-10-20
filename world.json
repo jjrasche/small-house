@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "7d329a7fc30eb7185df1127c3856d848b243323a71d29bf2556cf549fddac002"
+   "sha256": "a019afbb5f8de5b466f3392008dbb3d64661c09a7b3d12932f7ef6420c77a371"
   },
   {
    "domain": "light",
@@ -25,12 +25,12 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "d049900acfc759a4e95e0cbc2ffa209b6895f9031543a87ee7982c8046216798"
+   "sha256": "8b0e83a1248ca2943ad1e2e6313ad752dc0bf4f49d6b41ddef5f44ae0e67cf1c"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "1f0eabbafacf0f90a98a2a4f115809bf4e378ea5d219b58b3720fa363b51b072"
+   "sha256": "8f7a546d5ecc8e68d922ec990920039b2778d90499f8a88439c2d8ad04374428"
   },
   {
    "domain": "tasks",
@@ -49,7 +49,7 @@
    },
    "reasons": {
     "above_grade_mm": "the sketch's '?' from grade to the floor; Jim's word gives it",
-    "section_mm": "the sketch draws no post size; Jim's choice or a load check gives it",
+    "section_mm": "the post stock gives it: post_stock is the catalog's 6x6 UC4B post, dressed 5-1/2 in (wt.dressed_sizes); a number here overrides it",
     "frost_line_mm": "42 in, Michigan frost depth, research row site.frost_mrc"
    },
    "against": "floor"
@@ -96,7 +96,7 @@
    },
    "reasons": {
     "north_eave_mm": "reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading",
-    "thickness_mm": "the sketch draws no rafter or deck; Jim's framing gives it"
+    "thickness_mm": "the roof panel gives it: roof_panel is the catalog's 8-1/4 in Premier SIP, the thinnest listed whose R-value reaches the envelope's R-30 (sip.premier_thicknesses); a number here overrides it"
    }
   },
   "glazing": {
@@ -212,11 +212,11 @@
    "settings": {
     "width_mm": 2438,
     "depth_mm": 2438,
-    "thickness_mm": null,
+    "thickness_mm": 18,
     "elevation_mm": 2438
    },
    "reasons": {
-    "thickness_mm": "the subfloor thickness is not banked; the deck thickness waits for the OSB choice",
+    "thickness_mm": "assumed: 23/32 in (18 mm) combination subfloor, the IRC subfloor table's panel for a 24 in span, research row bom.subfloor_irc; at 16 in joist spacing a thinner panel may do",
     "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor"
    }
   },
@@ -228,14 +228,14 @@
     "member_depth_mm": 140,
     "spacing_mm": 406,
     "modulus_mpa": 9653,
-    "elevation_mm": 2438
+    "elevation_mm": 2298
    },
    "reasons": {
     "member_width_mm": "a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm",
     "member_depth_mm": "assumed 2x6; the beam solver says whether it is enough",
     "spacing_mm": "16 in on centre, assumed",
     "modulus_mpa": "E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2 (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa",
-    "elevation_mm": "under the loft deck"
+    "elevation_mm": "under the loft deck: the 140 mm joists' tops meet the deck's underside at 8 ft (2438 mm)"
    }
   },
   "loads": {
@@ -308,6 +308,14 @@
     "deflection_limit_ratio": "assumed: span over 240, the live-load deflection limit of Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load",
     "roof_bears_on": "assumed: the roof's 8 ft south hangover can only be carried by members running north-south across the south wall, so the roof bears on the south and north walls"
    }
+  },
+  "post_stock": {
+   "solution": "post-6x6-uc4b",
+   "settings": {}
+  },
+  "roof_panel": {
+   "solution": "premier-sip-8-1-4",
+   "settings": {}
   },
   "labour": {
    "solution": "published-rates",
