@@ -10,11 +10,12 @@ sketch's 630 board feet;
 gravity load path (every piece's self-weight and force, and the reaction under each of the four posts), the hours and blank prices of the
 measured build tasks at their published rates, and the header over each opening (its load, utilisation and own weight);
   `we rank` puts the window-wall options on first cost and build hours, both gaps;
-  `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
+  `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left and what they are missing, the skill each person ends with,
 how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
+  every piece with no price moves cost_usd and budget_usd by an unknown naming it, so both end incomplete and list those pieces;
   the budget is a target, not a limit: with a $1,000 target every task still runs and budget_usd ends negative by the overrun;
-  with --sample, `we sample` 500 runs at seed 1 answers the quality tally of the drawn figures and the share of runs under the $20,000
-target and under the deterministic labour hours, alone and together;
+  with --sample, `we sample` refuses the share of runs under the $20,000 target while cost has unknown contributors, and 50 runs at seed 1
+answer the quality tally of the drawn figures and the share of runs under the deterministic labour hours;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale] [--sample]
@@ -66,16 +67,22 @@ PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     "joist@724,2552,2298:2~2210x38": 1103, "joist@724,2958,2298:2~2210x38": 1125, "joist@724,3364,2298:2~2210x38": 1147,
                     "joist@724,3770,2298:2~2210x38": 1169, "joist@724,4176,2298:2~2210x38": 1191, "joist@724,4582,2298:2~2210x38": 1213,
                     "joist@724,4724,2298:2~2210x38": 1235, LOFT: 1325}
-SAMPLE_ARGUMENTS = ["--runs", "500", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000",
-                    "--below", "simulation.objective_total.labour_hours=59.699418", "--joint"]
-SAMPLE_ANSWER = {"runs": 500, "seed": 1, "failed": {"count": 0, "first": None},
-                 "quality": {"assumed": {"inputs": 11, "draws": 5500}, "inferred": {"inputs": 4, "draws": 2000}, "published": {"inputs": 2, "draws": 1000}},
-                 "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 500},
-                           "simulation.objective_total.labour_hours": {"value": 59.699418, "fraction": 0.102, "n_with_value": 500}},
-                 "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.102}}
+UNPRICED_PIECES = ["door@610,4819", "floor@724,2552,2438:2~2210x2210", "glazing@610,2495,1219", "glazing@610,2495,2438", "joist@724,2552,2298:2~2210x38",
+                   "joist@724,2958,2298:2~2210x38", "joist@724,3364,2298:2~2210x38", "joist@724,3770,2298:2~2210x38", "joist@724,4176,2298:2~2210x38",
+                   "joist@724,4582,2298:2~2210x38", "joist@724,4724,2298:2~2210x38"]
+COST_BELOW_ARGUMENTS = ["--runs", "2", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000"]
+COST_BELOW_REFUSAL = {"rule": "sample-output-incomplete",
+                      "message": "simulation.final_stocks.cost_usd has contributors whose value is unknown: " + ", ".join(UNPRICED_PIECES), "setting": None}
+SAMPLE_ARGUMENTS = ["--runs", "50", "--seed", "1", "--include", "simulation", "--below", "simulation.objective_total.labour_hours=59.699418"]
+SAMPLE_ANSWER = {"runs": 50, "seed": 1, "failed": {"count": 0, "first": None},
+                 "quality": {"assumed": {"inputs": 11, "draws": 550}, "inferred": {"inputs": 4, "draws": 200}, "published": {"inputs": 2, "draws": 100}},
+                 "below": {"simulation.objective_total.labour_hours": {"value": 59.699418, "fraction": 0.1, "n_with_value": 50}}}
+SAMPLE_INCOMPLETE = {f"simulation.{output}": UNPRICED_PIECES for output in ("final_stocks.budget_usd", "final_stocks.cost_usd", "stock_extremes.budget_usd.high",
+                                                                          "stock_extremes.budget_usd.low", "stock_extremes.cost_usd.high", "stock_extremes.cost_usd.low")}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -5445.356
-BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 6445.356, "budget_usd": 13554.644, "pieces_not_priced": 11.0}
+BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 6445.356, "budget_usd": 13554.644}
+INCOMPLETE_STOCKS = {"budget_usd": UNPRICED_PIECES, "cost_usd": UNPRICED_PIECES}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
 TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
              "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1}
@@ -183,8 +190,7 @@ def rounded(values: dict) -> dict:
 
 def build_totals(simulated: dict) -> dict:
     stocks = simulated.get("final_stocks", {})
-    return rounded({"labour_hours": simulated.get("objective_total", {}).get("labour_hours", 0.0), "cost_usd": stocks.get("cost_usd", 0.0),
-                    "budget_usd": stocks.get("budget_usd", 0.0), "pieces_not_priced": stocks.get("pieces_not_priced", 0.0)})
+    return rounded_figures({"labour_hours": simulated.get("objective_total", {}).get("labour_hours"), "cost_usd": stocks.get("cost_usd"), "budget_usd": stocks.get("budget_usd")})
 
 
 def rank_line(launcher: Path, world: Path) -> str:
@@ -217,14 +223,24 @@ def target_lines(launcher: Path, world: Path) -> list[str]:
     _, simulated = run_engine(launcher, "simulate", variant)
     return [state_line(f"we simulate with a ${SMALL_TARGET_USD} target: every task still runs, and budget_usd goes below zero by the overrun",
                        (TASK_RUNS, OVERRUN_BUDGET_USD),
-                       ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, round(simulated.get("final_stocks", {}).get("budget_usd", 0.0), DECIMALS)))]
+                       ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, rounded_figures(simulated.get("final_stocks", {})).get("budget_usd")))]
+
+
+def run_sample(launcher: Path, world: Path, arguments: list[str]) -> tuple[int, dict]:
+    finished = subprocess.run([str(launcher), "sample", str(world), *arguments], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+    return finished.returncode, json.loads(finished.stdout) if finished.stdout.strip() else {}
+
+
+def incomplete_outputs(answer: dict) -> dict:
+    return {output: statistics["incomplete"] for output, statistics in answer.get("outputs", {}).items() if "incomplete" in statistics}
 
 
 def sample_lines(launcher: Path, world: Path) -> list[str]:
-    finished = subprocess.run([str(launcher), "sample", str(world), *SAMPLE_ARGUMENTS], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
-    answer = json.loads(finished.stdout) if finished.stdout.strip() else {}
-    return [state_line("we sample 500 runs at seed 1: failures, quality tally, share under $20,000 and under the deterministic labour hours, and both",
-                       SAMPLE_ANSWER, {key: answer.get(key) for key in SAMPLE_ANSWER})]
+    refused_exit, refused = run_sample(launcher, world, COST_BELOW_ARGUMENTS)
+    _, answer = run_sample(launcher, world, SAMPLE_ARGUMENTS)
+    return [state_line("we sample refuses the share of runs under $20,000 while pieces have no price, naming each", (1, COST_BELOW_REFUSAL), (refused_exit, refused.get("refused"))),
+            state_line("we sample 50 runs at seed 1: failures, quality tally and share under the deterministic labour hours", SAMPLE_ANSWER, {key: answer.get(key) for key in SAMPLE_ANSWER}),
+            state_line("we sample outputs marked incomplete, with their unknown contributors", SAMPLE_INCOMPLETE, incomplete_outputs(answer))]
 
 
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
@@ -233,7 +249,8 @@ def simulate_lines(launcher: Path, world: Path) -> list[str]:
     return [
         state_line("we simulate exit, end and the minute each piece is placed", (0, "quiescent", PLACED_AT_MINUTE),
                    (simulate_exit, simulated.get("ended"), simulated.get("placed_at"))),
-        state_line("we simulate labour hours, cost, budget left and pieces placed with no price", BUILD_TOTALS, build_totals(simulated)),
+        state_line("we simulate labour hours, cost and budget left, each a partial sum where incomplete", BUILD_TOTALS, build_totals(simulated)),
+        state_line("we simulate stocks incomplete, with the pieces that have no price", INCOMPLETE_STOCKS, simulated.get("final_stocks_incomplete")),
         state_line("we simulate the skill each person ends with", SKILLS_FINAL, simulated.get("skills_final")),
         state_line("we simulate runs of every task, none skipped", TASK_RUNS, {flow: total.get("runs") for flow, total in totals.items()}),
         state_line("we simulate pieces whose placed_at step has no flow placing them there", [], pieces_placed_by_no_flow(simulated)),

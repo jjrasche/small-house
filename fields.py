@@ -1,5 +1,5 @@
 """Print every field the engine returns for a world config: what `we expand` places, what `we geometry` says each piece is made of, what each solver in `we solve` says, each rule `we evaluate`
-judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end, each task's runs).
+judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs).
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
 Nothing here computes anything; every line is a value the engine printed.
@@ -23,7 +23,7 @@ def print_placed(expansion: dict) -> None:
     for kind in ("objects", "instances"):
         for placed in expansion.get(kind, []):
             fields = ", ".join(f"{name}={value}" for name, value in placed.get("fields", {}).items())
-            print(f"{kind[:-1]} {placed['id']} [{placed['system']}] elevation_mm={placed.get('elevation_mm', 0)} {fields}")
+            print(f"{kind[:-1]} {placed['id']} [{placed['system']}] elevation_mm={placed.get('elevation_mm')} {fields}")
     print(f"supplied {expansion.get('supplied')}")
 
 
@@ -55,6 +55,8 @@ def print_simulation(simulated: dict) -> None:
         moved = ", ".join(f"{stock}={amount}" for stock, amount in total["moved"].items())
         print(f"simulate flow {flow} runs={total['runs']} {moved}")
     print("simulate final_stocks " + ", ".join(f"{stock}={amount}" for stock, amount in simulated["final_stocks"].items()))
+    for stock, contributors in simulated.get("final_stocks_incomplete", {}).items():
+        print(f"simulate final_stocks_incomplete {stock} unknown=[{', '.join(contributors)}]")
     if "objective_total" in simulated:
         print("simulate objective_total " + ", ".join(f"{name}={value}" for name, value in simulated["objective_total"].items()))
         for person, skills in simulated["skills_final"].items():
