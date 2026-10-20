@@ -20,7 +20,7 @@
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "2eb87bc41437a6b226af4efcf36c8125de2ef15eb27fd142b355a022f546f33c"
+   "sha256": "11f7b40f8ca8fc790a0c88ddf8685fb8551c2be4f5a15d6cb7bd08fee7a68c17"
   },
   {
    "domain": "structural",
@@ -30,12 +30,12 @@
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "b75201dd0a368f03a9f9a3de80a1a8a8d890b1f3d0bf466585bfad99b74d6cac"
+   "sha256": "d9785b2088c0cbc014b70a67a278b342b2a854c263d405248b7ca81780ff70fc"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "f758bc17611220c8d5dc19bdc004e47bf64b4088f08816b08859d67905bd2e15"
+   "sha256": "22dd87b632203e7a75d5dfbee07c8f23702517a0ea95eb34e6844f484c0f7c99"
   },
   {
    "domain": "site",
@@ -319,8 +319,13 @@
  },
  "ranking": {
   "weights": {
-   "first_cost_usd": 2,
-   "build_hours": 1
+   "final_stocks.cost_usd": 2,
+   "loss_btu_per_hour": 1
+  },
+  "simulated": {
+   "final_stocks.cost_usd": {
+    "good": "low"
+   }
   }
  },
  "binds": {

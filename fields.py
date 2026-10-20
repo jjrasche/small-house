@@ -1,5 +1,5 @@
 """Print every field the engine returns for a world config: what `we expand` places, what `we geometry` says each piece is made of, what each solver in `we solve` says, each rule `we evaluate`
-judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs).
+judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs), and how each option of a ranked system scores on the config's ranking weights.
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
 Nothing here computes anything; every line is a value the engine printed.
@@ -12,10 +12,11 @@ from pathlib import Path
 
 WORLD = Path(__file__).resolve().parent
 ENGINE = Path(os.environ.get("WORLD_ENGINE_DIR") or WORLD.parent / "world-engine").resolve()
+RANKED_SYSTEMS = ("door_slab",)
 
 
-def run_engine(command: str, config: Path) -> dict:
-    finished = subprocess.run(["sh", str(ENGINE / "kotlin" / "we"), command, str(config)], capture_output=True, text=True, stdin=subprocess.DEVNULL)
+def run_engine(command: str, config: Path, *flags: str) -> dict:
+    finished = subprocess.run(["sh", str(ENGINE / "kotlin" / "we"), command, str(config), *flags], capture_output=True, text=True, stdin=subprocess.DEVNULL)
     return json.loads(finished.stdout)
 
 
@@ -63,6 +64,16 @@ def print_simulation(simulated: dict) -> None:
             print(f"simulate skills_final {person} " + ", ".join(f"{skill}={level}" for skill, level in skills.items()))
 
 
+def print_ranking(ranked: dict) -> None:
+    if "refused" in ranked:
+        print("rank refused:", ranked["refused"])
+        return
+    for entry in ranked["ranked"]:
+        figures = ", ".join(f"{name}={figure['value']}" + (f" incomplete=[{', '.join(figure['incomplete'])}]" if figure.get("incomplete") else "")
+                            for name, figure in entry["figures"].items())
+        print(f"rank {ranked['system']} {entry['rank']} {entry['solution']}{' (chosen)' if entry['chosen'] else ''} settled={entry['settled']} {figures}")
+
+
 def main() -> int:
     config = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else WORLD / "world.json"
     expansion = run_engine("expand", config)
@@ -76,6 +87,8 @@ def main() -> int:
         print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")
     if "clock" in json.loads(config.read_text(encoding="utf-8")):
         print_simulation(run_engine("simulate", config))
+    for system in RANKED_SYSTEMS:
+        print_ranking(run_engine("rank", config, "--system", system))
     return 0
 
 
