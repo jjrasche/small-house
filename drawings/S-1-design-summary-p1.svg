@@ -1,193 +1,134 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="432.000mm" height="279.000mm" viewBox="0 0 432.000 279.000" font-family="Helvetica, Arial, sans-serif">
 <rect width="432.000" height="279.000" fill="#ffffff"/>
 <rect x="8.000" y="8.000" width="416.000" height="263.000" fill="none" stroke="#000000" stroke-width="0.700"/>
-<text x="14.000" y="17.380" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">SYSTEMS, EACH WITH ITS CHOSEN SOLUTION AND SETTINGS</text>
-<text x="14.000" y="19.850" font-size="1.900" text-anchor="start" fill="#000000">foundation: posts-at-corners (solution posts-at-corners)</text>
-<text x="14.000" y="22.320" font-size="1.900" text-anchor="start" fill="#000000">foundation.embedment_mm = 1219 mm; no reason given</text>
-<text x="14.000" y="24.790" font-size="1.900" text-anchor="start" fill="#000000">foundation.above_grade_mm = not given mm; reason: the sketch's '?' from grade to the floor; Jim's word gives it</text>
-<text x="14.000" y="27.260" font-size="1.900" text-anchor="start" fill="#000000">foundation.section_mm = not given mm; reason: the sketch draws no post size; Jim's choice or a load check gives it</text>
-<text x="14.000" y="29.730" font-size="1.900" text-anchor="start" fill="#000000">foundation.frost_line_mm = 1067 mm; reason: 42 in, Michigan frost depth, research row site.frost_mrc</text>
-<text x="14.000" y="32.200" font-size="1.900" text-anchor="start" fill="#000000">floor: platform (solution platform)</text>
-<text x="14.000" y="34.670" font-size="1.900" text-anchor="start" fill="#000000">floor.width_mm = 2438 mm; no reason given</text>
-<text x="14.000" y="37.140" font-size="1.900" text-anchor="start" fill="#000000">floor.depth_mm = 2438 mm; no reason given</text>
-<text x="14.000" y="39.610" font-size="1.900" text-anchor="start" fill="#000000">floor.thickness_mm = 114 mm; reason: assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it</text>
-<text x="14.000" y="42.080" font-size="1.900" text-anchor="start" fill="#000000">floor.elevation_mm = -114 mm; reason: the floor's top is the datum the walls and their 12 ft stand on, so its 114 mm panel lies below it</text>
-<text x="14.000" y="44.550" font-size="1.900" text-anchor="start" fill="#000000">walls: walls-on-edges (solution walls-on-edges)</text>
-<text x="14.000" y="47.020" font-size="1.900" text-anchor="start" fill="#000000">walls.height_mm = 3658 mm; reason: reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading</text>
-<text x="14.000" y="49.490" font-size="1.900" text-anchor="start" fill="#000000">walls.thickness_mm = 114 mm; reason: a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness</text>
-<text x="14.000" y="51.960" font-size="1.900" text-anchor="start" fill="#000000">walls.panel_width_mm = 1219 mm; reason: 4 ft is a sold width (sip.stock.premier_widths, sip.stock.acme_sizes); chosen narrow for handling and take-down; open for ranking</text>
-<text x="14.000" y="54.430" font-size="1.900" text-anchor="start" fill="#000000">roof: flat-roof-over (solution flat-roof-over)</text>
-<text x="14.000" y="56.900" font-size="1.900" text-anchor="start" fill="#000000">roof.width_mm = 3658 mm; no reason given</text>
-<text x="14.000" y="59.370" font-size="1.900" text-anchor="start" fill="#000000">roof.depth_mm = 5486 mm; no reason given</text>
-<text x="14.000" y="61.840" font-size="1.900" text-anchor="start" fill="#000000">roof.west_eave_mm = 610 mm; no reason given</text>
-<text x="14.000" y="64.310" font-size="1.900" text-anchor="start" fill="#000000">roof.north_eave_mm = 610 mm; reason: reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading</text>
-<text x="14.000" y="66.780" font-size="1.900" text-anchor="start" fill="#000000">roof.thickness_mm = not given mm; reason: the sketch draws no rafter or deck; Jim's framing gives it</text>
-<text x="14.000" y="69.250" font-size="1.900" text-anchor="start" fill="#000000">glazing: Two 4 ft by 8 ft openings stacked over the knee wall (solution two-stacked-4x8)</text>
-<text x="14.000" y="71.720" font-size="1.900" text-anchor="start" fill="#000000">glazing.sides = south compass_sides; reason: Jim, 2026-10-18: only south-facing glass; no east, west or north window</text>
-<text x="14.000" y="74.190" font-size="1.900" text-anchor="start" fill="#000000">glazing.first_sill_mm = 1219 mm; reason: Jim: the first 4 ft of the south wall is a SIP panel below the windows</text>
-<text x="14.000" y="76.660" font-size="1.900" text-anchor="start" fill="#000000">glazing.glazed_height_mm = 2438 mm; reason: Jim: two stacked 4x8 windows, the upper one lighting the sleeping loft, so 8 ft of glass over the knee wall; the other window-wall options (one-8x8, four-4x4) fill the same 8 ft</text>
-<text x="14.000" y="79.130" font-size="1.900" text-anchor="start" fill="#000000">weather: conditions (solution conditions)</text>
-<text x="14.000" y="81.600" font-size="1.900" text-anchor="start" fill="#000000">weather.u_value = 2.8 w_per_m2_k; reason: assumed: typical double glazing, not chosen by Jim</text>
-<text x="14.000" y="84.070" font-size="1.900" text-anchor="start" fill="#000000">weather.solar_heat_gain_coefficient = 0.6 ratio; reason: assumed: typical double glazing, not chosen by Jim</text>
-<text x="14.000" y="86.540" font-size="1.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius; reason: assumed design day</text>
-<text x="14.000" y="89.010" font-size="1.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius; reason: assumed design day</text>
-<text x="14.000" y="91.480" font-size="1.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2; reason: assumed clear-sky peak; the solver applies it to every side</text>
-<text x="14.000" y="93.950" font-size="1.900" text-anchor="start" fill="#000000">finish: uniform (solution uniform)</text>
-<text x="14.000" y="96.420" font-size="1.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio; reason: assumed mid-grey interior; Jim's wall finish gives it</text>
-<text x="14.000" y="98.890" font-size="1.900" text-anchor="start" fill="#000000">finish.glass_transmittance = 0.68 ratio; reason: the BRE standard figure for double glazing as the Camden daylight reports quote it</text>
-<text x="14.000" y="101.360" font-size="1.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree; reason: assumed open sky; the site gives it</text>
-<text x="14.000" y="103.830" font-size="1.900" text-anchor="start" fill="#000000">envelope: insulated-box (solution insulated-box)</text>
-<text x="14.000" y="106.300" font-size="1.900" text-anchor="start" fill="#000000">envelope.wall_r = 20 r_value; reason: assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it</text>
-<text x="14.000" y="108.770" font-size="1.900" text-anchor="start" fill="#000000">envelope.roof_r = 30 r_value; reason: assumed R-30; the roof build-up gives it</text>
-<text x="14.000" y="111.240" font-size="1.900" text-anchor="start" fill="#000000">envelope.floor_r = 20 r_value; reason: assumed R-20; the floor build-up gives it</text>
-<text x="14.000" y="113.710" font-size="1.900" text-anchor="start" fill="#000000">envelope.door_r = 5 r_value; reason: assumed R-5 for an insulated door, not checked against a source</text>
-<text x="14.000" y="116.180" font-size="1.900" text-anchor="start" fill="#000000">climate: site-normals (solution site-normals)</text>
-<text x="14.000" y="118.650" font-size="1.900" text-anchor="start" fill="#000000">climate.heating_degree_days_f = 7104.1 degree_day_f; reason: NOAA NCEI 1991-2020 annual normal, base 65F, station USW00014850 TRAVERSE CITY CHERRY CPTL AP MI, read from the NCEI data service 2026-10-17</text>
-<text x="14.000" y="121.120" font-size="1.900" text-anchor="start" fill="#000000">climate.north_glass_sun_btu_per_ft2_season = 32480 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 180 = north, which</text>
-<text x="14.000" y="123.590" font-size="1.900" text-anchor="start" fill="#000000">      PVGIS echoed as -179: 102.5 kWh/m2 = 32480 BTU/ft2), gross: no shading, counts sun on days that need no heat</text>
-<text x="14.000" y="126.060" font-size="1.900" text-anchor="start" fill="#000000">climate.east_glass_sun_btu_per_ft2_season = 89761 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect -90 = east: 283.2</text>
-<text x="14.000" y="128.530" font-size="1.900" text-anchor="start" fill="#000000">      kWh/m2 = 89761 BTU/ft2), gross: no shading, counts sun on days that need no heat</text>
-<text x="14.000" y="131.000" font-size="1.900" text-anchor="start" fill="#000000">climate.south_glass_sun_btu_per_ft2_season = 160451 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 0 = south: 506.2</text>
-<text x="14.000" y="133.470" font-size="1.900" text-anchor="start" fill="#000000">      kWh/m2 = 160451 BTU/ft2), gross: no shading, counts sun on days that need no heat</text>
-<text x="14.000" y="135.940" font-size="1.900" text-anchor="start" fill="#000000">climate.west_glass_sun_btu_per_ft2_season = 95438 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 90 = west: 301.1</text>
-<text x="14.000" y="138.410" font-size="1.900" text-anchor="start" fill="#000000">      kWh/m2 = 95438 BTU/ft2), gross: no shading, counts sun on days that need no heat</text>
-<text x="14.000" y="140.880" font-size="1.900" text-anchor="start" fill="#000000">heating: wood-boiler-hydronic (solution wood-boiler-hydronic)</text>
-<text x="14.000" y="143.350" font-size="1.900" text-anchor="start" fill="#000000">heating.fuel_btu_per_unit = 20000000 btu; reason: Jim: one grown tree is about 20 million BTU, a cord of oak is 24 to 26 million by hobby sources</text>
-<text x="14.000" y="145.820" font-size="1.900" text-anchor="start" fill="#000000">heating.boiler_efficiency = 0.7 ratio; reason: assumed 70 percent; sources run 55 to 80 percent</text>
-<text x="14.000" y="148.290" font-size="1.900" text-anchor="start" fill="#000000">doors: door-on-side (solution door-on-side)</text>
-<text x="14.000" y="150.760" font-size="1.900" text-anchor="start" fill="#000000">doors.width_mm = 1219 mm; reason: Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall</text>
-<text x="14.000" y="153.230" font-size="1.900" text-anchor="start" fill="#000000">doors.height_mm = 2438 mm; reason: Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour</text>
-<text x="14.000" y="155.700" font-size="1.900" text-anchor="start" fill="#000000">doors.sides = north compass_sides; no reason given</text>
-<text x="14.000" y="158.170" font-size="1.900" text-anchor="start" fill="#000000">doors.offset_mm = 0 mm; reason: open: which end of the north wall the door is at; the west end is a placeholder</text>
-<text x="14.000" y="160.640" font-size="1.900" text-anchor="start" fill="#000000">loft_floor: platform (solution platform)</text>
-<text x="14.000" y="163.110" font-size="1.900" text-anchor="start" fill="#000000">loft_floor.width_mm = 2438 mm; no reason given</text>
-<text x="14.000" y="165.580" font-size="1.900" text-anchor="start" fill="#000000">loft_floor.depth_mm = 2438 mm; no reason given</text>
-<text x="14.000" y="168.050" font-size="1.900" text-anchor="start" fill="#000000">loft_floor.thickness_mm = not given mm; reason: the subfloor thickness is not banked; the deck thickness waits for the OSB choice</text>
-<text x="14.000" y="170.520" font-size="1.900" text-anchor="start" fill="#000000">loft_floor.elevation_mm = 2438 mm; reason: Jim: the sleeping loft floor is 8 ft above the living floor</text>
-<text x="14.000" y="172.990" font-size="1.900" text-anchor="start" fill="#000000">joists: joist-framing (solution joist-framing)</text>
-<text x="14.000" y="175.460" font-size="1.900" text-anchor="start" fill="#000000">joists.member_width_mm = 38 mm; reason: a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm</text>
-<text x="14.000" y="177.930" font-size="1.900" text-anchor="start" fill="#000000">joists.member_depth_mm = 140 mm; reason: assumed 2x6; the beam solver says whether it is enough</text>
-<text x="14.000" y="180.400" font-size="1.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm; reason: 16 in on centre, assumed</text>
-<text x="14.000" y="182.870" font-size="1.900" text-anchor="start" fill="#000000">joists.modulus_mpa = 9653 mpa; reason: E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2 (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa</text>
-<text x="14.000" y="185.340" font-size="1.900" text-anchor="start" fill="#000000">joists.elevation_mm = 2438 mm; reason: under the loft deck</text>
-<text x="14.000" y="187.810" font-size="1.900" text-anchor="start" fill="#000000">loads: occupancy-load (solution occupancy-load)</text>
-<text x="14.000" y="190.280" font-size="1.900" text-anchor="start" fill="#000000">loads.live_load_psf = 30 psf; reason: 30 psf for sleeping rooms, research row site.live_sleeping</text>
-<text x="14.000" y="192.750" font-size="1.900" text-anchor="start" fill="#000000">loads.dead_load_psf = 10 psf; reason: 10 psf, research row site.dead_ten_psf</text>
-<text x="14.000" y="195.220" font-size="1.900" text-anchor="start" fill="#000000">egress_code: mrc-2015-egress (solution mrc-2015-egress)</text>
-<text x="14.000" y="197.690" font-size="1.900" text-anchor="start" fill="#000000">egress_code.min_door_width_mm = 914 mm; reason: 3 ft, Michigan Residential Code 2015 R311.2, research row code.r311_2_door</text>
-<text x="14.000" y="200.160" font-size="1.900" text-anchor="start" fill="#000000">egress_code.min_door_height_mm = 2032 mm; reason: 6 ft 8 in, same row</text>
-<text x="14.000" y="202.630" font-size="1.900" text-anchor="start" fill="#000000">house: The house as the parts that bear on each other (solution load-bearing-parts)</text>
-<text x="14.000" y="205.100" font-size="1.900" text-anchor="start" fill="#000000">panel: 4-1/2 in SIP to ANSI/APA PRS 610.1: EPS core between two 7/16 OSB facings (solution prs-610-sip-4-1-2)</text>
-<text x="14.000" y="207.570" font-size="1.900" text-anchor="start" fill="#000000">lumber: Spruce-Pine-Fir No. 2 dimension lumber, NDS 2018 Table 4A (solution spf-no2)</text>
-<text x="14.000" y="210.040" font-size="1.900" text-anchor="start" fill="#000000">header: Header of 1-3/4 by 11-7/8 in LVL plies, Microllam 2.0E-2600Fb (solution header-lvl-11-7-8)</text>
-<text x="14.000" y="212.510" font-size="1.900" text-anchor="start" fill="#000000">header.plies = 2 count; reason: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core (sip.prs610_core_thickness)</text>
-<text x="14.000" y="214.980" font-size="1.900" text-anchor="start" fill="#000000">roof_loads: The ground snow and the roof's dead load, on the walls the roof bears on (solution ground-snow-on-roof)</text>
-<text x="14.000" y="217.450" font-size="1.900" text-anchor="start" fill="#000000">roof_loads.ground_snow_psf = 60 psf; reason: 60 psf, Grand Traverse County in the Michigan ground snow load table, research row gl.hdr.snow_grand_traverse; carried on the roof unreduced, as no banked row gives a flat-roof</text>
-<text x="14.000" y="219.920" font-size="1.900" text-anchor="start" fill="#000000">      factor</text>
-<text x="14.000" y="222.390" font-size="1.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf; reason: assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
-<text x="14.000" y="224.860" font-size="1.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio; reason: assumed: span over 240, the live-load deflection limit of Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load</text>
-<text x="14.000" y="227.330" font-size="1.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on = south, north compass_sides; reason: assumed: the roof's 8 ft south hangover can only be carried by members running north-south across the south wall, so the roof bears on the south and north walls</text>
-<text x="220.000" y="16.470" font-size="1.900" text-anchor="start" fill="#000000">labour: Hand-dug post holes and SIP panel setting at published rates (solution published-rates)</text>
-<text x="220.000" y="18.940" font-size="1.900" text-anchor="start" fill="#000000">prices: ACME Panel's listed SIP blanks, 7/16 in OSB both sides on EPS (solution listed-sip-blanks)</text>
-<text x="220.000" y="21.410" font-size="1.900" text-anchor="start" fill="#000000"></text>
-<text x="220.000" y="24.790" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">SOLVERS, EACH ANSWER WITH WHAT IT RESTS ON</text>
-<text x="220.000" y="27.260" font-size="1.900" text-anchor="start" fill="#000000">average-daylight-factor (light): known</text>
-<text x="220.000" y="29.730" font-size="1.900" text-anchor="start" fill="#000000">daylight_factor_percent = 7.37</text>
-<text x="220.000" y="32.200" font-size="1.900" text-anchor="start" fill="#000000">glazing-balance (thermal): known</text>
-<text x="220.000" y="34.670" font-size="1.900" text-anchor="start" fill="#000000">heat_loss_watt = 332.86</text>
-<text x="220.000" y="37.140" font-size="1.900" text-anchor="start" fill="#000000">solar_gain_watt = 1783.15</text>
-<text x="220.000" y="39.610" font-size="1.900" text-anchor="start" fill="#000000">design-day-load (thermal): known</text>
-<text x="220.000" y="42.080" font-size="1.900" text-anchor="start" fill="#000000">loss_btu_per_hour = 2076.43</text>
-<text x="220.000" y="44.550" font-size="1.900" text-anchor="start" fill="#000000">solar_gain_btu_per_hour = 6084.37</text>
-<text x="220.000" y="47.020" font-size="1.900" text-anchor="start" fill="#000000">heating-season (thermal): known</text>
-<text x="220.000" y="49.490" font-size="1.900" text-anchor="start" fill="#000000">season_loss_btu = 9834109.4</text>
-<text x="220.000" y="51.960" font-size="1.900" text-anchor="start" fill="#000000">season_solar_btu = 6159297.14</text>
-<text x="220.000" y="54.430" font-size="1.900" text-anchor="start" fill="#000000">solar_share_percent = 62.63</text>
-<text x="220.000" y="56.900" font-size="1.900" text-anchor="start" fill="#000000">fuel_units_needed = 0.26</text>
-<text x="220.000" y="59.370" font-size="1.900" text-anchor="start" fill="#000000">joist-deflection (structural): known</text>
-<text x="220.000" y="61.840" font-size="1.900" text-anchor="start" fill="#000000">deflection_mm = 4.26</text>
-<text x="220.000" y="64.310" font-size="1.900" text-anchor="start" fill="#000000">span_over_deflection = 571.7</text>
-<text x="220.000" y="66.780" font-size="1.900" text-anchor="start" fill="#000000">bending_stress_mpa = 4.65</text>
-<text x="220.000" y="69.250" font-size="1.900" text-anchor="start" fill="#000000">gravity-load-path (structural): unknown</text>
-<text x="220.000" y="71.720" font-size="1.900" text-anchor="start" fill="#000000">the ground reaction is unknown: post@3048,2438,-1219: not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm; 0 of 25 pieces carry a known force</text>
-<text x="220.000" y="74.190" font-size="1.900" text-anchor="start" fill="#000000">pieces = 25</text>
-<text x="220.000" y="76.660" font-size="1.900" text-anchor="start" fill="#000000">pieces_weight_known = 9</text>
-<text x="220.000" y="79.130" font-size="1.900" text-anchor="start" fill="#000000">pieces_force_known = 0</text>
-<text x="220.000" y="81.600" font-size="1.900" text-anchor="start" fill="#000000">sources: sip.prs610_panel_thickness (published); sip.prs610_core_thickness (published); osb.gp_7_16 (published); sip.sipa_definition (published); wt.syn_osb_sheet (inferred); e1295.core (published); lum.nds.fv_spf_no2 (visual-read);</text>
-<text x="220.000" y="84.070" font-size="1.900" text-anchor="start" fill="#000000">      lum.nds.cf_2x6 (visual-read); lum.nds.cr (published)</text>
-<text x="220.000" y="86.540" font-size="1.900" text-anchor="start" fill="#000000">header-check (structural): known</text>
-<text x="220.000" y="89.010" font-size="1.900" text-anchor="start" fill="#000000">reference design values with no NDS adjustment factor; the roof carries the ground snow load unreduced; a header's load is the roof over its wall and the joists landing at its head, not its own weight nor the wall or glass above it</text>
-<text x="220.000" y="91.480" font-size="1.900" text-anchor="start" fill="#000000">headers = 3</text>
-<text x="220.000" y="93.950" font-size="1.900" text-anchor="start" fill="#000000">headers_over_one = 0</text>
-<text x="220.000" y="96.420" font-size="1.900" text-anchor="start" fill="#000000">utilisation_max = 0.61</text>
-<text x="220.000" y="98.890" font-size="1.900" text-anchor="start" fill="#000000">sources: lvl.width (published); lvl.depth (published); gl.prop.lvl_2_0e_2600 (visual-read); gl.prop.lvl_density_unpublished (unpublished)</text>
-<text x="220.000" y="101.360" font-size="1.900" text-anchor="start" fill="#000000">work-at-published-rates (tasks): known</text>
-<text x="220.000" y="103.830" font-size="1.900" text-anchor="start" fill="#000000">post_holes_hours = 2</text>
-<text x="220.000" y="106.300" font-size="1.900" text-anchor="start" fill="#000000">floor_hours = 1</text>
-<text x="220.000" y="108.770" font-size="1.900" text-anchor="start" fill="#000000">walls_hours = 5.72</text>
-<text x="220.000" y="111.240" font-size="1.900" text-anchor="start" fill="#000000">roof_hours = 1.91</text>
-<text x="220.000" y="113.710" font-size="1.900" text-anchor="start" fill="#000000">measured_hours = 10.63</text>
-<text x="220.000" y="116.180" font-size="1.900" text-anchor="start" fill="#000000">panel_usd = 3930.23</text>
-<text x="220.000" y="118.650" font-size="1.900" text-anchor="start" fill="#000000">pieces_not_priced = 5</text>
-<text x="220.000" y="121.120" font-size="1.900" text-anchor="start" fill="#000000">not_measured = set-posts (task.t2.hours_set_post_unpublished); lay-subfloor (task.t4.hours_subfloor_unpublished); cut-openings (task.t6.hours_field_opening_unpublished); set-windows-and-door</text>
-<text x="220.000" y="123.590" font-size="1.900" text-anchor="start" fill="#000000">      (task.t7.hours_windows_door_unpublished); frame-loft (task.t9.hours_loft_measured_unpublished); install-boiler (task.t11.hours_boiler_hydronic_total_manhours_unpublished)</text>
-<text x="220.000" y="126.060" font-size="1.900" text-anchor="start" fill="#000000">sources: task.t1.hours_hand_ramirent (published); task.t5.hours_premier_cs1_sqft (inferred); task.t5.hours_premier_cs1_sqft (published); task.t8.hours_premier_cs3_roof_rate (published); sp.acme_other_thicknesses (published);</text>
-<text x="220.000" y="128.530" font-size="1.900" text-anchor="start" fill="#000000">      sp.acme_1025_price (published)</text>
-<text x="220.000" y="131.000" font-size="1.900" text-anchor="start" fill="#000000"></text>
-<text x="220.000" y="134.380" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">RULES, EACH WITH ITS STATUS</text>
-<text x="220.000" y="136.850" font-size="1.900" text-anchor="start" fill="#000000">posts-under-floor [foundation]: PASS: every floor corner has a post under it; source: integrity: a floor on posts needs a post at each corner</text>
-<text x="220.000" y="139.320" font-size="1.900" text-anchor="start" fill="#000000">walls-enclose-floor [walls]: PASS: walls close every edge of the floor; source: integrity: a shell closes every edge of its floor</text>
-<text x="220.000" y="141.790" font-size="1.900" text-anchor="start" fill="#000000">roof-is-over-floor [roof]: PASS: a roof stands over the whole floor; source: integrity: a roof stands over the floor it keeps dry</text>
-<text x="220.000" y="144.260" font-size="1.900" text-anchor="start" fill="#000000">egress-door-size [doors]: PASS: the egress door is at least as large as the limit; source: Michigan Residential Code 2015 R311.2, research row code.r311_2_door: side-hinged, 3 ft by 6 ft 8 in</text>
-<text x="220.000" y="146.730" font-size="1.900" text-anchor="start" fill="#000000">posts-below-frost-line [foundation]: PASS: the posts are buried below the frost line; source: assumed: the frost depth the site gives; a footing must sit below it</text>
-<text x="220.000" y="149.200" font-size="1.900" text-anchor="start" fill="#000000">roof-covers-floor [roof]: PASS: the roof covers the floor; source: Jim's what: the roof keeps the floor dry</text>
-<text x="220.000" y="151.670" font-size="1.900" text-anchor="start" fill="#000000">headers-within-capacity [header_check]: PASS: every header is within its capacity; source: the header's catalog design values: bending, shear and its deflection limit</text>
-<text x="220.000" y="154.140" font-size="1.900" text-anchor="start" fill="#000000">joists-span-the-deck [joists]: PASS: the joists span the deck at the stated spacing; source: integrity: a deck needs joists from edge to edge at the stated spacing</text>
-<text x="220.000" y="156.610" font-size="1.900" text-anchor="start" fill="#000000"></text>
-<text x="220.000" y="159.990" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">GRAVITY LOAD PATH, PER POST</text>
-<text x="220.000" y="162.460" font-size="1.900" text-anchor="start" fill="#000000">status: unknown; the ground reaction is unknown: post@3048,2438,-1219: not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm; 0 of 25 pieces carry a known force</text>
-<text x="220.000" y="164.930" font-size="1.900" text-anchor="start" fill="#000000">post@3048,2438,-1219: ground reaction unknown (not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm)</text>
-<text x="220.000" y="167.400" font-size="1.900" text-anchor="start" fill="#000000">post@3048,4876,-1219: ground reaction unknown (not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm)</text>
-<text x="220.000" y="169.870" font-size="1.900" text-anchor="start" fill="#000000">post@610,2438,-1219: ground reaction unknown (not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm)</text>
-<text x="220.000" y="172.340" font-size="1.900" text-anchor="start" fill="#000000">post@610,4876,-1219: ground reaction unknown (not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm)</text>
-<text x="220.000" y="174.810" font-size="1.900" text-anchor="start" fill="#000000"></text>
-<text x="220.000" y="178.190" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">HEADER UTILISATIONS</text>
-<text x="220.000" y="180.660" font-size="1.900" text-anchor="start" fill="#000000">status: known; largest 0.61</text>
-<text x="220.000" y="183.130" font-size="1.900" text-anchor="start" fill="#000000">door@610,4819: utilisation 0.08; bending 0.61 MPa, shear 0.15 MPa, deflection 0.05 mm; load 4.44 N/mm against capacity 57.63 N/mm</text>
-<text x="220.000" y="185.600" font-size="1.900" text-anchor="start" fill="#000000">glazing@610,2495,1219: utilisation 0.08; bending 1.29 MPa, shear 0.16 MPa, deflection 0.38 mm; load 2.33 N/mm against capacity 28.82 N/mm</text>
-<text x="220.000" y="188.070" font-size="1.900" text-anchor="start" fill="#000000">glazing@610,2495,2438: utilisation 0.61; bending 9.7 MPa, shear 1.2 MPa, deflection 2.89 mm; load 17.6 N/mm against capacity 28.82 N/mm</text>
-<text x="220.000" y="190.540" font-size="1.900" text-anchor="start" fill="#000000"></text>
-<text x="220.000" y="193.920" font-size="2.600" text-anchor="start" fill="#000000" font-weight="bold">BUILD SIMULATION TOTALS</text>
-<text x="220.000" y="196.390" font-size="1.900" text-anchor="start" fill="#000000">ended quiescent; clock step 1 minute until 1440</text>
-<text x="220.000" y="198.860" font-size="1.900" text-anchor="start" fill="#000000">finish_time = 22</text>
-<text x="220.000" y="201.330" font-size="1.900" text-anchor="start" fill="#000000">labour_hours = 14</text>
-<text x="220.000" y="203.800" font-size="1.900" text-anchor="start" fill="#000000">learning = 0.6</text>
-<text x="220.000" y="206.270" font-size="1.900" text-anchor="start" fill="#000000">idle = 122</text>
-<text x="220.000" y="208.740" font-size="1.900" text-anchor="start" fill="#000000">score = -119.4</text>
-<text x="220.000" y="211.210" font-size="1.900" text-anchor="start" fill="#000000">final stocks:</text>
-<text x="220.000" y="213.680" font-size="1.900" text-anchor="start" fill="#000000">budget_usd = 16069.77</text>
-<text x="220.000" y="216.150" font-size="1.900" text-anchor="start" fill="#000000">cost_usd = 3930.23</text>
-<text x="220.000" y="218.620" font-size="1.900" text-anchor="start" fill="#000000">floor_panel_ft2_set = 63.98</text>
-<text x="220.000" y="221.090" font-size="1.900" text-anchor="start" fill="#000000">pieces_not_priced = 5</text>
-<text x="220.000" y="223.560" font-size="1.900" text-anchor="start" fill="#000000">post_holes_dug = 4</text>
-<text x="220.000" y="226.030" font-size="1.900" text-anchor="start" fill="#000000">roof_panel_ft2_set = 216.01</text>
-<text x="220.000" y="228.500" font-size="1.900" text-anchor="start" fill="#000000">wall_panel_ft2_set = 366.02</text>
-<text x="10.000" y="239.000" font-size="1.800" text-anchor="start" fill="#666666">PROJECT</text>
-<text x="10.000" y="246.000" font-size="3.200" text-anchor="start" fill="#000000">Small house on posts, from Jim's pencil sketch</text>
-<text x="114.000" y="239.000" font-size="1.800" text-anchor="start" fill="#666666">SHEET</text>
-<text x="114.000" y="246.000" font-size="3.200" text-anchor="start" fill="#000000" font-weight="bold">Design summary</text>
-<text x="218.000" y="239.000" font-size="1.800" text-anchor="start" fill="#666666">SHEET NUMBER</text>
-<text x="218.000" y="246.000" font-size="3.200" text-anchor="start" fill="#000000">S-1 (page 1 of 2)</text>
-<text x="322.000" y="239.000" font-size="1.800" text-anchor="start" fill="#666666">DATE</text>
-<text x="322.000" y="246.000" font-size="3.200" text-anchor="start" fill="#000000">2026-10-20</text>
-<text x="10.000" y="257.000" font-size="1.800" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
-<text x="10.000" y="264.000" font-size="3.200" text-anchor="start" fill="#000000">7dbc993</text>
-<text x="114.000" y="257.000" font-size="1.800" text-anchor="start" fill="#666666">ENGINE PIN</text>
-<text x="114.000" y="264.000" font-size="3.200" text-anchor="start" fill="#000000">we 073b001</text>
-<text x="218.000" y="257.000" font-size="1.800" text-anchor="start" fill="#666666">SCALE</text>
-<text x="218.000" y="264.000" font-size="3.200" text-anchor="start" fill="#000000">not to scale</text>
-<text x="322.000" y="257.000" font-size="1.800" text-anchor="start" fill="#666666">SOURCE</text>
-<text x="322.000" y="264.000" font-size="3.200" text-anchor="start" fill="#000000">world-engine geometry; no line is drawn by hand</text>
+<text x="14.000" y="18.420" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">SYSTEMS, EACH WITH ITS CHOSEN SOLUTION AND SETTINGS</text>
+<text x="14.000" y="22.190" font-size="2.900" text-anchor="start" fill="#000000">foundation: posts-at-corners (solution posts-at-corners)</text>
+<text x="14.000" y="25.960" font-size="2.900" text-anchor="start" fill="#000000">foundation.embedment_mm = 1219 mm; no reason given</text>
+<text x="14.000" y="29.730" font-size="2.900" text-anchor="start" fill="#000000">foundation.above_grade_mm = not given mm; reason: the sketch's '?' from grade to the floor; Jim's word gives it</text>
+<text x="14.000" y="33.500" font-size="2.900" text-anchor="start" fill="#000000">foundation.section_mm = not given mm; reason: the sketch draws no post size; Jim's choice or a load check gives it</text>
+<text x="14.000" y="37.270" font-size="2.900" text-anchor="start" fill="#000000">foundation.frost_line_mm = 1067 mm; reason: 42 in, Michigan frost depth, research row site.frost_mrc</text>
+<text x="14.000" y="41.040" font-size="2.900" text-anchor="start" fill="#000000">floor: platform (solution platform)</text>
+<text x="14.000" y="44.810" font-size="2.900" text-anchor="start" fill="#000000">floor.width_mm = 2438 mm; no reason given</text>
+<text x="14.000" y="48.580" font-size="2.900" text-anchor="start" fill="#000000">floor.depth_mm = 2438 mm; no reason given</text>
+<text x="14.000" y="52.350" font-size="2.900" text-anchor="start" fill="#000000">floor.thickness_mm = 114 mm; reason: assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's thickness, research row</text>
+<text x="14.000" y="56.120" font-size="2.900" text-anchor="start" fill="#000000">      sip.prs610_panel_thickness; Jim's floor build-up gives it</text>
+<text x="14.000" y="59.890" font-size="2.900" text-anchor="start" fill="#000000">floor.elevation_mm = -114 mm; reason: the floor's top is the datum the walls and their 12 ft stand on, so its 114 mm panel lies below it</text>
+<text x="14.000" y="63.660" font-size="2.900" text-anchor="start" fill="#000000">walls: walls-on-edges (solution walls-on-edges)</text>
+<text x="14.000" y="67.430" font-size="2.900" text-anchor="start" fill="#000000">walls.height_mm = 3658 mm; reason: reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other</text>
+<text x="14.000" y="71.200" font-size="2.900" text-anchor="start" fill="#000000">      reading</text>
+<text x="14.000" y="74.970" font-size="2.900" text-anchor="start" fill="#000000">walls.thickness_mm = 114 mm; reason: a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness</text>
+<text x="14.000" y="78.740" font-size="2.900" text-anchor="start" fill="#000000">walls.panel_width_mm = 1219 mm; reason: 4 ft is a sold width (sip.stock.premier_widths, sip.stock.acme_sizes); chosen narrow for handling and</text>
+<text x="14.000" y="82.510" font-size="2.900" text-anchor="start" fill="#000000">      take-down; open for ranking</text>
+<text x="14.000" y="86.280" font-size="2.900" text-anchor="start" fill="#000000">roof: flat-roof-over (solution flat-roof-over)</text>
+<text x="14.000" y="90.050" font-size="2.900" text-anchor="start" fill="#000000">roof.width_mm = 3658 mm; no reason given</text>
+<text x="14.000" y="93.820" font-size="2.900" text-anchor="start" fill="#000000">roof.depth_mm = 5486 mm; no reason given</text>
+<text x="14.000" y="97.590" font-size="2.900" text-anchor="start" fill="#000000">roof.west_eave_mm = 610 mm; no reason given</text>
+<text x="14.000" y="101.360" font-size="2.900" text-anchor="start" fill="#000000">roof.north_eave_mm = 610 mm; reason: reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading</text>
+<text x="14.000" y="105.130" font-size="2.900" text-anchor="start" fill="#000000">roof.thickness_mm = not given mm; reason: the sketch draws no rafter or deck; Jim's framing gives it</text>
+<text x="14.000" y="108.900" font-size="2.900" text-anchor="start" fill="#000000">glazing: Two 4 ft by 8 ft openings stacked over the knee wall (solution two-stacked-4x8)</text>
+<text x="14.000" y="112.670" font-size="2.900" text-anchor="start" fill="#000000">glazing.sides = south compass_sides; reason: Jim, 2026-10-18: only south-facing glass; no east, west or north window</text>
+<text x="14.000" y="116.440" font-size="2.900" text-anchor="start" fill="#000000">glazing.first_sill_mm = 1219 mm; reason: Jim: the first 4 ft of the south wall is a SIP panel below the windows</text>
+<text x="14.000" y="120.210" font-size="2.900" text-anchor="start" fill="#000000">glazing.glazed_height_mm = 2438 mm; reason: Jim: two stacked 4x8 windows, the upper one lighting the sleeping loft, so 8 ft of glass over the knee wall;</text>
+<text x="14.000" y="123.980" font-size="2.900" text-anchor="start" fill="#000000">      the other window-wall options (one-8x8, four-4x4) fill the same 8 ft</text>
+<text x="14.000" y="127.750" font-size="2.900" text-anchor="start" fill="#000000">weather: conditions (solution conditions)</text>
+<text x="14.000" y="131.520" font-size="2.900" text-anchor="start" fill="#000000">weather.u_value = 2.8 w_per_m2_k; reason: assumed: typical double glazing, not chosen by Jim</text>
+<text x="14.000" y="135.290" font-size="2.900" text-anchor="start" fill="#000000">weather.solar_heat_gain_coefficient = 0.6 ratio; reason: assumed: typical double glazing, not chosen by Jim</text>
+<text x="14.000" y="139.060" font-size="2.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius; reason: assumed design day</text>
+<text x="14.000" y="142.830" font-size="2.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius; reason: assumed design day</text>
+<text x="14.000" y="146.600" font-size="2.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2; reason: assumed clear-sky peak; the solver applies it to every side</text>
+<text x="14.000" y="150.370" font-size="2.900" text-anchor="start" fill="#000000">finish: uniform (solution uniform)</text>
+<text x="14.000" y="154.140" font-size="2.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio; reason: assumed mid-grey interior; Jim's wall finish gives it</text>
+<text x="14.000" y="157.910" font-size="2.900" text-anchor="start" fill="#000000">finish.glass_transmittance = 0.68 ratio; reason: the BRE standard figure for double glazing as the Camden daylight reports quote it</text>
+<text x="14.000" y="161.680" font-size="2.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree; reason: assumed open sky; the site gives it</text>
+<text x="14.000" y="165.450" font-size="2.900" text-anchor="start" fill="#000000">envelope: insulated-box (solution insulated-box)</text>
+<text x="14.000" y="169.220" font-size="2.900" text-anchor="start" fill="#000000">envelope.wall_r = 20 r_value; reason: assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it</text>
+<text x="14.000" y="172.990" font-size="2.900" text-anchor="start" fill="#000000">envelope.roof_r = 30 r_value; reason: assumed R-30; the roof build-up gives it</text>
+<text x="14.000" y="176.760" font-size="2.900" text-anchor="start" fill="#000000">envelope.floor_r = 20 r_value; reason: assumed R-20; the floor build-up gives it</text>
+<text x="14.000" y="180.530" font-size="2.900" text-anchor="start" fill="#000000">envelope.door_r = 5 r_value; reason: assumed R-5 for an insulated door, not checked against a source</text>
+<text x="14.000" y="184.300" font-size="2.900" text-anchor="start" fill="#000000">climate: site-normals (solution site-normals)</text>
+<text x="14.000" y="188.070" font-size="2.900" text-anchor="start" fill="#000000">climate.heating_degree_days_f = 7104.1 degree_day_f; reason: NOAA NCEI 1991-2020 annual normal, base 65F, station USW00014850 TRAVERSE</text>
+<text x="14.000" y="191.840" font-size="2.900" text-anchor="start" fill="#000000">      CITY CHERRY CPTL AP MI, read from the NCEI data service 2026-10-17</text>
+<text x="14.000" y="195.610" font-size="2.900" text-anchor="start" fill="#000000">climate.north_glass_sun_btu_per_ft2_season = 32480 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825</text>
+<text x="14.000" y="199.380" font-size="2.900" text-anchor="start" fill="#000000">      W, 2005-2015 average, October to April summed (aspect 180 = north, which PVGIS echoed as -179: 102.5 kWh/m2 = 32480 BTU/ft2), gross: no</text>
+<text x="14.000" y="203.150" font-size="2.900" text-anchor="start" fill="#000000">      shading, counts sun on days that need no heat</text>
+<text x="14.000" y="206.920" font-size="2.900" text-anchor="start" fill="#000000">climate.east_glass_sun_btu_per_ft2_season = 89761 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W,</text>
+<text x="14.000" y="210.690" font-size="2.900" text-anchor="start" fill="#000000">      2005-2015 average, October to April summed (aspect -90 = east: 283.2 kWh/m2 = 89761 BTU/ft2), gross: no shading, counts sun on days that need no</text>
+<text x="14.000" y="214.460" font-size="2.900" text-anchor="start" fill="#000000">      heat</text>
+<text x="14.000" y="218.230" font-size="2.900" text-anchor="start" fill="#000000">climate.south_glass_sun_btu_per_ft2_season = 160451 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825</text>
+<text x="14.000" y="222.000" font-size="2.900" text-anchor="start" fill="#000000">      W, 2005-2015 average, October to April summed (aspect 0 = south: 506.2 kWh/m2 = 160451 BTU/ft2), gross: no shading, counts sun on days that need</text>
+<text x="14.000" y="225.770" font-size="2.900" text-anchor="start" fill="#000000">      no heat</text>
+<text x="220.000" y="17.770" font-size="2.900" text-anchor="start" fill="#000000">climate.west_glass_sun_btu_per_ft2_season = 95438 btu_per_ft2; reason: PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825</text>
+<text x="220.000" y="21.540" font-size="2.900" text-anchor="start" fill="#000000">      W, 2005-2015 average, October to April summed (aspect 90 = west: 301.1 kWh/m2 = 95438 BTU/ft2), gross: no shading, counts sun on days that need</text>
+<text x="220.000" y="25.310" font-size="2.900" text-anchor="start" fill="#000000">      no heat</text>
+<text x="220.000" y="29.080" font-size="2.900" text-anchor="start" fill="#000000">heating: wood-boiler-hydronic (solution wood-boiler-hydronic)</text>
+<text x="220.000" y="32.850" font-size="2.900" text-anchor="start" fill="#000000">heating.fuel_btu_per_unit = 20000000 btu; reason: Jim: one grown tree is about 20 million BTU, a cord of oak is 24 to 26 million by hobby sources</text>
+<text x="220.000" y="36.620" font-size="2.900" text-anchor="start" fill="#000000">heating.boiler_efficiency = 0.7 ratio; reason: assumed 70 percent; sources run 55 to 80 percent</text>
+<text x="220.000" y="40.390" font-size="2.900" text-anchor="start" fill="#000000">doors: door-on-side (solution door-on-side)</text>
+<text x="220.000" y="44.160" font-size="2.900" text-anchor="start" fill="#000000">doors.width_mm = 1219 mm; reason: Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall</text>
+<text x="220.000" y="47.930" font-size="2.900" text-anchor="start" fill="#000000">doors.height_mm = 2438 mm; reason: Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour</text>
+<text x="220.000" y="51.700" font-size="2.900" text-anchor="start" fill="#000000">doors.sides = north compass_sides; no reason given</text>
+<text x="220.000" y="55.470" font-size="2.900" text-anchor="start" fill="#000000">doors.offset_mm = 0 mm; reason: open: which end of the north wall the door is at; the west end is a placeholder</text>
+<text x="220.000" y="59.240" font-size="2.900" text-anchor="start" fill="#000000">loft_floor: platform (solution platform)</text>
+<text x="220.000" y="63.010" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.width_mm = 2438 mm; no reason given</text>
+<text x="220.000" y="66.780" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.depth_mm = 2438 mm; no reason given</text>
+<text x="220.000" y="70.550" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.thickness_mm = not given mm; reason: the subfloor thickness is not banked; the deck thickness waits for the OSB choice</text>
+<text x="220.000" y="74.320" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.elevation_mm = 2438 mm; reason: Jim: the sleeping loft floor is 8 ft above the living floor</text>
+<text x="220.000" y="78.090" font-size="2.900" text-anchor="start" fill="#000000">joists: joist-framing (solution joist-framing)</text>
+<text x="220.000" y="81.860" font-size="2.900" text-anchor="start" fill="#000000">joists.member_width_mm = 38 mm; reason: a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm</text>
+<text x="220.000" y="85.630" font-size="2.900" text-anchor="start" fill="#000000">joists.member_depth_mm = 140 mm; reason: assumed 2x6; the beam solver says whether it is enough</text>
+<text x="220.000" y="89.400" font-size="2.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm; reason: 16 in on centre, assumed</text>
+<text x="220.000" y="93.170" font-size="2.900" text-anchor="start" fill="#000000">joists.modulus_mpa = 9653 mpa; reason: E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2</text>
+<text x="220.000" y="96.940" font-size="2.900" text-anchor="start" fill="#000000">      (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa</text>
+<text x="220.000" y="100.710" font-size="2.900" text-anchor="start" fill="#000000">joists.elevation_mm = 2438 mm; reason: under the loft deck</text>
+<text x="220.000" y="104.480" font-size="2.900" text-anchor="start" fill="#000000">loads: occupancy-load (solution occupancy-load)</text>
+<text x="220.000" y="108.250" font-size="2.900" text-anchor="start" fill="#000000">loads.live_load_psf = 30 psf; reason: 30 psf for sleeping rooms, research row site.live_sleeping</text>
+<text x="220.000" y="112.020" font-size="2.900" text-anchor="start" fill="#000000">loads.dead_load_psf = 10 psf; reason: 10 psf, research row site.dead_ten_psf</text>
+<text x="220.000" y="115.790" font-size="2.900" text-anchor="start" fill="#000000">egress_code: mrc-2015-egress (solution mrc-2015-egress)</text>
+<text x="220.000" y="119.560" font-size="2.900" text-anchor="start" fill="#000000">egress_code.min_door_width_mm = 914 mm; reason: 3 ft, Michigan Residential Code 2015 R311.2, research row code.r311_2_door</text>
+<text x="220.000" y="123.330" font-size="2.900" text-anchor="start" fill="#000000">egress_code.min_door_height_mm = 2032 mm; reason: 6 ft 8 in, same row</text>
+<text x="220.000" y="127.100" font-size="2.900" text-anchor="start" fill="#000000">house: The house as the parts that bear on each other (solution load-bearing-parts)</text>
+<text x="220.000" y="130.870" font-size="2.900" text-anchor="start" fill="#000000">panel: 4-1/2 in SIP to ANSI/APA PRS 610.1: EPS core between two 7/16 OSB facings (solution prs-610-sip-4-1-2)</text>
+<text x="220.000" y="134.640" font-size="2.900" text-anchor="start" fill="#000000">lumber: Spruce-Pine-Fir No. 2 dimension lumber, NDS 2018 Table 4A (solution spf-no2)</text>
+<text x="220.000" y="138.410" font-size="2.900" text-anchor="start" fill="#000000">header: Header of 1-3/4 by 11-7/8 in LVL plies, Microllam 2.0E-2600Fb (solution header-lvl-11-7-8)</text>
+<text x="220.000" y="142.180" font-size="2.900" text-anchor="start" fill="#000000">header.plies = 2 count; reason: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core</text>
+<text x="220.000" y="145.950" font-size="2.900" text-anchor="start" fill="#000000">      (sip.prs610_core_thickness)</text>
+<text x="220.000" y="149.720" font-size="2.900" text-anchor="start" fill="#000000">roof_loads: The ground snow and the roof's dead load, on the walls the roof bears on (solution ground-snow-on-roof)</text>
+<text x="220.000" y="153.490" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.ground_snow_psf = 60 psf; reason: 60 psf, Grand Traverse County in the Michigan ground snow load table, research row</text>
+<text x="220.000" y="157.260" font-size="2.900" text-anchor="start" fill="#000000">      gl.hdr.snow_grand_traverse; carried on the roof unreduced, as no banked row gives a flat-roof factor</text>
+<text x="220.000" y="161.030" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf; reason: assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row</text>
+<text x="220.000" y="164.800" font-size="2.900" text-anchor="start" fill="#000000">      gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
+<text x="220.000" y="168.570" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio; reason: assumed: span over 240, the live-load deflection limit of Boise's header tables, research row</text>
+<text x="220.000" y="172.340" font-size="2.900" text-anchor="start" fill="#000000">      gl.hdr.vl_limits, applied to the whole load</text>
+<text x="220.000" y="176.110" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on = south, north compass_sides; reason: assumed: the roof's 8 ft south hangover can only be carried by members running</text>
+<text x="220.000" y="179.880" font-size="2.900" text-anchor="start" fill="#000000">      north-south across the south wall, so the roof bears on the south and north walls</text>
+<text x="220.000" y="183.650" font-size="2.900" text-anchor="start" fill="#000000">labour: Hand-dug post holes and SIP panel setting at published rates (solution published-rates)</text>
+<text x="220.000" y="187.420" font-size="2.900" text-anchor="start" fill="#000000">prices: ACME Panel's listed SIP blanks, 7/16 in OSB both sides on EPS (solution listed-sip-blanks)</text>
+<text x="220.000" y="191.190" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="220.000" y="195.610" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">SOLVERS, EACH ANSWER WITH WHAT IT RESTS ON</text>
+<text x="220.000" y="199.380" font-size="2.900" text-anchor="start" fill="#000000">average-daylight-factor (light): known</text>
+<text x="220.000" y="203.150" font-size="2.900" text-anchor="start" fill="#000000">daylight_factor_percent = 7.37</text>
+<text x="220.000" y="206.920" font-size="2.900" text-anchor="start" fill="#000000">glazing-balance (thermal): known</text>
+<text x="220.000" y="210.690" font-size="2.900" text-anchor="start" fill="#000000">heat_loss_watt = 332.86</text>
+<text x="220.000" y="214.460" font-size="2.900" text-anchor="start" fill="#000000">solar_gain_watt = 1783.15</text>
+<text x="220.000" y="218.230" font-size="2.900" text-anchor="start" fill="#000000">design-day-load (thermal): known</text>
+<text x="220.000" y="222.000" font-size="2.900" text-anchor="start" fill="#000000">loss_btu_per_hour = 2076.43</text>
+<text x="220.000" y="225.770" font-size="2.900" text-anchor="start" fill="#000000">solar_gain_btu_per_hour = 6084.37</text>
+<text x="10.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">PROJECT</text>
+<text x="10.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">Small house on posts, from Jim's pencil sketch</text>
+<text x="114.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">SHEET</text>
+<text x="114.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">Design summary</text>
+<text x="218.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">SHEET NUMBER</text>
+<text x="218.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">S-1 (page 1 of 3)</text>
+<text x="322.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">DATE</text>
+<text x="322.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">2026-10-20</text>
+<text x="10.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
+<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">29313d3</text>
+<text x="114.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">ENGINE PIN</text>
+<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we 02d17b7; rendered with we 073b001</text>
+<text x="218.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SCALE</text>
+<text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">not to scale</text>
+<text x="322.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SOURCE</text>
+<text x="322.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">world-engine geometry; no line is drawn by hand</text>
 <line x1="8.000" y1="235.000" x2="424.000" y2="235.000" stroke="#000000" stroke-width="0.700"/>
 <line x1="8.000" y1="253.000" x2="424.000" y2="253.000" stroke="#000000" stroke-width="0.250"/>
 <line x1="112.000" y1="235.000" x2="112.000" y2="271.000" stroke="#000000" stroke-width="0.250"/>

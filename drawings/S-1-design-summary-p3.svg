@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432.000mm" height="279.000mm" viewBox="0 0 432.000 279.000" font-family="Helvetica, Arial, sans-serif">
+<rect width="432.000" height="279.000" fill="#ffffff"/>
+<rect x="8.000" y="8.000" width="416.000" height="263.000" fill="none" stroke="#000000" stroke-width="0.700"/>
+<text x="14.000" y="17.770" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf; reason: assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row</text>
+<text x="14.000" y="21.540" font-size="2.900" text-anchor="start" fill="#000000">      gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
+<text x="14.000" y="25.310" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio; reason: assumed: span over 240, the live-load deflection limit of Boise's header tables, research row</text>
+<text x="14.000" y="29.080" font-size="2.900" text-anchor="start" fill="#000000">      gl.hdr.vl_limits, applied to the whole load</text>
+<text x="14.000" y="32.850" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on = south, north compass_sides; reason: assumed: the roof's 8 ft south hangover can only be carried by members running</text>
+<text x="14.000" y="36.620" font-size="2.900" text-anchor="start" fill="#000000">      north-south across the south wall, so the roof bears on the south and north walls</text>
+<text x="14.000" y="40.390" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="14.000" y="44.810" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">UNMEASURED PIECES</text>
+<text x="14.000" y="48.580" font-size="2.900" text-anchor="start" fill="#000000">floor@610,2438,2438:1~2438x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="52.350" font-size="2.900" text-anchor="start" fill="#000000">joist@1016,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="56.120" font-size="2.900" text-anchor="start" fill="#000000">joist@1422,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="59.890" font-size="2.900" text-anchor="start" fill="#000000">joist@1828,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="63.660" font-size="2.900" text-anchor="start" fill="#000000">joist@2234,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="67.430" font-size="2.900" text-anchor="start" fill="#000000">joist@2640,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="71.200" font-size="2.900" text-anchor="start" fill="#000000">joist@3010,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="74.970" font-size="2.900" text-anchor="start" fill="#000000">joist@610,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="78.740" font-size="2.900" text-anchor="start" fill="#000000">post@3048,2438,-1219: width_mm is unknown (size-unknown)</text>
+<text x="14.000" y="82.510" font-size="2.900" text-anchor="start" fill="#000000">post@3048,4876,-1219: width_mm is unknown (size-unknown)</text>
+<text x="14.000" y="86.280" font-size="2.900" text-anchor="start" fill="#000000">post@610,2438,-1219: width_mm is unknown (size-unknown)</text>
+<text x="14.000" y="90.050" font-size="2.900" text-anchor="start" fill="#000000">post@610,4876,-1219: width_mm is unknown (size-unknown)</text>
+<text x="14.000" y="93.820" font-size="2.900" text-anchor="start" fill="#000000">roof@0,0:3~3658x5486: height_mm is unknown (size-unknown)</text>
+<text x="14.000" y="97.590" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="10.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">PROJECT</text>
+<text x="10.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">Small house on posts, from Jim's pencil sketch</text>
+<text x="114.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">SHEET</text>
+<text x="114.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">Design summary</text>
+<text x="218.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">SHEET NUMBER</text>
+<text x="218.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">S-1 (page 3 of 3)</text>
+<text x="322.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">DATE</text>
+<text x="322.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">2026-10-20</text>
+<text x="10.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
+<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">29313d3</text>
+<text x="114.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">ENGINE PIN</text>
+<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we 02d17b7; rendered with we 073b001</text>
+<text x="218.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SCALE</text>
+<text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">not to scale</text>
+<text x="322.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SOURCE</text>
+<text x="322.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">world-engine geometry; no line is drawn by hand</text>
+<line x1="8.000" y1="235.000" x2="424.000" y2="235.000" stroke="#000000" stroke-width="0.700"/>
+<line x1="8.000" y1="253.000" x2="424.000" y2="253.000" stroke="#000000" stroke-width="0.250"/>
+<line x1="112.000" y1="235.000" x2="112.000" y2="271.000" stroke="#000000" stroke-width="0.250"/>
+<line x1="216.000" y1="235.000" x2="216.000" y2="271.000" stroke="#000000" stroke-width="0.250"/>
+<line x1="320.000" y1="235.000" x2="320.000" y2="271.000" stroke="#000000" stroke-width="0.250"/>
+</svg>
