@@ -10,7 +10,7 @@ blank prices of the measured build tasks at their published rates, and the heade
 its own weight is unknown);
   `we rank` puts the window-wall options on first cost and build hours, both gaps;
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
-and that the tasks with no published hours never run;
+how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -51,15 +51,20 @@ KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.
                        f"{SOUTH_PANELS[0]} weight_n": 239.153, f"{SOUTH_PANELS[1]} weight_n": 239.153,
                        f"{NORTH_PANELS[0]} weight_n": 239.153, f"{NORTH_PANELS[1]} weight_n": 717.066,
                        f"{WEST_PANELS[0]} weight_n": 717.066, f"{WEST_PANELS[1]} weight_n": 582.947}
-PLACED_AT_MINUTE = {"post@3048,2438,-1219~140x140": 29, "post@3048,4876,-1219~140x140": 59, "post@610,2438,-1219~140x140": 89, "post@610,4876,-1219~140x140": 119, FLOOR: 159,
-                    "wall@1829,2438:2~1219x114": 199, "wall@1829,4762:2~1219x114": 219, "wall@2934,2552:2~114x1219": 259, "wall@2934,3771:2~114x991": 279,
-                    "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 339, "wall@610,3771:2~114x991": 359, "wall@610,4762:2~1219x114": 399,
-                    "roof@0,0,3658:3~3658x5486": 479}
-BUILD_TOTALS = {"labour_hours": 14.0, "cost_usd": 6293.356, "budget_usd": 13706.644, "pieces_not_priced": 4.0}
-SKILLS_FINAL = {"jim": {"sip-setting": 1.6}, "sip_lead": {"sip-setting": 3.0}}
-NOT_MEASURED_TASKS = ("set-posts", "lay-subfloor", "cut-openings", "set-windows-and-door", "frame-loft", "install-boiler")
-WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.719, "roof_hours": 1.912, "measured_hours": 10.63, "panel_usd": 6293.356,
-                           "pieces_not_priced": 4}
+PLACED_AT_MINUTE = {"post@3048,2438,-1219~140x140": 29, "post@3048,4876,-1219~140x140": 59, "post@610,2438,-1219~140x140": 89, "post@610,4876,-1219~140x140": 119,
+                    FLOOR: 174, "wall@1829,2438:2~1219x114": 204, "wall@1829,4762:2~1219x114": 234, "wall@2934,2552:2~114x1219": 264, "wall@2934,3771:2~114x991": 289,
+                    "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 349, "wall@610,3771:2~114x991": 374, "wall@610,4762:2~1219x114": 404,
+                    "roof@0,0,3658:3~3658x5486": 481, "door@610,4819": 901, "glazing@610,2495,1219": 991, "glazing@610,2495,2438": 1081,
+                    "joist@1016,2438,2298:1~38x2438": 1103, "joist@1422,2438,2298:1~38x2438": 1125, "joist@1828,2438,2298:1~38x2438": 1147,
+                    "joist@2234,2438,2298:1~38x2438": 1169, "joist@2640,2438,2298:1~38x2438": 1191, "joist@3010,2438,2298:1~38x2438": 1213,
+                    "joist@610,2438,2298:1~38x2438": 1235, LOFT: 1325}
+BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 6445.356, "budget_usd": 13554.644, "pieces_not_priced": 11.0}
+SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
+TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
+             "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1}
+WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
+                           "windows_and_door_hours": 14.0, "frame_loft_hours": 5.0, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
+                           "measured_hours": 56.542, "listed_usd": 6445.356, "pieces_not_priced": 11}
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
@@ -68,8 +73,7 @@ HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation
                   f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 2.102, f"{NORTH_DOOR} utilisation": 0.036,
                   f"{LOWER_BAND} unsupported_load_n_per_mm": 2.335, f"{NORTH_DOOR} unsupported_load_n_per_mm": 2.335}
 HEADER_WEIGHT_UNKNOWN = {f"{UPPER_BAND} self_weight_n": "header-lvl-11-7-8 carries no density_lb_per_ft3 (gl.prop.lvl_density_unpublished)"}
-WINDOW_WALL_RANKS = {"four-4x4": (1, ["first_cost_usd", "build_hours"]), "one-8x8": (1, ["first_cost_usd", "build_hours"]),
-                     "two-stacked-4x8": (1, ["first_cost_usd", "build_hours"])}
+WINDOW_WALL_RANKS = {"four-4x4": (1, []), "one-8x8": (2, ["first_cost_usd"]), "two-stacked-4x8": (3, ["first_cost_usd"])}
 UNKNOWN_PIECE_REASONS = {
     f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
     f"{POST} reaction_n": "roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces, lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it",
@@ -181,6 +185,12 @@ def rank_line(launcher: Path, world: Path) -> str:
                       {entry["solution"]: (entry["rank"], entry["missing"]) for entry in ranked})
 
 
+def pieces_placed_by_no_flow(simulated: dict) -> list:
+    steps = simulated.get("steps", [])
+    return sorted(piece for piece, step in simulated.get("placed_at", {}).items()
+                  if not any(piece in flow.get("places", []) for flow in steps[step].get("flows", {}).values()))
+
+
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
     simulate_exit, simulated = run_engine(launcher, "simulate", world)
     totals = simulated.get("totals", {})
@@ -189,8 +199,8 @@ def simulate_lines(launcher: Path, world: Path) -> list[str]:
                    (simulate_exit, simulated.get("ended"), simulated.get("placed_at"))),
         state_line("we simulate labour hours, cost, budget left and pieces placed with no price", BUILD_TOTALS, build_totals(simulated)),
         state_line("we simulate the skill each person ends with", SKILLS_FINAL, simulated.get("skills_final")),
-        state_line("we simulate runs of the tasks with no published hours", {flow: 0 for flow in NOT_MEASURED_TASKS},
-                   {flow: totals.get(flow, {}).get("runs") for flow in NOT_MEASURED_TASKS}),
+        state_line("we simulate runs of every task, none skipped", TASK_RUNS, {flow: total.get("runs") for flow, total in totals.items()}),
+        state_line("we simulate pieces whose placed_at step has no flow placing them there", [], pieces_placed_by_no_flow(simulated)),
     ]
 
 

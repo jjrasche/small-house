@@ -10,32 +10,32 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "a019afbb5f8de5b466f3392008dbb3d64661c09a7b3d12932f7ef6420c77a371"
+   "sha256": "6f77360330b66bdc409f8aede31c7b4486ea8393f4840aa87829ff8e5f50878b"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "69f72fe806ee6a1e811120036d9250394b2742aa6cfad56ceaf10b47c9606189"
+   "sha256": "e7b7eb5fb856d288f8e85e36e5a805caf353c1083ffc8ae5876cb46e368bdc9b"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "9cbdd5185a83cbe9a8efc5ee976af46367091d3b86e8ac860feff18bf7876e6f"
+   "sha256": "58ea09417d4285c68be6368ed96c843e1c2f4cc905d7d472626d97380a9d3c98"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "8b0e83a1248ca2943ad1e2e6313ad752dc0bf4f49d6b41ddef5f44ae0e67cf1c"
+   "sha256": "60737804553bc112d1a0c9643fa4c55e40a518b7fe4eccf86008ac1c0bdd1303"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "8f7a546d5ecc8e68d922ec990920039b2778d90499f8a88439c2d8ad04374428"
+   "sha256": "e6572bbdd9d07f55a0e0a94586ec3e2ef1c10fa18ee2a2c2d7e276204710a7d9"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "706d14206788cd27508f032e6af93facd5c47b717dbe2f11c4987bc1b8fcb0fc"
+   "sha256": "b2ad2ba732671ece002616c44368b0ea0a7a15180c205cde78d48ba460cecb6c"
   }
  ],
  "systems": {
@@ -376,7 +376,7 @@
  "clock": {
   "step": 1,
   "unit": "minute",
-  "until": 1440
+  "until": 4800
  },
  "stocks": {
   "budget_usd": 20000

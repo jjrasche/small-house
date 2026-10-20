@@ -29,9 +29,11 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   `glazing` solutions (two-stacked-4x8, one-8x8, four-4x4) and the header options catalog `header` solutions; compare them by editing a
   copy of world.json and running fields.py on it (`--use` clears settings). `we rank --system glazing` ranks on first cost and build
   hours, both still gaps.
-- **Build run** (`clock`, `stocks`, `people`, `optimizing`, `people_rules`): a step is one working minute; the tasks domain digs the post holes,
-  then sets the floor, wall and roof panels, each ready only when what it rests on is placed, half a man-hour of work at the required level
-  per run. `stocks.budget_usd` is Jim's $20,000 limit: a task whose cost would breach it waits.
+- **Build run** (`clock`, `stocks`, `people`, `optimizing`, `people_rules`): a step is one working minute; ten tasks dig and set the posts,
+  set the floor, wall and roof panels, cut and fill the openings, frame and deck the loft and install the boiler. Each run works one piece,
+  asks the engine for that piece's hours (area over the rate, or the tasks domain's hours each), and places it on the step it finishes.
+  Hours and prices are tasks-domain spec figures marked published, inferred or assumed; their ranges wait on the engine drawing spec figures.
+  `stocks.budget_usd` is Jim's $20,000 limit: a task whose cost would breach it waits.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side. The
   people (`jim` a beginner at SIP setting, `sip_lead` advanced), `people_rules.learn_rate` and the `optimizing` weights are assumed for Jim to
   overturn; `learner_rate` is inferred from the deck guide's levels.
@@ -42,7 +44,7 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   is measured; the load path still cannot finish (below).
 - **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); SPF, LVL and post densities
   are not banked, so no joist, header or post has a weight; the roof is in no load-path role, the joists rest on nothing (their ends sit
-  inside the walls), and no window or door has a material; the loft's own heat zone is not modelled; tasks with no published hours (set posts, subfloor, openings,
-  windows and door, loft, boiler) never run, so hours and cost cover the holes and panels only, and cost is the panel blanks' list price.
+  inside the walls), and no window or door has a material; the loft's own heat zone is not modelled; the cost is the panel blanks and posts only (no window, door,
+  joist or deck price is in the tasks domain).
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.
