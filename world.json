@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "0567d04454f02ffc36d3d4aea80708640de42d1e3e9c90a7b911021304f897cc"
+   "sha256": "8e06bc35a0657110e2a290c9f2d7999e60d780bd44eebca982824bb69584d1be"
   },
   {
    "domain": "light",
@@ -25,7 +25,7 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "5860e59efb31234e5f7597ffc9b6a74e69213e8f8cac1fb9262ef4a5a37d380a"
+   "sha256": "85b3a3e4b9bd1a00f24350d7cf1e207bb0ba472b197274811183c61872d3241d"
   },
   {
    "domain": "catalog",
@@ -361,7 +361,8 @@
   "deck_pieces": "loft_floor",
   "glass_pieces": "glazing",
   "door_pieces": "doors",
-  "hung_pieces": "ledgers"
+  "hung_pieces": "ledgers",
+  "structure": "house"
  },
  "clock": {
   "step": 1,
