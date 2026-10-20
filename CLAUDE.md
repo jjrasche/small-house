@@ -49,7 +49,8 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   door rises to 8 ft). Every piece carries its catalog material and its layers (SIPs OSB, EPS, OSB; solids one layer).
 - **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); openings carry a material
   but no layers; every piece's `material_source` is null (the engine takes it only from a system's own spec); the load path carries no roof
-  snow, and the ledgers have no build task; the loft's own heat zone is not modelled; the cost is the panel blanks and posts only (no window, door,
-  joist or deck price is in the tasks domain).
+  snow, and the ledgers have no build task; the loft's own heat zone is not modelled; every placed piece and the boiler carry a listed price range
+  (bom-prices rows; the window bands are Fixr installed costs, so their labour may also be in the hours); a piece with no listed price moves
+  cost and budget by an unknown naming it, and a sample refuses odds on an incomplete stock; ledgers, screws and sealant are not priced.
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.
