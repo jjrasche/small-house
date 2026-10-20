@@ -124,3 +124,12 @@ prints it under `supplied`.
   world.json` on this world; want each piece's `material_source` to be the row the expander gave beside `material`.
 - **Score a run by a stock against its target.** `stocks.budget_usd` is now a target with no floor; `optimizing.weights` takes only the names
   fixed at `Crew.kt:23`, so no weight can score the overrun. Case: this world with `stocks.budget_usd` 1000 (check.py's small-target run).
+
+## Open, 2026-10-20: the config's computed people figures
+
+- **A person's hours_per_step from the clock.** `Crew.kt:62` refuses a person without `hours_per_step`, so this world states 1/60 for each
+  person: the clock's one-minute step in hours, a computed number in the config (split audit, Config 5). Case: this world with
+  `people.*.hours_per_step` removed; want the engine to derive it from `clock.step` and `clock.unit`, and a stated value to override it.
+- **people_rules facts from the tasks domain.** `people_rules.level_max` (the deck guide's three levels) and `learner_rate` are task facts
+  with research rows (task.t3.skills_deck_levels), but the engine reads them only from the config (split audit, Config 8). Case: this world;
+  want a domain manifest to declare them, and the config to override them.

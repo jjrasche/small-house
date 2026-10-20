@@ -10,47 +10,54 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "8edeb5728b0609834dd6210ce5de39880ece477faa28ae0f3c283c397946e362"
+   "sha256": "f930b262629de92800c92090d6c2d9503af4fe04bd47f64f6b385cf4c5d969bd"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "e7b7eb5fb856d288f8e85e36e5a805caf353c1083ffc8ae5876cb46e368bdc9b"
+   "sha256": "274aa575a5dd9313893ed7fd2eaf61826326b9abdf1fb221300f6bc7459e615f"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "58ea09417d4285c68be6368ed96c843e1c2f4cc905d7d472626d97380a9d3c98"
+   "sha256": "2eb87bc41437a6b226af4efcf36c8125de2ef15eb27fd142b355a022f546f33c"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "e71c1447968d78666ddd4f135fc1c6ad5acf287db6bf16e9f8d004dd0e02cbd1"
+   "sha256": "5860e59efb31234e5f7597ffc9b6a74e69213e8f8cac1fb9262ef4a5a37d380a"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "bf8941c2682be83ac900c15eaf85770a81fa866ebff68d99d035a886a4e23682"
+   "sha256": "2c3447e84d075352b7d52538b87331e3af63fa24a60b0804273ce0f3cec2634e"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
    "sha256": "2e6b8590ac1b5325310679696b15f079758ec82bebfeaf5d40f28a8e39e066a0"
+  },
+  {
+   "domain": "site",
+   "file": "domains/site.jar",
+   "sha256": "b6c92e454660ca0ba76e0b9066e191cf39320d3f54abcde6a6aeb0fc7164c6db"
   }
  ],
  "systems": {
+  "site": {
+   "solution": "grand-rapids-mi",
+   "settings": {}
+  },
   "foundation": {
    "solution": "posts-at-corners",
    "settings": {
     "embedment_mm": 1219,
     "above_grade_mm": null,
-    "section_mm": null,
-    "frost_line_mm": 1067
+    "section_mm": null
    },
    "reasons": {
     "above_grade_mm": "the sketch's '?' from grade to the floor; Jim's word gives it",
-    "section_mm": "the post stock gives it: post_stock is the catalog's 6x6 UC4B post, dressed 5-1/2 in (wt.dressed_sizes); a number here overrides it",
-    "frost_line_mm": "42 in, Michigan frost depth, research row site.frost_mrc"
+    "section_mm": "the post stock gives it: post_stock is the catalog's 6x6 UC4B post, dressed 5-1/2 in (wt.dressed_sizes); a number here overrides it"
    },
    "against": "floor"
   },
@@ -59,12 +66,12 @@
    "settings": {
     "width_mm": 2438,
     "depth_mm": 2438,
-    "thickness_mm": 114,
-    "elevation_mm": -114
+    "thickness_mm": null,
+    "elevation_mm": null
    },
    "reasons": {
-    "thickness_mm": "assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it",
-    "elevation_mm": "the floor's top is the datum the walls and their 12 ft stand on, so its 114 mm panel lies below it"
+    "thickness_mm": "the panel gives it: panel is the catalog's 4-1/2 in PRS 610 SIP (sip.prs610_panel_thickness); Jim's floor build-up may override it",
+    "elevation_mm": "the construction domain lays the floor's top at the datum, so a null here lies the panel its thickness below it"
    },
    "at": [
     610,
@@ -75,12 +82,12 @@
    "solution": "walls-on-edges",
    "settings": {
     "height_mm": 3658,
-    "thickness_mm": 114,
+    "thickness_mm": null,
     "panel_width_mm": 1219
    },
    "reasons": {
     "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
-    "thickness_mm": "a 4-1/2 in (114 mm) SIP wall panel, ANSI/APA PRS 610.1 sec. 4.1, research row sip.prs610_panel_thickness",
+    "thickness_mm": "the panel gives it: panel is the catalog's 4-1/2 in PRS 610 SIP (sip.prs610_panel_thickness); a number here overrides it",
     "panel_width_mm": "4 ft is a sold width (sip.stock.premier_widths, sip.stock.acme_sizes); chosen narrow for handling and take-down; open for ranking"
    },
    "against": "floor"
@@ -117,15 +124,11 @@
   "weather": {
    "solution": "conditions",
    "settings": {
-    "u_value": 2.8,
-    "solar_heat_gain_coefficient": 0.6,
     "inside_celsius": 20,
     "outside_celsius": 0,
     "sun_watt_per_square_metre": 500
    },
    "reasons": {
-    "u_value": "assumed: typical double glazing, not chosen by Jim",
-    "solar_heat_gain_coefficient": "assumed: typical double glazing, not chosen by Jim",
     "inside_celsius": "assumed design day",
     "outside_celsius": "assumed design day",
     "sun_watt_per_square_metre": "assumed clear-sky peak; the solver applies it to every side"
@@ -135,57 +138,20 @@
    "solution": "uniform",
    "settings": {
     "mean_reflectance": 0.5,
-    "glass_transmittance": 0.68,
     "sky_angle_degrees": 65
    },
    "reasons": {
     "mean_reflectance": "assumed mid-grey interior; Jim's wall finish gives it",
-    "glass_transmittance": "the BRE standard figure for double glazing as the Camden daylight reports quote it",
     "sky_angle_degrees": "assumed open sky; the site gives it"
-   }
-  },
-  "envelope": {
-   "solution": "insulated-box",
-   "settings": {
-    "wall_r": 20,
-    "roof_r": 30,
-    "floor_r": 20,
-    "door_r": 5
-   },
-   "reasons": {
-    "wall_r": "assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it",
-    "roof_r": "assumed R-30; the roof build-up gives it",
-    "floor_r": "assumed R-20; the floor build-up gives it",
-    "door_r": "assumed R-5 for an insulated door, not checked against a source"
-   }
-  },
-  "climate": {
-   "solution": "site-normals",
-   "settings": {
-    "heating_degree_days_f": 7104.1,
-    "north_glass_sun_btu_per_ft2_season": 32480,
-    "east_glass_sun_btu_per_ft2_season": 89761,
-    "south_glass_sun_btu_per_ft2_season": 160451,
-    "west_glass_sun_btu_per_ft2_season": 95438
-   },
-   "reasons": {
-    "heating_degree_days_f": "NOAA NCEI 1991-2020 annual normal, base 65F, station USW00014850 TRAVERSE CITY CHERRY CPTL AP MI, read from the NCEI data service 2026-10-17",
-    "south_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 0 = south: 506.2 kWh/m2 = 160451 BTU/ft2), gross: no shading, counts sun on days that need no heat",
-    "east_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect -90 = east: 283.2 kWh/m2 = 89761 BTU/ft2), gross: no shading, counts sun on days that need no heat",
-    "west_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 90 = west: 301.1 kWh/m2 = 95438 BTU/ft2), gross: no shading, counts sun on days that need no heat",
-    "north_glass_sun_btu_per_ft2_season": "PVGIS-NSRDB hourly irradiance on a vertical plane at 44.7408 N, 85.5825 W, 2005-2015 average, October to April summed (aspect 180 = north, which PVGIS echoed as -179: 102.5 kWh/m2 = 32480 BTU/ft2), gross: no shading, counts sun on days that need no heat"
    }
   },
   "heating": {
    "solution": "wood-boiler-hydronic",
-   "settings": {
-    "fuel_btu_per_unit": 20000000,
-    "boiler_efficiency": 0.7
-   },
-   "reasons": {
-    "fuel_btu_per_unit": "Jim: one grown tree is about 20 million BTU, a cord of oak is 24 to 26 million by hobby sources",
-    "boiler_efficiency": "assumed 70 percent; sources run 55 to 80 percent"
-   }
+   "settings": {}
+  },
+  "fuel": {
+   "solution": "mixed-hardwood-cord",
+   "settings": {}
   },
   "doors": {
    "solution": "door-on-side",
@@ -200,7 +166,7 @@
    "reasons": {
     "width_mm": "Jim, 2026-10-18: the north door's framing is 4 ft wide by 8 ft tall",
     "height_mm": "Jim: 8 ft tall door framing; a 4 ft tall 8 ft wide SIP panel sits over the door and its neighbour",
-    "offset_mm": "open: which end of the north wall the door is at; the west end is a placeholder"
+    "offset_mm": "assumed: the west end of the north wall; which end the door is at is open"
    }
   },
   "loft_floor": {
@@ -219,22 +185,20 @@
    "solution": "joist-framing",
    "against": "loft_floor",
    "settings": {
-    "member_width_mm": 38,
-    "member_depth_mm": 140,
+    "member_width_mm": null,
+    "member_depth_mm": null,
     "spacing_mm": 406,
-    "modulus_mpa": 9653,
-    "elevation_mm": 2298,
+    "elevation_mm": null,
     "bears_on": [
      "west",
      "east"
     ]
    },
    "reasons": {
-    "member_width_mm": "a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm",
-    "member_depth_mm": "assumed 2x6; the beam solver says whether it is enough",
-    "spacing_mm": "16 in on centre, assumed",
-    "modulus_mpa": "E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2 (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa",
-    "elevation_mm": "under the loft deck: the 140 mm joists' tops meet the deck's underside at 8 ft (2438 mm)",
+    "member_width_mm": "the joist stock gives it: joist_stock is the catalog's dressed 2x6 (wt.dressed_sizes); a number here overrides it",
+    "member_depth_mm": "the joist stock gives it: joist_stock is the catalog's dressed 2x6 (wt.dressed_sizes); a number here overrides it",
+    "spacing_mm": "assumed: 16 in on centre",
+    "elevation_mm": "the structural domain sets the joists' tops at the loft deck's elevation, so a null here takes it",
     "bears_on": "the south wall is glass from 4 ft up and the north wall's door rises to 8 ft, so the joists can only land on the solid west and east walls"
    }
   },
@@ -242,34 +206,12 @@
    "solution": "ledgers-under-joists",
    "against": "loft_floor",
    "settings": {
-    "member_width_mm": 38,
-    "member_depth_mm": 140
+    "member_width_mm": null,
+    "member_depth_mm": null
    },
    "reasons": {
-    "member_width_mm": "assumed: a 2x ledger, 1-1/2 in dressed (wt.dressed_sizes), fastened to the wall's inside face; the fastening is not checked",
-    "member_depth_mm": "assumed: a 2x6 ledger, as deep as the joists it carries, 5-1/2 in dressed (wt.dressed_sizes)"
-   }
-  },
-  "loads": {
-   "solution": "occupancy-load",
-   "settings": {
-    "live_load_psf": 30,
-    "dead_load_psf": 10
-   },
-   "reasons": {
-    "live_load_psf": "30 psf for sleeping rooms, research row site.live_sleeping",
-    "dead_load_psf": "10 psf, research row site.dead_ten_psf"
-   }
-  },
-  "egress_code": {
-   "solution": "mrc-2015-egress",
-   "settings": {
-    "min_door_width_mm": 914,
-    "min_door_height_mm": 2032
-   },
-   "reasons": {
-    "min_door_width_mm": "3 ft, Michigan Residential Code 2015 R311.2, research row code.r311_2_door",
-    "min_door_height_mm": "6 ft 8 in, same row"
+    "member_width_mm": "assumed: a ledger cut from the joist stock, fastened to the wall's inside face; the fastening is not checked",
+    "member_depth_mm": "assumed: a ledger cut from the joist stock, as deep as the joists it carries"
    }
   },
   "house": {
@@ -295,6 +237,10 @@
    "solution": "spf-no2",
    "settings": {}
   },
+  "joist_stock": {
+   "solution": "dressed-2x6",
+   "settings": {}
+  },
   "header": {
    "solution": "header-lvl-11-7-8",
    "settings": {
@@ -307,7 +253,6 @@
   "roof_loads": {
    "solution": "ground-snow-on-roof",
    "settings": {
-    "ground_snow_psf": 60,
     "roof_dead_load_psf": 15,
     "deflection_limit_ratio": 240,
     "roof_bears_on": [
@@ -316,7 +261,6 @@
     ]
    },
    "reasons": {
-    "ground_snow_psf": "60 psf, Grand Traverse County in the Michigan ground snow load table, research row gl.hdr.snow_grand_traverse; carried on the roof unreduced, as no banked row gives a flat-roof factor",
     "roof_dead_load_psf": "assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it",
     "deflection_limit_ratio": "assumed: span over 240, the live-load deflection limit of Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load",
     "roof_bears_on": "assumed: the roof's 8 ft south hangover can only be carried by members running north-south across the south wall, so the roof bears on the south and north walls"

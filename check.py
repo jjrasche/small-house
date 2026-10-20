@@ -39,12 +39,12 @@ EXIT_REFUSED = 2
 OBJECTS_PLACED = 24
 WINDOWS_PLACED = 3
 BOARD_FEET = 630
-DAYLIGHT_FACTOR_PERCENT = 7.365
-HEAT_LOSS_WATT = 332.855
-SOLAR_GAIN_WATT = 1783.153
-DESIGN_DAY_LOSS_BTU_PER_HOUR = 2076.43
-DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
-SEASON = {"season_loss_btu": 9834109.401, "season_solar_btu": 6159297.136, "solar_share_percent": 62.632, "fuel_units_needed": 0.262}
+DAYLIGHT_FACTOR_PERCENT = 7.69
+HEAT_LOSS_WATT = 361.133
+SOLAR_GAIN_WATT = 1931.749
+DESIGN_DAY_LOSS_BTU_PER_HOUR = 2338.045
+DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6591.402
+SEASON = {"season_loss_btu": 10921786.357, "season_solar_btu": 7280153.542, "solar_share_percent": 66.657, "fuel_units_needed": 0.179}
 DECIMALS = 3
 LOAD_PATH_COUNTS = {"pieces": 27, "pieces_weight_known": 27, "pieces_force_known": 27, "ground_reaction_n": 28007.326}
 FLOOR = "floor@610,2438,-114:1~2438x2438"
@@ -93,9 +93,9 @@ WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "flo
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
-HEADER_COUNTS = {"headers": 3, "headers_over_one": 0, "utilisation_max": 0.611}
-HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation": 0.0, f"{UPPER_BAND} load_n_per_mm": 17.598,
-                  f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 2.102, f"{NORTH_DOOR} utilisation": 0.036,
+HEADER_COUNTS = {"headers": 3, "headers_over_one": 0, "utilisation_max": 0.407}
+HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation": 0.0, f"{UPPER_BAND} load_n_per_mm": 11.732,
+                  f"{UPPER_BAND} utilisation": 0.407, f"{NORTH_DOOR} load_n_per_mm": 1.402, f"{NORTH_DOOR} utilisation": 0.024,
                   f"{LOWER_BAND} unsupported_load_n_per_mm": None, f"{NORTH_DOOR} unsupported_load_n_per_mm": None,
                   f"{UPPER_BAND} self_weight_n": 434.075, f"{NORTH_DOOR} self_weight_n": 217.038}
 WINDOW_WALL_RANKS = {"four-4x4": (1, []), "one-8x8": (2, ["first_cost_usd"]), "two-stacked-4x8": (3, ["first_cost_usd"])}
@@ -279,10 +279,10 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool) -> list[str]:
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
         state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass"}, rule_statuses(launcher, world)),
-        state_line("we solve joist deflection and stress", {"deflection_mm": 2.879, "span_over_deflection": 767.521, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
+        state_line("we solve joist deflection and stress", {"deflection_mm": 2.88, "span_over_deflection": 767.494, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
-        state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
+        state_line("we solve heating season BTU and cords", SEASON, rounded(solver_values(solved, "heating-season"))),
         state_line("we solve gravity load path status, piece counts and the ground reaction", ("known", LOAD_PATH_COUNTS),
                    (solver_answer(solved, "gravity-load-path").get("status"), rounded(solver_values(solved, "gravity-load-path")))),
         state_line("we solve gravity load path newtons on the floor, the loft, the wall panels less their openings, a joist, a ledger, the roof, the door and a window",

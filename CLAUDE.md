@@ -8,8 +8,10 @@ on four corner posts buried 4 ft, walls about 12 ft along its edges, a flat 12 b
 sleeping loft floor 8 ft up on 2x6 joists. Charter: `~/.claude/brothers/charters/small-house-charter.md`.
 Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goal" and "job" are retired.
 
-- **Domains:** kotlin jars (construction, light, thermal, structural, catalog, tasks) and `physics.domain.json`, kept in `domains/`, each pinned in `uses`
-  by the sha256 of its bytes. The catalog is data only: the SIP panel and SPF No. 2, each figure naming its research row. They are built in `../domains/kotlin` (one Gradle project each, tests there). Never edit them to make this world pass; change the world
+- **Domains:** kotlin jars (construction, light, thermal, structural, catalog, site, tasks) and `physics.domain.json`, kept in `domains/`, each pinned in `uses`
+  by the sha256 of its bytes. The catalog and site are data only, on manifest schema 2 (a sourced setting is refused), each figure naming its
+  research row: the catalog the stock (SIP R, glass U, SHGC and VT, door U, lumber modulus, cordwood BTU), the site (Grand Rapids, Jim 2026-10-20)
+  the code and climate figures (frost depth, snow, live and dead loads, egress door, degree days, October-to-April sun per side). The config only chooses. They are built in `../domains/kotlin` (one Gradle project each, tests there). Never edit them to make this world pass; change the world
   or send the domain a request with a case. `binds` names which system fills each solver role.
 - **Engine:** `../world-engine` (or `WORLD_ENGINE_DIR`); `engine.pin` names the commit whose commands this world needs. Never edit the engine.
 - **How every simulation question is answered:** change `world.json` (a what-if is an edit of it; git history is the undo; one config file per world, no branch per world), run `python3 fields.py`, and
