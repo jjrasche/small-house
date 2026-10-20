@@ -5,8 +5,10 @@ of their bytes (the jars and the physics file are kept in domains/). The check r
   the pins match the bytes on disk;
   `we expand` places 22 objects (the walls as 4 ft SIP panels) and 3 openings and carries the sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection and the
-gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown), and the hours and
-blank prices of the measured build tasks at their published rates;
+gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown), the hours and
+blank prices of the measured build tasks at their published rates, and the header over each opening (its load and utilisation, and why
+its own weight is unknown);
+  `we rank` puts the window-wall options on first cost and build hours, both gaps;
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
 and that the tasks with no published hours never run;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
@@ -58,6 +60,15 @@ SKILLS_FINAL = {"jim": {"sip-setting": 1.6}, "sip_lead": {"sip-setting": 3.0}}
 NOT_MEASURED_TASKS = ("set-posts", "lay-subfloor", "cut-openings", "set-windows-and-door", "frame-loft", "install-boiler")
 WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.719, "roof_hours": 1.912, "measured_hours": 10.63, "panel_usd": 3930.23,
                            "pieces_not_priced": 5}
+LOWER_BAND = "glazing@610,2495,1219"
+UPPER_BAND = "glazing@610,2495,2438"
+NORTH_DOOR = "door@610,4819"
+HEADER_COUNTS = {"headers": 3, "headers_over_one": 0, "utilisation_max": 0.611}
+HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 2.335, f"{LOWER_BAND} utilisation": 0.081, f"{UPPER_BAND} load_n_per_mm": 17.598,
+                  f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 4.437, f"{NORTH_DOOR} utilisation": 0.077}
+HEADER_WEIGHT_UNKNOWN = {f"{UPPER_BAND} self_weight_n": "header-lvl-11-7-8 carries no density_lb_per_ft3 (gl.prop.lvl_density_unpublished)"}
+WINDOW_WALL_RANKS = {"four-4x4": (1, ["first_cost_usd", "build_hours"]), "one-8x8": (1, ["first_cost_usd", "build_hours"]),
+                     "two-stacked-4x8": (1, ["first_cost_usd", "build_hours"])}
 UNKNOWN_PIECE_REASONS = {
     f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
     f"{POST} reaction_n": "not measured (size-unknown): no figure for width_mm, depth_mm, above_grade_mm, section_mm",
@@ -162,6 +173,13 @@ def build_totals(simulated: dict) -> dict:
                     "budget_usd": stocks.get("budget_usd", 0.0), "pieces_not_priced": stocks.get("pieces_not_priced", 0.0)})
 
 
+def rank_line(launcher: Path, world: Path) -> str:
+    finished = subprocess.run([str(launcher), "rank", str(world), "--system", "glazing"], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+    ranked = json.loads(finished.stdout).get("ranked", []) if finished.stdout.strip() else []
+    return state_line("we rank the window-wall options: rank and the figures missing", WINDOW_WALL_RANKS,
+                      {entry["solution"]: (entry["rank"], entry["missing"]) for entry in ranked})
+
+
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
     simulate_exit, simulated = run_engine(launcher, "simulate", world)
     totals = simulated.get("totals", {})
@@ -186,7 +204,7 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
-        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass"}, rule_statuses(launcher, world)),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 4.264, "span_over_deflection": 571.697, "bending_stress_mpa": 4.654}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
@@ -199,6 +217,13 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
                    unknown_reasons(piece_figures(solved, "gravity-load-path", list(UNKNOWN_PIECE_REASONS)))),
         state_line("we solve build task hours at published rates and the panel blanks' price", WORK_AT_PUBLISHED_RATES,
                    rounded_figures({name: value for name, value in solver_values(solved, "work-at-published-rates").items() if name in WORK_AT_PUBLISHED_RATES})),
+        state_line("we solve header check counts and the largest utilisation", ("known", HEADER_COUNTS),
+                   (solver_answer(solved, "header-check").get("status"), rounded(solver_values(solved, "header-check")))),
+        state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
+                   rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
+        state_line("we solve header self-weight unknown and why", HEADER_WEIGHT_UNKNOWN,
+                   unknown_reasons(piece_figures(solved, "header-check", list(HEADER_WEIGHT_UNKNOWN)))),
+        rank_line(launcher, world),
     ] + simulate_lines(launcher, world)
 
 

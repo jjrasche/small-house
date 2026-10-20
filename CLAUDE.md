@@ -23,6 +23,12 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **Gravity load path** (`binds`: house parts, panel_pieces, lumber_pieces, occupied_floors, ground, openings): self-weight is volume times the
   catalog density, the occupancy load is the live load on each floor, and a piece's force splits over its contacts by contact area (an
   approximation). A piece the engine cannot measure, or one an unmeasured piece may rest on or be cut from, reports `{unknown: why}`.
+- **Headers** (`header`, `roof_loads`, `binds.header_check`): `header-check` loads each opening's header with the roof (dead load plus
+  ground snow over the roof's reaction width on that wall) when nothing is above it, and the loft joists landing at its head; it reports
+  stress, deflection and utilisation per opening, and the rule `headers-within-capacity` names any over 1. The window-wall options are
+  `glazing` solutions (two-stacked-4x8, one-8x8, four-4x4) and the header options catalog `header` solutions; compare them by editing a
+  copy of world.json and running fields.py on it (`--use` clears settings). `we rank --system glazing` ranks on first cost and build
+  hours, both still gaps.
 - **Build run** (`clock`, `stocks`, `people`, `optimizing`, `people_rules`): a step is one working minute; the tasks domain digs the post holes,
   then sets the floor, wall and roof panels, each ready only when what it rests on is placed, half a man-hour of work at the required level
   per run. `stocks.budget_usd` is Jim's $20,000 limit: a task whose cost would breach it waits.

@@ -10,32 +10,32 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "82e056a481a3e3044c4186c262f5c2eb08a3d639480f61f3d5159bbf92c799d5"
+   "sha256": "7d329a7fc30eb7185df1127c3856d848b243323a71d29bf2556cf549fddac002"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "103faf7da40d81c04eb4b5079fbbbef6ebad319c375cb7f763ea85b99867e397"
+   "sha256": "69f72fe806ee6a1e811120036d9250394b2742aa6cfad56ceaf10b47c9606189"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "1fa10a642e21ad8175b655396d068e08b4cb501f295df51795b3b4790b60c423"
+   "sha256": "9cbdd5185a83cbe9a8efc5ee976af46367091d3b86e8ac860feff18bf7876e6f"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "4bb85afb3e3fde8bba7d3ac71123026ac5fb31c8f357307c197c3b67b7dd6525"
+   "sha256": "d049900acfc759a4e95e0cbc2ffa209b6895f9031543a87ee7982c8046216798"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "34064a0da0f77b3e1dcf7afc6fecb5ee805b67bb8e74ade87a2702150332d611"
+   "sha256": "1f0eabbafacf0f90a98a2a4f115809bf4e378ea5d219b58b3720fa363b51b072"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "fb967f4aeed068624b0b960f0f609a9c5ad7af3f7eea74982bf74d768dd3a602"
+   "sha256": "706d14206788cd27508f032e6af93facd5c47b717dbe2f11c4987bc1b8fcb0fc"
   }
  ],
  "systems": {
@@ -100,22 +100,18 @@
    }
   },
   "glazing": {
-   "solution": "stacked-bands",
+   "solution": "two-stacked-4x8",
    "settings": {
-    "band_height_mm": 1219,
+    "sides": [
+     "south"
+    ],
     "first_sill_mm": 1219,
-    "south_bands": 2,
-    "east_bands": 0,
-    "west_bands": 0,
-    "north_bands": 0
+    "glazed_height_mm": 2438
    },
    "reasons": {
-    "band_height_mm": "Jim, 2026-10-18: every window is 4 ft by 8 ft, the 8s along the floor",
+    "sides": "Jim, 2026-10-18: only south-facing glass; no east, west or north window",
     "first_sill_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the windows",
-    "south_bands": "Jim: two stacked 4x8 windows on the south, the upper one lighting the sleeping loft",
-    "east_bands": "Jim, 2026-10-18: only south-facing glass; the east window was the earlier idea",
-    "west_bands": "Jim: only south-facing glass",
-    "north_bands": "Jim: no north glass"
+    "glazed_height_mm": "Jim: two stacked 4x8 windows, the upper one lighting the sleeping loft, so 8 ft of glass over the knee wall; the other window-wall options (one-8x8, four-4x4) fill the same 8 ft"
    }
   },
   "weather": {
@@ -286,6 +282,33 @@
    "solution": "spf-no2",
    "settings": {}
   },
+  "header": {
+   "solution": "header-lvl-11-7-8",
+   "settings": {
+    "plies": 2
+   },
+   "reasons": {
+    "plies": "assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core (sip.prs610_core_thickness)"
+   }
+  },
+  "roof_loads": {
+   "solution": "ground-snow-on-roof",
+   "settings": {
+    "ground_snow_psf": 60,
+    "roof_dead_load_psf": 15,
+    "deflection_limit_ratio": 240,
+    "roof_bears_on": [
+     "south",
+     "north"
+    ]
+   },
+   "reasons": {
+    "ground_snow_psf": "60 psf, Grand Traverse County in the Michigan ground snow load table, research row gl.hdr.snow_grand_traverse; carried on the roof unreduced, as no banked row gives a flat-roof factor",
+    "roof_dead_load_psf": "assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it",
+    "deflection_limit_ratio": "assumed: span over 240, the live-load deflection limit of Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load",
+    "roof_bears_on": "assumed: the roof's 8 ft south hangover can only be carried by members running north-south across the south wall, so the roof bears on the south and north walls"
+   }
+  },
   "labour": {
    "solution": "published-rates",
    "settings": {}
@@ -300,6 +323,12 @@
    "value": 630,
    "unit": "board_foot",
    "reason": "'630 BF' on the sketch, unverified"
+  }
+ },
+ "ranking": {
+  "weights": {
+   "first_cost_usd": 2,
+   "build_hours": 1
   }
  },
  "binds": {
@@ -331,7 +360,10 @@
    "floor",
    "loft_floor"
   ],
-  "ground": "foundation"
+  "ground": "foundation",
+  "header_check": {
+   "solver": "header-check"
+  }
  },
  "clock": {
   "step": 1,
