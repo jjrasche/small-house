@@ -9,122 +9,122 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 1224.57 790.87] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 15674 >>
+<< /Length 15595 >>
 stream
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 22.68 1179.21 745.51 re S
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 740.49 Td (heating-season \(thermal\): known) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 729.81 Td (season_loss_btu = 9834109.4) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 719.12 Td (season_solar_btu = 6159297.14) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 708.43 Td (solar_share_percent = 62.63) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 697.75 Td (fuel_units_needed = 0.26) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 687.06 Td (joist-deflection \(structural\): known) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 676.37 Td (deflection_mm = 4.26) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 665.69 Td (span_over_deflection = 571.7) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 655.00 Td (bending_stress_mpa = 4.65) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 644.31 Td (gravity-load-path \(structural\): unknown) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 633.63 Td (the ground reaction is unknown: post@3048,2438,-1219: not measured \(size-unknown\): no figure for width_mm, depth_mm, above_grade_mm,) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 622.94 Td (      section_mm; 0 of 25 pieces carry a known force) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 612.26 Td (pieces = 25) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 601.57 Td (pieces_weight_known = 9) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 590.88 Td (pieces_force_known = 0) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 580.20 Td (sources: sip.prs610_panel_thickness \(published\); sip.prs610_core_thickness \(published\); osb.gp_7_16 \(published\); sip.sipa_definition \(published\);) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 569.51 Td (      wt.syn_osb_sheet \(inferred\); e1295.core \(published\); lum.nds.fv_spf_no2 \(visual-read\); lum.nds.cf_2x6 \(visual-read\); lum.nds.cr \(published\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 558.82 Td (header-check \(structural\): known) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 548.14 Td (reference design values with no NDS adjustment factor; the roof carries the ground snow load unreduced; a header's load is the roof over its wall and) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 537.45 Td (      the joists landing at its head, not its own weight nor the wall or glass above it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 526.76 Td (headers = 3) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 516.08 Td (headers_over_one = 0) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 505.39 Td (utilisation_max = 0.61) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 494.70 Td (sources: lvl.width \(published\); lvl.depth \(published\); gl.prop.lvl_2_0e_2600 \(visual-read\); gl.prop.lvl_density_unpublished \(unpublished\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 484.02 Td (work-at-published-rates \(tasks\): known) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 473.33 Td (post_holes_hours = 2) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 462.64 Td (floor_hours = 1) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 451.96 Td (walls_hours = 5.72) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 441.27 Td (roof_hours = 1.91) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 430.58 Td (measured_hours = 10.63) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 419.90 Td (panel_usd = 3930.23) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 409.21 Td (pieces_not_priced = 5) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 398.52 Td (not_measured = set-posts \(task.t2.hours_set_post_unpublished\); lay-subfloor \(task.t4.hours_subfloor_unpublished\); cut-openings) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 387.84 Td (      \(task.t6.hours_field_opening_unpublished\); set-windows-and-door \(task.t7.hours_windows_door_unpublished\); frame-loft) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 377.15 Td (      \(task.t9.hours_loft_measured_unpublished\); install-boiler \(task.t11.hours_boiler_hydronic_total_manhours_unpublished\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 366.46 Td (sources: task.t1.hours_hand_ramirent \(published\); task.t5.hours_premier_cs1_sqft \(inferred\); task.t5.hours_premier_cs1_sqft \(published\);) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 355.78 Td (      task.t8.hours_premier_cs3_roof_rate \(published\); sp.acme_other_thicknesses \(published\); sp.acme_1025_price \(published\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 345.09 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 332.56 Td (RULES, EACH WITH ITS STATUS) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 321.87 Td (posts-under-floor [foundation]: PASS: every floor corner has a post under it; source: integrity: a floor on posts needs a post at each corner) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 311.19 Td (walls-enclose-floor [walls]: PASS: walls close every edge of the floor; source: integrity: a shell closes every edge of its floor) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 300.50 Td (roof-is-over-floor [roof]: PASS: a roof stands over the whole floor; source: integrity: a roof stands over the floor it keeps dry) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 289.81 Td (egress-door-size [doors]: PASS: the egress door is at least as large as the limit; source: Michigan Residential Code 2015 R311.2, research row) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 279.13 Td (      code.r311_2_door: side-hinged, 3 ft by 6 ft 8 in) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 268.44 Td (posts-below-frost-line [foundation]: PASS: the posts are buried below the frost line; source: assumed: the frost depth the site gives; a footing must sit) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 257.75 Td (      below it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 247.07 Td (roof-covers-floor [roof]: PASS: the roof covers the floor; source: Jim's what: the roof keeps the floor dry) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 236.38 Td (headers-within-capacity [header_check]: PASS: every header is within its capacity; source: the header's catalog design values: bending, shear and its) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 225.69 Td (      deflection limit) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 215.01 Td (joists-span-the-deck [joists]: PASS: the joists span the deck at the stated spacing; source: integrity: a deck needs joists from edge to edge at the stated) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 204.32 Td (      spacing) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 193.63 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 181.11 Td (GRAVITY LOAD PATH, PER POST) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 170.42 Td (status: unknown; the ground reaction is unknown: post@3048,2438,-1219: not measured \(size-unknown\): no figure for width_mm, depth_mm,) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 159.73 Td (      above_grade_mm, section_mm; 0 of 25 pieces carry a known force) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 149.05 Td (post@3048,2438,-1219: ground reaction unknown \(not measured \(size-unknown\): no figure for width_mm, depth_mm, above_grade_mm, section_mm\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 740.49 Td (post@3048,4876,-1219: ground reaction unknown \(not measured \(size-unknown\): no figure for width_mm, depth_mm, above_grade_mm, section_mm\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 729.81 Td (post@610,2438,-1219: ground reaction unknown \(not measured \(size-unknown\): no figure for width_mm, depth_mm, above_grade_mm, section_mm\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 719.12 Td (post@610,4876,-1219: ground reaction unknown \(not measured \(size-unknown\): no figure for width_mm, depth_mm, above_grade_mm, section_mm\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 708.43 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 695.91 Td (HEADER UTILISATIONS) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 685.22 Td (status: known; largest 0.61) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 674.53 Td (door@610,4819: utilisation 0.08; bending 0.61 MPa, shear 0.15 MPa, deflection 0.05 mm; load 4.44 N/mm against capacity 57.63 N/mm) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 663.85 Td (glazing@610,2495,1219: utilisation 0.08; bending 1.29 MPa, shear 0.16 MPa, deflection 0.38 mm; load 2.33 N/mm against capacity 28.82 N/mm) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 653.16 Td (glazing@610,2495,2438: utilisation 0.61; bending 9.7 MPa, shear 1.2 MPa, deflection 2.89 mm; load 17.6 N/mm against capacity 28.82 N/mm) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 642.47 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 629.94 Td (BUILD SIMULATION TOTALS) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 619.26 Td (ended quiescent; clock step 1 minute until 1440) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 608.57 Td (finish_time = 22) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 597.88 Td (labour_hours = 14) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 587.20 Td (learning = 0.6) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 576.51 Td (idle = 122) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 565.82 Td (score = -119.4) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 555.14 Td (final stocks:) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 544.45 Td (budget_usd = 16069.77) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 533.76 Td (cost_usd = 3930.23) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 523.08 Td (floor_panel_ft2_set = 63.98) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 512.39 Td (pieces_not_priced = 5) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 501.70 Td (post_holes_dug = 4) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 491.02 Td (roof_panel_ft2_set = 216.01) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 480.33 Td (wall_panel_ft2_set = 366.02) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 469.64 Td (flows:) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 458.96 Td (dig-post-holes: ran 4 times; moved pieces_not_priced 4, post_holes_dug 4) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 448.27 Td (set-floor-panels: ran 2 times; moved budget_usd -584.77, cost_usd 584.77, floor_panel_ft2_set 63.98) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 437.58 Td (set-wall-panels: ran 12 times; moved budget_usd -3345.46, cost_usd 3345.46, wall_panel_ft2_set 366.02) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 426.90 Td (set-roof-panels: ran 4 times; moved pieces_not_priced 1, roof_panel_ft2_set 216.01) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 416.21 Td (set-posts: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 405.52 Td (lay-subfloor: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 394.84 Td (cut-openings: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 384.15 Td (set-windows-and-door: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 373.46 Td (frame-loft: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 362.78 Td (install-boiler: ran 0 times; moved ) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 352.09 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 339.56 Td (ASSUMPTIONS, EVERY SETTING WHOSE REASON SAYS IT IS ASSUMED) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 328.88 Td (floor.thickness_mm = 114 mm; reason: assumed: a 4-1/2 in \(114 mm\) SIP floor panel, the wall standard's thickness, research row) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 318.19 Td (      sip.prs610_panel_thickness; Jim's floor build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 307.50 Td (weather.u_value = 2.8 w_per_m2_k; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 296.82 Td (weather.solar_heat_gain_coefficient = 0.6 ratio; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 286.13 Td (weather.inside_celsius = 20 celsius; reason: assumed design day) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 275.44 Td (weather.outside_celsius = 0 celsius; reason: assumed design day) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 264.76 Td (weather.sun_watt_per_square_metre = 500 w_per_m2; reason: assumed clear-sky peak; the solver applies it to every side) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 254.07 Td (finish.mean_reflectance = 0.5 ratio; reason: assumed mid-grey interior; Jim's wall finish gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 243.38 Td (finish.sky_angle_degrees = 65 degree; reason: assumed open sky; the site gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 232.70 Td (envelope.wall_r = 20 r_value; reason: assumed R-20 for a SIP wall \(ft2 F h per BTU\); the SIP thickness gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 222.01 Td (envelope.roof_r = 30 r_value; reason: assumed R-30; the roof build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 211.32 Td (envelope.floor_r = 20 r_value; reason: assumed R-20; the floor build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 200.64 Td (envelope.door_r = 5 r_value; reason: assumed R-5 for an insulated door, not checked against a source) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 189.95 Td (heating.boiler_efficiency = 0.7 ratio; reason: assumed 70 percent; sources run 55 to 80 percent) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 179.26 Td (joists.member_depth_mm = 140 mm; reason: assumed 2x6; the beam solver says whether it is enough) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 168.58 Td (joists.spacing_mm = 406 mm; reason: 16 in on centre, assumed) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 157.89 Td (header.plies = 2 count; reason: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 147.20 Td (      \(sip.prs610_core_thickness\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 740.49 Td (heat_loss_watt = 332.86) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 729.81 Td (solar_gain_watt = 1783.15) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 719.12 Td (design-day-load \(thermal\): known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 708.43 Td (loss_btu_per_hour = 2076.43) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 697.75 Td (solar_gain_btu_per_hour = 6084.37) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 687.06 Td (heating-season \(thermal\): known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 676.37 Td (season_loss_btu = 9834109.4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 665.69 Td (season_solar_btu = 6159297.14) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 655.00 Td (solar_share_percent = 62.63) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 644.31 Td (fuel_units_needed = 0.26) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 633.63 Td (joist-deflection \(structural\): known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 622.94 Td (deflection_mm = 4.26) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 612.26 Td (span_over_deflection = 571.7) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 601.57 Td (bending_stress_mpa = 4.65) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 590.88 Td (gravity-load-path \(structural\): unknown) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 580.20 Td (the ground reaction is unknown: post@3048,2438,-1219~140x140: roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces,) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 569.51 Td (      lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it; 0 of 25 pieces carry a known force) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 558.82 Td (pieces = 25) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 548.14 Td (pieces_weight_known = 9) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 537.45 Td (pieces_force_known = 0) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 526.76 Td (sources: sip.prs610_panel_thickness \(published\); sip.prs610_core_thickness \(published\); osb.gp_7_16 \(published\); sip.sipa_definition \(published\);) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 516.08 Td (      wt.syn_osb_sheet \(inferred\); e1295.core \(published\); lum.nds.fv_spf_no2 \(visual-read\); lum.nds.cf_2x6 \(visual-read\); lum.nds.cr \(published\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 505.39 Td (header-check \(structural\): known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 494.70 Td (reference design values with no NDS adjustment factor; the roof carries the ground snow load unreduced; a header's load is the roof over its wall and) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 484.02 Td (      the joists landing at its head, not its own weight nor the wall or glass above it; joists land part way up door@610,4819, glazing@610,2495,1219, with no) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 473.33 Td (      header under them) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 462.64 Td (headers = 3) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 451.96 Td (headers_over_one = 0) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 441.27 Td (utilisation_max = 0.61) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 430.58 Td (sources: lvl.width \(published\); lvl.depth \(published\); gl.prop.lvl_2_0e_2600 \(visual-read\); gl.prop.lvl_density_unpublished \(unpublished\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 419.90 Td (work-at-published-rates \(tasks\): known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 409.21 Td (post_holes_hours = 2) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 398.52 Td (floor_hours = 1) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 387.84 Td (walls_hours = 5.72) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 377.15 Td (roof_hours = 1.91) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 366.46 Td (measured_hours = 10.63) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 355.78 Td (panel_usd = 6293.36) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 345.09 Td (pieces_not_priced = 4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 334.40 Td (not_measured = set-posts \(task.t2.hours_set_post_unpublished\); lay-subfloor \(task.t4.hours_subfloor_unpublished\); cut-openings) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 323.72 Td (      \(task.t6.hours_field_opening_unpublished\); set-windows-and-door \(task.t7.hours_windows_door_unpublished\); frame-loft) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 313.03 Td (      \(task.t9.hours_loft_measured_unpublished\); install-boiler \(task.t11.hours_boiler_hydronic_total_manhours_unpublished\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 302.34 Td (sources: task.t1.hours_hand_ramirent \(published\); task.t5.hours_premier_cs1_sqft \(inferred\); task.t5.hours_premier_cs1_sqft \(published\);) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 291.66 Td (      task.t8.hours_premier_cs3_roof_rate \(published\); sp.acme_other_thicknesses \(published\); sp.acme_1025_price \(published\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 280.97 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 268.44 Td (RULES, EACH WITH ITS STATUS) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 257.75 Td (posts-under-floor [foundation]: PASS: every floor corner has a post under it; source: integrity: a floor on posts needs a post at each corner) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 247.07 Td (walls-enclose-floor [walls]: PASS: walls close every edge of the floor; source: integrity: a shell closes every edge of its floor) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 236.38 Td (roof-is-over-floor [roof]: PASS: a roof stands over the whole floor; source: integrity: a roof stands over the floor it keeps dry) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 225.69 Td (egress-door-size [doors]: PASS: the egress door is at least as large as the limit; source: Michigan Residential Code 2015 R311.2, research row) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 215.01 Td (      code.r311_2_door: side-hinged, 3 ft by 6 ft 8 in) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 204.32 Td (posts-below-frost-line [foundation]: PASS: the posts are buried below the frost line; source: assumed: the frost depth the site gives; a footing must sit) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 193.63 Td (      below it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 182.95 Td (roof-covers-floor [roof]: PASS: the roof covers the floor; source: Jim's what: the roof keeps the floor dry) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 172.26 Td (headers-within-capacity [header_check]: PASS: every header is within its capacity; source: the header's catalog design values: bending, shear and its) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 161.57 Td (      deflection limit) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 150.89 Td (joists-span-the-deck [joists]: PASS: the joists span the deck at the stated spacing; source: integrity: a deck needs joists from edge to edge at the stated) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 740.49 Td (      spacing) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 729.81 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 717.28 Td (GRAVITY LOAD PATH, PER POST) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 706.59 Td (status: unknown; the ground reaction is unknown: post@3048,2438,-1219~140x140: roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 695.91 Td (      panel_pieces, lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it; 0 of 25 pieces carry a known) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 685.22 Td (      force) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 674.53 Td (post@3048,2438,-1219~140x140: ground reaction unknown \(roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces,) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 663.85 Td (      lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 653.16 Td (post@3048,4876,-1219~140x140: ground reaction unknown \(roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces,) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 642.47 Td (      lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 631.79 Td (post@610,2438,-1219~140x140: ground reaction unknown \(roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces,) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 621.10 Td (      lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 610.41 Td (post@610,4876,-1219~140x140: ground reaction unknown \(roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces,) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 599.73 Td (      lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 589.04 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 576.51 Td (HEADER UTILISATIONS) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 565.82 Td (status: known; largest 0.61) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 555.14 Td (door@610,4819: utilisation 0.04; bending 0.29 MPa, shear 0.07 MPa, deflection 0.02 mm; load 2.1 N/mm against capacity 57.63 N/mm) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 544.45 Td (glazing@610,2495,1219: utilisation 0; bending 0 MPa, shear 0 MPa, deflection 0 mm; load 0 N/mm against capacity 28.82 N/mm) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 533.76 Td (glazing@610,2495,2438: utilisation 0.61; bending 9.7 MPa, shear 1.2 MPa, deflection 2.89 mm; load 17.6 N/mm against capacity 28.82 N/mm) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 523.08 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 510.55 Td (BUILD SIMULATION TOTALS) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 499.86 Td (ended quiescent; clock step 1 minute until 1440) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 489.17 Td (finish_time = 22) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 478.49 Td (labour_hours = 14) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 467.80 Td (learning = 0.6) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 457.11 Td (idle = 122) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 446.43 Td (score = -119.4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 435.74 Td (final stocks:) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 425.06 Td (budget_usd = 13706.64) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 414.37 Td (cost_usd = 6293.36) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 403.68 Td (floor_panel_ft2_set = 63.98) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 393.00 Td (pieces_not_priced = 4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 382.31 Td (post_holes_dug = 4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 371.62 Td (roof_panel_ft2_set = 216.01) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 360.94 Td (wall_panel_ft2_set = 366.02) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 350.25 Td (flows:) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 339.56 Td (dig-post-holes: ran 4 times; moved pieces_not_priced 4, post_holes_dug 4) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 328.88 Td (set-floor-panels: ran 2 times; moved budget_usd -584.77, cost_usd 584.77, floor_panel_ft2_set 63.98) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 318.19 Td (set-wall-panels: ran 12 times; moved budget_usd -3345.46, cost_usd 3345.46, wall_panel_ft2_set 366.02) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 307.50 Td (set-roof-panels: ran 4 times; moved budget_usd -2363.13, cost_usd 2363.13, roof_panel_ft2_set 216.01) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 296.82 Td (set-posts: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 286.13 Td (lay-subfloor: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 275.44 Td (cut-openings: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 264.76 Td (set-windows-and-door: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 254.07 Td (frame-loft: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 243.38 Td (install-boiler: ran 0 times; moved ) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 232.70 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 623.62 220.17 Td (ASSUMPTIONS, EVERY SETTING WHOSE REASON SAYS IT IS ASSUMED) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 209.48 Td (floor.thickness_mm = 114 mm; reason: assumed: a 4-1/2 in \(114 mm\) SIP floor panel, the wall standard's thickness, research row) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 198.79 Td (      sip.prs610_panel_thickness; Jim's floor build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 188.11 Td (weather.u_value = 2.8 w_per_m2_k; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 177.42 Td (weather.solar_heat_gain_coefficient = 0.6 ratio; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 166.73 Td (weather.inside_celsius = 20 celsius; reason: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 156.05 Td (weather.outside_celsius = 0 celsius; reason: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 623.62 145.36 Td (weather.sun_watt_per_square_metre = 500 w_per_m2; reason: assumed clear-sky peak; the solver applies it to every side) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 110.55 Td (PROJECT) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 87.87 Td (Small house on posts, from Jim's pencil sketch) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 110.55 Td (SHEET) Tj ET
@@ -134,7 +134,7 @@ stream
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 110.55 Td (DATE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 87.87 Td (2026-10-20) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 59.53 Td (CONFIG COMMIT) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (29313d3) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (c2a9df0) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 59.53 Td (ENGINE PIN) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we 02d17b7; rendered with we 073b001) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 617.95 59.53 Td (SCALE) Tj ET
@@ -166,10 +166,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000258 00000 n 
-0000015984 00000 n 
-0000016081 00000 n 
+0000015905 00000 n 
+0000016002 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-16183
+16104
 %%EOF

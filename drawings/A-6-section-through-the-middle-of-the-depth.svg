@@ -1,75 +1,100 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="432.000mm" height="279.000mm" viewBox="0 0 432.000 279.000" font-family="Helvetica, Arial, sans-serif">
 <rect width="432.000" height="279.000" fill="#ffffff"/>
 <rect x="8.000" y="8.000" width="416.000" height="263.000" fill="none" stroke="#000000" stroke-width="0.700"/>
-<rect x="97.191" y="173.458" width="101.583" height="4.750" fill="none" stroke="#000000" stroke-width="0.700"/>
-<rect x="194.024" y="21.042" width="4.750" height="152.417" fill="none" stroke="#000000" stroke-width="0.700"/>
-<rect x="97.191" y="21.042" width="4.750" height="152.417" fill="none" stroke="#000000" stroke-width="0.700"/>
-<text x="147.983" y="182.778" font-size="2.900" text-anchor="middle" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
-<text x="200.334" y="98.700" font-size="2.900" text-anchor="start" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
-<text x="103.501" y="98.700" font-size="2.900" text-anchor="start" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
-<line x1="97.191" y1="187.375" x2="198.774" y2="187.375" stroke="#333333" stroke-width="0.150"/>
-<line x1="97.191" y1="190.708" x2="97.191" y2="184.042" stroke="#333333" stroke-width="0.150"/>
-<line x1="101.941" y1="190.708" x2="101.941" y2="184.042" stroke="#333333" stroke-width="0.150"/>
-<line x1="194.024" y1="190.708" x2="194.024" y2="184.042" stroke="#333333" stroke-width="0.150"/>
-<line x1="198.774" y1="190.708" x2="198.774" y2="184.042" stroke="#333333" stroke-width="0.150"/>
-<text x="147.983" y="191.945" font-size="2.900" text-anchor="middle" fill="#000000">7'-3&quot;</text>
-<line x1="88.024" y1="178.208" x2="88.024" y2="21.042" stroke="#333333" stroke-width="0.150"/>
-<line x1="84.691" y1="178.208" x2="91.358" y2="178.208" stroke="#333333" stroke-width="0.150"/>
-<line x1="84.691" y1="173.458" x2="91.358" y2="173.458" stroke="#333333" stroke-width="0.150"/>
-<line x1="84.691" y1="21.042" x2="91.358" y2="21.042" stroke="#333333" stroke-width="0.150"/>
-<text x="85.944" y="98.700" font-size="2.900" text-anchor="end" fill="#000000">12'-0&quot;</text>
-<line x1="87.816" y1="173.458" x2="208.149" y2="173.458" stroke="#555555" stroke-width="0.150"/>
-<line x1="97.191" y1="215.708" x2="198.774" y2="215.708" stroke="#333333" stroke-width="0.150"/>
-<line x1="97.191" y1="221.958" x2="97.191" y2="209.458" stroke="#333333" stroke-width="0.150"/>
-<line x1="198.774" y1="221.958" x2="198.774" y2="209.458" stroke="#333333" stroke-width="0.150"/>
-<text x="147.983" y="220.798" font-size="2.900" text-anchor="middle" fill="#000000">2438 mm · 8'-0&quot;</text>
-<line x1="59.691" y1="178.208" x2="59.691" y2="21.042" stroke="#333333" stroke-width="0.150"/>
-<line x1="53.441" y1="178.208" x2="65.941" y2="178.208" stroke="#333333" stroke-width="0.150"/>
-<line x1="53.441" y1="21.042" x2="65.941" y2="21.042" stroke="#333333" stroke-width="0.150"/>
-<text x="56.691" y="98.995" font-size="2.900" text-anchor="end" fill="#000000">3772 mm</text>
-<text x="56.691" y="103.155" font-size="2.900" text-anchor="end" fill="#000000">12'-4 1/2&quot;</text>
+<rect x="114.733" y="148.568" width="76.188" height="3.563" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="114.733" y="71.818" width="76.188" height="0.563" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="127.420" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="140.108" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="152.795" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="165.483" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="178.170" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="189.733" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="114.733" y="72.381" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="95.670" y="27.693" width="114.313" height="6.563" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="187.358" y="34.256" width="3.563" height="114.313" fill="none" stroke="#000000" stroke-width="0.700"/>
+<rect x="114.733" y="34.256" width="3.563" height="114.313" fill="none" stroke="#000000" stroke-width="0.700"/>
+<text x="152.826" y="156.701" font-size="2.900" text-anchor="middle" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
+<text x="152.826" y="70.148" font-size="2.900" text-anchor="middle" fill="#000000">thickness 18 mm · 0'-0 11/16&quot;</text>
+<text x="153.389" y="81.326" font-size="2.900" text-anchor="middle" fill="#000000">thickness 38 mm · 0'-1 1/2&quot; (7 alike)</text>
+<text x="152.826" y="26.023" font-size="2.900" text-anchor="middle" fill="#000000">thickness 210 mm · 0'-8 1/4&quot;</text>
+<text x="119.855" y="92.862" font-size="2.900" text-anchor="start" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
+<text x="192.480" y="92.862" font-size="2.900" text-anchor="start" fill="#000000">thickness 114 mm · 0'-4 1/2&quot;</text>
+<line x1="95.670" y1="193.537" x2="209.983" y2="193.537" stroke="#333333" stroke-width="0.150"/>
+<line x1="95.670" y1="196.037" x2="95.670" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="114.733" y1="196.037" x2="114.733" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="115.920" y1="196.037" x2="115.920" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="118.295" y1="196.037" x2="118.295" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="127.420" y1="196.037" x2="127.420" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="128.608" y1="196.037" x2="128.608" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="140.108" y1="196.037" x2="140.108" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="141.295" y1="196.037" x2="141.295" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="152.795" y1="196.037" x2="152.795" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="153.983" y1="196.037" x2="153.983" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="165.483" y1="196.037" x2="165.483" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="166.670" y1="196.037" x2="166.670" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="178.170" y1="196.037" x2="178.170" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="179.358" y1="196.037" x2="179.358" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="187.358" y1="196.037" x2="187.358" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="189.733" y1="196.037" x2="189.733" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="190.920" y1="196.037" x2="190.920" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<line x1="209.983" y1="196.037" x2="209.983" y2="191.037" stroke="#333333" stroke-width="0.150"/>
+<text x="105.201" y="198.107" font-size="2.900" text-anchor="middle" fill="#000000">2'-0&quot;</text>
+<text x="200.451" y="198.107" font-size="2.900" text-anchor="middle" fill="#000000">2'-0&quot;</text>
+<line x1="88.795" y1="186.662" x2="88.795" y2="27.693" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="186.662" x2="91.295" y2="186.662" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="152.131" x2="91.295" y2="152.131" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="148.568" x2="91.295" y2="148.568" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="76.756" x2="91.295" y2="76.756" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="72.381" x2="91.295" y2="72.381" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="71.818" x2="91.295" y2="71.818" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="34.256" x2="91.295" y2="34.256" stroke="#333333" stroke-width="0.150"/>
+<line x1="86.295" y1="27.693" x2="91.295" y2="27.693" stroke="#333333" stroke-width="0.150"/>
+<text x="86.715" y="170.846" font-size="2.900" text-anchor="end" fill="#000000">3'-7 1/2&quot;</text>
+<text x="86.715" y="114.112" font-size="2.900" text-anchor="end" fill="#000000">7'-6 1/2&quot;</text>
+<text x="86.715" y="54.487" font-size="2.900" text-anchor="end" fill="#000000">3'-11 5/16&quot;</text>
+<line x1="88.639" y1="148.568" x2="217.014" y2="148.568" stroke="#555555" stroke-width="0.150"/>
+<line x1="95.670" y1="214.787" x2="209.983" y2="214.787" stroke="#333333" stroke-width="0.150"/>
+<line x1="95.670" y1="219.474" x2="95.670" y2="210.099" stroke="#333333" stroke-width="0.150"/>
+<line x1="209.983" y1="219.474" x2="209.983" y2="210.099" stroke="#333333" stroke-width="0.150"/>
+<text x="152.826" y="219.877" font-size="2.900" text-anchor="middle" fill="#000000">3658 mm · 12'-0&quot;</text>
+<line x1="67.545" y1="186.662" x2="67.545" y2="27.693" stroke="#333333" stroke-width="0.150"/>
+<line x1="62.858" y1="186.662" x2="72.233" y2="186.662" stroke="#333333" stroke-width="0.150"/>
+<line x1="62.858" y1="27.693" x2="72.233" y2="27.693" stroke="#333333" stroke-width="0.150"/>
+<text x="64.545" y="106.548" font-size="2.900" text-anchor="end" fill="#000000">5087 mm</text>
+<text x="64.545" y="110.708" font-size="2.900" text-anchor="end" fill="#000000">16'-8 1/4&quot;</text>
 <text x="280.000" y="17.400" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">NOT MEASURED BY THE ENGINE</text>
-<text x="280.000" y="21.990" font-size="2.900" text-anchor="start" fill="#000000">floor@610,2438,2438:1~2438x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="25.905" font-size="2.900" text-anchor="start" fill="#000000">joist@1016,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="29.820" font-size="2.900" text-anchor="start" fill="#000000">joist@1422,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="33.735" font-size="2.900" text-anchor="start" fill="#000000">joist@1828,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="37.650" font-size="2.900" text-anchor="start" fill="#000000">joist@2234,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="41.565" font-size="2.900" text-anchor="start" fill="#000000">joist@2640,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="45.480" font-size="2.900" text-anchor="start" fill="#000000">joist@3010,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="49.395" font-size="2.900" text-anchor="start" fill="#000000">joist@610,2438,2438:1~38x2438: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="53.310" font-size="2.900" text-anchor="start" fill="#000000">post@3048,2438,-1219: width_mm is unknown (size-unknown)</text>
-<text x="280.000" y="57.225" font-size="2.900" text-anchor="start" fill="#000000">post@3048,4876,-1219: width_mm is unknown (size-unknown)</text>
-<text x="280.000" y="61.140" font-size="2.900" text-anchor="start" fill="#000000">post@610,2438,-1219: width_mm is unknown (size-unknown)</text>
-<text x="280.000" y="65.055" font-size="2.900" text-anchor="start" fill="#000000">post@610,4876,-1219: width_mm is unknown (size-unknown)</text>
-<text x="280.000" y="68.970" font-size="2.900" text-anchor="start" fill="#000000">roof@0,0:3~3658x5486: height_mm is unknown (size-unknown)</text>
-<text x="280.000" y="72.885" font-size="2.900" text-anchor="start" fill="#000000"></text>
-<text x="280.000" y="76.800" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">ASSUMED SETTINGS</text>
-<text x="280.000" y="81.390" font-size="2.900" text-anchor="start" fill="#000000">floor.thickness_mm = 114 mm: assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's</text>
-<text x="280.000" y="85.305" font-size="2.900" text-anchor="start" fill="#000000">    thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it</text>
-<text x="280.000" y="89.220" font-size="2.900" text-anchor="start" fill="#000000">weather.u_value = 2.8 w_per_m2_k: assumed: typical double glazing, not chosen by Jim</text>
-<text x="280.000" y="93.135" font-size="2.900" text-anchor="start" fill="#000000">weather.solar_heat_gain_coefficient = 0.6 ratio: assumed: typical double glazing, not chosen by Jim</text>
-<text x="280.000" y="97.050" font-size="2.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius: assumed design day</text>
-<text x="280.000" y="100.965" font-size="2.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius: assumed design day</text>
-<text x="280.000" y="104.880" font-size="2.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to</text>
-<text x="280.000" y="108.795" font-size="2.900" text-anchor="start" fill="#000000">    every side</text>
-<text x="280.000" y="112.710" font-size="2.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it</text>
-<text x="280.000" y="116.625" font-size="2.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it</text>
-<text x="280.000" y="120.540" font-size="2.900" text-anchor="start" fill="#000000">envelope.wall_r = 20 r_value: assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it</text>
-<text x="280.000" y="124.455" font-size="2.900" text-anchor="start" fill="#000000">envelope.roof_r = 30 r_value: assumed R-30; the roof build-up gives it</text>
-<text x="280.000" y="128.370" font-size="2.900" text-anchor="start" fill="#000000">envelope.floor_r = 20 r_value: assumed R-20; the floor build-up gives it</text>
-<text x="280.000" y="132.285" font-size="2.900" text-anchor="start" fill="#000000">envelope.door_r = 5 r_value: assumed R-5 for an insulated door, not checked against a source</text>
-<text x="280.000" y="136.200" font-size="2.900" text-anchor="start" fill="#000000">heating.boiler_efficiency = 0.7 ratio: assumed 70 percent; sources run 55 to 80 percent</text>
-<text x="280.000" y="140.115" font-size="2.900" text-anchor="start" fill="#000000">joists.member_depth_mm = 140 mm: assumed 2x6; the beam solver says whether it is enough</text>
-<text x="280.000" y="144.030" font-size="2.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm: 16 in on centre, assumed</text>
-<text x="280.000" y="147.945" font-size="2.900" text-anchor="start" fill="#000000">header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the</text>
-<text x="280.000" y="151.860" font-size="2.900" text-anchor="start" fill="#000000">    SIP's 3-5/8 in core (sip.prs610_core_thickness)</text>
-<text x="280.000" y="155.775" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header</text>
-<text x="280.000" y="159.690" font-size="2.900" text-anchor="start" fill="#000000">    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
-<text x="280.000" y="163.605" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of</text>
-<text x="280.000" y="167.520" font-size="2.900" text-anchor="start" fill="#000000">    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load</text>
-<text x="280.000" y="171.435" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried</text>
-<text x="280.000" y="175.350" font-size="2.900" text-anchor="start" fill="#000000">    by members running north-south across the south wall, so the roof bears on the south and north walls</text>
-<text x="280.000" y="179.265" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="280.000" y="21.990" font-size="2.900" text-anchor="start" fill="#000000">none</text>
+<text x="280.000" y="25.905" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="280.000" y="29.820" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">ASSUMED SETTINGS</text>
+<text x="280.000" y="34.410" font-size="2.900" text-anchor="start" fill="#000000">floor.thickness_mm = 114 mm: assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's</text>
+<text x="280.000" y="38.325" font-size="2.900" text-anchor="start" fill="#000000">    thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it</text>
+<text x="280.000" y="42.240" font-size="2.900" text-anchor="start" fill="#000000">weather.u_value = 2.8 w_per_m2_k: assumed: typical double glazing, not chosen by Jim</text>
+<text x="280.000" y="46.155" font-size="2.900" text-anchor="start" fill="#000000">weather.solar_heat_gain_coefficient = 0.6 ratio: assumed: typical double glazing, not chosen by Jim</text>
+<text x="280.000" y="50.070" font-size="2.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius: assumed design day</text>
+<text x="280.000" y="53.985" font-size="2.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius: assumed design day</text>
+<text x="280.000" y="57.900" font-size="2.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to</text>
+<text x="280.000" y="61.815" font-size="2.900" text-anchor="start" fill="#000000">    every side</text>
+<text x="280.000" y="65.730" font-size="2.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it</text>
+<text x="280.000" y="69.645" font-size="2.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it</text>
+<text x="280.000" y="73.560" font-size="2.900" text-anchor="start" fill="#000000">envelope.wall_r = 20 r_value: assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it</text>
+<text x="280.000" y="77.475" font-size="2.900" text-anchor="start" fill="#000000">envelope.roof_r = 30 r_value: assumed R-30; the roof build-up gives it</text>
+<text x="280.000" y="81.390" font-size="2.900" text-anchor="start" fill="#000000">envelope.floor_r = 20 r_value: assumed R-20; the floor build-up gives it</text>
+<text x="280.000" y="85.305" font-size="2.900" text-anchor="start" fill="#000000">envelope.door_r = 5 r_value: assumed R-5 for an insulated door, not checked against a source</text>
+<text x="280.000" y="89.220" font-size="2.900" text-anchor="start" fill="#000000">heating.boiler_efficiency = 0.7 ratio: assumed 70 percent; sources run 55 to 80 percent</text>
+<text x="280.000" y="93.135" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.thickness_mm = 18 mm: assumed: 23/32 in (18 mm) combination subfloor, the IRC subfloor</text>
+<text x="280.000" y="97.050" font-size="2.900" text-anchor="start" fill="#000000">    table's panel for a 24 in span, research row bom.subfloor_irc; at 16 in joist spacing a thinner panel may</text>
+<text x="280.000" y="100.965" font-size="2.900" text-anchor="start" fill="#000000">    do</text>
+<text x="280.000" y="104.880" font-size="2.900" text-anchor="start" fill="#000000">joists.member_depth_mm = 140 mm: assumed 2x6; the beam solver says whether it is enough</text>
+<text x="280.000" y="108.795" font-size="2.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm: 16 in on centre, assumed</text>
+<text x="280.000" y="112.710" font-size="2.900" text-anchor="start" fill="#000000">header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the</text>
+<text x="280.000" y="116.625" font-size="2.900" text-anchor="start" fill="#000000">    SIP's 3-5/8 in core (sip.prs610_core_thickness)</text>
+<text x="280.000" y="120.540" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header</text>
+<text x="280.000" y="124.455" font-size="2.900" text-anchor="start" fill="#000000">    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
+<text x="280.000" y="128.370" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of</text>
+<text x="280.000" y="132.285" font-size="2.900" text-anchor="start" fill="#000000">    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load</text>
+<text x="280.000" y="136.200" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried</text>
+<text x="280.000" y="140.115" font-size="2.900" text-anchor="start" fill="#000000">    by members running north-south across the south wall, so the roof bears on the south and north walls</text>
+<text x="280.000" y="144.030" font-size="2.900" text-anchor="start" fill="#000000"></text>
 <line x1="274.000" y1="8.000" x2="274.000" y2="235.000" stroke="#000000" stroke-width="0.350"/>
 <text x="10.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">PROJECT</text>
 <text x="10.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">Small house on posts, from Jim's pencil sketch</text>
@@ -80,11 +105,11 @@
 <text x="322.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">DATE</text>
 <text x="322.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">2026-10-20</text>
 <text x="10.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
-<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">29313d3</text>
+<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">c2a9df0</text>
 <text x="114.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">ENGINE PIN</text>
 <text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we 02d17b7; rendered with we 073b001</text>
 <text x="218.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SCALE</text>
-<text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">1:24 (1/2&quot; = 1'-0&quot;)</text>
+<text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">1:32 (3/8&quot; = 1'-0&quot;)</text>
 <text x="322.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SOURCE</text>
 <text x="322.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">world-engine geometry; no line is drawn by hand</text>
 <line x1="8.000" y1="235.000" x2="424.000" y2="235.000" stroke="#000000" stroke-width="0.700"/>
