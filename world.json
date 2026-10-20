@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "f930b262629de92800c92090d6c2d9503af4fe04bd47f64f6b385cf4c5d969bd"
+   "sha256": "0567d04454f02ffc36d3d4aea80708640de42d1e3e9c90a7b911021304f897cc"
   },
   {
    "domain": "light",
@@ -95,30 +95,37 @@
   "roof": {
    "solution": "flat-roof-over",
    "settings": {
-    "width_mm": 3658,
-    "depth_mm": 5486,
+    "south_eave_mm": 2438,
+    "east_eave_mm": 610,
     "west_eave_mm": 610,
     "north_eave_mm": 610,
     "thickness_mm": null
    },
    "reasons": {
-    "north_eave_mm": "reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading",
+    "south_eave_mm": "reading: the hatched hangover on the south, 8 ft past the floor; centred, 5 ft each end, is the other reading",
+    "east_eave_mm": "the sketch's 12 ft roof width less the 8 ft floor and the 2 ft west eave",
+    "west_eave_mm": "the sketch's 2 ft west eave",
+    "north_eave_mm": "the sketch's 2 ft north eave",
     "thickness_mm": "the roof panel gives it: roof_panel is the catalog's 8-1/4 in Premier SIP, the thinnest listed whose R-value reaches the envelope's R-30 (sip.premier_thicknesses); a number here overrides it"
    }
   },
   "glazing": {
-   "solution": "two-stacked-4x8",
+   "solution": "opening-grid",
    "settings": {
     "sides": [
      "south"
     ],
     "first_sill_mm": 1219,
-    "glazed_height_mm": 2438
+    "glazed_height_mm": 2438,
+    "rows": 2,
+    "columns": 1
    },
    "reasons": {
     "sides": "Jim, 2026-10-18: only south-facing glass; no east, west or north window",
     "first_sill_mm": "Jim: the first 4 ft of the south wall is a SIP panel below the windows",
-    "glazed_height_mm": "Jim: two stacked 4x8 windows, the upper one lighting the sleeping loft, so 8 ft of glass over the knee wall; the other window-wall options (one-8x8, four-4x4) fill the same 8 ft"
+    "glazed_height_mm": "Jim: 8 ft of glass over the knee wall",
+    "rows": "Jim: two stacked 4x8 windows, the upper one lighting the sleeping loft; one row (one 8x8) or two rows of two columns (four 4x4) fill the same 8 ft",
+    "columns": "Jim: each window spans the south wall's 8 ft"
    }
   },
   "weather": {

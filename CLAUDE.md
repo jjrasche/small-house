@@ -29,9 +29,9 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **Headers** (`header`, `roof_loads`, `binds.header_check`): `header-check` loads each opening's header with the roof (dead load plus
   ground snow over the roof's reaction width on that wall) when nothing is above it, and the loft joists landing at its head; it reports
   stress, deflection and utilisation per opening, and the rule `headers-within-capacity` names any over 1. The window-wall options are
-  `glazing` solutions (two-stacked-4x8, one-8x8, four-4x4) and the header options catalog `header` solutions; compare them by editing a
-  copy of world.json and running fields.py on it (`--use` clears settings). `we rank --system glazing` ranks on first cost and build
-  hours, both still gaps.
+  the `glazing` opening grid's rows and columns (2 by 1 is two stacked 4x8, 1 by 1 one 8x8, 2 by 2 four 4x4) and the header options catalog
+  `header` solutions; compare them by editing a copy of world.json and running fields.py on it (`--use` clears settings). check.py simulates
+  each layout: cost, what it has no price for (the 8x8 window), and labour hours. The roof takes an eave per side.
 - **Build run** (`clock`, `stocks`, `people`, `optimizing`, `people_rules`): a step is one working minute; ten tasks dig and set the posts,
   set the floor, wall and roof panels, cut and fill the openings, frame and deck the loft and install the boiler. Each run works one piece,
   asks the engine for that piece's hours (area over the rate, or the tasks domain's hours each), and places it on the step it finishes.

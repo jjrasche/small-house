@@ -9,7 +9,8 @@ sketch's 630 board feet;
   `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection, the
 gravity load path (every piece's self-weight and force, and the reaction under each of the four posts), the hours and blank prices of the
 measured build tasks at their published rates, and the header over each opening (its load, utilisation and own weight);
-  `we rank` puts the window-wall options on first cost and build hours, both gaps;
+  `we simulate` on each window-wall layout of the opening grid (two stacked 4x8, one 8x8, four 4x4) answers its cost, what the cost is
+missing, and its labour hours;
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left and what they are missing, the skill each person ends with,
 how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
   every piece is priced from a listed range, so no stock ends incomplete (a piece with no price would move cost_usd and budget_usd by an
@@ -98,7 +99,9 @@ HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation
                   f"{UPPER_BAND} utilisation": 0.407, f"{NORTH_DOOR} load_n_per_mm": 1.402, f"{NORTH_DOOR} utilisation": 0.024,
                   f"{LOWER_BAND} unsupported_load_n_per_mm": None, f"{NORTH_DOOR} unsupported_load_n_per_mm": None,
                   f"{UPPER_BAND} self_weight_n": 434.075, f"{NORTH_DOOR} self_weight_n": 217.038}
-WINDOW_WALL_RANKS = {"four-4x4": (1, []), "one-8x8": (2, ["first_cost_usd"]), "two-stacked-4x8": (3, ["first_cost_usd"])}
+WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
+WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14487.406, [], 61.799), "one-8x8": (13114.406, ["glazing@610,2495,1219"], 56.799),
+                        "four-4x4": (15470.406, [], 71.799)}
 UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]
 
 
@@ -194,11 +197,23 @@ def build_totals(simulated: dict) -> dict:
     return rounded_figures({"labour_hours": simulated.get("objective_total", {}).get("labour_hours"), "cost_usd": stocks.get("cost_usd"), "budget_usd": stocks.get("budget_usd")})
 
 
-def rank_line(launcher: Path, world: Path) -> str:
-    finished = subprocess.run([str(launcher), "rank", str(world), "--system", "glazing"], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
-    ranked = json.loads(finished.stdout).get("ranked", []) if finished.stdout.strip() else []
-    return state_line("we rank the window-wall options: rank and the figures missing", WINDOW_WALL_RANKS,
-                      {entry["solution"]: (entry["rank"], entry["missing"]) for entry in ranked})
+def layout_variant(world: Path, name: str) -> Path:
+    variant = json.loads(world.read_text(encoding="utf-8"))
+    rows, columns = WINDOW_WALL_LAYOUTS[name]
+    variant["systems"]["glazing"]["settings"].update({"rows": rows, "columns": columns})
+    path = world.with_name(f"world.{name}.json")
+    path.write_text(json.dumps(variant), encoding="utf-8")
+    return path
+
+
+def layout_outcome(simulated: dict) -> tuple:
+    return (rounded_figures(simulated.get("final_stocks", {})).get("cost_usd"), simulated.get("final_stocks_incomplete", {}).get("cost_usd", []),
+            rounded_figures(simulated.get("objective_total", {})).get("labour_hours"))
+
+
+def layout_lines(launcher: Path, world: Path) -> list[str]:
+    outcomes = {name: layout_outcome(run_engine(launcher, "simulate", layout_variant(world, name))[1]) for name in WINDOW_WALL_LAYOUTS}
+    return [state_line("we simulate each window-wall layout: cost, the pieces it has no price for, labour hours", WINDOW_WALL_OUTCOMES, outcomes)]
 
 
 def pieces_placed_by_no_flow(simulated: dict) -> list:
@@ -236,16 +251,8 @@ def incomplete_outputs(answer: dict) -> dict:
     return {output: statistics["incomplete"] for output, statistics in answer.get("outputs", {}).items() if "incomplete" in statistics}
 
 
-def one_8x8_variant(world: Path) -> Path:
-    one_8x8 = json.loads(world.read_text(encoding="utf-8"))
-    one_8x8["systems"]["glazing"]["solution"] = "one-8x8"
-    variant = world.with_name("world.one-8x8.json")
-    variant.write_text(json.dumps(one_8x8), encoding="utf-8")
-    return variant
-
-
 def sample_lines(launcher: Path, world: Path) -> list[str]:
-    refused_exit, refused = run_sample(launcher, one_8x8_variant(world), COST_BELOW_ARGUMENTS)
+    refused_exit, refused = run_sample(launcher, layout_variant(world, "one-8x8"), COST_BELOW_ARGUMENTS)
     _, answer = run_sample(launcher, world, SAMPLE_ARGUMENTS)
     return [state_line("we sample on one-8x8 refuses the share of runs under $20,000, naming the window with no listed price", (1, COST_BELOW_REFUSAL), (refused_exit, refused.get("refused"))),
             state_line("we sample 50 runs at seed 1: failures, quality tally, share under $20,000 and under the deterministic labour hours, and both",
@@ -295,8 +302,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool) -> list[str]:
                    (solver_answer(solved, "header-check").get("status"), rounded(solver_values(solved, "header-check")))),
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
-        rank_line(launcher, world),
-    ] + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else [])
+    ] + layout_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else [])
 
 
 def main() -> int:
