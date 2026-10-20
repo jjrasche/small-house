@@ -2,15 +2,19 @@
 <rect width="432.000" height="279.000" fill="#ffffff"/>
 <rect x="8.000" y="8.000" width="416.000" height="263.000" fill="none" stroke="#000000" stroke-width="0.700"/>
 <rect x="150.621" y="146.283" width="76.188" height="3.563" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="150.621" y="69.533" width="76.188" height="0.563" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="154.183" y="69.533" width="69.063" height="0.563" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="150.621" y="70.096" width="3.563" height="38.094" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="150.621" y="32.002" width="3.563" height="38.094" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="150.621" y="70.096" width="76.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="150.621" y="70.096" width="76.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="150.621" y="70.096" width="76.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="150.621" y="70.096" width="76.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="154.183" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="166.871" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="179.558" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="192.246" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="204.933" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="217.621" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="222.058" y="70.096" width="1.188" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="154.183" y="74.471" width="69.063" height="4.375" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="150.621" y="149.846" width="4.375" height="34.531" fill="none" stroke="#000000" stroke-width="0.350"/>
-<rect x="226.808" y="149.846" width="4.375" height="34.531" fill="none" stroke="#000000" stroke-width="0.350"/>
+<rect x="222.433" y="149.846" width="4.375" height="34.531" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="74.433" y="25.408" width="171.438" height="6.563" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="150.621" y="31.971" width="3.563" height="114.313" fill="none" stroke="#000000" stroke-width="0.350"/>
 <rect x="223.246" y="31.971" width="3.563" height="114.313" fill="none" stroke="#000000" stroke-width="0.350"/>
@@ -24,20 +28,31 @@
 <line x1="150.621" y1="193.752" x2="150.621" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="154.183" y1="193.752" x2="154.183" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="154.996" y1="193.752" x2="154.996" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="155.371" y1="193.752" x2="155.371" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="166.871" y1="193.752" x2="166.871" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="168.058" y1="193.752" x2="168.058" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="179.558" y1="193.752" x2="179.558" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="180.746" y1="193.752" x2="180.746" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="192.246" y1="193.752" x2="192.246" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="192.277" y1="193.752" x2="192.277" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="193.433" y1="193.752" x2="193.433" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="204.933" y1="193.752" x2="204.933" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="206.121" y1="193.752" x2="206.121" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="217.621" y1="193.752" x2="217.621" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="218.808" y1="193.752" x2="218.808" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="222.058" y1="193.752" x2="222.058" y2="188.752" stroke="#333333" stroke-width="0.150"/>
+<line x1="222.433" y1="193.752" x2="222.433" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="223.246" y1="193.752" x2="223.246" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="226.808" y1="193.752" x2="226.808" y2="188.752" stroke="#333333" stroke-width="0.150"/>
-<line x1="231.183" y1="193.752" x2="231.183" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <line x1="245.871" y1="193.752" x2="245.871" y2="188.752" stroke="#333333" stroke-width="0.150"/>
 <text x="112.527" y="195.822" font-size="2.900" text-anchor="middle" fill="#000000">8'-0&quot;</text>
-<text x="173.636" y="195.822" font-size="2.900" text-anchor="middle" fill="#000000">3'-10 15/16&quot;</text>
-<text x="207.761" y="195.822" font-size="2.900" text-anchor="middle" fill="#000000">3'-3&quot;</text>
-<text x="238.527" y="195.822" font-size="2.900" text-anchor="middle" fill="#000000">1'-6 1/2&quot;</text>
+<text x="236.339" y="195.822" font-size="2.900" text-anchor="middle" fill="#000000">2'-0&quot;</text>
 <line x1="67.558" y1="184.377" x2="67.558" y2="25.408" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="184.377" x2="70.058" y2="184.377" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="149.846" x2="70.058" y2="149.846" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="146.283" x2="70.058" y2="146.283" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="108.189" x2="70.058" y2="108.189" stroke="#333333" stroke-width="0.150"/>
+<line x1="65.058" y1="78.846" x2="70.058" y2="78.846" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="74.471" x2="70.058" y2="74.471" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="70.096" x2="70.058" y2="70.096" stroke="#333333" stroke-width="0.150"/>
 <line x1="65.058" y1="69.533" x2="70.058" y2="69.533" stroke="#333333" stroke-width="0.150"/>
@@ -46,7 +61,7 @@
 <line x1="65.058" y1="25.408" x2="70.058" y2="25.408" stroke="#333333" stroke-width="0.150"/>
 <text x="65.478" y="168.561" font-size="2.900" text-anchor="end" fill="#000000">3'-7 1/2&quot;</text>
 <text x="65.478" y="128.686" font-size="2.900" text-anchor="end" fill="#000000">4'-0&quot;</text>
-<text x="65.478" y="92.780" font-size="2.900" text-anchor="end" fill="#000000">3'-6 1/2&quot;</text>
+<text x="65.478" y="94.968" font-size="2.900" text-anchor="end" fill="#000000">3'-0 15/16&quot;</text>
 <text x="65.478" y="52.218" font-size="2.900" text-anchor="end" fill="#000000">3'-11 5/16&quot;</text>
 <line x1="67.402" y1="146.283" x2="252.902" y2="146.283" stroke="#555555" stroke-width="0.150"/>
 <line x1="74.433" y1="212.502" x2="245.871" y2="212.502" stroke="#333333" stroke-width="0.150"/>
@@ -62,35 +77,27 @@
 <text x="280.000" y="21.990" font-size="2.900" text-anchor="start" fill="#000000">none</text>
 <text x="280.000" y="25.905" font-size="2.900" text-anchor="start" fill="#000000"></text>
 <text x="280.000" y="29.820" font-size="3.400" text-anchor="start" fill="#000000" font-weight="bold">ASSUMED SETTINGS</text>
-<text x="280.000" y="34.410" font-size="2.900" text-anchor="start" fill="#000000">floor.thickness_mm = 114 mm: assumed: a 4-1/2 in (114 mm) SIP floor panel, the wall standard's</text>
-<text x="280.000" y="38.325" font-size="2.900" text-anchor="start" fill="#000000">    thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it</text>
-<text x="280.000" y="42.240" font-size="2.900" text-anchor="start" fill="#000000">weather.u_value = 2.8 w_per_m2_k: assumed: typical double glazing, not chosen by Jim</text>
-<text x="280.000" y="46.155" font-size="2.900" text-anchor="start" fill="#000000">weather.solar_heat_gain_coefficient = 0.6 ratio: assumed: typical double glazing, not chosen by Jim</text>
-<text x="280.000" y="50.070" font-size="2.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius: assumed design day</text>
-<text x="280.000" y="53.985" font-size="2.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius: assumed design day</text>
-<text x="280.000" y="57.900" font-size="2.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to</text>
-<text x="280.000" y="61.815" font-size="2.900" text-anchor="start" fill="#000000">    every side</text>
-<text x="280.000" y="65.730" font-size="2.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it</text>
-<text x="280.000" y="69.645" font-size="2.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it</text>
-<text x="280.000" y="73.560" font-size="2.900" text-anchor="start" fill="#000000">envelope.wall_r = 20 r_value: assumed R-20 for a SIP wall (ft2 F h per BTU); the SIP thickness gives it</text>
-<text x="280.000" y="77.475" font-size="2.900" text-anchor="start" fill="#000000">envelope.roof_r = 30 r_value: assumed R-30; the roof build-up gives it</text>
-<text x="280.000" y="81.390" font-size="2.900" text-anchor="start" fill="#000000">envelope.floor_r = 20 r_value: assumed R-20; the floor build-up gives it</text>
-<text x="280.000" y="85.305" font-size="2.900" text-anchor="start" fill="#000000">envelope.door_r = 5 r_value: assumed R-5 for an insulated door, not checked against a source</text>
-<text x="280.000" y="89.220" font-size="2.900" text-anchor="start" fill="#000000">heating.boiler_efficiency = 0.7 ratio: assumed 70 percent; sources run 55 to 80 percent</text>
-<text x="280.000" y="93.135" font-size="2.900" text-anchor="start" fill="#000000">loft_floor.thickness_mm = 18 mm: assumed: 23/32 in (18 mm) combination subfloor, the IRC subfloor</text>
-<text x="280.000" y="97.050" font-size="2.900" text-anchor="start" fill="#000000">    table's panel for a 24 in span, research row bom.subfloor_irc; at 16 in joist spacing a thinner panel may</text>
-<text x="280.000" y="100.965" font-size="2.900" text-anchor="start" fill="#000000">    do</text>
-<text x="280.000" y="104.880" font-size="2.900" text-anchor="start" fill="#000000">joists.member_depth_mm = 140 mm: assumed 2x6; the beam solver says whether it is enough</text>
-<text x="280.000" y="108.795" font-size="2.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm: 16 in on centre, assumed</text>
-<text x="280.000" y="112.710" font-size="2.900" text-anchor="start" fill="#000000">header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the</text>
-<text x="280.000" y="116.625" font-size="2.900" text-anchor="start" fill="#000000">    SIP's 3-5/8 in core (sip.prs610_core_thickness)</text>
-<text x="280.000" y="120.540" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header</text>
-<text x="280.000" y="124.455" font-size="2.900" text-anchor="start" fill="#000000">    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
-<text x="280.000" y="128.370" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of</text>
-<text x="280.000" y="132.285" font-size="2.900" text-anchor="start" fill="#000000">    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load</text>
-<text x="280.000" y="136.200" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried</text>
-<text x="280.000" y="140.115" font-size="2.900" text-anchor="start" fill="#000000">    by members running north-south across the south wall, so the roof bears on the south and north walls</text>
-<text x="280.000" y="144.030" font-size="2.900" text-anchor="start" fill="#000000"></text>
+<text x="280.000" y="34.410" font-size="2.900" text-anchor="start" fill="#000000">weather.inside_celsius = 20 celsius: assumed design day</text>
+<text x="280.000" y="38.325" font-size="2.900" text-anchor="start" fill="#000000">weather.outside_celsius = 0 celsius: assumed design day</text>
+<text x="280.000" y="42.240" font-size="2.900" text-anchor="start" fill="#000000">weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to</text>
+<text x="280.000" y="46.155" font-size="2.900" text-anchor="start" fill="#000000">    every side</text>
+<text x="280.000" y="50.070" font-size="2.900" text-anchor="start" fill="#000000">finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it</text>
+<text x="280.000" y="53.985" font-size="2.900" text-anchor="start" fill="#000000">finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it</text>
+<text x="280.000" y="57.900" font-size="2.900" text-anchor="start" fill="#000000">doors.offset_mm = 0 mm: assumed: the west end of the north wall; which end the door is at is open</text>
+<text x="280.000" y="61.815" font-size="2.900" text-anchor="start" fill="#000000">joists.spacing_mm = 406 mm: assumed: 16 in on centre</text>
+<text x="280.000" y="65.730" font-size="2.900" text-anchor="start" fill="#000000">ledgers.member_width_mm = null mm: assumed: a ledger cut from the joist stock, fastened to the wall's</text>
+<text x="280.000" y="69.645" font-size="2.900" text-anchor="start" fill="#000000">    inside face; the fastening is not checked</text>
+<text x="280.000" y="73.560" font-size="2.900" text-anchor="start" fill="#000000">ledgers.member_depth_mm = null mm: assumed: a ledger cut from the joist stock, as deep as the joists it</text>
+<text x="280.000" y="77.475" font-size="2.900" text-anchor="start" fill="#000000">    carries</text>
+<text x="280.000" y="81.390" font-size="2.900" text-anchor="start" fill="#000000">header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the</text>
+<text x="280.000" y="85.305" font-size="2.900" text-anchor="start" fill="#000000">    SIP's 3-5/8 in core (sip.prs610_core_thickness)</text>
+<text x="280.000" y="89.220" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header</text>
+<text x="280.000" y="93.135" font-size="2.900" text-anchor="start" fill="#000000">    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it</text>
+<text x="280.000" y="97.050" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of</text>
+<text x="280.000" y="100.965" font-size="2.900" text-anchor="start" fill="#000000">    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load</text>
+<text x="280.000" y="104.880" font-size="2.900" text-anchor="start" fill="#000000">roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried</text>
+<text x="280.000" y="108.795" font-size="2.900" text-anchor="start" fill="#000000">    by members running north-south across the south wall, so the roof bears on the south and north walls</text>
+<text x="280.000" y="112.710" font-size="2.900" text-anchor="start" fill="#000000"></text>
 <line x1="274.000" y1="8.000" x2="274.000" y2="235.000" stroke="#000000" stroke-width="0.350"/>
 <text x="10.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">PROJECT</text>
 <text x="10.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">Small house on posts, from Jim's pencil sketch</text>
@@ -101,9 +108,9 @@
 <text x="322.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">DATE</text>
 <text x="322.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">2026-10-20</text>
 <text x="10.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
-<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">eddda50</text>
+<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">31254d4</text>
 <text x="114.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">ENGINE PIN</text>
-<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we a29552e; rendered with we 976c052</text>
+<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we 5af4c5f; rendered with we c3542b1</text>
 <text x="218.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SCALE</text>
 <text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">1:32 (3/8&quot; = 1'-0&quot;)</text>
 <text x="322.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SOURCE</text>

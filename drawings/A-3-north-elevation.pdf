@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 1224.57 790.87] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 10778 >>
+<< /Length 9136 >>
 stream
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 22.68 1179.21 745.51 re S
@@ -18,23 +18,25 @@ stream
 0.000 0.000 0.000 RG 0.99 w [] 0 d
 345.99 366.11 215.96 10.10 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-345.99 592.17 215.96 1.59 re S
+356.09 592.17 195.77 1.59 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-522.63 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-486.66 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-450.70 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-414.73 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-378.77 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-345.99 579.77 3.37 12.40 re S
+356.09 579.77 195.77 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-558.59 579.77 3.37 12.40 re S
+356.09 567.37 3.37 12.40 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
-333.59 268.22 12.40 97.88 re S
+548.49 567.37 3.37 12.40 re S
+0.000 0.000 0.000 RG 0.99 w [] 0 d
+345.99 268.22 12.40 97.88 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
 549.55 268.22 12.40 97.88 re S
 0.000 0.000 0.000 RG 0.99 w [] 0 d
@@ -61,46 +63,28 @@ stream
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 291.96 241.65 m 291.96 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
-333.59 241.65 m 333.59 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
 345.99 241.65 m 345.99 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-349.36 241.65 m 349.36 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 356.09 241.65 m 356.09 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
-378.77 241.65 m 378.77 255.82 l S
+358.39 241.65 m 358.39 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
-382.13 241.65 m 382.13 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-414.73 241.65 m 414.73 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-418.10 241.65 m 418.10 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-450.70 241.65 m 450.70 255.82 l S
+359.46 241.65 m 359.46 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 453.97 241.65 m 453.97 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
-454.06 241.65 m 454.06 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-486.66 241.65 m 486.66 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-490.03 241.65 m 490.03 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-522.63 241.65 m 522.63 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
-525.99 241.65 m 525.99 255.82 l S
+548.49 241.65 m 548.49 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 549.55 241.65 m 549.55 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 551.86 241.65 m 551.86 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
-558.59 241.65 m 558.59 255.82 l S
-0.200 0.200 0.200 RG 0.43 w [] 0 d
 561.96 241.65 m 561.96 255.82 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 615.99 241.65 m 615.99 255.82 l S
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 294.92 235.78 Td (1'-6 1/2") Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 308.98 235.78 Td (2'-0") Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 396.72 235.78 Td (3'-6") Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 491.24 235.78 Td (3'-6") Tj ET
 0.000 0.000 0.000 rg BT /F1 8.22 Tf 578.98 235.78 Td (2'-0") Tj ET
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 272.47 268.22 m 272.47 718.84 l S
@@ -110,6 +94,8 @@ stream
 265.38 366.11 m 279.55 366.11 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 265.38 376.21 m 279.55 376.21 l S
+0.200 0.200 0.200 RG 0.43 w [] 0 d
+265.38 567.37 m 279.55 567.37 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 265.38 579.77 m 279.55 579.77 l S
 0.200 0.200 0.200 RG 0.43 w [] 0 d
@@ -121,7 +107,7 @@ stream
 0.200 0.200 0.200 RG 0.43 w [] 0 d
 265.38 718.84 m 279.55 718.84 l S
 0.000 0.000 0.000 rg BT /F1 8.22 Tf 230.86 313.05 Td (3'-7 1/2") Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 230.86 473.88 Td (7'-6 1/2") Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 221.72 467.68 Td (7'-0 15/16") Tj ET
 0.000 0.000 0.000 rg BT /F1 8.22 Tf 221.72 642.89 Td (3'-11 5/16") Tj ET
 0.333 0.333 0.333 RG 0.43 w [] 0 d
 272.03 376.21 m 635.92 376.21 l S
@@ -144,35 +130,27 @@ stream
 0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 728.53 Td (none) Tj ET
 0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 717.43 Td () Tj ET
 0.000 0.000 0.000 rg BT /F2 9.64 Tf 793.70 706.34 Td (ASSUMED SETTINGS) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 693.33 Td (floor.thickness_mm = 114 mm: assumed: a 4-1/2 in \(114 mm\) SIP floor panel, the wall standard's) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 682.23 Td (    thickness, research row sip.prs610_panel_thickness; Jim's floor build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 671.13 Td (weather.u_value = 2.8 w_per_m2_k: assumed: typical double glazing, not chosen by Jim) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 660.03 Td (weather.solar_heat_gain_coefficient = 0.6 ratio: assumed: typical double glazing, not chosen by Jim) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 648.94 Td (weather.inside_celsius = 20 celsius: assumed design day) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 637.84 Td (weather.outside_celsius = 0 celsius: assumed design day) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 626.74 Td (weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 615.64 Td (    every side) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 604.54 Td (finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 593.45 Td (finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 582.35 Td (envelope.wall_r = 20 r_value: assumed R-20 for a SIP wall \(ft2 F h per BTU\); the SIP thickness gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 571.25 Td (envelope.roof_r = 30 r_value: assumed R-30; the roof build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 560.15 Td (envelope.floor_r = 20 r_value: assumed R-20; the floor build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 549.06 Td (envelope.door_r = 5 r_value: assumed R-5 for an insulated door, not checked against a source) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 537.96 Td (heating.boiler_efficiency = 0.7 ratio: assumed 70 percent; sources run 55 to 80 percent) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 526.86 Td (loft_floor.thickness_mm = 18 mm: assumed: 23/32 in \(18 mm\) combination subfloor, the IRC subfloor) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 515.76 Td (    table's panel for a 24 in span, research row bom.subfloor_irc; at 16 in joist spacing a thinner panel may) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 504.67 Td (    do) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 493.57 Td (joists.member_depth_mm = 140 mm: assumed 2x6; the beam solver says whether it is enough) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 482.47 Td (joists.spacing_mm = 406 mm: 16 in on centre, assumed) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 471.37 Td (header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 460.28 Td (    SIP's 3-5/8 in core \(sip.prs610_core_thickness\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 449.18 Td (roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 438.08 Td (    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 426.98 Td (roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 415.89 Td (    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 404.79 Td (roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 393.69 Td (    by members running north-south across the south wall, so the roof bears on the south and north walls) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 382.59 Td () Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 693.33 Td (weather.inside_celsius = 20 celsius: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 682.23 Td (weather.outside_celsius = 0 celsius: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 671.13 Td (weather.sun_watt_per_square_metre = 500 w_per_m2: assumed clear-sky peak; the solver applies it to) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 660.03 Td (    every side) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 648.94 Td (finish.mean_reflectance = 0.5 ratio: assumed mid-grey interior; Jim's wall finish gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 637.84 Td (finish.sky_angle_degrees = 65 degree: assumed open sky; the site gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 626.74 Td (doors.offset_mm = 0 mm: assumed: the west end of the north wall; which end the door is at is open) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 615.64 Td (joists.spacing_mm = 406 mm: assumed: 16 in on centre) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 604.54 Td (ledgers.member_width_mm = null mm: assumed: a ledger cut from the joist stock, fastened to the wall's) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 593.45 Td (    inside face; the fastening is not checked) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 582.35 Td (ledgers.member_depth_mm = null mm: assumed: a ledger cut from the joist stock, as deep as the joists it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 571.25 Td (    carries) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 560.15 Td (header.plies = 2 count: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 549.06 Td (    SIP's 3-5/8 in core \(sip.prs610_core_thickness\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 537.96 Td (roof_loads.roof_dead_load_psf = 15 psf: assumed: 15 psf, the roof dead load Boise's roof-only header) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 526.86 Td (    look-up assumes, research row gl.hdr.vl_lookup_roof_only; the roof build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 515.76 Td (roof_loads.deflection_limit_ratio = 240 ratio: assumed: span over 240, the live-load deflection limit of) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 504.67 Td (    Boise's header tables, research row gl.hdr.vl_limits, applied to the whole load) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 493.57 Td (roof_loads.roof_bears_on =  compass_sides: assumed: the roof's 8 ft south hangover can only be carried) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 482.47 Td (    by members running north-south across the south wall, so the roof bears on the south and north walls) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 793.70 471.37 Td () Tj ET
 0.000 0.000 0.000 RG 0.99 w [] 0 d
 776.69 768.19 m 776.69 124.72 l S
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 110.55 Td (PROJECT) Tj ET
@@ -184,9 +162,9 @@ stream
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 110.55 Td (DATE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 87.87 Td (2026-10-20) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 59.53 Td (CONFIG COMMIT) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (eddda50) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (31254d4) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 59.53 Td (ENGINE PIN) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we a29552e; rendered with we 976c052) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we 5af4c5f; rendered with we c3542b1) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 617.95 59.53 Td (SCALE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 617.95 36.85 Td (1:32 \(3/8" = 1'-0"\)) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 59.53 Td (SOURCE) Tj ET
@@ -216,10 +194,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000258 00000 n 
-0000011088 00000 n 
-0000011185 00000 n 
+0000009445 00000 n 
+0000009542 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-11287
+9644
 %%EOF
