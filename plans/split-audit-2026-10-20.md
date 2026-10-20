@@ -1,5 +1,16 @@
 # Split audit, 2026-10-20
 
+## Plan (Jim: "pull all logic out of the engine that should go into a domain")
+1. Engine sheds content: delete the house and aquaponics commands; move built-in conduction, bracing and span to the thermal and structural domains (after world-engine lists what depends on them); move the task-fact, sourced-kind and vote-class lists and the labour field names to the manifest; make `layOver` a general offset vector. Owner: world-engine.
+2. Engine adds the views the UI fakes: setting status, geometry with openings cut, dimensions, elevation and section, material kind. Owner: world-engine.
+3. Domains take facts out of the config and become general: the catalog owns R, U, modulus, density, stock sizes and prices; a site solution keyed by location; the task sequence as data; one opening-grid solution; per-side eaves; geometry read from the engine. Owner: the house worker.
+4. UI deletes each faked computation as its engine view lands. Owner: factored-ui.
+5. Guards, so it stays clean: each layer gets a check that fails on a leak.
+   - Engine: a forbidden-domain-words scan of main sources (tests and fixtures allowed).
+   - Config: a setting must be declared as a choice by its solution's manifest, so a fact can't be a setting.
+   - Domains: a no-house-names scan, and every figure cites a row.
+   - UI: no system or material names in the application package.
+
 Four read-only audits, one per layer: engine at a29552e, domains at main, config world.json on minimal-world, UI on application-look.
 Each item names the layer it belongs in.
 
