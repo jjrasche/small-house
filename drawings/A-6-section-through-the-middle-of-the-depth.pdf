@@ -9,7 +9,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 1224.57 790.87] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 10415 >>
+<< /Length 10379 >>
 stream
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 22.68 1179.21 745.51 re S
@@ -165,13 +165,13 @@ stream
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 110.55 Td (DATE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 87.87 Td (2026-10-20) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 59.53 Td (CONFIG COMMIT) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (c2a9df0) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (eddda50) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 59.53 Td (ENGINE PIN) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we 02d17b7; rendered with we 073b001) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we a29552e; rendered with we 976c052) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 617.95 59.53 Td (SCALE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 617.95 36.85 Td (1:32 \(3/8" = 1'-0"\)) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 59.53 Td (SOURCE) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 36.85 Td (world-engine geometry; no line is drawn by hand) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 36.85 Td (we geometry) Tj ET
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 124.72 m 1201.89 124.72 l S
 0.000 0.000 0.000 RG 0.71 w [] 0 d
@@ -197,10 +197,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000258 00000 n 
-0000010725 00000 n 
-0000010822 00000 n 
+0000010689 00000 n 
+0000010786 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-10924
+10888
 %%EOF

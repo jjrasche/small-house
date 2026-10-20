@@ -103,13 +103,13 @@
 <text x="322.000" y="240.000" font-size="2.900" text-anchor="start" fill="#666666">DATE</text>
 <text x="322.000" y="248.000" font-size="3.400" text-anchor="start" fill="#000000">2026-10-20</text>
 <text x="10.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">CONFIG COMMIT</text>
-<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">c2a9df0</text>
+<text x="10.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">eddda50</text>
 <text x="114.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">ENGINE PIN</text>
-<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we 02d17b7; rendered with we 073b001</text>
+<text x="114.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we a29552e; rendered with we 976c052</text>
 <text x="218.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SCALE</text>
 <text x="218.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">1:32 (3/8&quot; = 1'-0&quot;)</text>
 <text x="322.000" y="258.000" font-size="2.900" text-anchor="start" fill="#666666">SOURCE</text>
-<text x="322.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">world-engine geometry; no line is drawn by hand</text>
+<text x="322.000" y="266.000" font-size="3.400" text-anchor="start" fill="#000000">we geometry</text>
 <line x1="8.000" y1="235.000" x2="424.000" y2="235.000" stroke="#000000" stroke-width="0.700"/>
 <line x1="8.000" y1="253.000" x2="424.000" y2="253.000" stroke="#000000" stroke-width="0.250"/>
 <line x1="112.000" y1="235.000" x2="112.000" y2="271.000" stroke="#000000" stroke-width="0.250"/>

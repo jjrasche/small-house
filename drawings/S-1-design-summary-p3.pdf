@@ -9,33 +9,46 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 1224.57 790.87] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
 endobj
 4 0 obj
-<< /Length 4876 >>
+<< /Length 6582 >>
 stream
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 22.68 1179.21 745.51 re S
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 740.49 Td (finish.mean_reflectance = 0.5 ratio; reason: assumed mid-grey interior; Jim's wall finish gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 729.81 Td (finish.sky_angle_degrees = 65 degree; reason: assumed open sky; the site gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 719.12 Td (envelope.wall_r = 20 r_value; reason: assumed R-20 for a SIP wall \(ft2 F h per BTU\); the SIP thickness gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 708.43 Td (envelope.roof_r = 30 r_value; reason: assumed R-30; the roof build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 697.75 Td (envelope.floor_r = 20 r_value; reason: assumed R-20; the floor build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 687.06 Td (envelope.door_r = 5 r_value; reason: assumed R-5 for an insulated door, not checked against a source) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 676.37 Td (heating.boiler_efficiency = 0.7 ratio; reason: assumed 70 percent; sources run 55 to 80 percent) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 665.69 Td (loft_floor.thickness_mm = 18 mm; reason: assumed: 23/32 in \(18 mm\) combination subfloor, the IRC subfloor table's panel for a 24 in span, research) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 655.00 Td (      row bom.subfloor_irc; at 16 in joist spacing a thinner panel may do) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 644.31 Td (joists.member_depth_mm = 140 mm; reason: assumed 2x6; the beam solver says whether it is enough) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 633.63 Td (joists.spacing_mm = 406 mm; reason: 16 in on centre, assumed) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 622.94 Td (header.plies = 2 count; reason: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 612.26 Td (      \(sip.prs610_core_thickness\)) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 601.57 Td (roof_loads.roof_dead_load_psf = 15 psf; reason: assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 590.88 Td (      gl.hdr.vl_lookup_roof_only; the roof build-up gives it) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 580.20 Td (roof_loads.deflection_limit_ratio = 240 ratio; reason: assumed: span over 240, the live-load deflection limit of Boise's header tables, research row) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 569.51 Td (      gl.hdr.vl_limits, applied to the whole load) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 558.82 Td (roof_loads.roof_bears_on = south, north compass_sides; reason: assumed: the roof's 8 ft south hangover can only be carried by members running) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 548.14 Td (      north-south across the south wall, so the roof bears on the south and north walls) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 537.45 Td () Tj ET
-0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 524.92 Td (UNMEASURED PIECES) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 514.23 Td (none) Tj ET
-0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 503.55 Td () Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 740.49 Td (set-windows-and-door: ran 3 times; moved openings_set 3, pieces_not_priced 3) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 729.81 Td (frame-loft: ran 7 times; moved joists_set 7, pieces_not_priced 7) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 719.12 Td (lay-subfloor: ran 1 times; moved deck_laid 1, pieces_not_priced 1) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 708.43 Td (install-boiler: ran 1 times; moved boiler_installed 1) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 697.75 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 685.22 Td (ASSUMPTIONS, EVERY SETTING WHOSE REASON SAYS IT IS ASSUMED) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 674.53 Td (floor.thickness_mm = 114 mm; reason: assumed: a 4-1/2 in \(114 mm\) SIP floor panel, the wall standard's thickness, research row) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 663.85 Td (      sip.prs610_panel_thickness; Jim's floor build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 653.16 Td (weather.u_value = 2.8 w_per_m2_k; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 642.47 Td (weather.solar_heat_gain_coefficient = 0.6 ratio; reason: assumed: typical double glazing, not chosen by Jim) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 631.79 Td (weather.inside_celsius = 20 celsius; reason: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 621.10 Td (weather.outside_celsius = 0 celsius; reason: assumed design day) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 610.41 Td (weather.sun_watt_per_square_metre = 500 w_per_m2; reason: assumed clear-sky peak; the solver applies it to every side) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 599.73 Td (finish.mean_reflectance = 0.5 ratio; reason: assumed mid-grey interior; Jim's wall finish gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 589.04 Td (finish.sky_angle_degrees = 65 degree; reason: assumed open sky; the site gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 578.35 Td (envelope.wall_r = 20 r_value; reason: assumed R-20 for a SIP wall \(ft2 F h per BTU\); the SIP thickness gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 567.67 Td (envelope.roof_r = 30 r_value; reason: assumed R-30; the roof build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 556.98 Td (envelope.floor_r = 20 r_value; reason: assumed R-20; the floor build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 546.29 Td (envelope.door_r = 5 r_value; reason: assumed R-5 for an insulated door, not checked against a source) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 535.61 Td (heating.boiler_efficiency = 0.7 ratio; reason: assumed 70 percent; sources run 55 to 80 percent) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 524.92 Td (loft_floor.thickness_mm = 18 mm; reason: assumed: 23/32 in \(18 mm\) combination subfloor, the IRC subfloor table's panel for a 24 in span, research) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 514.23 Td (      row bom.subfloor_irc; at 16 in joist spacing a thinner panel may do) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 503.55 Td (joists.member_depth_mm = 140 mm; reason: assumed 2x6; the beam solver says whether it is enough) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 492.86 Td (joists.spacing_mm = 406 mm; reason: 16 in on centre, assumed) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 482.17 Td (header.plies = 2 count; reason: assumed: two plies side by side, 3-1/2 in of LVL or 3 in of 2x lumber, fit inside the SIP's 3-5/8 in core) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 471.49 Td (      \(sip.prs610_core_thickness\)) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 460.80 Td (roof_loads.roof_dead_load_psf = 15 psf; reason: assumed: 15 psf, the roof dead load Boise's roof-only header look-up assumes, research row) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 450.11 Td (      gl.hdr.vl_lookup_roof_only; the roof build-up gives it) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 439.43 Td (roof_loads.deflection_limit_ratio = 240 ratio; reason: assumed: span over 240, the live-load deflection limit of Boise's header tables, research row) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 428.74 Td (      gl.hdr.vl_limits, applied to the whole load) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 418.05 Td (roof_loads.roof_bears_on = south, north compass_sides; reason: assumed: the roof's 8 ft south hangover can only be carried by members running) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 407.37 Td (      north-south across the south wall, so the roof bears on the south and north walls) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 396.68 Td () Tj ET
+0.000 0.000 0.000 rg BT /F2 9.64 Tf 39.69 384.15 Td (UNMEASURED PIECES) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 373.46 Td (none) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.22 Tf 39.69 362.78 Td () Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 110.55 Td (PROJECT) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 87.87 Td (Small house on posts, from Jim's pencil sketch) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 110.55 Td (SHEET) Tj ET
@@ -45,13 +58,13 @@ stream
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 110.55 Td (DATE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 87.87 Td (2026-10-20) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 28.35 59.53 Td (CONFIG COMMIT) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (c2a9df0) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 28.35 36.85 Td (eddda50) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 323.15 59.53 Td (ENGINE PIN) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we 02d17b7; rendered with we 073b001) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 323.15 36.85 Td (we a29552e; rendered with we 976c052) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 617.95 59.53 Td (SCALE) Tj ET
 0.000 0.000 0.000 rg BT /F1 9.64 Tf 617.95 36.85 Td (not to scale) Tj ET
 0.400 0.400 0.400 rg BT /F1 8.22 Tf 912.76 59.53 Td (SOURCE) Tj ET
-0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 36.85 Td (world-engine geometry; no line is drawn by hand) Tj ET
+0.000 0.000 0.000 rg BT /F1 9.64 Tf 912.76 36.85 Td (we geometry) Tj ET
 0.000 0.000 0.000 RG 1.98 w [] 0 d
 22.68 124.72 m 1201.89 124.72 l S
 0.000 0.000 0.000 RG 0.71 w [] 0 d
@@ -77,10 +90,10 @@ xref
 0000000058 00000 n 
 0000000115 00000 n 
 0000000258 00000 n 
-0000005185 00000 n 
-0000005282 00000 n 
+0000006891 00000 n 
+0000006988 00000 n 
 trailer
 << /Size 7 /Root 1 0 R >>
 startxref
-5384
+7090
 %%EOF
