@@ -30,12 +30,12 @@
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "2c3447e84d075352b7d52538b87331e3af63fa24a60b0804273ce0f3cec2634e"
+   "sha256": "b75201dd0a368f03a9f9a3de80a1a8a8d890b1f3d0bf466585bfad99b74d6cac"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "2e6b8590ac1b5325310679696b15f079758ec82bebfeaf5d40f28a8e39e066a0"
+   "sha256": "f758bc17611220c8d5dc19bdc004e47bf64b4088f08816b08859d67905bd2e15"
   },
   {
    "domain": "site",
@@ -291,7 +291,15 @@
    "settings": {}
   },
   "prices": {
-   "solution": "listed-sip-blanks",
+   "solution": "listed-prices",
+   "settings": {}
+  },
+  "sip_blanks": {
+   "solution": "acme-panel-blanks",
+   "settings": {}
+  },
+  "build_sequence": {
+   "solution": "sip-shell-on-posts",
    "settings": {}
   }
  },

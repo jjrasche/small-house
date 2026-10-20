@@ -66,30 +66,30 @@ PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     FLOOR: 174, "wall@1829,2438:2~1219x114": 204, "wall@1829,4762:2~1219x114": 234, "wall@2934,2552:2~114x1219": 264, "wall@2934,3771:2~114x991": 289,
                     "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 349, "wall@610,3771:2~114x991": 374, "wall@610,4762:2~1219x114": 404,
                     "roof@0,0,3658:3~3658x5486": 481, "door@610,4819": 901, "glazing@610,2495,1219": 991, "glazing@610,2495,2438": 1081,
-                    "joist@724,2552,2298:2~2210x38": 1103, "joist@724,2958,2298:2~2210x38": 1125, "joist@724,3364,2298:2~2210x38": 1147,
-                    "joist@724,3770,2298:2~2210x38": 1169, "joist@724,4176,2298:2~2210x38": 1191, "joist@724,4582,2298:2~2210x38": 1213,
-                    "joist@724,4724,2298:2~2210x38": 1235, LOFT: 1325}
+                    "joist@724,2552,2298:2~2210x38": 1112, "joist@724,2958,2298:2~2210x38": 1143, "joist@724,3364,2298:2~2210x38": 1174,
+                    "joist@724,3770,2298:2~2210x38": 1205, "joist@724,4176,2298:2~2210x38": 1236, "joist@724,4582,2298:2~2210x38": 1267,
+                    "joist@724,4724,2298:2~2210x38": 1298, LOFT: 1388}
 UNPRICED_IN_ONE_8X8 = ["glazing@610,2495,1219"]
 COST_BELOW_ARGUMENTS = ["--runs", "2", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000"]
 COST_BELOW_REFUSAL = {"rule": "sample-output-incomplete",
                       "message": "simulation.final_stocks.cost_usd has contributors whose value is unknown: " + ", ".join(UNPRICED_IN_ONE_8X8), "setting": None}
 SAMPLE_ARGUMENTS = ["--runs", "50", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000",
-                    "--below", "simulation.objective_total.labour_hours=59.699418", "--joint"]
+                    "--below", "simulation.objective_total.labour_hours=61.799397", "--joint"]
 SAMPLE_ANSWER = {"runs": 50, "seed": 1, "failed": {"count": 0, "first": None},
                  "quality": {"assumed": {"inputs": 10, "draws": 500}, "inferred": {"inputs": 4, "draws": 200}, "published": {"inputs": 9, "draws": 450}},
                  "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 50},
-                           "simulation.objective_total.labour_hours": {"value": 59.699418, "fraction": 0.02, "n_with_value": 50}},
+                           "simulation.objective_total.labour_hours": {"value": 61.799397, "fraction": 0.02, "n_with_value": 50}},
                  "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.02}}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -13487.406
-BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 14487.406, "budget_usd": 5512.594}
+BUILD_TOTALS = {"labour_hours": 61.799, "cost_usd": 14487.406, "budget_usd": 5512.594}
 INCOMPLETE_STOCKS = {}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
 TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
              "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1}
 WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
-                           "windows_and_door_hours": 14.0, "frame_loft_hours": 5.0, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
-                           "measured_hours": 56.542, "listed_usd": 8539.906, "pieces_not_priced": 0}
+                           "windows_and_door_hours": 14.0, "frame_loft_hours": 7.2, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
+                           "measured_hours": 58.742, "listed_usd": 8539.906, "pieces_not_priced": 0}
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
