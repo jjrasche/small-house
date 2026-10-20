@@ -18,10 +18,11 @@ unknown naming it);
   the budget is a target, not a limit: with a $1,000 target every task still runs and budget_usd ends negative by the overrun;
   with --sample, `we sample` on the one-8x8 window wall refuses the share of runs under the $20,000 target, as its 8x8 window has no listed
 price, and 50 runs at seed 1 answer the quality tally of the drawn figures and the share of runs under the $20,000 target and under the
-deterministic labour hours, alone and together;
+deterministic labour hours, alone and together; with --sample-full, 500 runs at seed 1 answer the same, and the median and 95th
+percentile of cost and labour hours;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
-Usage: python3 check.py [--plant domain-pin-stale] [--sample]
+Usage: python3 check.py [--plant domain-pin-stale] [--sample] [--sample-full]
 """
 import argparse
 import copy
@@ -81,6 +82,14 @@ SAMPLE_ANSWER = {"runs": 50, "seed": 1, "failed": {"count": 0, "first": None},
                  "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 50},
                            "simulation.objective_total.labour_hours": {"value": 61.799397, "fraction": 0.06, "n_with_value": 50}},
                  "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.06}}
+FULL_SAMPLE_ARGUMENTS = ["--runs", "500", *SAMPLE_ARGUMENTS[2:]]
+FULL_SAMPLE_ANSWER = {"runs": 500, "seed": 1, "failed": {"count": 0, "first": None},
+                      "quality": {"assumed": {"inputs": 9, "draws": 4500}, "inferred": {"inputs": 5, "draws": 2500}, "published": {"inputs": 15, "draws": 7500}},
+                      "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 500},
+                                "simulation.objective_total.labour_hours": {"value": 61.799397, "fraction": 0.128, "n_with_value": 500}},
+                      "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.128}}
+FULL_SAMPLE_PERCENTILES = {"simulation.final_stocks.cost_usd": {"p50": 15517.63, "p95": 18186.594},
+                           "simulation.objective_total.labour_hours": {"p50": 68.658, "p95": 79.218}}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -13487.406
 BUILD_TOTALS = {"labour_hours": 61.799, "cost_usd": 14487.406, "budget_usd": 5512.594}
@@ -189,7 +198,7 @@ def rule_statuses(launcher: Path, world: Path) -> dict:
 
 
 def rounded(values: dict) -> dict:
-    return {key: round(number, DECIMALS) for key, number in values.items()}
+    return {key: round(number, DECIMALS) if isinstance(number, float) else number for key, number in values.items()}
 
 
 def build_totals(simulated: dict) -> dict:
@@ -274,7 +283,18 @@ def simulate_lines(launcher: Path, world: Path) -> list[str]:
     ]
 
 
-def engine_lines(launcher: Path, world: Path, is_sampling: bool) -> list[str]:
+def percentiles_of(answer: dict) -> dict:
+    return {output: rounded({name: answer.get("outputs", {}).get(output, {}).get(name) for name in names}) for output, names in FULL_SAMPLE_PERCENTILES.items()}
+
+
+def full_sample_lines(answer: dict) -> list[str]:
+    return [state_line("we sample 500 runs at seed 1: failures, quality tally, share under $20,000 and under the deterministic labour hours, and both",
+                       FULL_SAMPLE_ANSWER, {key: answer.get(key) for key in FULL_SAMPLE_ANSWER}),
+            state_line("we sample 500 runs: median and 95th percentile of cost and labour hours", FULL_SAMPLE_PERCENTILES, percentiles_of(answer)),
+            state_line("we sample 500 runs: outputs marked incomplete", {}, incomplete_outputs(answer))]
+
+
+def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_fully: bool) -> list[str]:
     expand_exit, expanded = run_engine(launcher, "expand", world)
     solve_exit, solved = run_engine(launcher, "solve", world)
     return [
@@ -302,13 +322,14 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool) -> list[str]:
                    (solver_answer(solved, "header-check").get("status"), rounded(solver_values(solved, "header-check")))),
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
-    ] + layout_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else [])
+    ] + layout_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--plant", choices=sorted(PLANTS), help="run on a copy carrying this defect; the check must exit 1")
-    parser.add_argument("--sample", action="store_true", help="also run the seeded 500-run sample (about 50 minutes)")
+    parser.add_argument("--sample", action="store_true", help="also run the refusal and the seeded 50-run sample (about 11 minutes)")
+    parser.add_argument("--sample-full", action="store_true", help="also run the seeded 500-run sample (about 110 minutes)")
     options = parser.parse_args()
     engine = locate_engine()
     try:
@@ -318,7 +339,7 @@ def main() -> int:
             PLANTS[options.plant](world)
         with tempfile.TemporaryDirectory() as scratch:
             lines = pin_lines(world)
-            lines += engine_lines(launcher, write_world_copy(copy.deepcopy(world), Path(scratch)), options.sample)
+            lines += engine_lines(launcher, write_world_copy(copy.deepcopy(world), Path(scratch)), options.sample, options.sample_full)
     except Refused as refusal:
         print(f"refused: {refusal}")
         return EXIT_REFUSED
