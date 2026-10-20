@@ -20,9 +20,10 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   deflection, the gravity load path and the build tasks' hours at published rates, and `we simulate` answers the minute each piece is placed,
   the labour hours, cost, budget left and skills, each figure compared with the value pinned in check.py. `<n> of <m> small house checks agree`, exit 1
   on any difference; `--plant domain-pin-stale` must exit 1.
-- **Gravity load path** (`binds`: house parts, panel_pieces, lumber_pieces, occupied_floors, ground, openings): self-weight is volume times the
-  catalog density, the occupancy load is the live load on each floor, and a piece's force splits over its contacts by contact area (an
-  approximation). A piece the engine cannot measure, or one an unmeasured piece may rest on or be cut from, reports `{unknown: why}`.
+- **Gravity load path** (`binds`: house parts, a pieces role per catalog stock (panel, roof, lumber, deck, glass, door; ground for the posts),
+  occupied_floors, openings, hung_pieces): self-weight is volume times density, a sheet or glass by its face, a door slab each; occupancy is
+  the live load on each floor; a force splits over the contacts under it by area (an approximation), an opening hangs in the walls it is cut
+  from, a ledger on the wall faces it touches. Every piece is known; a piece the engine cannot measure would report `{unknown: why}`.
 - **Headers** (`header`, `roof_loads`, `binds.header_check`): `header-check` loads each opening's header with the roof (dead load plus
   ground snow over the roof's reaction width on that wall) when nothing is above it, and the loft joists landing at its head; it reports
   stress, deflection and utilisation per opening, and the rule `headers-within-capacity` names any over 1. The window-wall options are
@@ -33,18 +34,21 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   set the floor, wall and roof panels, cut and fill the openings, frame and deck the loft and install the boiler. Each run works one piece,
   asks the engine for that piece's hours (area over the rate, or the tasks domain's hours each), and places it on the step it finishes.
   Hours and prices are tasks-domain spec figures marked published, inferred or assumed; their ranges wait on the engine drawing spec figures.
-  `stocks.budget_usd` is Jim's $20,000 limit: a task whose cost would breach it waits.
+  `stocks.budget_usd` is Jim's $20,000 target, not a limit (Jim, 2026-10-20: "soft idea limits"): no task waits on it, and its final
+  stock is the headroom, or below zero the overrun. Ranking does not score by it yet: the optimizing weight names are fixed in the engine.
 - **Assumed, not Jim's:** weather and finish settings carry reasons beginning "assumed"; the solver applies one sun figure to every side. The
   people (`jim` a beginner at SIP setting, `sip_lead` advanced), `people_rules.learn_rate` and the `optimizing` weights are assumed for Jim to
-  overturn; `learner_rate` is inferred from the deck guide's levels.
+  overturn; `learner_rate` is inferred from the deck guide's levels. The glass is the one banked unit (1 in IGU), the door the heaviest
+  banked slab (Therma-Tru, 120 lb, 36 by 80 in, in 4 by 8 ft framing), and the ledgers 2x6, as the joists.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).
 - **Sizes from stock:** the posts take the catalog `post_stock` (6x6 UC4B, 140 mm) and the roof the catalog `roof_panel` (8-1/4 in SIP,
-  on the wall tops) wherever their own setting is null; the loft deck is 23/32 in subfloor on joists whose tops meet it at 8 ft. Every piece
-  is measured; the load path still cannot finish (below).
-- **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); SPF, LVL and post densities
-  are not banked, so no joist, header or post has a weight; the roof is in no load-path role, the joists rest on nothing (their ends sit
-  inside the walls), and no window or door has a material; the loft's own heat zone is not modelled; the cost is the panel blanks and posts only (no window, door,
+  on the wall tops) wherever their own setting is null; the posts stand inside the floor's corners; the loft deck (23/32 in AdvanTech) fills
+  the inside of the walls at 8 ft, on joists running east-west onto ledgers on the solid west and east walls (the south is glass, the north
+  door rises to 8 ft). Every piece carries its catalog material and its layers (SIPs OSB, EPS, OSB; solids one layer).
+- **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); openings carry a material
+  but no layers; every piece's `material_source` is null (the engine takes it only from a system's own spec); the load path carries no roof
+  snow, and the ledgers have no build task; the loft's own heat zone is not modelled; the cost is the panel blanks and posts only (no window, door,
   joist or deck price is in the tasks domain).
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.

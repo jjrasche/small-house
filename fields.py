@@ -1,4 +1,4 @@
-"""Print every field the engine returns for a world config: what `we expand` places, what each solver in `we solve` says, each rule `we evaluate`
+"""Print every field the engine returns for a world config: what `we expand` places, what `we geometry` says each piece is made of, what each solver in `we solve` says, each rule `we evaluate`
 judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end, each task's runs).
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
@@ -25,6 +25,12 @@ def print_placed(expansion: dict) -> None:
             fields = ", ".join(f"{name}={value}" for name, value in placed.get("fields", {}).items())
             print(f"{kind[:-1]} {placed['id']} [{placed['system']}] elevation_mm={placed.get('elevation_mm', 0)} {fields}")
     print(f"supplied {expansion.get('supplied')}")
+
+
+def print_materials(geometry: dict) -> None:
+    for piece in geometry.get("pieces", []):
+        layers = ", ".join(f"{layer['name']} {layer['material']} {layer['thickness_mm']} mm ({layer['source']})" for layer in piece.get("layers") or [])
+        print(f"geometry {piece['id']} material={piece['material']} material_source={piece['material_source']} layers=[{layers}]")
 
 
 def print_solvers(solved: dict) -> None:
@@ -62,6 +68,7 @@ def main() -> int:
         print("refused:", expansion["refused"])
         return 1
     print_placed(expansion)
+    print_materials(run_engine("geometry", config))
     print_solvers(run_engine("solve", config))
     for rule in run_engine("evaluate", config)["rules"]:
         print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")

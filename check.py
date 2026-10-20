@@ -3,14 +3,16 @@
 world.json is Jim's small house: systems that pin the physics, construction, light, thermal, structural and catalog domains by the sha256
 of their bytes (the jars and the physics file are kept in domains/). The check runs the engine on it:
   the pins match the bytes on disk;
-  `we expand` places 22 objects (the walls as 4 ft SIP panels) and 3 openings and carries the sketch's 630 board feet;
-  `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection and the
-gravity load path (which pieces have a known self-weight, occupancy load and force, and why the rest are unknown), the hours and
-blank prices of the measured build tasks at their published rates, and the header over each opening (its load and utilisation, and why
-its own weight is unknown);
+  `we expand` places 24 objects (the walls as 4 ft SIP panels, the loft's joists and the ledgers under them) and 3 openings and carries the
+sketch's 630 board feet;
+  `we geometry` gives every piece a material, and every piece but the three openings its layers;
+  `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection, the
+gravity load path (every piece's self-weight and force, and the reaction under each of the four posts), the hours and blank prices of the
+measured build tasks at their published rates, and the header over each opening (its load, utilisation and own weight);
   `we rank` puts the window-wall options on first cost and build hours, both gaps;
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left, the skill each person ends with,
 how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
+  the budget is a target, not a limit: with a $1,000 target every task still runs and budget_usd ends negative by the overrun;
   a pin changed by one digit is refused by the engine (plant domain-pin-stale).
 One line a check; '<n> of <m> small house checks agree'; exit 1 on any difference, 2 when the engine cannot be used.
 Usage: python3 check.py [--plant domain-pin-stale]
@@ -29,7 +31,7 @@ from pathlib import Path
 WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
 EXIT_REFUSED = 2
-OBJECTS_PLACED = 22
+OBJECTS_PLACED = 24
 WINDOWS_PLACED = 3
 BOARD_FEET = 630
 DAYLIGHT_FACTOR_PERCENT = 7.365
@@ -39,25 +41,31 @@ DESIGN_DAY_LOSS_BTU_PER_HOUR = 2076.43
 DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6084.371
 SEASON = {"season_loss_btu": 9834109.401, "season_solar_btu": 6159297.136, "solar_share_percent": 62.632, "fuel_units_needed": 0.262}
 DECIMALS = 3
-LOAD_PATH_COUNTS = {"pieces": 25, "pieces_weight_known": 9, "pieces_force_known": 0}
+LOAD_PATH_COUNTS = {"pieces": 27, "pieces_weight_known": 27, "pieces_force_known": 27, "ground_reaction_n": 28007.326}
 FLOOR = "floor@610,2438,-114:1~2438x2438"
-LOFT = "floor@610,2438,2438:1~2438x2438"
-JOIST = "joist@610,2438,2298:1~38x2438"
-POST = "post@610,2438,-1219~140x140"
+LOFT = "floor@724,2552,2438:2~2210x2210"
+JOIST = "joist@724,2552,2298:2~2210x38"
+LEDGER = "ledger@724,2552,2158:2~38x2210"
+POSTS = ("post@610,2438,-1219~140x140", "post@2908,2438,-1219~140x140", "post@610,4736,-1219~140x140", "post@2908,4736,-1219~140x140")
+POST_REACTION_N = 7001.831
 SOUTH_PANELS = ("wall@610,2438:2~1219x114", "wall@1829,2438:2~1219x114")
 NORTH_PANELS = ("wall@610,4762:2~1219x114", "wall@1829,4762:2~1219x114")
 WEST_PANELS = ("wall@610,2552:2~114x1219", "wall@610,3771:2~114x991")
-KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 955.827, f"{FLOOR} applied_n": 8537.784, f"{LOFT} applied_n": 8537.784,
-                       f"{SOUTH_PANELS[0]} weight_n": 239.153, f"{SOUTH_PANELS[1]} weight_n": 239.153,
-                       f"{NORTH_PANELS[0]} weight_n": 239.153, f"{NORTH_PANELS[1]} weight_n": 717.066,
-                       f"{WEST_PANELS[0]} weight_n": 717.066, f"{WEST_PANELS[1]} weight_n": 582.947}
-PLACED_AT_MINUTE = {"post@3048,2438,-1219~140x140": 29, "post@3048,4876,-1219~140x140": 59, "post@610,2438,-1219~140x140": 89, "post@610,4876,-1219~140x140": 119,
+KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 956.75, f"{FLOOR} applied_n": 8537.784, f"{LOFT} weight_n": 555.398, f"{LOFT} applied_n": 7015.559,
+                       f"{SOUTH_PANELS[0]} weight_n": 239.384, f"{SOUTH_PANELS[1]} weight_n": 239.384,
+                       f"{NORTH_PANELS[0]} weight_n": 239.384, f"{NORTH_PANELS[1]} weight_n": 717.758,
+                       f"{WEST_PANELS[0]} weight_n": 717.758, f"{WEST_PANELS[1]} weight_n": 583.51,
+                       f"{JOIST} weight_n": 52.637, f"{JOIST} force_n": 1134.202, f"{LEDGER} force_n": 4022.345,
+                       "roof@0,0,3658:3~3658x5486 weight_n": 3546.574, "door@610,4819 weight_n": 533.787, "glazing@610,2495,1219 weight_n": 924.927}
+PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     FLOOR: 174, "wall@1829,2438:2~1219x114": 204, "wall@1829,4762:2~1219x114": 234, "wall@2934,2552:2~114x1219": 264, "wall@2934,3771:2~114x991": 289,
                     "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 349, "wall@610,3771:2~114x991": 374, "wall@610,4762:2~1219x114": 404,
                     "roof@0,0,3658:3~3658x5486": 481, "door@610,4819": 901, "glazing@610,2495,1219": 991, "glazing@610,2495,2438": 1081,
-                    "joist@1016,2438,2298:1~38x2438": 1103, "joist@1422,2438,2298:1~38x2438": 1125, "joist@1828,2438,2298:1~38x2438": 1147,
-                    "joist@2234,2438,2298:1~38x2438": 1169, "joist@2640,2438,2298:1~38x2438": 1191, "joist@3010,2438,2298:1~38x2438": 1213,
-                    "joist@610,2438,2298:1~38x2438": 1235, LOFT: 1325}
+                    "joist@724,2552,2298:2~2210x38": 1103, "joist@724,2958,2298:2~2210x38": 1125, "joist@724,3364,2298:2~2210x38": 1147,
+                    "joist@724,3770,2298:2~2210x38": 1169, "joist@724,4176,2298:2~2210x38": 1191, "joist@724,4582,2298:2~2210x38": 1213,
+                    "joist@724,4724,2298:2~2210x38": 1235, LOFT: 1325}
+SMALL_TARGET_USD = 1000
+OVERRUN_BUDGET_USD = -5445.356
 BUILD_TOTALS = {"labour_hours": 59.699, "cost_usd": 6445.356, "budget_usd": 13554.644, "pieces_not_priced": 11.0}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
 TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
@@ -71,14 +79,10 @@ NORTH_DOOR = "door@610,4819"
 HEADER_COUNTS = {"headers": 3, "headers_over_one": 0, "utilisation_max": 0.611}
 HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation": 0.0, f"{UPPER_BAND} load_n_per_mm": 17.598,
                   f"{UPPER_BAND} utilisation": 0.611, f"{NORTH_DOOR} load_n_per_mm": 2.102, f"{NORTH_DOOR} utilisation": 0.036,
-                  f"{LOWER_BAND} unsupported_load_n_per_mm": 2.335, f"{NORTH_DOOR} unsupported_load_n_per_mm": 2.335}
-HEADER_WEIGHT_UNKNOWN = {f"{UPPER_BAND} self_weight_n": "header-lvl-11-7-8 carries no density_lb_per_ft3 (gl.prop.lvl_density_unpublished)"}
+                  f"{LOWER_BAND} unsupported_load_n_per_mm": None, f"{NORTH_DOOR} unsupported_load_n_per_mm": None,
+                  f"{UPPER_BAND} self_weight_n": 434.075, f"{NORTH_DOOR} self_weight_n": 217.038}
 WINDOW_WALL_RANKS = {"four-4x4": (1, []), "one-8x8": (2, ["first_cost_usd"]), "two-stacked-4x8": (3, ["first_cost_usd"])}
-UNKNOWN_PIECE_REASONS = {
-    f"{JOIST} weight_n": "spf-no2 density not banked: the catalog solution carries no density_lb_per_ft3",
-    f"{POST} reaction_n": "roof@0,0,3658:3~3658x5486 may rest on it: it is in none of the roles panel_pieces, lumber_pieces, occupied_floors, ground and openings, so the load path is given no size or material for it",
-    f"{LOFT} weight_n": "no material is bound to its system",
-}
+UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]
 
 
 class Refused(Exception):
@@ -159,10 +163,6 @@ def rounded_figures(figures: dict) -> dict:
     return {name: round(value, DECIMALS) if isinstance(value, float) else value for name, value in figures.items()}
 
 
-def unknown_reasons(figures: dict) -> dict:
-    return {name: value.get("unknown") if isinstance(value, dict) else value for name, value in figures.items()}
-
-
 def rule_statuses(launcher: Path, world: Path) -> dict:
     _, evaluated = run_engine(launcher, "evaluate", world)
     return {rule["id"]: rule["status"] for rule in evaluated.get("rules", [])}
@@ -191,6 +191,26 @@ def pieces_placed_by_no_flow(simulated: dict) -> list:
                   if not any(piece in flow.get("places", []) for flow in steps[step].get("flows", {}).values()))
 
 
+def geometry_lines(launcher: Path, world: Path) -> list[str]:
+    geometry_exit, geometry = run_engine(launcher, "geometry", world)
+    pieces = geometry.get("pieces", [])
+    return [
+        state_line("we geometry exit and pieces with no material", (0, []), (geometry_exit, sorted(p["id"] for p in pieces if not p.get("material")))),
+        state_line("we geometry pieces with no layers (the openings: no banked build-up across the wall)", UNLAYERED_PIECES, sorted(p["id"] for p in pieces if not p.get("layers"))),
+    ]
+
+
+def target_lines(launcher: Path, world: Path) -> list[str]:
+    small_target = json.loads(world.read_text(encoding="utf-8"))
+    small_target["stocks"]["budget_usd"] = SMALL_TARGET_USD
+    variant = world.with_name("world.small-target.json")
+    variant.write_text(json.dumps(small_target), encoding="utf-8")
+    _, simulated = run_engine(launcher, "simulate", variant)
+    return [state_line(f"we simulate with a ${SMALL_TARGET_USD} target: every task still runs, and budget_usd goes below zero by the overrun",
+                       (TASK_RUNS, OVERRUN_BUDGET_USD),
+                       ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, round(simulated.get("final_stocks", {}).get("budget_usd", 0.0), DECIMALS)))]
+
+
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
     simulate_exit, simulated = run_engine(launcher, "simulate", world)
     totals = simulated.get("totals", {})
@@ -216,26 +236,24 @@ def engine_lines(launcher: Path, world: Path) -> list[str]:
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
         state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass"}, rule_statuses(launcher, world)),
-        state_line("we solve joist deflection and stress", {"deflection_mm": 4.264, "span_over_deflection": 571.697, "bending_stress_mpa": 4.654}, rounded(solver_values(solved, "joist-deflection"))),
+        state_line("we solve joist deflection and stress", {"deflection_mm": 2.879, "span_over_deflection": 767.521, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
         state_line("we solve heating season BTU and trees", SEASON, rounded(solver_values(solved, "heating-season"))),
-        state_line("we solve gravity load path status and piece counts", ("unknown", LOAD_PATH_COUNTS),
-                   (solver_answer(solved, "gravity-load-path").get("status"), solver_values(solved, "gravity-load-path"))),
-        state_line("we solve gravity load path newtons on the floor, the loft and the wall panels less their openings", KNOWN_PIECE_NEWTONS,
-                   rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
-        state_line("we solve gravity load path pieces unknown and why", UNKNOWN_PIECE_REASONS,
-                   unknown_reasons(piece_figures(solved, "gravity-load-path", list(UNKNOWN_PIECE_REASONS)))),
+        state_line("we solve gravity load path status, piece counts and the ground reaction", ("known", LOAD_PATH_COUNTS),
+                   (solver_answer(solved, "gravity-load-path").get("status"), rounded(solver_values(solved, "gravity-load-path")))),
+        state_line("we solve gravity load path newtons on the floor, the loft, the wall panels less their openings, a joist, a ledger, the roof, the door and a window",
+                   KNOWN_PIECE_NEWTONS, rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
+        state_line("we solve gravity load path reaction under each of the four posts", {f"{post} reaction_n": POST_REACTION_N for post in POSTS},
+                   rounded_figures(piece_figures(solved, "gravity-load-path", [f"{post} reaction_n" for post in POSTS]))),
         state_line("we solve build task hours at published rates and the panel blanks' price", WORK_AT_PUBLISHED_RATES,
                    rounded_figures({name: value for name, value in solver_values(solved, "work-at-published-rates").items() if name in WORK_AT_PUBLISHED_RATES})),
         state_line("we solve header check counts and the largest utilisation", ("known", HEADER_COUNTS),
                    (solver_answer(solved, "header-check").get("status"), rounded(solver_values(solved, "header-check")))),
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
-        state_line("we solve header self-weight unknown and why", HEADER_WEIGHT_UNKNOWN,
-                   unknown_reasons(piece_figures(solved, "header-check", list(HEADER_WEIGHT_UNKNOWN)))),
         rank_line(launcher, world),
-    ] + simulate_lines(launcher, world)
+    ] + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world)
 
 
 def main() -> int:

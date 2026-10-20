@@ -115,3 +115,12 @@ three engine changes (types in a domain, fields overriding a domain default, bea
 
 Engine `6a284cf` lets a config's supplied figure use a unit its used domain defines. `supplied.board_feet` is back in `world.json` and `we expand`
 prints it under `supplied`.
+
+## Open, 2026-10-20: material_source from an expander, and a budget weight
+
+- **A piece's `material_source` from the expander that names its material.** `pieceRow` (`ContactsInput.kt`) sets `material_source` only
+  from the system's own solution spec, so every piece of this house, whose material the construction and structural expanders copy from a
+  catalog role, reports `material_source: null` though the expander knows the row (`wt.syn_post_6x6`, `lum.nds.fv_spf_no2`). Case: `we geometry
+  world.json` on this world; want each piece's `material_source` to be the row the expander gave beside `material`.
+- **Score a run by a stock against its target.** `stocks.budget_usd` is now a target with no floor; `optimizing.weights` takes only the names
+  fixed at `Crew.kt:23`, so no weight can score the overrun. Case: this world with `stocks.budget_usd` 1000 (check.py's small-target run).

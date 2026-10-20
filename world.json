@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "6f77360330b66bdc409f8aede31c7b4486ea8393f4840aa87829ff8e5f50878b"
+   "sha256": "8edeb5728b0609834dd6210ce5de39880ece477faa28ae0f3c283c397946e362"
   },
   {
    "domain": "light",
@@ -25,17 +25,17 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "60737804553bc112d1a0c9643fa4c55e40a518b7fe4eccf86008ac1c0bdd1303"
+   "sha256": "e71c1447968d78666ddd4f135fc1c6ad5acf287db6bf16e9f8d004dd0e02cbd1"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "e6572bbdd9d07f55a0e0a94586ec3e2ef1c10fa18ee2a2c2d7e276204710a7d9"
+   "sha256": "bf8941c2682be83ac900c15eaf85770a81fa866ebff68d99d035a886a4e23682"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "b2ad2ba732671ece002616c44368b0ea0a7a15180c205cde78d48ba460cecb6c"
+   "sha256": "6f2a28b1ef569de46aa11f0a679cdd8e54df47a631802315fd6e80ab1caeefd9"
   }
  ],
  "systems": {
@@ -204,20 +204,15 @@
    }
   },
   "loft_floor": {
-   "solution": "platform",
-   "at": [
-    610,
-    610
-   ],
+   "solution": "deck-inside-walls",
+   "against": "walls",
    "settings": {
-    "width_mm": 2438,
-    "depth_mm": 2438,
-    "thickness_mm": 18,
-    "elevation_mm": 2438
+    "elevation_mm": 2438,
+    "thickness_mm": null
    },
    "reasons": {
-    "thickness_mm": "assumed: 23/32 in (18 mm) combination subfloor, the IRC subfloor table's panel for a 24 in span, research row bom.subfloor_irc; at 16 in joist spacing a thinner panel may do",
-    "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor"
+    "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor",
+    "thickness_mm": "the deck sheet gives it: deck_panel is the catalog's 23/32 in AdvanTech subfloor (wd.advantech_23_32_commerce), the IRC subfloor table's panel for a 24 in span (bom.subfloor_irc); a number here overrides it"
    }
   },
   "joists": {
@@ -228,14 +223,31 @@
     "member_depth_mm": 140,
     "spacing_mm": 406,
     "modulus_mpa": 9653,
-    "elevation_mm": 2298
+    "elevation_mm": 2298,
+    "bears_on": [
+     "west",
+     "east"
+    ]
    },
    "reasons": {
     "member_width_mm": "a 2x6 is 1.5 by 5.5 in actual, 38 by 140 mm",
     "member_depth_mm": "assumed 2x6; the beam solver says whether it is enough",
     "spacing_mm": "16 in on centre, assumed",
     "modulus_mpa": "E = 1.4 million psi for No.2 SPF, NDS 2018 Supplement Table 4A, research row lum.nds.fv_spf_no2 (visual-read, not binding); 1.4e6 psi x 0.006895 = 9653 MPa",
-    "elevation_mm": "under the loft deck: the 140 mm joists' tops meet the deck's underside at 8 ft (2438 mm)"
+    "elevation_mm": "under the loft deck: the 140 mm joists' tops meet the deck's underside at 8 ft (2438 mm)",
+    "bears_on": "the south wall is glass from 4 ft up and the north wall's door rises to 8 ft, so the joists can only land on the solid west and east walls"
+   }
+  },
+  "ledgers": {
+   "solution": "ledgers-under-joists",
+   "against": "loft_floor",
+   "settings": {
+    "member_width_mm": 38,
+    "member_depth_mm": 140
+   },
+   "reasons": {
+    "member_width_mm": "assumed: a 2x ledger, 1-1/2 in dressed (wt.dressed_sizes), fastened to the wall's inside face; the fastening is not checked",
+    "member_depth_mm": "assumed: a 2x6 ledger, as deep as the joists it carries, 5-1/2 in dressed (wt.dressed_sizes)"
    }
   },
   "loads": {
@@ -270,6 +282,7 @@
     "roof",
     "loft_floor",
     "joists",
+    "ledgers",
     "glazing",
     "doors"
    ]
@@ -317,6 +330,18 @@
    "solution": "premier-sip-8-1-4",
    "settings": {}
   },
+  "deck_panel": {
+   "solution": "advantech-23-32",
+   "settings": {}
+  },
+  "window_glass": {
+   "solution": "igu-1in-two-quarter-lites",
+   "settings": {}
+  },
+  "door_slab": {
+   "solution": "door-thermatru-smooth-star",
+   "settings": {}
+  },
   "labour": {
    "solution": "published-rates",
    "settings": {}
@@ -362,7 +387,8 @@
    "walls"
   ],
   "lumber_pieces": [
-   "joists"
+   "joists",
+   "ledgers"
   ],
   "occupied_floors": [
    "floor",
@@ -371,7 +397,12 @@
   "ground": "foundation",
   "header_check": {
    "solver": "header-check"
-  }
+  },
+  "roof_pieces": "roof",
+  "deck_pieces": "loft_floor",
+  "glass_pieces": "glazing",
+  "door_pieces": "doors",
+  "hung_pieces": "ledgers"
  },
  "clock": {
   "step": 1,
