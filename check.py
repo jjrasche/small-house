@@ -77,10 +77,10 @@ COST_BELOW_REFUSAL = {"rule": "sample-output-incomplete",
 SAMPLE_ARGUMENTS = ["--runs", "50", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000",
                     "--below", "simulation.objective_total.labour_hours=61.799397", "--joint"]
 SAMPLE_ANSWER = {"runs": 50, "seed": 1, "failed": {"count": 0, "first": None},
-                 "quality": {"assumed": {"inputs": 10, "draws": 500}, "inferred": {"inputs": 4, "draws": 200}, "published": {"inputs": 9, "draws": 450}},
+                 "quality": {"assumed": {"inputs": 9, "draws": 450}, "inferred": {"inputs": 5, "draws": 250}, "published": {"inputs": 15, "draws": 750}},
                  "below": {"simulation.final_stocks.cost_usd": {"value": 20000.0, "fraction": 1.0, "n_with_value": 50},
-                           "simulation.objective_total.labour_hours": {"value": 61.799397, "fraction": 0.02, "n_with_value": 50}},
-                 "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.02}}
+                           "simulation.objective_total.labour_hours": {"value": 61.799397, "fraction": 0.06, "n_with_value": 50}},
+                 "joint": {"paths": ["simulation.final_stocks.cost_usd", "simulation.objective_total.labour_hours"], "fraction": 0.06}}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -13487.406
 BUILD_TOTALS = {"labour_hours": 61.799, "cost_usd": 14487.406, "budget_usd": 5512.594}
