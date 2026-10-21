@@ -6,6 +6,7 @@ Nothing here computes anything; every line is a value the engine printed.
 """
 import json
 import os
+import tempfile
 import subprocess
 import sys
 from pathlib import Path
@@ -13,6 +14,7 @@ from pathlib import Path
 WORLD = Path(__file__).resolve().parent
 ENGINE = Path(os.environ.get("WORLD_ENGINE_DIR") or WORLD.parent / "world-engine").resolve()
 RANKED_SYSTEMS = ("door_slab",)
+WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
 
 
 def run_engine(command: str, config: Path, *flags: str) -> dict:
@@ -74,6 +76,19 @@ def print_ranking(ranked: dict) -> None:
         print(f"rank {ranked['system']} {entry['rank']} {entry['solution']}{' (chosen)' if entry['chosen'] else ''} settled={entry['settled']} {figures}")
 
 
+def print_layouts(config: Path) -> None:
+    world = json.loads(config.read_text(encoding="utf-8"))
+    for name, (rows, columns) in WINDOW_WALL_LAYOUTS.items():
+        world["systems"]["glazing"]["settings"].update({"rows": rows, "columns": columns})
+        with tempfile.NamedTemporaryFile("w", suffix=".json", dir=config.parent, delete=False) as variant:
+            json.dump(world, variant)
+        simulated = run_engine("simulate", Path(variant.name))
+        Path(variant.name).unlink()
+        incomplete = simulated.get("final_stocks_incomplete", {}).get("cost_usd", [])
+        print(f"layout glazing rows={rows} columns={columns} ({name}) cost_usd={simulated['final_stocks'].get('cost_usd')} unknown=[{', '.join(incomplete)}] "
+              f"labour_hours={simulated['objective_total'].get('labour_hours')}")
+
+
 def main() -> int:
     config = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else WORLD / "world.json"
     expansion = run_engine("expand", config)
@@ -87,6 +102,7 @@ def main() -> int:
         print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")
     if "clock" in json.loads(config.read_text(encoding="utf-8")):
         print_simulation(run_engine("simulate", config))
+        print_layouts(config)
     for system in RANKED_SYSTEMS:
         print_ranking(run_engine("rank", config, "--system", system))
     return 0

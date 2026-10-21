@@ -52,7 +52,7 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
 - **Named gaps:** a null setting with its reason for what the sketch does not give (post height above grade); openings carry a material
   but no layers; every piece's `material_source` is null (the engine takes it only from a system's own spec); the load path carries no roof
   snow, and the ledgers have no build task; the loft's own heat zone is not modelled; every placed piece and the boiler carry a listed price range
-  (bom-prices rows; the window bands are Fixr installed costs, so their labour may also be in the hours); a piece with no listed price moves
+  (bom-prices rows; the 4x4 window is the Walker Home Depot's $468 listing, the 4x8 a range assumed from ReStore's $81 to the top of Fixr's installed band, $886); a piece with no listed price moves
   cost and budget by an unknown naming it, and a sample refuses odds on an incomplete stock; ledgers, screws and sealant are not priced.
 - **Jim's rulings to hold:** posts are their own system, not the floor's; nothing he reads carries tiles, col/row or a footprint in tiles,
   positions and sizes are millimetres; light, sound and thermodynamics are their own domains. The request list is `requests/world-engine.md`.

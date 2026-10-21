@@ -35,7 +35,7 @@
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "22dd87b632203e7a75d5dfbee07c8f23702517a0ea95eb34e6844f484c0f7c99"
+   "sha256": "2349f6ac08e3d104b9adab521803c971692977ccb0462bdd33249223e4d2063d"
   },
   {
    "domain": "site",
