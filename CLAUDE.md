@@ -43,6 +43,11 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   people (`jim` a beginner at SIP setting, `sip_lead` advanced), `people_rules.learn_rate` and the `optimizing` weights are assumed for Jim to
   overturn; `learner_rate` is inferred from the deck guide's levels. The glass is the one banked unit (1 in IGU), the door the heaviest
   banked slab (Therma-Tru, 120 lb, 36 by 80 in, in 4 by 8 ft framing), and the ledgers 2x6, as the joists.
+- **Container enclosure** (`container_stock`, `spray_foam`, `pier_stock`, `binds.lined_pieces`): fields.py and check.py `--use` the
+  container floor, walls and roof, piers at the frost depth and the `container-on-piers` sequence (haul, cut, weld frames, foam), never
+  edited into world.json, which keeps the SIP. Its 8.5 ft (9.5 ft high-cube) height is under the 12 ft walls, so the upper window and the
+  8 ft loft do not fit it; the zoning rule `container-as-dwelling` reports, it blocks nothing; the R per face (thermal
+  `envelope-r-by-face`) waits on the engine request of 2026-10-21, as thermal main's greenhouse flows refuse this world.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).
 - **Sizes from stock:** the posts take the catalog `post_stock` (6x6 UC4B, 140 mm) and the roof the catalog `roof_panel` (8-1/4 in SIP,

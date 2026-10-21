@@ -10,10 +10,13 @@ sketch's 630 board feet;
 gravity load path (every piece's self-weight and force, and the reaction under each of the four posts), the hours and blank prices of the
 measured build tasks at their published rates, the cost of everything bought over the main floor and over the main and loft floors, and the header over each opening (its load, utilisation and own weight);
   `we rank` puts the door options on cost and design-day loss (the steel prehung's simulated cost and loss, the slab-only ones unpriced);
+  `we simulate` and `we evaluate` with `--use` on the SIP enclosure and on a used 20 ft standard and a new 20 ft high-cube shipping container
+(its floor, walls and roof, piers to the frost depth, and the container build sequence) answer each one's cost, labour hours, the cost of
+cutting and steel-framing its openings, and the container-as-dwelling zoning rule (pass for the SIP, fail where the site bars a container);
   `we simulate` on each window-wall layout of the opening grid (two stacked 4x8, one 8x8, four 4x4) answers its cost, what the cost is
 missing, and its labour hours;
   `we simulate` answers the minute each piece is placed, the labour hours, the cost and the budget left and what they are missing, the skill each person ends with,
-how many times each task runs (every task runs), and that each placed piece is in the places of a flow at the step it is placed;
+how many times each task runs (every task of the chosen sequence runs, the container's tasks none), and that each placed piece is in the places of a flow at the step it is placed;
   every piece is priced from a listed range, so no stock ends incomplete (a piece with no price would move cost_usd and budget_usd by an
 unknown naming it);
   the budget is a target, not a limit: with a $1,000 target every task still runs and budget_usd ends negative by the overrun;
@@ -39,6 +42,7 @@ from pathlib import Path
 WORLD = Path(__file__).resolve().parent
 WORLD_FILE = "world.json"
 EXIT_REFUSED = 2
+ENGINE_ENV = {**os.environ, "JAVA_TOOL_OPTIONS": os.environ.get("JAVA_TOOL_OPTIONS", "-XX:MaxRAMPercentage=75")}
 OBJECTS_PLACED = 24
 WINDOWS_PLACED = 3
 BOARD_FEET = 630
@@ -97,7 +101,8 @@ BUILD_TOTALS = {"labour_hours": 61.799, "cost_usd": 14047.281, "budget_usd": 595
 INCOMPLETE_STOCKS = {}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
 TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
-             "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1}
+             "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1, "pour-piers": 0, "set-container": 0, "cut-container-openings": 0,
+             "frame-container-openings": 0, "spray-foam": 0}
 WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
                            "windows_and_door_hours": 14.0, "frame_loft_hours": 7.2, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
                            "measured_hours": 58.742, "listed_usd": 8099.781, "pieces_not_priced": 0,
@@ -116,6 +121,13 @@ DOOR_RANKS = {"door-steel-6-panel-prehung-walker": (1, 13722.506, 2332.287, []),
 WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
 WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14047.281, [], 61.799), "one-8x8": (13080.281, ["glazing@610,2495,1219"], 56.799),
                         "four-4x4": (14952.281, [], 71.799)}
+CONTAINER_USES = ["floor=container-floor", "walls=container-walls", "roof=container-roof", "foundation=piers-at-corners", "build_sequence=container-on-piers"]
+ENCLOSURE_USES = {"sip": [], "container": CONTAINER_USES, "container-high-cube": CONTAINER_USES + ["container_stock=container-20-high-cube-new"]}
+OPENING_FRAMING_FLOWS = {"sip": ["cut-openings"], "container": ["cut-container-openings", "frame-container-openings"],
+                         "container-high-cube": ["cut-container-openings", "frame-container-openings"]}
+ENCLOSURE_OUTCOMES = {"sip": (14047.281, [], 61.799, {"cut-openings": None}, "pass"),
+                      "container": (21569.413, [], 100.999, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail"),
+                      "container-high-cube": (24828.571, [], 101.532, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail")}
 UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]
 
 
@@ -138,8 +150,8 @@ def require_engine(engine: Path) -> Path:
     return launcher
 
 
-def run_engine(launcher: Path, command: str, world: Path) -> tuple[int, dict]:
-    finished = subprocess.run([str(launcher), command, str(world)], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+def run_engine(launcher: Path, command: str, world: Path, *flags: str) -> tuple[int, dict]:
+    finished = subprocess.run([str(launcher), command, str(world), *flags], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8", env=ENGINE_ENV)
     if not finished.stdout.strip():
         raise Refused(f"`we {command}` answered nothing (exit {finished.returncode}): {finished.stderr.strip()}")
     return finished.returncode, json.loads(finished.stdout)
@@ -212,7 +224,7 @@ def build_totals(simulated: dict) -> dict:
 
 
 def door_rank_line(launcher: Path, world: Path) -> str:
-    finished = subprocess.run([str(launcher), "rank", str(world), "--system", "door_slab"], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+    finished = subprocess.run([str(launcher), "rank", str(world), "--system", "door_slab"], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8", env=ENGINE_ENV)
     ranked = json.loads(finished.stdout).get("ranked", []) if finished.stdout.strip() else []
     observed = {entry["solution"]: (entry["rank"], *rounded_figures({name: figure["value"] for name, figure in entry["figures"].items()}).values(),
                                     entry["figures"]["final_stocks.cost_usd"].get("incomplete", [])) for entry in ranked}
@@ -236,6 +248,20 @@ def layout_outcome(simulated: dict) -> tuple:
 def layout_lines(launcher: Path, world: Path) -> list[str]:
     outcomes = {name: layout_outcome(run_engine(launcher, "simulate", layout_variant(world, name))[1]) for name in WINDOW_WALL_LAYOUTS}
     return [state_line("we simulate each window-wall layout: cost, the pieces it has no price for, labour hours", WINDOW_WALL_OUTCOMES, outcomes)]
+
+
+def enclosure_outcome(launcher: Path, world: Path, enclosure: str) -> tuple:
+    flags = [flag for use in ENCLOSURE_USES[enclosure] for flag in ("--use", use)]
+    simulated = run_engine(launcher, "simulate", world, *flags)[1]
+    rules = {rule["id"]: rule["status"] for rule in run_engine(launcher, "evaluate", world, *flags)[1].get("rules", [])}
+    framing = {flow: rounded_figures(simulated.get("totals", {}).get(flow, {}).get("moved", {})).get("cost_usd") for flow in OPENING_FRAMING_FLOWS[enclosure]}
+    return (*layout_outcome(simulated), framing, rules.get("container-as-dwelling"))
+
+
+def enclosure_lines(launcher: Path, world: Path) -> list[str]:
+    outcomes = {enclosure: enclosure_outcome(launcher, world, enclosure) for enclosure in ENCLOSURE_USES}
+    return [state_line("we simulate the SIP, used 20 ft and new high-cube container enclosures: cost, pieces unpriced, labour hours, the openings' framing cost, the zoning rule",
+                       ENCLOSURE_OUTCOMES, outcomes)]
 
 
 def pieces_placed_by_no_flow(simulated: dict) -> list:
@@ -265,7 +291,7 @@ def target_lines(launcher: Path, world: Path) -> list[str]:
 
 
 def run_sample(launcher: Path, world: Path, arguments: list[str]) -> tuple[int, dict]:
-    finished = subprocess.run([str(launcher), "sample", str(world), *arguments], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8")
+    finished = subprocess.run([str(launcher), "sample", str(world), *arguments], stdin=subprocess.DEVNULL, capture_output=True, text=True, encoding="utf-8", env=ENGINE_ENV)
     return finished.returncode, json.loads(finished.stdout) if finished.stdout.strip() else {}
 
 
@@ -318,7 +344,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
-        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass"}, rule_statuses(launcher, world)),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 2.88, "span_over_deflection": 767.494, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
@@ -336,7 +362,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
         door_rank_line(launcher, world),
-    ] + layout_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
+    ] + layout_lines(launcher, world) + enclosure_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
 
 
 def main() -> int:

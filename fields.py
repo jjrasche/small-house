@@ -1,5 +1,5 @@
 """Print every field the engine returns for a world config: what `we expand` places, what `we geometry` says each piece is made of, what each solver in `we solve` says, each rule `we evaluate`
-judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs), and how each option of a ranked system scores on the config's ranking weights.
+judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs), how each option of a ranked system scores on the config's ranking weights, and, for the SIP and the shipping-container enclosure side by side (`--use`, never an edit of the config), first cost, labour hours, each face's R, the openings' framing and the zoning rule.
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
 Nothing here computes anything; every line is a value the engine printed.
@@ -13,12 +13,19 @@ from pathlib import Path
 
 WORLD = Path(__file__).resolve().parent
 ENGINE = Path(os.environ.get("WORLD_ENGINE_DIR") or WORLD.parent / "world-engine").resolve()
+ENGINE_ENV = {**os.environ, "JAVA_TOOL_OPTIONS": os.environ.get("JAVA_TOOL_OPTIONS", "-XX:MaxRAMPercentage=75")}
 RANKED_SYSTEMS = ("door_slab",)
 WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
+ENCLOSURES = {"sip": (), "container": ("floor=container-floor", "walls=container-walls", "roof=container-roof", "foundation=piers-at-corners",
+                                       "build_sequence=container-on-piers")}
+ENCLOSURES["container-high-cube"] = ENCLOSURES["container"] + ("container_stock=container-20-high-cube-new",)
+CONTAINER_FRAMING = {"cut-container-openings": "cut_container_openings_hours", "frame-container-openings": "frame_container_openings_hours"}
+OPENING_FRAMING = {"sip": {"cut-openings": "cut_openings_hours"}, "container": CONTAINER_FRAMING, "container-high-cube": CONTAINER_FRAMING}
+ENVELOPE_R = ("walls_r", "roof_r", "floor_r", "walls_foam_in", "roof_foam_in", "floor_foam_in", "thermal_bridging")
 
 
 def run_engine(command: str, config: Path, *flags: str) -> dict:
-    finished = subprocess.run(["sh", str(ENGINE / "kotlin" / "we"), command, str(config), *flags], capture_output=True, text=True, stdin=subprocess.DEVNULL)
+    finished = subprocess.run(["sh", str(ENGINE / "kotlin" / "we"), command, str(config), *flags], capture_output=True, text=True, stdin=subprocess.DEVNULL, env=ENGINE_ENV)
     return json.loads(finished.stdout)
 
 
@@ -89,6 +96,30 @@ def print_layouts(config: Path) -> None:
               f"labour_hours={simulated['objective_total'].get('labour_hours')}")
 
 
+def use_flags(enclosure: str) -> list[str]:
+    return [flag for use in ENCLOSURES[enclosure] for flag in ("--use", use)]
+
+
+def print_enclosure(config: Path, enclosure: str) -> None:
+    flags = use_flags(enclosure)
+    simulated = run_engine("simulate", config, *flags)
+    solved = {solver["function"]: solver for solver in run_engine("solve", config, *flags)["solvers"]}
+    rules = {rule["id"]: rule for rule in run_engine("evaluate", config, *flags)["rules"]}
+    incomplete = simulated.get("final_stocks_incomplete", {}).get("cost_usd", [])
+    print(f"enclosure {enclosure} first_cost_usd={simulated['final_stocks'].get('cost_usd')} unknown=[{', '.join(incomplete)}] "
+          f"labour_hours={simulated['objective_total'].get('labour_hours')}")
+    envelope = solved.get("envelope-r-by-face")
+    if envelope is None:
+        print(f"enclosure {enclosure} envelope_r: the pinned domains have no envelope-r-by-face solver")
+    else:
+        print(f"enclosure {enclosure} envelope_r {envelope['status']} {envelope['detail']} " + ", ".join(f"{name}={envelope['values'].get(name)}" for name in ENVELOPE_R))
+    work = solved["work-at-published-rates"]["values"]
+    for flow, hours in OPENING_FRAMING[enclosure].items():
+        print(f"enclosure {enclosure} openings_framing {flow} runs={simulated['totals'][flow]['runs']} cost_usd={simulated['totals'][flow]['moved'].get('cost_usd')} {hours}={work.get(hours)}")
+    zoning = rules.get("container-as-dwelling", {})
+    print(f"enclosure {enclosure} zoning container-as-dwelling {zoning.get('status')} {zoning.get('detail')}")
+
+
 def main() -> int:
     config = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else WORLD / "world.json"
     expansion = run_engine("expand", config)
@@ -103,6 +134,8 @@ def main() -> int:
     if "clock" in json.loads(config.read_text(encoding="utf-8")):
         print_simulation(run_engine("simulate", config))
         print_layouts(config)
+    for enclosure in ENCLOSURES:
+        print_enclosure(config, enclosure)
     for system in RANKED_SYSTEMS:
         print_ranking(run_engine("rank", config, "--system", system))
     return 0

@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "8e06bc35a0657110e2a290c9f2d7999e60d780bd44eebca982824bb69584d1be"
+   "sha256": "aae721300d44dbaed49c52a8308e7897a99add5d123a0abc013272e3b19b289e"
   },
   {
    "domain": "light",
@@ -30,17 +30,17 @@
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "d9785b2088c0cbc014b70a67a278b342b2a854c263d405248b7ca81780ff70fc"
+   "sha256": "70f386e5b26e4b762556ac22a231a09368df14093f1a8d212ac1b77c40966513"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "2349f6ac08e3d104b9adab521803c971692977ccb0462bdd33249223e4d2063d"
+   "sha256": "8e2069f177660771bd829ae41d16aee1d9b50882764302076228b39038747cce"
   },
   {
    "domain": "site",
    "file": "domains/site.jar",
-   "sha256": "b6c92e454660ca0ba76e0b9066e191cf39320d3f54abcde6a6aeb0fc7164c6db"
+   "sha256": "5aa8c6d8601d61af356b70aa7604245c3bb21c1808d87ac3954a2150037f2c18"
   }
  ],
  "systems": {
@@ -308,6 +308,18 @@
   "build_sequence": {
    "solution": "sip-shell-on-posts",
    "settings": {}
+  },
+  "container_stock": {
+   "solution": "container-20-standard-used",
+   "settings": {}
+  },
+  "spray_foam": {
+   "solution": "closed-cell-spray-foam",
+   "settings": {}
+  },
+  "pier_stock": {
+   "solution": "sonotube-pier-12in",
+   "settings": {}
   }
  },
  "supplied": {
@@ -367,7 +379,12 @@
   "glass_pieces": "glazing",
   "door_pieces": "doors",
   "hung_pieces": "ledgers",
-  "structure": "house"
+  "structure": "house",
+  "lined_pieces": [
+   "floor",
+   "walls",
+   "roof"
+  ]
  },
  "clock": {
   "step": 1,

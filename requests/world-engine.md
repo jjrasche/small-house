@@ -133,3 +133,13 @@ prints it under `supplied`.
 - **people_rules facts from the tasks domain.** `people_rules.level_max` (the deck guide's three levels) and `learner_rate` are task facts
   with research rows (task.t3.skills_deck_levels), but the engine reads them only from the config (split audit, Config 8). Case: this world;
   want a domain manifest to declare them, and the config to override them.
+
+## Open, 2026-10-21: a flow whose roles the world lacks
+
+- **A domain's flow does not run in a world without its systems.** `flowInput` (`Simulation.kt:164-168`, at pin `5af4c5f` and at
+  `71c2f73`) refuses `config-flow-reads-missing-system` for every flow of every used domain whose input role has no system in the config,
+  so one domain cannot serve two worlds whose flows differ. Case: this world on thermal at domains main (`3911afd`): `we simulate` is refused
+  by stove-hour (roles `stove`, `greenhouse`) and greenhouse-hour (`greenhouse`, `curtain`, `tank`, `board` and more), flows only a
+  greenhouse world binds; the house keeps its older thermal jar, so the container's `envelope-r-by-face` solver on main cannot reach it.
+  Want: a flow whose roles are absent does not run and is reported as not applicable, or the manifest marks a role optional; a missing
+  role is then no error.
