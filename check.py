@@ -71,11 +71,11 @@ KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 956.75, f"{FLOOR} applied_n": 8537.7
                        "roof@0,0,3658:3~3658x5486 weight_n": 3546.574, "door@610,4819 weight_n": 533.787, "glazing@610,2495,1219 weight_n": 924.927}
 PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     FLOOR: 174, "wall@1829,2438:2~1219x114": 204, "wall@1829,4762:2~1219x114": 234, "wall@2934,2552:2~114x1219": 264, "wall@2934,3771:2~114x991": 289,
-                    "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 349, "wall@610,3771:2~114x991": 374, "wall@610,4762:2~1219x114": 404,
-                    "roof@0,0,3658:3~3658x5486": 481, "door@610,4819": 901, "glazing@610,2495,1219": 991, "glazing@610,2495,2438": 1081,
-                    "joist@724,2552,2298:2~2210x38": 1112, "joist@724,2958,2298:2~2210x38": 1143, "joist@724,3364,2298:2~2210x38": 1174,
-                    "joist@724,3770,2298:2~2210x38": 1205, "joist@724,4176,2298:2~2210x38": 1236, "joist@724,4582,2298:2~2210x38": 1267,
-                    "joist@724,4724,2298:2~2210x38": 1298, LOFT: 1388}
+                    "wall@610,2438:2~1219x114": 319, "wall@610,2552:2~114x1219": 349, "wall@610,3771:2~114x991": 389, "wall@610,4762:2~1219x114": 419,
+                    "roof@0,0,3658:3~3658x5486": 496, "door@610,4819": 916, "glazing@610,2495,1219": 1006, "glazing@610,2495,2438": 1096,
+                    "joist@724,2552,2298:2~2210x38": 1127, "joist@724,2958,2298:2~2210x38": 1158, "joist@724,3364,2298:2~2210x38": 1189,
+                    "joist@724,3770,2298:2~2210x38": 1220, "joist@724,4176,2298:2~2210x38": 1251, "joist@724,4582,2298:2~2210x38": 1282,
+                    "joist@724,4724,2298:2~2210x38": 1313, LOFT: 1403}
 UNPRICED_IN_ONE_8X8 = ["glazing@610,2495,1219"]
 COST_BELOW_ARGUMENTS = ["--runs", "2", "--seed", "1", "--include", "simulation", "--below", "simulation.final_stocks.cost_usd=20000"]
 COST_BELOW_REFUSAL = {"rule": "sample-output-incomplete",
@@ -96,18 +96,18 @@ FULL_SAMPLE_ANSWER = {"runs": 500, "seed": 1, "failed": {"count": 0, "first": No
 FULL_SAMPLE_PERCENTILES = {"simulation.final_stocks.cost_usd": {"p50": 15517.63, "p95": 18186.594},
                            "simulation.objective_total.labour_hours": {"p50": 68.658, "p95": 79.218}}
 SMALL_TARGET_USD = 1000
-OVERRUN_BUDGET_USD = -13047.281
-BUILD_TOTALS = {"labour_hours": 61.799, "cost_usd": 14047.281, "budget_usd": 5952.719}
+OVERRUN_BUDGET_USD = -13211.387
+BUILD_TOTALS = {"labour_hours": 62.799, "cost_usd": 14211.387, "budget_usd": 5788.613}
 INCOMPLETE_STOCKS = {}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
-TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
+TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "cut-wall-panels": 2, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
              "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1, "pour-piers": 0, "set-container": 0, "cut-container-openings": 0,
              "frame-container-openings": 0, "spray-foam": 0}
-WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
+WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "cut_panels_hours": 1.0, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
                            "windows_and_door_hours": 14.0, "frame_loft_hours": 7.2, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
-                           "measured_hours": 58.742, "listed_usd": 8099.781, "pieces_not_priced": 0,
-                           "cost_usd": 14047.281, "main_floor_ft2": 63.979, "loft_floor_ft2": 52.572, "floor_ft2_total": 116.551,
-                           "cost_usd_per_main_floor_ft2": 219.561, "cost_usd_per_floor_ft2": 120.525}
+                           "measured_hours": 59.742, "listed_usd": 8263.887, "pieces_not_priced": 0,
+                           "cost_usd": 14211.387, "main_floor_ft2": 63.979, "loft_floor_ft2": 52.572, "floor_ft2_total": 116.551,
+                           "cost_usd_per_main_floor_ft2": 222.126, "cost_usd_per_floor_ft2": 121.933}
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
@@ -116,16 +116,16 @@ HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation
                   f"{UPPER_BAND} utilisation": 0.407, f"{NORTH_DOOR} load_n_per_mm": 1.402, f"{NORTH_DOOR} utilisation": 0.024,
                   f"{LOWER_BAND} unsupported_load_n_per_mm": None, f"{NORTH_DOOR} unsupported_load_n_per_mm": None,
                   f"{UPPER_BAND} self_weight_n": 434.075, f"{NORTH_DOOR} self_weight_n": 217.038}
-DOOR_RANKS = {"door-steel-6-panel-prehung-walker": (1, 13722.506, 2332.287, []), "door-jeldwen-steel": (2, None, None, ["door@610,4819"]),
-              "door-masonite-steel": (2, None, None, ["door@610,4819"]), "door-thermatru-smooth-star": (4, 14047.281, 2338.045, [])}
+DOOR_RANKS = {"door-steel-6-panel-prehung-walker": (1, 13886.612, 2332.287, []), "door-jeldwen-steel": (2, None, None, ["door@610,4819"]),
+              "door-masonite-steel": (2, None, None, ["door@610,4819"]), "door-thermatru-smooth-star": (4, 14211.387, 2338.045, [])}
 WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
-WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14047.281, [], 61.799), "one-8x8": (13080.281, ["glazing@610,2495,1219"], 56.799),
-                        "four-4x4": (14952.281, [], 71.799)}
+WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14211.387, [], 62.799), "one-8x8": (13244.387, ["glazing@610,2495,1219"], 57.799),
+                        "four-4x4": (15116.387, [], 72.799)}
 CONTAINER_USES = ["floor=container-floor", "walls=container-walls", "roof=container-roof", "foundation=piers-at-corners", "build_sequence=container-on-piers"]
 ENCLOSURE_USES = {"sip": [], "container": CONTAINER_USES, "container-high-cube": CONTAINER_USES + ["container_stock=container-20-high-cube-new"]}
 OPENING_FRAMING_FLOWS = {"sip": ["cut-openings"], "container": ["cut-container-openings", "frame-container-openings"],
                          "container-high-cube": ["cut-container-openings", "frame-container-openings"]}
-ENCLOSURE_OUTCOMES = {"sip": (14047.281, [], 61.799, {"cut-openings": None}, "pass"),
+ENCLOSURE_OUTCOMES = {"sip": (14211.387, [], 62.799, {"cut-openings": None}, "pass"),
                       "container": (21569.413, [], 100.999, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail"),
                       "container-high-cube": (24828.571, [], 101.532, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail")}
 UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]

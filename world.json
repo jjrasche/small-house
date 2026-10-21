@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "aae721300d44dbaed49c52a8308e7897a99add5d123a0abc013272e3b19b289e"
+   "sha256": "d6e2a5b06bec919f3794c7c7474b2464938f83ae97dc6dd4ab0b9259e3e59e42"
   },
   {
    "domain": "light",
@@ -35,7 +35,7 @@
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "8e2069f177660771bd829ae41d16aee1d9b50882764302076228b39038747cce"
+   "sha256": "ef185e5cb0d297bc443544a46893d9c6dd2e6f1aca64b120d76683708533ab57"
   },
   {
    "domain": "site",
