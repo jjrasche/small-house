@@ -97,12 +97,16 @@ FULL_SAMPLE_PERCENTILES = {"simulation.final_stocks.cost_usd": {"p50": 15517.63,
                            "simulation.objective_total.labour_hours": {"p50": 68.658, "p95": 79.218}}
 SMALL_TARGET_USD = 1000
 OVERRUN_BUDGET_USD = -13211.387
+OVERRUN_COST_USD = 13211.387
 BUILD_TOTALS = {"labour_hours": 62.933, "cost_usd": 14211.387, "budget_usd": 5788.613}
 INCOMPLETE_STOCKS = {}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
-TASK_RUNS = {"dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "cut-wall-panels": 2, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
+TASK_RUNS = {"south-sun-ledger": 0, "stove-hour": 0, "greenhouse-hour": 0, "dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "cut-wall-panels": 2, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
              "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1, "pour-piers": 0, "set-container": 0, "cut-container-openings": 0,
              "frame-container-openings": 0, "spray-foam": 0}
+NOT_APPLICABLE_FLOWS = {"south-sun-ledger": "the world has no system for the role greenhouse, which south-sun-ledger needs",
+                        "stove-hour": "the world has no system for the role stove, which stove-hour needs",
+                        "greenhouse-hour": "the world has no system for the role greenhouse, which greenhouse-hour needs"}
 WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "cut_panels_hours": 1.069, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
                            "windows_and_door_hours": 14.0, "frame_loft_hours": 7.2, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
                            "measured_hours": 59.812, "listed_usd": 8263.887, "pieces_not_priced": 0,
@@ -287,12 +291,14 @@ def geometry_lines(launcher: Path, world: Path) -> list[str]:
 def target_lines(launcher: Path, world: Path) -> list[str]:
     small_target = json.loads(world.read_text(encoding="utf-8"))
     small_target["stocks"]["budget_usd"] = SMALL_TARGET_USD
+    small_target["optimizing"]["targets"]["cost_usd"]["at_most"] = SMALL_TARGET_USD
     variant = world.with_name("world.small-target.json")
     variant.write_text(json.dumps(small_target), encoding="utf-8")
     _, simulated = run_engine(launcher, "simulate", variant)
-    return [state_line(f"we simulate with a ${SMALL_TARGET_USD} target: every task still runs, and budget_usd goes below zero by the overrun",
-                       (TASK_RUNS, OVERRUN_BUDGET_USD),
-                       ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, rounded_figures(simulated.get("final_stocks", {})).get("budget_usd")))]
+    return [state_line(f"we simulate with a ${SMALL_TARGET_USD} target: every task still runs, and budget_usd goes below zero by the overrun, which objective_total names and scores",
+                       (TASK_RUNS, OVERRUN_BUDGET_USD, OVERRUN_COST_USD),
+                       ({flow: total.get("runs") for flow, total in simulated.get("totals", {}).items()}, rounded_figures(simulated.get("final_stocks", {})).get("budget_usd"),
+                        rounded_figures(simulated.get("objective_total", {})).get("overrun.cost_usd")))]
 
 
 def run_sample(launcher: Path, world: Path, arguments: list[str]) -> tuple[int, dict]:
@@ -313,6 +319,11 @@ def sample_lines(launcher: Path, world: Path) -> list[str]:
             state_line("we sample outputs marked incomplete", {}, incomplete_outputs(answer))]
 
 
+def not_applicable_flows(simulated: dict) -> dict:
+    flows = simulated.get("steps", [{}])[0].get("flows", {})
+    return {flow: record["not_applicable"] for flow, record in flows.items() if "not_applicable" in record}
+
+
 def simulate_lines(launcher: Path, world: Path) -> list[str]:
     simulate_exit, simulated = run_engine(launcher, "simulate", world)
     totals = simulated.get("totals", {})
@@ -323,6 +334,7 @@ def simulate_lines(launcher: Path, world: Path) -> list[str]:
         state_line("we simulate stocks incomplete, with the pieces that have no price", INCOMPLETE_STOCKS, simulated.get("final_stocks_incomplete", {})),
         state_line("we simulate the skill each person ends with", SKILLS_FINAL, simulated.get("skills_final")),
         state_line("we simulate runs of every task, none skipped", TASK_RUNS, {flow: total.get("runs") for flow, total in totals.items()}),
+        state_line("we simulate flows of a greenhouse the world lacks are not applicable, with the role missing", NOT_APPLICABLE_FLOWS, not_applicable_flows(simulated)),
         state_line("we simulate pieces whose placed_at step has no flow placing them there", [], pieces_placed_by_no_flow(simulated)),
     ]
 
@@ -349,7 +361,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
-        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass"}, rule_statuses(launcher, world)),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass", "skirt-meets-frost-protected-footing-table": "unknown"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 2.88, "span_over_deflection": 767.494, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),

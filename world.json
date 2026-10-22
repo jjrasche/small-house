@@ -10,7 +10,7 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "d6e2a5b06bec919f3794c7c7474b2464938f83ae97dc6dd4ab0b9259e3e59e42"
+   "sha256": "7627fa91147a300fb0e8549f8fe1516a356d62b0aa9e1acaa48784abd7138da1"
   },
   {
    "domain": "light",
@@ -20,12 +20,12 @@
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "11f7b40f8ca8fc790a0c88ddf8685fb8551c2be4f5a15d6cb7bd08fee7a68c17"
+   "sha256": "5e211312ba74b0a395a028d79cb3d10650669b0d3f40b35972c9aa75965616de"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "85b3a3e4b9bd1a00f24350d7cf1e207bb0ba472b197274811183c61872d3241d"
+   "sha256": "44c33eca01d70b63a65a7f5485dc58679a146b271ee592fb42888b28539a8765"
   },
   {
    "domain": "catalog",
@@ -35,7 +35,7 @@
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "280a9c5bb50b92e8e978a461469db6bfeb1a92b991663b4948a4c4d366d778b4"
+   "sha256": "7569d90220e519bb7f59e9090153b07759ce1afc5f94271aed1e470d7c3a8a56"
   },
   {
    "domain": "site",
@@ -398,14 +398,12 @@
   "jim": {
    "skills": {
     "sip-setting": 1
-   },
-   "hours_per_step": 0.016666666666666666
+   }
   },
   "sip_lead": {
    "skills": {
     "sip-setting": 3
-   },
-   "hours_per_step": 0.016666666666666666
+   }
   }
  },
  "optimizing": {
@@ -413,21 +411,14 @@
    "labour_hours": 3,
    "finish_time": 2,
    "learning": 1,
-   "idle": 1
-  }
- },
- "people_rules": {
-  "learner_rate": {
-   "value": 0.5,
-   "reason": "inferred from task.t3.skills_deck_levels and task.t3.hours_per_sqft_joists: a beginner takes 2 to 3 times an advanced builder's time, so 0.5 is the faster end; assumed to hold for SIP setting, Jim to overturn"
+   "idle": 1,
+   "overrun.cost_usd": 0.01
   },
-  "learn_rate": {
-   "value": 0.1,
-   "reason": "assumed: a tenth of a level for each hour worked beside someone who knows; no banked source measures it, Jim to overturn"
-  },
-  "level_max": {
-   "value": 3,
-   "reason": "task.t3.skills_deck_levels: the guide's three levels, beginner, intermediate and advanced"
+  "targets": {
+   "cost_usd": {
+    "at_most": 20000,
+    "reason": "Jim's soft target, 2026-10-20: soft idea limits"
+   }
   }
  }
 }

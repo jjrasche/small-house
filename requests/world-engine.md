@@ -116,25 +116,29 @@ three engine changes (types in a domain, fields overriding a domain default, bea
 Engine `6a284cf` lets a config's supplied figure use a unit its used domain defines. `supplied.board_feet` is back in `world.json` and `we expand`
 prints it under `supplied`.
 
-## Open, 2026-10-20: material_source from an expander, and a budget weight
+## Landed, 2026-10-22: material_source from an expander, and a budget weight
 
 - **A piece's `material_source` from the expander that names its material.** `pieceRow` (`ContactsInput.kt`) sets `material_source` only
   from the system's own solution spec, so every piece of this house, whose material the construction and structural expanders copy from a
   catalog role, reports `material_source: null` though the expander knows the row (`wt.syn_post_6x6`, `lum.nds.fv_spf_no2`). Case: `we geometry
   world.json` on this world; want each piece's `material_source` to be the row the expander gave beside `material`.
+  **Landed, engine `20223fe`:** the construction and structural expanders now give it; every piece prints its row.
 - **Score a run by a stock against its target.** `stocks.budget_usd` is now a target with no floor; `optimizing.weights` takes only the names
   fixed at `Crew.kt:23`, so no weight can score the overrun. Case: this world with `stocks.budget_usd` 1000 (check.py's small-target run).
+  **Landed, engine `fd85d6b`:** `optimizing.targets.cost_usd` with the weight `overrun.cost_usd`; `objective_total` prints `overrun.cost_usd`.
 
-## Open, 2026-10-20: the config's computed people figures
+## Landed, 2026-10-22: the config's computed people figures
 
 - **A person's hours_per_step from the clock.** `Crew.kt:62` refuses a person without `hours_per_step`, so this world states 1/60 for each
   person: the clock's one-minute step in hours, a computed number in the config (split audit, Config 5). Case: this world with
   `people.*.hours_per_step` removed; want the engine to derive it from `clock.step` and `clock.unit`, and a stated value to override it.
+  **Landed, engine `3ae3b7c`:** the world states no `hours_per_step`.
 - **people_rules facts from the tasks domain.** `people_rules.level_max` (the deck guide's three levels) and `learner_rate` are task facts
   with research rows (task.t3.skills_deck_levels), but the engine reads them only from the config (split audit, Config 8). Case: this world;
   want a domain manifest to declare them, and the config to override them.
+  **Landed, engine `149e708`:** the tasks manifest declares all three with rows; the world states none.
 
-## Open, 2026-10-21: a flow whose roles the world lacks
+## Landed, 2026-10-22: a flow whose roles the world lacks
 
 - **A domain's flow does not run in a world without its systems.** `flowInput` (`Simulation.kt:164-168`, at pin `5af4c5f` and at
   `71c2f73`) refuses `config-flow-reads-missing-system` for every flow of every used domain whose input role has no system in the config,
@@ -143,3 +147,11 @@ prints it under `supplied`.
   greenhouse world binds; the house keeps its older thermal jar, so the container's `envelope-r-by-face` solver on main cannot reach it.
   Want: a flow whose roles are absent does not run and is reported as not applicable, or the manifest marks a role optional; a missing
   role is then no error.
+  **Landed, engine `a4c98b1`:** thermal's flows declare `requires`; the three greenhouse flows are `not_applicable` here and `check.py` pins the reason.
+
+## Open, 2026-10-22: a rule whose system the world lacks
+
+- **A domain's rule on a system the world lacks reports unknown.** Thermal's `skirt-meets-frost-protected-footing-table` (system `earth_battery`)
+  appears in `we evaluate` for this house as `unknown: system board is not in the config`. Want: a rule declares `requires` as a flow does, and
+  is reported as not applicable (or left out) when the world lacks the role. Case: `we evaluate world.json` on this world; want no
+  `skirt-meets-frost-protected-footing-table` line, or one marked not applicable.
