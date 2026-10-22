@@ -32,6 +32,12 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   the `glazing` opening grid's rows and columns (2 by 1 is two stacked 4x8, 1 by 1 one 8x8, 2 by 2 four 4x4) and the header options catalog
   `header` solutions; compare them by editing a copy of world.json and running fields.py on it (`--use` clears settings). check.py simulates
   each layout: cost, what it has no price for (the 8x8 window), and labour hours. The roof takes an eave per side.
+- **Floor span** (`floor_support`, `beam_stock`, `binds.sip_span_check`): `sip-span-check` checks the SIP floor between its supports by the SIPA
+  design guide's method on Premier's D-1 properties (facing bending, core shear with its depth factor, bending-plus-shear deflection at L/360,
+  core bearing), oracles the guide's Examples 1 and 3 and the Premier and Insulspan L/360 tables; the rule `sip-panels-within-capacity` names
+  any check over 1. world.json keeps the sketch's four corner posts (it fails); fields.py and check.py `--use` six beam layouts on the 8x8,
+  an 8x12 copy and an 8x8 laid 210 mm thick, and fields.py runs the take-till-it-breaks sequence. Corner point bearing is derived and
+  unverified; no task works a floor beam or a middle post, so cost and hours do not move with the support.
 - **Build run** (`clock`, `stocks`, `people`, `optimizing`): a step is one working minute; ten tasks dig and set the posts,
   set the floor, wall and roof panels, cut and fill the openings, frame and deck the loft and install the boiler. Each run works one piece,
   asks the engine for that piece's hours (area over the rate, or the tasks domain's hours each), and places it on the step it finishes.

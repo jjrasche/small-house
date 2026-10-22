@@ -137,7 +137,59 @@ OPENING_FRAMING_FLOWS = {"sip": ["cut-openings"], "container": ["cut-container-o
 ENCLOSURE_OUTCOMES = {"sip": (14211.387, [], 62.933, {"cut-openings": None}, "pass"),
                       "container": (21569.413, [], 100.999, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail"),
                       "container-high-cube": (24828.571, [], 101.532, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail")}
+SIP_SPAN_VALUES = {'panels': 1, 'panels_over_one': 1, 'bending_utilisation': 0.899, 'shear_utilisation': 7.32, 'deflection_utilisation': 5.531, 'bearing_utilisation': 2.423, 'panel_utilisation': 7.32, 'beam_utilisation': None, 'span_mm': 2298.0, 'load_psf': 96.657, 'beams': 0, 'beam_board_feet': 0.0, 'posts_under_floor': 4, 'floor_panel_allowable_psf_8ft': 32.458, 'roof_panel_allowable_psf_8ft': 67.445, 'floor_panel_allowable_psf_10ft': 23.822, 'roof_panel_allowable_psf_10ft': 51.347, 'floor_panel_allowable_psf_12ft': 18.031, 'roof_panel_allowable_psf_12ft': 40.401}
+FLOOR_SUPPORTS = ("posts-under-corners", "beams-east-west-on-two-posts", "beams-east-west-on-three-posts", "beams-north-south-on-two-posts",
+                  "beams-north-south-on-three-posts", "three-beams-east-west-on-three-posts", "three-beams-north-south-on-three-posts")
+FLOOR_VARIANTS = {"8x8": {}, "8x12": {"depth_mm": 3658}, "8x8 at 210 mm": {"thickness_mm": 210}}
+SPAN_CHECKS = ("bending_utilisation", "shear_utilisation", "deflection_utilisation", "bearing_utilisation", "beam_utilisation")
+FLOOR_SUPPORT_OUTCOMES = {
+    '8x8 posts-under-corners': ('fail', 0.899, 7.32, 5.531, 2.423, None),
+    '8x8 beams-east-west-on-two-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.92),
+    '8x8 beams-east-west-on-three-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.305),
+    '8x8 beams-north-south-on-two-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.893),
+    '8x8 beams-north-south-on-three-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.296),
+    '8x8 three-beams-east-west-on-three-posts': ('pass', 0.186, 0.433, 0.995, 0.388, 0.226),
+    '8x8 three-beams-north-south-on-three-posts': ('pass', 0.133, 0.31, 0.713, 0.372, 0.217),
+    '8x12 posts-under-corners': ('fail', 1.985, 10.346, 6.467, 3.425, None),
+    '8x12 beams-east-west-on-two-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 1.284),
+    '8x12 beams-east-west-on-three-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 0.425),
+    '8x12 beams-north-south-on-two-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 1.974),
+    '8x12 beams-north-south-on-three-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 0.493),
+    '8x12 three-beams-east-west-on-three-posts': ('fail', 0.437, 0.778, 1.624, 0.6, 0.347),
+    '8x12 three-beams-north-south-on-three-posts': ('pass', 0.116, 0.269, 0.619, 0.361, 0.371),
+    '8x8 at 210 mm posts-under-corners': ('fail', 0.458, 5.602, 2.746, 2.494, None),
+    '8x8 at 210 mm beams-east-west-on-two-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.946),
+    '8x8 at 210 mm beams-east-west-on-three-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.313),
+    '8x8 at 210 mm beams-north-south-on-two-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.919),
+    '8x8 at 210 mm beams-north-south-on-three-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.304),
+    '8x8 at 210 mm three-beams-east-west-on-three-posts': ('pass', 0.096, 0.254, 0.524, 0.403, 0.234),
+    '8x8 at 210 mm three-beams-north-south-on-three-posts': ('pass', 0.069, 0.184, 0.381, 0.38, 0.221),
+}
 UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]
+
+
+def floor_variant(world: Path, name: str) -> Path:
+    variant = json.loads(world.read_text(encoding="utf-8"))
+    variant["systems"]["floor"]["settings"].update(FLOOR_VARIANTS[name])
+    path = world.with_name(f"world.floor-{name.replace(' ', '-')}.json")
+    path.write_text(json.dumps(variant), encoding="utf-8")
+    return path
+
+
+def floor_support_outcome(launcher: Path, world: Path, support: str) -> tuple:
+    flags = ("--use", f"floor_support={support}")
+    values = solver_values(run_engine(launcher, "solve", world, *flags)[1], "sip-span-check")
+    rule = {rule["id"]: rule["status"] for rule in run_engine(launcher, "evaluate", world, *flags)[1].get("rules", [])}.get("sip-panels-within-capacity")
+    return (rule, *rounded({name: values.get(name) for name in SPAN_CHECKS}).values())
+
+
+def floor_support_lines(launcher: Path, world: Path) -> list[str]:
+    outcomes = {}
+    for name in FLOOR_VARIANTS:
+        variant = floor_variant(world, name)
+        outcomes.update({f"{name} {support}": floor_support_outcome(launcher, variant, support) for support in FLOOR_SUPPORTS})
+    return [state_line("we solve and evaluate each floor support on the 8x8, the 8x12 and the 8x8 laid 210 mm thick: the rule, then bending, shear, deflection, bearing and beam utilisation",
+                       FLOOR_SUPPORT_OUTCOMES, outcomes)]
 
 
 class Refused(Exception):
@@ -361,7 +413,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
-        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass", "skirt-meets-frost-protected-footing-table": "not_applicable"}, rule_statuses(launcher, world)),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass", "skirt-meets-frost-protected-footing-table": "not_applicable", "sip-panels-within-capacity": "fail"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 2.88, "span_over_deflection": 767.494, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),
@@ -380,8 +432,10 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    (solver_answer(solved, "header-check").get("status"), rounded(solver_values(solved, "header-check")))),
         state_line("we solve header load and utilisation over the two south bands and the north door", HEADER_FIGURES,
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
+        state_line("we solve the SIP floor panel on its four corner posts: utilisations, span, load, beams, posts and the allowable loads at 8, 10 and 12 ft",
+                   ("known", SIP_SPAN_VALUES), (solver_answer(solved, "sip-span-check").get("status"), rounded(solver_values(solved, "sip-span-check")))),
         door_rank_line(launcher, world),
-    ] + layout_lines(launcher, world) + enclosure_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
+    ] + floor_support_lines(launcher, world) + layout_lines(launcher, world) + enclosure_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
 
 
 def main() -> int:

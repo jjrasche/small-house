@@ -21,6 +21,12 @@ ENCLOSURES = {"sip": (), "container": ("floor=container-floor", "walls=container
 ENCLOSURES["container-high-cube"] = ENCLOSURES["container"] + ("container_stock=container-20-high-cube-new",)
 CONTAINER_FRAMING = {"cut-container-openings": "cut_container_openings_hours", "frame-container-openings": "frame_container_openings_hours"}
 OPENING_FRAMING = {"sip": {"cut-openings": "cut_openings_hours"}, "container": CONTAINER_FRAMING, "container-high-cube": CONTAINER_FRAMING}
+FLOOR_SUPPORTS = ("posts-under-corners", "beams-east-west-on-two-posts", "beams-east-west-on-three-posts", "beams-north-south-on-two-posts",
+                  "beams-north-south-on-three-posts", "three-beams-east-west-on-three-posts", "three-beams-north-south-on-three-posts")
+FLOORS = {"8x8": None, "8x12": 3658}
+SPAN_CHECKS = ("bending_utilisation", "shear_utilisation", "deflection_utilisation", "bearing_utilisation", "beam_utilisation")
+CONVENTIONAL_FLOOR_MM = 210
+THINNER_FLOORS_MM = (165, 114)
 ENVELOPE_R = ("walls_r", "roof_r", "floor_r", "walls_foam_in", "roof_foam_in", "floor_foam_in", "thermal_bridging")
 
 
@@ -120,6 +126,80 @@ def print_enclosure(config: Path, enclosure: str) -> None:
     print(f"enclosure {enclosure} zoning container-as-dwelling {zoning.get('status')} {zoning.get('detail')}")
 
 
+def floor_variant(config: Path, depth_mm, thickness_mm=None) -> Path:
+    world = json.loads(config.read_text(encoding="utf-8"))
+    if depth_mm is not None:
+        world["systems"]["floor"]["settings"]["depth_mm"] = depth_mm
+    if thickness_mm is not None:
+        world["systems"]["floor"]["settings"]["thickness_mm"] = thickness_mm
+    with tempfile.NamedTemporaryFile("w", suffix=".json", dir=config.parent, delete=False) as variant:
+        json.dump(world, variant)
+    return Path(variant.name)
+
+
+def support_outcome(config: Path, support: str) -> dict:
+    flags = ("--use", f"floor_support={support}")
+    check = next(solver for solver in run_engine("solve", config, *flags)["solvers"] if solver["function"] == "sip-span-check")
+    rule = next(rule for rule in run_engine("evaluate", config, *flags)["rules"] if rule["id"] == "sip-panels-within-capacity")
+    simulated = run_engine("simulate", config, *flags)
+    return {"values": check["values"], "status": check["status"], "detail": check["detail"], "rule": rule["status"],
+            "cost_usd": simulated["final_stocks"].get("cost_usd"), "unknown": simulated.get("final_stocks_incomplete", {}).get("cost_usd", []),
+            "labour_hours": simulated["objective_total"].get("labour_hours")}
+
+
+def support_line(label: str, support: str, outcome: dict) -> str:
+    values = outcome["values"]
+    checks = " ".join(f"{name.removesuffix('_utilisation')}={values.get(name)}" for name in SPAN_CHECKS)
+    return (f"{label} {support} {outcome['rule']} {checks} span_mm={values.get('span_mm')} load_psf={values.get('load_psf')} beams={values.get('beams')} "
+            f"beam_board_feet={values.get('beam_board_feet')} posts={values.get('posts_under_floor')} cost_usd={outcome['cost_usd']} unknown=[{', '.join(outcome['unknown'])}] "
+            f"labour_hours={outcome['labour_hours']}")
+
+
+def print_floor_supports(config: Path) -> dict:
+    outcomes = {}
+    for floor, depth in FLOORS.items():
+        variant = floor_variant(config, depth)
+        for support in FLOOR_SUPPORTS:
+            outcomes[(floor, support)] = support_outcome(variant, support)
+            print(support_line(f"floor support option {floor}", support, outcomes[(floor, support)]))
+        variant.unlink()
+    return outcomes
+
+
+def binding_check(values: dict) -> tuple:
+    measured = {name: values[name] for name in SPAN_CHECKS if values.get(name) is not None}
+    name = max(measured, key=measured.get)
+    return name.removesuffix("_utilisation"), measured[name]
+
+
+def print_take_till_it_breaks(config: Path) -> None:
+    conventional = floor_variant(config, None, CONVENTIONAL_FLOOR_MM)
+    three_posts = [support for support in FLOOR_SUPPORTS if support.startswith("beams-") and support.endswith("three-posts")]
+    ranked = {support: support_outcome(conventional, support) for support in three_posts}
+    baseline = min(ranked, key=lambda support: binding_check(ranked[support]["values"])[1])
+    steps = [("baseline", baseline, ranked[baseline], CONVENTIONAL_FLOOR_MM),
+             ("less the middle posts", baseline.replace("three-posts", "two-posts"), None, CONVENTIONAL_FLOOR_MM),
+             ("less the beams", "posts-under-corners", None, CONVENTIONAL_FLOOR_MM)]
+    steps += [(f"thinner panel {thickness} mm", "posts-under-corners", None, thickness) for thickness in THINNER_FLOORS_MM]
+    last_green = None
+    for label, support, outcome, thickness in steps:
+        variant = conventional if thickness == CONVENTIONAL_FLOOR_MM else floor_variant(config, None, thickness)
+        outcome = outcome or support_outcome(variant, support)
+        if variant != conventional:
+            variant.unlink()
+        print(support_line(f"take till it breaks 8x8 floor {thickness} mm {label}:", support, outcome))
+        if outcome["rule"] != "pass":
+            check, at = binding_check(outcome["values"])
+            print(f"take till it breaks first red: {label}, {check} at {at}" if last_green else f"take till it breaks baseline red: {check} at {at}; a fault, no frontier")
+            break
+        last_green = (label, support, thickness, outcome)
+    conventional.unlink()
+    if last_green:
+        label, support, thickness, outcome = last_green
+        check, at = binding_check(outcome["values"])
+        print(f"take till it breaks least that stays green: {support} under a {thickness} mm floor ({label}); binding check: {check} at {at}")
+
+
 def main() -> int:
     config = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else WORLD / "world.json"
     expansion = run_engine("expand", config)
@@ -136,6 +216,8 @@ def main() -> int:
         print_layouts(config)
     for enclosure in ENCLOSURES:
         print_enclosure(config, enclosure)
+    print_floor_supports(config)
+    print_take_till_it_breaks(config)
     for system in RANKED_SYSTEMS:
         print_ranking(run_engine("rank", config, "--system", system))
     return 0

@@ -25,12 +25,12 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "44c33eca01d70b63a65a7f5485dc58679a146b271ee592fb42888b28539a8765"
+   "sha256": "ce7d48cdb4b59c794c413e2dc7831f1f8e10b840910072b3aa32708a378f0718"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "70f386e5b26e4b762556ac22a231a09368df14093f1a8d212ac1b77c40966513"
+   "sha256": "f7232f07b1713c8df4ff376b38c3e12b77cab5efec9a92329a6f74e94f32522d"
   },
   {
    "domain": "tasks",
@@ -320,6 +320,19 @@
   "pier_stock": {
    "solution": "sonotube-pier-12in",
    "settings": {}
+  },
+  "floor_support": {
+   "solution": "posts-under-corners",
+   "settings": {}
+  },
+  "beam_stock": {
+   "solution": "beam-2x10-spf",
+   "settings": {
+    "plies": 2
+   },
+   "reasons": {
+    "plies": "assumed: a built-up beam of two 2x10 plies, 3 in wide, the stock every beam option is checked in"
+   }
   }
  },
  "supplied": {
@@ -384,7 +397,10 @@
    "floor",
    "walls",
    "roof"
-  ]
+  ],
+  "sip_span_check": {
+   "solver": "sip-span-check"
+  }
  },
  "clock": {
   "step": 1,
