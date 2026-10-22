@@ -361,7 +361,7 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded(solver_values(solved, "average-daylight-factor"))),
         state_line("we solve heat watts through the glass", {"heat_loss_watt": HEAT_LOSS_WATT, "solar_gain_watt": SOLAR_GAIN_WATT},
                    rounded(solver_values(solved, "glazing-balance"))),
-        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass", "skirt-meets-frost-protected-footing-table": "unknown"}, rule_statuses(launcher, world)),
+        state_line("we evaluate rules", {"egress-door-size": "pass", "posts-below-frost-line": "pass", "roof-covers-floor": "pass", "posts-under-floor": "pass", "walls-enclose-floor": "pass", "roof-is-over-floor": "pass", "joists-span-the-deck": "pass", "headers-within-capacity": "pass", "container-as-dwelling": "pass", "skirt-meets-frost-protected-footing-table": "not_applicable"}, rule_statuses(launcher, world)),
         state_line("we solve joist deflection and stress", {"deflection_mm": 2.88, "span_over_deflection": 767.494, "bending_stress_mpa": 3.824}, rounded(solver_values(solved, "joist-deflection"))),
         state_line("we solve design day BTU per hour", {"loss_btu_per_hour": DESIGN_DAY_LOSS_BTU_PER_HOUR, "solar_gain_btu_per_hour": DESIGN_DAY_SOLAR_BTU_PER_HOUR},
                    rounded(solver_values(solved, "design-day-load"))),

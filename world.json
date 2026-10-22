@@ -20,7 +20,7 @@
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "5e211312ba74b0a395a028d79cb3d10650669b0d3f40b35972c9aa75965616de"
+   "sha256": "fca669a49ce7152f931e15874b69d98723c7325c6d166260cf70be8893d80f54"
   },
   {
    "domain": "structural",

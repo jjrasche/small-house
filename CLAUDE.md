@@ -49,8 +49,8 @@ Vocabulary: system, rule, solution, setting, placement; "group", "pattern", "goa
   container floor, walls and roof, piers at the frost depth and the `container-on-piers` sequence (haul, cut, weld frames, foam), never
   edited into world.json, which keeps the SIP. Its 8.5 ft (9.5 ft high-cube) height is under the 12 ft walls, so the upper window and the
   8 ft loft do not fit it; the zoning rule `container-as-dwelling` reports, it blocks nothing; the R per face (thermal
-  `envelope-r-by-face`) is answered for the SIP and both containers; thermal's greenhouse flows and its footing-table rule name systems this world lacks, so the flows are not applicable
-  and the rule reports unknown (the engine's request of 2026-10-22 below).
+  `envelope-r-by-face`) is answered for the SIP and both containers; thermal's greenhouse flows and its footing-table rule (`requires` the `board` and `site` roles) name systems this world lacks, so the flows and the rule
+  are not applicable.
 - **Two named readings**, open until Jim says otherwise, each a `reasons` entry starting `reading:`: 12 ft is wall height, floor top to roof
   underside (not overall above grade); the hatched hangover strip is on the south (not centred, 5 ft each end).
 - **Sizes from stock:** the posts take the catalog `post_stock` (6x6 UC4B, 140 mm) and the roof the catalog `roof_panel` (8-1/4 in SIP,

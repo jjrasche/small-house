@@ -149,9 +149,10 @@ prints it under `supplied`.
   role is then no error.
   **Landed, engine `a4c98b1`:** thermal's flows declare `requires`; the three greenhouse flows are `not_applicable` here and `check.py` pins the reason.
 
-## Open, 2026-10-22: a rule whose system the world lacks
+## Landed, 2026-10-22: a rule whose system the world lacks
 
 - **A domain's rule on a system the world lacks reports unknown.** Thermal's `skirt-meets-frost-protected-footing-table` (system `earth_battery`)
   appears in `we evaluate` for this house as `unknown: system board is not in the config`. Want: a rule declares `requires` as a flow does, and
   is reported as not applicable (or left out) when the world lacks the role. Case: `we evaluate world.json` on this world; want no
   `skirt-meets-frost-protected-footing-table` line, or one marked not applicable.
+  **Landed, engine `5d5a58e`:** thermal's rule declares `requires` (`board`, `site`); it is `not_applicable` here and `check.py` pins the status.
