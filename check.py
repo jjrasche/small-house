@@ -108,11 +108,11 @@ WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "flo
                            "measured_hours": 59.812, "listed_usd": 8263.887, "pieces_not_priced": 0,
                            "cost_usd": 14211.387, "main_floor_ft2": 63.979, "loft_floor_ft2": 52.572, "floor_ft2_total": 116.551,
                            "cost_usd_per_main_floor_ft2": 222.126, "cost_usd_per_floor_ft2": 121.933}
-RIP_METHODS = {"rip_blank_lb": 161.627, "rip_piece_lb": 131.397, "rip_by_circular_saw_man_hours_low": 0.251, "rip_by_circular_saw_man_hours_likely": 0.535,
-               "rip_by_circular_saw_man_hours_high": 1.109, "rip_by_circular_saw_elapsed_minutes_likely": 24.235, "rip_by_circular_saw_beginner_man_hours_low": 0.501,
-               "rip_by_circular_saw_beginner_man_hours_high": 3.328, "rip_by_circular_saw_most_people": 4.0, "rip_by_beam_saw_man_hours_low": 0.156,
-               "rip_by_beam_saw_man_hours_likely": 0.328, "rip_by_beam_saw_man_hours_high": 0.693, "rip_by_beam_saw_elapsed_minutes_likely": 15.035,
-               "rip_by_beam_saw_beginner_man_hours_low": 0.311, "rip_by_beam_saw_beginner_man_hours_high": 2.078, "rip_by_beam_saw_most_people": 4.0}
+RIP_METHODS = {"rip_blank_lb": 161.627, "rip_piece_lb": 131.397, "rip_by_circular_saw_man_hours_low": 0.257, "rip_by_circular_saw_man_hours_likely": 0.535,
+               "rip_by_circular_saw_man_hours_high": 1.084, "rip_by_circular_saw_elapsed_minutes_likely": 24.235, "rip_by_circular_saw_beginner_man_hours_low": 0.514,
+               "rip_by_circular_saw_beginner_man_hours_high": 3.252, "rip_by_circular_saw_most_people": 4.0, "rip_by_beam_saw_man_hours_low": 0.162,
+               "rip_by_beam_saw_man_hours_likely": 0.328, "rip_by_beam_saw_man_hours_high": 0.667, "rip_by_beam_saw_elapsed_minutes_likely": 15.035,
+               "rip_by_beam_saw_beginner_man_hours_low": 0.324, "rip_by_beam_saw_beginner_man_hours_high": 2.002, "rip_by_beam_saw_most_people": 4.0}
 LOWER_BAND = "glazing@610,2495,1219"
 UPPER_BAND = "glazing@610,2495,2438"
 NORTH_DOOR = "door@610,4819"
