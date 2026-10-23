@@ -26,6 +26,7 @@ FLOOR_SUPPORTS = ("posts-under-corners", "beams-east-west-on-two-posts", "beams-
 FLOORS = {"8x8": None, "8x12": 3658}
 SPAN_CHECKS = ("bending_utilisation", "shear_utilisation", "deflection_utilisation", "bearing_utilisation", "beam_utilisation")
 CONVENTIONAL_FLOOR_MM = 210
+FLOOR_THICKNESSES = (None, CONVENTIONAL_FLOOR_MM)
 THINNER_FLOORS_MM = (165, 114)
 ENVELOPE_R = ("walls_r", "roof_r", "floor_r", "walls_foam_in", "roof_foam_in", "floor_foam_in", "thermal_bridging")
 
@@ -147,6 +148,10 @@ def support_outcome(config: Path, support: str) -> dict:
             "labour_hours": simulated["objective_total"].get("labour_hours")}
 
 
+def thickness_label(thickness_mm) -> str:
+    return "the panel's own thickness" if thickness_mm is None else f"{thickness_mm} mm"
+
+
 def support_line(label: str, support: str, outcome: dict) -> str:
     values = outcome["values"]
     checks = " ".join(f"{name.removesuffix('_utilisation')}={values.get(name)}" for name in SPAN_CHECKS)
@@ -155,14 +160,15 @@ def support_line(label: str, support: str, outcome: dict) -> str:
             f"labour_hours={outcome['labour_hours']}")
 
 
-def print_floor_supports(config: Path) -> dict:
+def floor_support_outcomes(config: Path) -> dict:
     outcomes = {}
     for floor, depth in FLOORS.items():
-        variant = floor_variant(config, depth)
-        for support in FLOOR_SUPPORTS:
-            outcomes[(floor, support)] = support_outcome(variant, support)
-            print(support_line(f"floor support option {floor}", support, outcomes[(floor, support)]))
-        variant.unlink()
+        for thickness in FLOOR_THICKNESSES:
+            variant = floor_variant(config, depth, thickness)
+            for support in FLOOR_SUPPORTS:
+                outcomes[(floor, thickness, support)] = support_outcome(variant, support)
+                print(support_line(f"floor support option {floor} at {thickness_label(thickness)}", support, outcomes[(floor, thickness, support)]))
+            variant.unlink()
     return outcomes
 
 
@@ -172,32 +178,57 @@ def binding_check(values: dict) -> tuple:
     return name.removesuffix("_utilisation"), measured[name]
 
 
-def print_take_till_it_breaks(config: Path) -> None:
-    conventional = floor_variant(config, None, CONVENTIONAL_FLOOR_MM)
+def outcome_at(config: Path, outcomes: dict, floor: str, thickness, support: str) -> dict:
+    if (floor, thickness, support) not in outcomes:
+        variant = floor_variant(config, FLOORS[floor], thickness)
+        outcomes[(floor, thickness, support)] = support_outcome(variant, support)
+        variant.unlink()
+    return outcomes[(floor, thickness, support)]
+
+
+def print_take_till_it_breaks(config: Path, outcomes: dict, floor: str) -> None:
     three_posts = [support for support in FLOOR_SUPPORTS if support.startswith("beams-") and support.endswith("three-posts")]
-    ranked = {support: support_outcome(conventional, support) for support in three_posts}
-    baseline = min(ranked, key=lambda support: binding_check(ranked[support]["values"])[1])
-    steps = [("baseline", baseline, ranked[baseline], CONVENTIONAL_FLOOR_MM),
-             ("less the middle posts", baseline.replace("three-posts", "two-posts"), None, CONVENTIONAL_FLOOR_MM),
-             ("less the beams", "posts-under-corners", None, CONVENTIONAL_FLOOR_MM)]
-    steps += [(f"thinner panel {thickness} mm", "posts-under-corners", None, thickness) for thickness in THINNER_FLOORS_MM]
+    baseline = min(three_posts, key=lambda support: binding_check(outcomes[(floor, CONVENTIONAL_FLOOR_MM, support)]["values"])[1])
+    steps = [("baseline", baseline, CONVENTIONAL_FLOOR_MM), ("less the middle posts", baseline.replace("three-posts", "two-posts"), CONVENTIONAL_FLOOR_MM),
+             ("less the beams", "posts-under-corners", CONVENTIONAL_FLOOR_MM)]
+    steps += [(f"thinner panel {thickness} mm", "posts-under-corners", thickness) for thickness in THINNER_FLOORS_MM]
     last_green = None
-    for label, support, outcome, thickness in steps:
-        variant = conventional if thickness == CONVENTIONAL_FLOOR_MM else floor_variant(config, None, thickness)
-        outcome = outcome or support_outcome(variant, support)
-        if variant != conventional:
-            variant.unlink()
-        print(support_line(f"take till it breaks 8x8 floor {thickness} mm {label}:", support, outcome))
+    for label, support, thickness in steps:
+        outcome = outcome_at(config, outcomes, floor, thickness, support)
+        print(support_line(f"take till it breaks {floor} floor {thickness} mm {label}:", support, outcome))
         if outcome["rule"] != "pass":
             check, at = binding_check(outcome["values"])
-            print(f"take till it breaks first red: {label}, {check} at {at}" if last_green else f"take till it breaks baseline red: {check} at {at}; a fault, no frontier")
+            print(f"take till it breaks {floor} first red: {label}, {check} at {at}" if last_green else f"take till it breaks {floor} baseline red: {check} at {at}; a fault, no frontier")
             break
         last_green = (label, support, thickness, outcome)
-    conventional.unlink()
     if last_green:
         label, support, thickness, outcome = last_green
         check, at = binding_check(outcome["values"])
-        print(f"take till it breaks least that stays green: {support} under a {thickness} mm floor ({label}); binding check: {check} at {at}")
+        print(f"take till it breaks {floor} least that stays green: {support} under a {thickness} mm floor ({label}); binding check: {check} at {at}")
+
+
+def print_cost_frontier(outcomes: dict, floor: str) -> None:
+    green = {(thickness, support): outcome for (each, thickness, support), outcome in outcomes.items()
+             if each == floor and thickness in FLOOR_THICKNESSES and outcome["rule"] == "pass"}
+    unranked = {key: outcome for key, outcome in green.items() if outcome["unknown"] or outcome["cost_usd"] is None}
+    for (thickness, support), outcome in unranked.items():
+        print(f"frontier {floor} not ranked: {support} at {thickness_label(thickness)} has a cost unknown in [{', '.join(outcome['unknown'])}]")
+    ranked = sorted((key for key in green if key not in unranked), key=lambda key: (green[key]["cost_usd"], green[key]["labour_hours"]))
+    if not ranked:
+        print(f"frontier {floor}: no option stays green with every price known")
+        return
+    (thickness, support), *others = ranked
+    best = green[(thickness, support)]
+    check, at = binding_check(best["values"])
+    line = (f"frontier {floor} least that stays green by cost: {support} at {thickness_label(thickness)}, cost_usd={best['cost_usd']} labour_hours={best['labour_hours']} "
+            f"beam_board_feet={best['values'].get('beam_board_feet')}; binding check: {check} at {at}")
+    if others:
+        runner_thickness, runner_support = others[0]
+        runner = green[others[0]]
+        line += (f"; runner-up {runner_support} at {thickness_label(runner_thickness)}, cost_usd={runner['cost_usd']} labour_hours={runner['labour_hours']} "
+                 f"beam_board_feet={runner['values'].get('beam_board_feet')}, the least less the runner-up: cost_usd={best['cost_usd'] - runner['cost_usd']:.3f} "
+                 f"labour_hours={best['labour_hours'] - runner['labour_hours']:.3f}")
+    print(line)
 
 
 def main() -> int:
@@ -216,8 +247,10 @@ def main() -> int:
         print_layouts(config)
     for enclosure in ENCLOSURES:
         print_enclosure(config, enclosure)
-    print_floor_supports(config)
-    print_take_till_it_breaks(config)
+    outcomes = floor_support_outcomes(config)
+    for floor in FLOORS:
+        print_take_till_it_breaks(config, outcomes, floor)
+        print_cost_frontier(outcomes, floor)
     for system in RANKED_SYSTEMS:
         print_ranking(run_engine("rank", config, "--system", system))
     return 0

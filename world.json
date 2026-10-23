@@ -25,17 +25,17 @@
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "ce7d48cdb4b59c794c413e2dc7831f1f8e10b840910072b3aa32708a378f0718"
+   "sha256": "6ad01f27e0d0b26a2d62c47f23a2d985095cd180a8dc05469bd8918d1e70df2c"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "f7232f07b1713c8df4ff376b38c3e12b77cab5efec9a92329a6f74e94f32522d"
+   "sha256": "0a5a7fb6a2b89bf6c30e859de7d1a4aac80b14019c9335c2b415b28aa2c937a9"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "7569d90220e519bb7f59e9090153b07759ce1afc5f94271aed1e470d7c3a8a56"
+   "sha256": "18f1c35f96cf2196837686b300d63a582fbb0a77861a16612df433bc5ea58bfd"
   },
   {
    "domain": "site",

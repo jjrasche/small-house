@@ -96,12 +96,12 @@ FULL_SAMPLE_ANSWER = {"runs": 500, "seed": 1, "failed": {"count": 0, "first": No
 FULL_SAMPLE_PERCENTILES = {"simulation.final_stocks.cost_usd": {"p50": 15517.63, "p95": 18186.594},
                            "simulation.objective_total.labour_hours": {"p50": 68.658, "p95": 79.218}}
 SMALL_TARGET_USD = 1000
-OVERRUN_BUDGET_USD = -13211.387
-OVERRUN_COST_USD = 13211.387
-BUILD_TOTALS = {"labour_hours": 62.933, "cost_usd": 14211.387, "budget_usd": 5788.613}
+OVERRUN_BUDGET_USD = -13094.743
+OVERRUN_COST_USD = 13094.743
+BUILD_TOTALS = {"labour_hours": 62.933, "cost_usd": 14094.743, "budget_usd": 5905.257}
 INCOMPLETE_STOCKS = {}
 SKILLS_FINAL = {"jim": {"sip-setting": 1.578333}, "sip_lead": {"sip-setting": 3.0}}
-TASK_RUNS = {"south-sun-ledger": 0, "stove-hour": 0, "greenhouse-hour": 0, "dig-post-holes": 4, "set-posts": 4, "set-floor-panels": 1, "set-wall-panels": 8, "cut-wall-panels": 2, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
+TASK_RUNS = {"south-sun-ledger": 0, "stove-hour": 0, "greenhouse-hour": 0, "dig-post-holes": 4, "set-posts": 4, "set-middle-posts": 0, "set-floor-beams": 0, "set-floor-panels": 1, "set-wall-panels": 8, "cut-wall-panels": 2, "set-roof-panels": 1, "cut-openings": 3, "set-windows-and-door": 3,
              "frame-loft": 7, "lay-subfloor": 1, "install-boiler": 1, "pour-piers": 0, "set-container": 0, "cut-container-openings": 0,
              "frame-container-openings": 0, "spray-foam": 0}
 NOT_APPLICABLE_FLOWS = {"south-sun-ledger": "the world has no system for the role greenhouse, which south-sun-ledger needs",
@@ -109,9 +109,9 @@ NOT_APPLICABLE_FLOWS = {"south-sun-ledger": "the world has no system for the rol
                         "greenhouse-hour": "the world has no system for the role greenhouse, which greenhouse-hour needs"}
 WORK_AT_PUBLISHED_RATES = {"post_holes_hours": 2.0, "set_posts_hours": 2.0, "floor_hours": 1.0, "cut_panels_hours": 1.069, "walls_hours": 5.631, "roof_hours": 1.912, "cut_openings_hours": 6.0,
                            "windows_and_door_hours": 14.0, "frame_loft_hours": 7.2, "lay_subfloor_hours": 3.0, "install_boiler_hours": 16.0,
-                           "measured_hours": 59.812, "listed_usd": 8263.887, "pieces_not_priced": 0,
-                           "cost_usd": 14211.387, "main_floor_ft2": 63.979, "loft_floor_ft2": 52.572, "floor_ft2_total": 116.551,
-                           "cost_usd_per_main_floor_ft2": 222.126, "cost_usd_per_floor_ft2": 121.933}
+                           "measured_hours": 59.812, "listed_usd": 8147.243, "pieces_not_priced": 0,
+                           "cost_usd": 14094.743, "main_floor_ft2": 63.979, "loft_floor_ft2": 52.572, "floor_ft2_total": 116.551,
+                           "cost_usd_per_main_floor_ft2": 220.303, "cost_usd_per_floor_ft2": 120.932}
 RIP_METHODS = {"rip_blank_lb": 161.627, "rip_piece_lb": 131.397, "rip_by_circular_saw_man_hours_low": 0.257, "rip_by_circular_saw_man_hours_likely": 0.535,
                "rip_by_circular_saw_man_hours_high": 1.084, "rip_by_circular_saw_elapsed_minutes_likely": 24.235, "rip_by_circular_saw_beginner_man_hours_low": 0.514,
                "rip_by_circular_saw_beginner_man_hours_high": 3.252, "rip_by_circular_saw_most_people": 4.0, "rip_by_beam_saw_man_hours_low": 0.162,
@@ -125,46 +125,26 @@ HEADER_FIGURES = {f"{LOWER_BAND} load_n_per_mm": 0.0, f"{LOWER_BAND} utilisation
                   f"{UPPER_BAND} utilisation": 0.407, f"{NORTH_DOOR} load_n_per_mm": 1.402, f"{NORTH_DOOR} utilisation": 0.024,
                   f"{LOWER_BAND} unsupported_load_n_per_mm": None, f"{NORTH_DOOR} unsupported_load_n_per_mm": None,
                   f"{UPPER_BAND} self_weight_n": 434.075, f"{NORTH_DOOR} self_weight_n": 217.038}
-DOOR_RANKS = {"door-steel-6-panel-prehung-walker": (1, 13886.612, 2332.287, []), "door-jeldwen-steel": (2, None, None, ["door@610,4819"]),
-              "door-masonite-steel": (2, None, None, ["door@610,4819"]), "door-thermatru-smooth-star": (4, 14211.387, 2338.045, [])}
+DOOR_RANKS = {"door-steel-6-panel-prehung-walker": (1, 13769.968, 2332.287, []), "door-jeldwen-steel": (2, None, None, ["door@610,4819"]),
+              "door-masonite-steel": (2, None, None, ["door@610,4819"]), "door-thermatru-smooth-star": (4, 14094.743, 2338.045, [])}
 WINDOW_WALL_LAYOUTS = {"two-stacked-4x8": (2, 1), "one-8x8": (1, 1), "four-4x4": (2, 2)}
-WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14211.387, [], 62.933), "one-8x8": (13244.387, ["glazing@610,2495,1219"], 57.933),
-                        "four-4x4": (15116.387, [], 72.933)}
+WINDOW_WALL_OUTCOMES = {"two-stacked-4x8": (14094.743, [], 62.933), "one-8x8": (13127.743, ["glazing@610,2495,1219"], 57.933),
+                        "four-4x4": (14999.743, [], 72.933)}
 CONTAINER_USES = ["floor=container-floor", "walls=container-walls", "roof=container-roof", "foundation=piers-at-corners", "build_sequence=container-on-piers"]
 ENCLOSURE_USES = {"sip": [], "container": CONTAINER_USES, "container-high-cube": CONTAINER_USES + ["container_stock=container-20-high-cube-new"]}
 OPENING_FRAMING_FLOWS = {"sip": ["cut-openings"], "container": ["cut-container-openings", "frame-container-openings"],
                          "container-high-cube": ["cut-container-openings", "frame-container-openings"]}
-ENCLOSURE_OUTCOMES = {"sip": (14211.387, [], 62.933, {"cut-openings": None}, "pass"),
+ENCLOSURE_OUTCOMES = {"sip": (14094.743, [], 62.933, {"cut-openings": None}, "pass"),
                       "container": (21569.413, [], 100.999, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail"),
                       "container-high-cube": (24828.571, [], 101.532, {"cut-container-openings": 5399.114, "frame-container-openings": 750.0}, "fail")}
 SIP_SPAN_VALUES = {'panels': 1, 'panels_over_one': 1, 'bending_utilisation': 0.899, 'shear_utilisation': 7.32, 'deflection_utilisation': 5.531, 'bearing_utilisation': 2.423, 'panel_utilisation': 7.32, 'beam_utilisation': None, 'span_mm': 2298.0, 'load_psf': 96.657, 'beams': 0, 'beam_board_feet': 0.0, 'posts_under_floor': 4, 'floor_panel_allowable_psf_8ft': 32.458, 'roof_panel_allowable_psf_8ft': 67.445, 'floor_panel_allowable_psf_10ft': 23.822, 'roof_panel_allowable_psf_10ft': 51.347, 'floor_panel_allowable_psf_12ft': 18.031, 'roof_panel_allowable_psf_12ft': 40.401}
 FLOOR_SUPPORTS = ("posts-under-corners", "beams-east-west-on-two-posts", "beams-east-west-on-three-posts", "beams-north-south-on-two-posts",
                   "beams-north-south-on-three-posts", "three-beams-east-west-on-three-posts", "three-beams-north-south-on-three-posts")
-FLOOR_VARIANTS = {"8x8": {}, "8x12": {"depth_mm": 3658}, "8x8 at 210 mm": {"thickness_mm": 210}}
+FLOOR_VARIANTS = {"8x8": {}, "8x12": {"depth_mm": 3658}, "8x8 at 210 mm": {"thickness_mm": 210}, "8x12 at 210 mm": {"depth_mm": 3658, "thickness_mm": 210}}
 SPAN_CHECKS = ("bending_utilisation", "shear_utilisation", "deflection_utilisation", "bearing_utilisation", "beam_utilisation")
-FLOOR_SUPPORT_OUTCOMES = {
-    '8x8 posts-under-corners': ('fail', 0.899, 7.32, 5.531, 2.423, None),
-    '8x8 beams-east-west-on-two-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.92),
-    '8x8 beams-east-west-on-three-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.305),
-    '8x8 beams-north-south-on-two-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.893),
-    '8x8 beams-north-south-on-three-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.296),
-    '8x8 three-beams-east-west-on-three-posts': ('pass', 0.186, 0.433, 0.995, 0.388, 0.226),
-    '8x8 three-beams-north-south-on-three-posts': ('pass', 0.133, 0.31, 0.713, 0.372, 0.217),
-    '8x12 posts-under-corners': ('fail', 1.985, 10.346, 6.467, 3.425, None),
-    '8x12 beams-east-west-on-two-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 1.284),
-    '8x12 beams-east-west-on-three-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 0.425),
-    '8x12 beams-north-south-on-two-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 1.974),
-    '8x12 beams-north-south-on-three-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 0.493),
-    '8x12 three-beams-east-west-on-three-posts': ('fail', 0.437, 0.778, 1.624, 0.6, 0.347),
-    '8x12 three-beams-north-south-on-three-posts': ('pass', 0.116, 0.269, 0.619, 0.361, 0.371),
-    '8x8 at 210 mm posts-under-corners': ('fail', 0.458, 5.602, 2.746, 2.494, None),
-    '8x8 at 210 mm beams-east-west-on-two-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.946),
-    '8x8 at 210 mm beams-east-west-on-three-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.313),
-    '8x8 at 210 mm beams-north-south-on-two-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.919),
-    '8x8 at 210 mm beams-north-south-on-three-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.304),
-    '8x8 at 210 mm three-beams-east-west-on-three-posts': ('pass', 0.096, 0.254, 0.524, 0.403, 0.234),
-    '8x8 at 210 mm three-beams-north-south-on-three-posts': ('pass', 0.069, 0.184, 0.381, 0.38, 0.221),
-}
+FLOOR_SUPPORT_OUTCOMES = {'8x8 posts-under-corners': ('fail', 0.899, 7.32, 5.531, 2.423, None), '8x8 beams-east-west-on-two-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.92), '8x8 beams-east-west-on-three-posts': ('fail', 0.744, 1.071, 2.246, 0.527, 0.305), '8x8 beams-north-south-on-two-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.893), '8x8 beams-north-south-on-three-posts': ('fail', 0.533, 0.767, 1.608, 0.511, 0.296), '8x8 three-beams-east-west-on-three-posts': ('pass', 0.186, 0.433, 0.995, 0.388, 0.226), '8x8 three-beams-north-south-on-three-posts': ('pass', 0.133, 0.31, 0.713, 0.372, 0.217), '8x12 posts-under-corners': ('fail', 1.985, 10.346, 6.467, 3.425, None), '8x12 beams-east-west-on-two-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 1.284), '8x12 beams-east-west-on-three-posts': ('fail', 1.746, 1.765, 4.16, 0.738, 0.425), '8x12 beams-north-south-on-two-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 1.974), '8x12 beams-north-south-on-three-posts': ('fail', 0.463, 0.667, 1.398, 0.482, 0.493), '8x12 three-beams-east-west-on-three-posts': ('fail', 0.437, 0.778, 1.624, 0.6, 0.347), '8x12 three-beams-north-south-on-three-posts': ('pass', 0.116, 0.269, 0.619, 0.361, 0.371), '8x8 at 210 mm posts-under-corners': ('fail', 0.458, 5.602, 2.746, 2.494, None), '8x8 at 210 mm beams-east-west-on-two-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.946), '8x8 at 210 mm beams-east-west-on-three-posts': ('fail', 0.383, 0.746, 1.12, 0.542, 0.313), '8x8 at 210 mm beams-north-south-on-two-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.919), '8x8 at 210 mm beams-north-south-on-three-posts': ('pass', 0.278, 0.542, 0.813, 0.526, 0.304), '8x8 at 210 mm three-beams-east-west-on-three-posts': ('pass', 0.096, 0.254, 0.524, 0.403, 0.234), '8x8 at 210 mm three-beams-north-south-on-three-posts': ('pass', 0.069, 0.184, 0.381, 0.38, 0.221), '8x12 at 210 mm posts-under-corners': ('fail', 1.014, 7.932, 3.045, 3.532, None), '8x12 at 210 mm beams-east-west-on-two-posts': ('fail', 0.896, 1.279, 1.922, 0.761, 1.323), '8x12 at 210 mm beams-east-west-on-three-posts': ('fail', 0.896, 1.279, 1.922, 0.761, 0.438), '8x12 at 210 mm beams-north-south-on-two-posts': ('fail', 0.243, 0.475, 0.712, 0.497, 2.034), '8x12 at 210 mm beams-north-south-on-three-posts': ('pass', 0.243, 0.475, 0.712, 0.497, 0.508), '8x12 at 210 mm three-beams-east-west-on-three-posts': ('pass', 0.224, 0.518, 0.834, 0.622, 0.359), '8x12 at 210 mm three-beams-north-south-on-three-posts': ('pass', 0.061, 0.161, 0.333, 0.369, 0.379)}
+SUPPORT_FLOWS = ("set-middle-posts", "set-floor-beams")
+FLOOR_SUPPORT_BUILDS = {'8x8 posts-under-corners': (14094.743, [], 62.933, {'set-middle-posts': 0, 'set-floor-beams': 0}), '8x8 beams-east-west-on-two-posts': (14159.623, [], 63.599, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x8 beams-east-west-on-three-posts': (14237.583, [], 65.999, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x8 beams-north-south-on-two-posts': (14159.623, [], 63.599, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x8 beams-north-south-on-three-posts': (14237.583, [], 65.999, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x8 three-beams-east-west-on-three-posts': (14386.963, [], 69.733, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x8 three-beams-north-south-on-three-posts': (14386.963, [], 69.733, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x12 posts-under-corners': (15803.331, [], 70.766, {'set-middle-posts': 0, 'set-floor-beams': 0}), '8x12 beams-east-west-on-two-posts': (15868.211, [], 71.433, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x12 beams-east-west-on-three-posts': (15946.171, [], 73.833, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x12 beams-north-south-on-two-posts': (15868.211, [], 71.566, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x12 beams-north-south-on-three-posts': (15946.171, [], 73.899, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x12 three-beams-east-west-on-three-posts': (16095.551, [], 77.566, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x12 three-beams-north-south-on-three-posts': (16095.551, [], 77.666, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x8 at 210 mm posts-under-corners': (14175.357, [], 62.933, {'set-middle-posts': 0, 'set-floor-beams': 0}), '8x8 at 210 mm beams-east-west-on-two-posts': (14240.237, [], 63.599, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x8 at 210 mm beams-east-west-on-three-posts': (14318.197, [], 65.999, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x8 at 210 mm beams-north-south-on-two-posts': (14240.237, [], 63.599, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x8 at 210 mm beams-north-south-on-three-posts': (14318.197, [], 65.999, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x8 at 210 mm three-beams-east-west-on-three-posts': (14467.577, [], 69.733, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x8 at 210 mm three-beams-north-south-on-three-posts': (14467.577, [], 69.733, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x12 at 210 mm posts-under-corners': (15924.284, [], 70.766, {'set-middle-posts': 0, 'set-floor-beams': 0}), '8x12 at 210 mm beams-east-west-on-two-posts': (15989.164, [], 71.433, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x12 at 210 mm beams-east-west-on-three-posts': (16067.124, [], 73.833, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x12 at 210 mm beams-north-south-on-two-posts': (15989.164, [], 71.566, {'set-middle-posts': 0, 'set-floor-beams': 2}), '8x12 at 210 mm beams-north-south-on-three-posts': (16067.124, [], 73.899, {'set-middle-posts': 2, 'set-floor-beams': 2}), '8x12 at 210 mm three-beams-east-west-on-three-posts': (16216.504, [], 77.566, {'set-middle-posts': 5, 'set-floor-beams': 3}), '8x12 at 210 mm three-beams-north-south-on-three-posts': (16216.504, [], 77.666, {'set-middle-posts': 5, 'set-floor-beams': 3})}
 UNLAYERED_PIECES = ["door@610,4819", "glazing@610,2495,1219", "glazing@610,2495,2438"]
 
 
@@ -183,13 +163,22 @@ def floor_support_outcome(launcher: Path, world: Path, support: str) -> tuple:
     return (rule, *rounded({name: values.get(name) for name in SPAN_CHECKS}).values())
 
 
+def floor_support_build(launcher: Path, world: Path, support: str) -> tuple:
+    simulated = run_engine(launcher, "simulate", world, "--use", f"floor_support={support}")[1]
+    runs = {flow: simulated.get("totals", {}).get(flow, {}).get("runs") for flow in SUPPORT_FLOWS}
+    return (*layout_outcome(simulated), runs)
+
+
 def floor_support_lines(launcher: Path, world: Path) -> list[str]:
-    outcomes = {}
+    checks, builds = {}, {}
     for name in FLOOR_VARIANTS:
         variant = floor_variant(world, name)
-        outcomes.update({f"{name} {support}": floor_support_outcome(launcher, variant, support) for support in FLOOR_SUPPORTS})
-    return [state_line("we solve and evaluate each floor support on the 8x8, the 8x12 and the 8x8 laid 210 mm thick: the rule, then bending, shear, deflection, bearing and beam utilisation",
-                       FLOOR_SUPPORT_OUTCOMES, outcomes)]
+        checks.update({f"{name} {support}": floor_support_outcome(launcher, variant, support) for support in FLOOR_SUPPORTS})
+        builds.update({f"{name} {support}": floor_support_build(launcher, variant, support) for support in FLOOR_SUPPORTS})
+    return [state_line("we solve and evaluate each floor support on the 8x8 and the 8x12, each at the panel's own thickness and laid 210 mm thick: the rule, then bending, shear, deflection, bearing and beam utilisation",
+                       FLOOR_SUPPORT_OUTCOMES, checks),
+            state_line("we simulate each floor support on the same four floors: cost, the pieces it has no price for, labour hours, and the runs of the middle-post and beam tasks",
+                       FLOOR_SUPPORT_BUILDS, builds)]
 
 
 class Refused(Exception):
