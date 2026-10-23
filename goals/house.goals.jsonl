@@ -1,0 +1,12 @@
+{"goal": "plum page loads the house in under 5 s", "proof_command": "curl -s -o /dev/null -w '%{time_total}' http://172.17.0.1:8090/spec.json", "commit": null, "last_run_session": "ca0bc5ee", "status": "open"}
+{"goal": "one stalled visitor does not block plum (page server thread pool)", "proof_command": "gamebox-build run factored-ui-tests --repo factored-ui --ref ux-page-server", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "book app lights each word as it is read", "proof_command": "headless screenshot of https://book.jimr.fyi reader at 390x844 shows a highlighted word moving", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "UI drawn matches what the engine places, any world", "proof_command": "python3 ui_check.py --world small-house", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "piece sheet: peek/half/full on phone, sidebar on wide, layers to scale", "proof_command": "headless screenshots at 390x844 and 1280x800 after tapping a SIP", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "ray pick-through with hide-in-front, touch first", "proof_command": "ui_check.py --tap center steps the ray list and reports hidden pieces", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "roof snow on the load path, oracle-matched", "proof_command": "python3 fields.py world.json | grep -i 'roof snow'", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "snowstorm drives the clock, roof load per step", "proof_command": "we simulate with a NOAA storm series prints roof load per step", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "load path carries force direction and moment (open door on hinges)", "proof_command": "domain-tests case: 36 in door open 90 deg gives hinge reactions matching a hand calculation", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "every domain jar carries pass, limit and must-fail cases", "proof_command": "we verify-domain over domains/*.jar refuses none", "commit": null, "last_run_session": null, "status": "open"}
+{"goal": "no unowned java on the gamebox", "proof_command": "test ! -s ~/gamebox-watch/unowned.log", "commit": null, "last_run_session": "ca0bc5ee", "status": "open"}
+{"goal": "fields.py and check.py ask the resident we-serve over HTTP, no JVM of their own", "proof_command": "python3 check.py while ps shows only the we-serve java", "commit": null, "last_run_session": null, "status": "open"}
