@@ -156,3 +156,20 @@ prints it under `supplied`.
   is reported as not applicable (or left out) when the world lacks the role. Case: `we evaluate world.json` on this world; want no
   `skirt-meets-frost-protected-footing-table` line, or one marked not applicable.
   **Landed, engine `5d5a58e`:** thermal's rule declares `requires` (`board`, `site`); it is `not_applicable` here and `check.py` pins the status.
+
+## Open, 2026-10-23: a weather series that drives the clock (the snowstorm simulation)
+
+- **A dated weather series steps the clock, and a solver resolves at each step.** The gravity load path now carries roof snow (structural
+  `gravity-load-path` on domains `small-house/roof-snow`: `roof_snow_psf`, each piece's `snow_n`, `reaction_n` and `reaction_without_snow_n`),
+  but only from the site's one code figure, the 35 psf Kent County ground snow. A snowstorm is a series, not a figure: research
+  `small-house/roof-snow` banks the January 1978 blizzard at Grand Rapids as rows `storm.grr_ghcnd_1978-01-24` through `storm.grr_ghcnd_1978-02-02`
+  (NOAA GHCN-Daily USW00094860: daily snowfall, snow depth and water equivalent of snow on the ground, inches by
+  `storm.grr_ghcnd_standard_units_inches`), and `storm.grr_1978_blizzard_totals` (NWS: 19.2 in over the 25th to the 27th, 16.1 in on the record day).
+  `we simulate` has one clock, the build's minutes, and no solver runs inside it.
+  Want: a world names a series (a data domain's dated rows, each figure citing its row) and a clock that steps through its dates; at each step
+  the engine hands the step's values to the solvers bound to it, so the load path resolves per day and `we simulate` reports each post's reaction
+  per step. Who turns a day's water equivalent into a ground load (the physics domain's water density) and that into roof snow (structural's
+  factors) is the domains' to say; the engine only carries the step's values in. Case: this world with a second clock of one-day steps from
+  1978-01-24 to 1978-02-02 bound to the series; want `we simulate` to print, per day, the step's water equivalent and `gravity-load-path`'s
+  `roof_snow_psf` and the four posts' `reaction_n`, with 1978-01-27 to 1978-01-30 (4.8 in of water, the series' peak) the largest. The build
+  clock keeps its minutes; a weather run is its own run, or the second clock of the same one, as world-engine decides.

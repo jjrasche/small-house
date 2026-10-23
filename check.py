@@ -7,7 +7,7 @@ of their bytes (the jars and the physics file are kept in domains/). The check r
 sketch's 630 board feet;
   `we geometry` gives every piece a material, and every piece but the three openings its layers;
   `we solve` answers the daylight factor, the glazing heat balance, the design-day load, the heating season, the joist deflection, the
-gravity load path (every piece's self-weight and force, and the reaction under each of the four posts), the hours and blank prices of the
+gravity load path (every piece's self-weight and force, the roof's balanced snow from the site's ground snow, and the reaction under each of the four posts with and without it), the hours and blank prices of the
 measured build tasks at their published rates, the cost of everything bought over the main floor and over the main and loft floors, and the header over each opening (its load, utilisation and own weight);
   `we rank` puts the door options on cost and design-day loss (the steel prehung's simulated cost and loss, the slab-only ones unpriced);
   `we simulate` and `we evaluate` with `--use` on the SIP enclosure and on a used 20 ft standard and a new 20 ft high-cube shipping container
@@ -53,13 +53,15 @@ DESIGN_DAY_LOSS_BTU_PER_HOUR = 2338.045
 DESIGN_DAY_SOLAR_BTU_PER_HOUR = 6591.402
 SEASON = {"season_loss_btu": 10921786.357, "season_solar_btu": 7280153.542, "solar_share_percent": 66.657, "fuel_units_needed": 0.179}
 DECIMALS = 3
-LOAD_PATH_COUNTS = {"pieces": 27, "pieces_weight_known": 27, "pieces_force_known": 27, "ground_reaction_n": 28007.326}
+LOAD_PATH_COUNTS = {"pieces": 27, "pieces_weight_known": 27, "pieces_force_known": 27, "ground_reaction_n": 51548.173, "ground_reaction_without_snow_n": 28007.326,
+                    "roof_snow_psf": 24.5, "roof_snow_n": 23540.847}
 FLOOR = "floor@610,2438,-114:1~2438x2438"
 LOFT = "floor@724,2552,2438:2~2210x2210"
 JOIST = "joist@724,2552,2298:2~2210x38"
 LEDGER = "ledger@724,2552,2158:2~38x2210"
 POSTS = ("post@610,2438,-1219~140x140", "post@2908,2438,-1219~140x140", "post@610,4736,-1219~140x140", "post@2908,4736,-1219~140x140")
-POST_REACTION_N = 7001.831
+POST_REACTION_N = 12887.043
+POST_REACTION_WITHOUT_SNOW_N = 7001.831
 SOUTH_PANELS = ("wall@610,2438:2~1219x114", "wall@1829,2438:2~1219x114")
 NORTH_PANELS = ("wall@610,4762:2~1219x114", "wall@1829,4762:2~1219x114")
 WEST_PANELS = ("wall@610,2552:2~114x1219", "wall@610,3771:2~114x991")
@@ -68,7 +70,7 @@ KNOWN_PIECE_NEWTONS = {f"{FLOOR} weight_n": 956.75, f"{FLOOR} applied_n": 8537.7
                        f"{NORTH_PANELS[0]} weight_n": 239.384, f"{NORTH_PANELS[1]} weight_n": 717.758,
                        f"{WEST_PANELS[0]} weight_n": 717.758, f"{WEST_PANELS[1]} weight_n": 583.51,
                        f"{JOIST} weight_n": 52.637, f"{JOIST} force_n": 1134.202, f"{LEDGER} force_n": 4022.345,
-                       "roof@0,0,3658:3~3658x5486 weight_n": 3546.574, "door@610,4819 weight_n": 533.787, "glazing@610,2495,1219 weight_n": 924.927}
+                       "roof@0,0,3658:3~3658x5486 weight_n": 3546.574, "roof@0,0,3658:3~3658x5486 snow_n": 23540.847, "door@610,4819 weight_n": 533.787, "glazing@610,2495,1219 weight_n": 924.927}
 PLACED_AT_MINUTE = {POSTS[1]: 29, POSTS[3]: 59, POSTS[0]: 89, POSTS[2]: 119,
                     FLOOR: 174, "wall@1829,2438:2~1219x114": 204, "wall@1829,4762:2~1219x114": 234, "wall@2934,2552:2~114x1219": 264, "wall@2934,3771:2~114x991": 291,
                     "wall@610,2438:2~1219x114": 321, "wall@610,2552:2~114x1219": 351, "wall@610,3771:2~114x991": 393, "wall@610,4762:2~1219x114": 423,
@@ -411,8 +413,10 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    (solver_answer(solved, "gravity-load-path").get("status"), rounded(solver_values(solved, "gravity-load-path")))),
         state_line("we solve gravity load path newtons on the floor, the loft, the wall panels less their openings, a joist, a ledger, the roof, the door and a window",
                    KNOWN_PIECE_NEWTONS, rounded_figures(piece_figures(solved, "gravity-load-path", list(KNOWN_PIECE_NEWTONS)))),
-        state_line("we solve gravity load path reaction under each of the four posts", {f"{post} reaction_n": POST_REACTION_N for post in POSTS},
+        state_line("we solve gravity load path reaction under each of the four posts with the roof snow", {f"{post} reaction_n": POST_REACTION_N for post in POSTS},
                    rounded_figures(piece_figures(solved, "gravity-load-path", [f"{post} reaction_n" for post in POSTS]))),
+        state_line("we solve gravity load path reaction under each of the four posts without the roof snow", {f"{post} reaction_without_snow_n": POST_REACTION_WITHOUT_SNOW_N for post in POSTS},
+                   rounded_figures(piece_figures(solved, "gravity-load-path", [f"{post} reaction_without_snow_n" for post in POSTS]))),
         state_line("we solve build task hours at published rates and the panel blanks' price", WORK_AT_PUBLISHED_RATES,
                    rounded_figures({name: value for name, value in solver_values(solved, "work-at-published-rates").items() if name in WORK_AT_PUBLISHED_RATES})),
         state_line("we solve each rip method's man-hours low, likely and high, a beginner's, its largest crew and the blank's and piece's weight", ("known", RIP_METHODS),

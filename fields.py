@@ -1,5 +1,5 @@
 """Print every field the engine returns for a world config: what `we expand` places, what `we geometry` says each piece is made of, what each solver in `we solve` says, each rule `we evaluate`
-judges, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs), how each option of a ranked system scores on the config's ranking weights, and, for the SIP and the shipping-container enclosure side by side (`--use`, never an edit of the config), first cost, labour hours, each face's R, the openings' framing and the zoning rule.
+judges, the roof snow load and each post's reaction with and without it, and what `we simulate` answers over the clock (when each piece is placed, the stocks, hours and skills at the end and each stock's unknown contributors, each task's runs), how each option of a ranked system scores on the config's ranking weights, and, for the SIP and the shipping-container enclosure side by side (`--use`, never an edit of the config), first cost, labour hours, each face's R, the openings' framing and the zoning rule.
 
 Usage: python3 fields.py [world.json]   (default: this folder's world.json)
 Nothing here computes anything; every line is a value the engine printed.
@@ -58,6 +58,19 @@ def print_solvers(solved: dict) -> None:
             print(f"  piece {piece} " + ", ".join(f"{name}={value}" for name, value in figures.items()))
         for source in solver.get("sources", []):
             print(f"  source {source['solution']}.{source['field']} {source['source']} ({source['evidence']})")
+
+
+def print_roof_snow(solved: dict) -> None:
+    path = next((solver for solver in solved["solvers"] if solver["function"] == "gravity-load-path"), None)
+    if path is None:
+        print("roof snow: the pinned domains have no gravity-load-path solver")
+        return
+    values = path["values"]
+    print(f"roof snow load {path['status']} roof_snow_psf={values.get('roof_snow_psf')} roof_snow_n={values.get('roof_snow_n')} "
+          f"ground_reaction_n={values.get('ground_reaction_n')} ground_reaction_without_snow_n={values.get('ground_reaction_without_snow_n')}")
+    for piece, figures in path.get("objects", {}).items():
+        if figures.get("reaction_n") is not None:
+            print(f"roof snow reaction {piece} with_roof_snow_n={figures['reaction_n']} without_roof_snow_n={figures.get('reaction_without_snow_n')}")
 
 
 def print_simulation(simulated: dict) -> None:
@@ -239,7 +252,9 @@ def main() -> int:
         return 1
     print_placed(expansion)
     print_materials(run_engine("geometry", config))
-    print_solvers(run_engine("solve", config))
+    solved = run_engine("solve", config)
+    print_solvers(solved)
+    print_roof_snow(solved)
     for rule in run_engine("evaluate", config)["rules"]:
         print(f"rule {rule['id']} ({rule['domain']}) {rule['status']} {rule['detail']}")
     if "clock" in json.loads(config.read_text(encoding="utf-8")):
