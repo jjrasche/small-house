@@ -10,37 +10,37 @@
   {
    "domain": "construction",
    "file": "domains/construction.jar",
-   "sha256": "7627fa91147a300fb0e8549f8fe1516a356d62b0aa9e1acaa48784abd7138da1"
+   "sha256": "e7e551e1a838ac5302a77e93e991349224d557d0e59a0a7d32d5a6bc704ffc7b"
   },
   {
    "domain": "light",
    "file": "domains/light.jar",
-   "sha256": "274aa575a5dd9313893ed7fd2eaf61826326b9abdf1fb221300f6bc7459e615f"
+   "sha256": "e4c1956c6442e7c0cfc2b1f72fc44799d9533d94fbdfc45caab6e02f535e7368"
   },
   {
    "domain": "thermal",
    "file": "domains/thermal.jar",
-   "sha256": "fca669a49ce7152f931e15874b69d98723c7325c6d166260cf70be8893d80f54"
+   "sha256": "285a64e12526b965c46b2b5d2b6c4259967f000701d1115275833adb2c4a2870"
   },
   {
    "domain": "structural",
    "file": "domains/structural.jar",
-   "sha256": "5b0776e8156efbed3a016c798d5b00eacc4ac834a75e5334ca2db9f3479ea4d6"
+   "sha256": "ba63c85b0058547e0daea77e2985a3162ccd1725d41074c4d85bae9ec733c4d3"
   },
   {
    "domain": "catalog",
    "file": "domains/catalog.jar",
-   "sha256": "0a5a7fb6a2b89bf6c30e859de7d1a4aac80b14019c9335c2b415b28aa2c937a9"
+   "sha256": "83e487cfb6c8e07bd0833e22b1b5ba450aeda38aa71c8a5b14ef81aa7dd0dbfb"
   },
   {
    "domain": "tasks",
    "file": "domains/tasks.jar",
-   "sha256": "18f1c35f96cf2196837686b300d63a582fbb0a77861a16612df433bc5ea58bfd"
+   "sha256": "96563634f64eeb24de565b9fbe2840ea51c0b95cb055af0b996a8871b2aa402a"
   },
   {
    "domain": "site",
    "file": "domains/site.jar",
-   "sha256": "5aa8c6d8601d61af356b70aa7604245c3bb21c1808d87ac3954a2150037f2c18"
+   "sha256": "210465f9f81a7fe1f7de574bd156bb290b2d4c45c46ccafa29840a0f1849d031"
   }
  ],
  "systems": {
@@ -70,7 +70,7 @@
     "elevation_mm": null
    },
    "reasons": {
-    "thickness_mm": "the panel gives it: panel is the catalog's 4-1/2 in PRS 610 SIP (sip.prs610_panel_thickness); Jim's floor build-up may override it",
+    "thickness_mm": "the panel gives it: panel is the sold 4.625 in Acme SIP, 4 by 12 ft (Jim, 2026-10-25: the world takes the sold thickness, nothing invented); Jim's floor build-up may override it",
     "elevation_mm": "the construction domain lays the floor's top at the datum, so a null here lies the panel its thickness below it"
    },
    "at": [
@@ -87,7 +87,7 @@
    },
    "reasons": {
     "height_mm": "reading: the south elevation's '12' as wall height, floor top to roof underside; 12 ft overall above grade is the other reading",
-    "thickness_mm": "the panel gives it: panel is the catalog's 4-1/2 in PRS 610 SIP (sip.prs610_panel_thickness); a number here overrides it",
+    "thickness_mm": "the panel gives it: panel is the sold 4.625 in Acme SIP, 4 by 12 ft (Jim, 2026-10-25: the world takes the sold thickness, nothing invented); a number here overrides it",
     "panel_width_mm": "4 ft is a sold width (sip.stock.premier_widths, sip.stock.acme_sizes); chosen narrow for handling and take-down; open for ranking"
    },
    "against": "floor"
@@ -106,7 +106,7 @@
     "east_eave_mm": "the sketch's 12 ft roof width less the 8 ft floor and the 2 ft west eave",
     "west_eave_mm": "the sketch's 2 ft west eave",
     "north_eave_mm": "the sketch's 2 ft north eave",
-    "thickness_mm": "the roof panel gives it: roof_panel is the catalog's 8-1/4 in Premier SIP, the thinnest listed whose R-value reaches the envelope's R-30 (sip.premier_thicknesses); a number here overrides it"
+    "thickness_mm": "the roof panel gives it: roof_panel is the sold 8.25 in Acme SIP, 4 by 12 ft (Jim, 2026-10-25: sold stock, nothing invented); a number here overrides it"
    }
   },
   "glazing": {
@@ -185,7 +185,7 @@
    },
    "reasons": {
     "elevation_mm": "Jim: the sleeping loft floor is 8 ft above the living floor",
-    "thickness_mm": "the deck sheet gives it: deck_panel is the catalog's 23/32 in AdvanTech subfloor (wd.advantech_23_32_commerce), the IRC subfloor table's panel for a 24 in span (bom.subfloor_irc); a number here overrides it"
+    "thickness_mm": "the deck sheet gives it: deck_panel is the sold 23/32 in tongue-and-groove OSB, 4 by 8 ft (Jim, 2026-10-25: sold stock, nothing invented); a number here overrides it"
    }
   },
   "joists": {
@@ -237,7 +237,7 @@
    ]
   },
   "panel": {
-   "solution": "prs-610-sip-4-1-2",
+   "solution": "acme-sip-4-625-4x12",
    "settings": {}
   },
   "lumber": {
@@ -245,7 +245,7 @@
    "settings": {}
   },
   "joist_stock": {
-   "solution": "dressed-2x6",
+   "solution": "spf-2x6-8ft-joist",
    "settings": {}
   },
   "header": {
@@ -274,19 +274,19 @@
    }
   },
   "post_stock": {
-   "solution": "post-6x6-uc4b",
+   "solution": "post-6x6-8ft-ground-contact",
    "settings": {}
   },
   "roof_panel": {
-   "solution": "premier-sip-8-1-4",
+   "solution": "acme-sip-8-25-4x12",
    "settings": {}
   },
   "deck_panel": {
-   "solution": "advantech-23-32",
+   "solution": "osb-23-32-tg-4x8",
    "settings": {}
   },
   "window_glass": {
-   "solution": "igu-1in-two-quarter-lites",
+   "solution": "jeld-wen-v2500-47-5",
    "settings": {}
   },
   "door_slab": {
