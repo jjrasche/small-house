@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heat per foot of greenhouse</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--mut:#5d5d57;--line:#d9d6cc;--hand:#8a5a00;--eng:#0b5d3b;--bad:#a1260f;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe5;--mut:#a5a49b;--line:#3a3a35;--hand:#e0b050;--eng:#6fd1a0;--bad:#ff8a70;--card:#1f1f1c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,sans-serif;padding:16px;max-width:640px;margin-inline:auto}
+h1{font-size:1.35rem;margin:0 0 4px}h2{font-size:1.05rem;margin:26px 0 6px}
+p{margin:6px 0}.mut{color:var(--mut);font-size:.9rem}
+.tag{font-size:.72rem;font-weight:700;padding:1px 6px;border-radius:9px;border:1px solid currentColor;white-space:nowrap}
+.hand{color:var(--hand)}.eng{color:var(--eng)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse;font-size:.9rem;background:var(--card)}
+th,td{border-bottom:1px solid var(--line);padding:6px 5px;text-align:right;vertical-align:top}
+th:first-child,td:first-child{text-align:left}th{font-weight:600;color:var(--mut);font-size:.8rem}
+.box{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:10px 12px;margin:10px 0}
+</style>
+</head>
+<body>
+<h1>Heat per foot of greenhouse</h1>
+<p class="mut">Per foot of length, at a 30 F difference unless stated. <span class="tag eng">engine</span> = the model worked it out. <span class="tag hand">hand</span> = my own arithmetic.</p>
+
+<div class="box">
+<p><b>Your 2 W per ft&sup3; does not match the model.</b> It gives about 28 W per degree per foot, so <b>about 855 W at 30 F</b> <span class="tag eng">engine</span>. My hand count from the parts is 926 W <span class="tag hand">hand</span>. Your 2,000 W only fits a difference of 65 to 70 F, the coldest design night.</p>
+</div>
+
+<h2>1. Cutting the loss, one step at a time</h2>
+<table>
+<tr><th>Step</th><th>Cut</th><th>W/ft</th></tr>
+<tr><td>Bare single glass, SIP north wall, 1.1 air changes/hr</td><td></td><td>926</td></tr>
+<tr><td>Night curtain, 16 h drawn</td><td>&minus;315</td><td>611</td></tr>
+<tr><td>8 mm twin-wall instead of single</td><td>&minus;177</td><td>434</td></tr>
+<tr><td>North wall 12 ft, not 20</td><td>&minus;45</td><td>389</td></tr>
+<tr><td>Earth berm on north wall</td><td>&minus;2</td><td>387</td></tr>
+<tr><td>Barn as windbreak</td><td>about 0</td><td>387</td></tr>
+<tr><td>Tighter: 0.34 air changes/hr</td><td>&minus;44</td><td>343</td></tr>
+</table>
+<p class="mut"><span class="tag hand">hand</span> Single-glass U 1.1 is assumed; no sourced figure yet. The north wall is already well insulated, so a berm adds almost nothing. Quad-wall: no sourced heat figure exists, so it is not in the table.</p>
+<p class="mut"><span class="tag eng">engine</span> At the &minus;20 F design night with no sun the model starts at 1,888 W and cuts it to 596 W through wall, glazing, night cover, tank cover, battery and snow: a 68% cut, against my 63%.</p>
+
+<h2>2. What covers the loss</h2>
+<table>
+<tr><th>Source (per foot)</th><th>5 ft deep</th><th>10 ft deep</th></tr>
+<tr><td>Compost at 1 W/ft&sup3; <span class="tag hand">hand</span></td><td>225 W</td><td>450 W</td></tr>
+<tr><td>Compost at 2 W/ft&sup3; <span class="tag hand">hand</span></td><td>450 W</td><td>900 W</td></tr>
+<tr><td>Sun on the glass, December average <span class="tag hand">hand</span></td><td colspan="2">320 to 430 W, about 370</td></tr>
+</table>
+<p class="mut">Sun: December averages 1,218 Wh/m&sup2; a day on flat ground, 22% less than January. The glass slopes only 12 degrees, so it catches 1.1 to 1.45 times a flat surface. The 480 W figure was a January number. The model has no hour-by-hour sun on a sloped surface yet.</p>
+<p class="mut">Compost: the model's one measured trench gives 1.6 W/ft&sup3; (6.5 when hot, 149 F), but only for a small 2 ft trench. A 45 ft wide, 5 to 10 ft deep mass has not been run. Open piles in the research run 0.5 to 2.7 W/ft&sup3;; a closed aerated box 3 to 4.</p>
+
+<h2>3. Wood left to burn</h2>
+<table>
+<tr><th>Loss case, W/ft</th><th>5 ft, 1 W</th><th>5 ft, 2 W</th><th>10 ft, 1 W</th><th>10 ft, 2 W</th></tr>
+<tr><td>2,000 (yours)</td><td>1405</td><td>1180</td><td>1180</td><td>730</td></tr>
+<tr><td>926 (bare parts)</td><td>331</td><td>106</td><td>106</td><td>&minus;344</td></tr>
+<tr><td>343 (all measures)</td><td>&minus;252</td><td>&minus;477</td><td>&minus;477</td><td>&minus;927</td></tr>
+</table>
+<p class="mut"><span class="tag hand">hand</span> Watts of wood per foot, with sun at 370 W. Negative means the day's sun and compost already cover the loss. At 45.8 kWh per ft&sup3; of stacked hardwood, 1,000 W is 0.52 ft&sup3; a day, your 0.5. So 106 W is about 0.06 ft&sup3; a day and 730 W about 0.38.</p>
+<p class="mut">At the end of the ladder the problem is no longer wood. It is the night, so it is a storage question.</p>
+
+<h2>4. Heat stores per ft&sup3;, per degree F</h2>
+<p>Water 18.3 Wh <span class="tag hand">hand</span>, matching yours. Moist loam 7.9 <span class="tag hand">hand</span> (the model's clay gives 13.5, but that row has no quote behind it). Granite rock bed 6.0 to 6.5 <span class="tag hand">hand</span>. Fish cannot use a wide swing: tilapia grow best at about 0.7 C swing when grown, 5 C when tiny.</p>
+
+<h2>5. May in December (55 to 75 F, hour by hour)</h2>
+<p><b>Not run yet.</b> It needs: the one-foot slice rule (domains), sun on a sloped surface, quad-wall heat loss (no source), and the 24 winters of hourly weather (banked and checked). Worst stretch in them: 14 days under half of full sun, starting December 14, 2022. Coldest three days: &minus;17.7 C, January 30 to February 1, 2019. Sun there is a satellite estimate, so results stay conditional.</p>
+<p class="bad"><b>One catch:</b> a 30 F difference in the coldest average week is air at 54 F. Tilapia stop eating below 61 F and die near 55 F. Fish water needs 71.6 F, about a 48 F difference that week.</p>
+<p class="mut">Rough water needed for dark days with zero sun <span class="tag hand">hand</span>: 29 to 53 ft&sup3; per foot for 3 days, 49 to 88 for 5. The real record says long stretches are half-sun, not no-sun.</p>
+
+<h2>6. Solar water heaters and the daily store</h2>
+<p><span class="tag hand">hand</span> About 40 W per m&sup2; of collector in January, about 22 in December. Covering 343 W per foot takes roughly 8.6 m&sup2; (92 ft&sup2;) in January and about twice that in December. Efficiency (40%) and tilt are assumed.</p>
+<p>The model cannot rank earth pipes, fish water, mass wall or collectors yet. Collectors, glycol loop and heat exchanger do not exist in it; a mass wall needs a duct object that is missing.</p>
+
+<h2>What the model still cannot do</h2>
+<p class="mut">Three of its checks (glazing balance, design-day load, heating season) answer "unknown": the world file lacks an openings list. No heat loss by face. No hourly sun on a slope. Compost for a 45 ft mass. Collectors. Hours outside the 55 to 75 F band. Each is with domains, world-engine or research.</p>
+</body>
+</html>
