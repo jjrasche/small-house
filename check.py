@@ -387,9 +387,9 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
         state_line("we solve the SIP floor panel on its four corner posts: utilisations, span, load, beams, posts and the allowable loads at 8, 10 and 12 ft",
                    SIP_SPAN_VALUES, (solver_answer(solved, "sip-span-check").get("status"), rounded(solver_values(solved, "sip-span-check")))),
-        state_line("we solve the SIP walls against wind: status and figures, unknown while the site's exposure is null",
+        state_line("we solve the SIP walls against wind at exposure C: status and figures, unknown because the capacity table is for 6.5 in panels and the wall is 117 mm thick",
                    WALL_WIND_VALUES, (solver_answer(solved, "sip-wall-wind").get("status"), rounded(solver_values(solved, "sip-wall-wind")))),
-        state_line("we solve the posts' embedment by the pole method: status and figures, unknown while the site's exposure is null",
+        state_line("we solve the posts' embedment by the pole method at exposure C: status and figures, unknown because the post's height above grade is not known",
                    POST_EMBEDMENT_VALUES, (solver_answer(solved, "post-embedment").get("status"), rounded(solver_values(solved, "post-embedment")))),
         door_rank_line(launcher, world),
     ] + floor_support_lines(launcher, world) + layout_lines(launcher, world) + enclosure_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])

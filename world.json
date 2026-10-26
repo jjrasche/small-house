@@ -328,10 +328,10 @@
   "wind_loads": {
    "solution": "irc-component-wind-90mph",
    "settings": {
-    "exposure": null
+    "exposure": "C"
    },
    "reasons": {
-    "exposure": "assumed: the site's exposure category (B, C or D) is not in the sketch; no figure is chosen here"
+    "exposure": "assumed: exposure C (open terrain), the conservative choice for rural land; Jim's site is not chosen"
    }
   },
   "sip_wall_capacity": {
