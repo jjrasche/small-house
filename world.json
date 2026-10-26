@@ -325,6 +325,23 @@
    "solution": "posts-under-corners",
    "settings": {}
   },
+  "wind_loads": {
+   "solution": "irc-component-wind-90mph",
+   "settings": {
+    "exposure": null
+   },
+   "reasons": {
+    "exposure": "assumed: the site's exposure category (B, C or D) is not in the sketch; no figure is chosen here"
+   }
+  },
+  "sip_wall_capacity": {
+   "solution": "sip-6-1-2-evaluated",
+   "settings": {}
+  },
+  "pole_method": {
+   "solution": "ibc-clay-pole",
+   "settings": {}
+  },
   "beam_stock": {
    "solution": "beam-2x10-spf",
    "settings": {
@@ -400,6 +417,15 @@
   ],
   "sip_span_check": {
    "solver": "sip-span-check"
+  },
+  "walls": "walls",
+  "wall_capacity": "sip_wall_capacity",
+  "posts": "foundation",
+  "sip_wall_wind": {
+   "solver": "sip-wall-wind"
+  },
+  "post_embedment": {
+   "solver": "post-embedment"
   }
  },
  "clock": {

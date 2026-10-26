@@ -100,6 +100,8 @@ OPENING_FRAMING_FLOWS = {"sip": ["cut-openings"], "container": ["cut-container-o
                          "container-high-cube": ["cut-container-openings", "frame-container-openings"]}
 ENCLOSURE_OUTCOMES = {'sip': (14063.129, [], 62.899, {'cut-openings': None}, 'pass'), 'container': (None, [], None, {'cut-container-openings': None, 'frame-container-openings': None}, None), 'container-high-cube': (None, [], None, {'cut-container-openings': None, 'frame-container-openings': None}, None)}
 SIP_SPAN_VALUES = ('known', {'panels': 2, 'panels_over_one': 2, 'bending_utilisation': 0.926, 'shear_utilisation': 7.672, 'deflection_utilisation': 2.843, 'bearing_utilisation': 2.574, 'panel_utilisation': 7.672, 'beam_utilisation': None, 'span_mm': 2298.0, 'load_psf': 102.661, 'beams': 0, 'beam_board_feet': 0.0, 'posts_under_floor': 4, 'floor_panel_allowable_psf_8ft': 33.612, 'roof_panel_allowable_psf_8ft': 67.445, 'floor_panel_allowable_psf_10ft': 24.72, 'roof_panel_allowable_psf_10ft': 51.347, 'floor_panel_allowable_psf_12ft': 18.751, 'roof_panel_allowable_psf_12ft': 40.401, 'assumptions': ['assumed: deck_panel weight_lb_per_panel', 'assumed: site series_first_hour_local', 'assumed: window_glass thickness_mm']})
+WALL_WIND_VALUES = ('unknown', {'assumptions': []})
+POST_EMBEDMENT_VALUES = ('unknown', {'assumptions': ['assumed: pole_method lateral_bearing_multiplier']})
 FLOOR_SUPPORTS = ("posts-under-corners", "beams-east-west-on-two-posts", "beams-east-west-on-three-posts", "beams-north-south-on-two-posts",
                   "beams-north-south-on-three-posts", "three-beams-east-west-on-three-posts", "three-beams-north-south-on-three-posts")
 FLOOR_VARIANTS = {"8x8": {}, "8x12": {"depth_mm": 3658}, "8x8 at 210 mm": {"thickness_mm": 210}, "8x12 at 210 mm": {"depth_mm": 3658, "thickness_mm": 210}}
@@ -385,6 +387,10 @@ def engine_lines(launcher: Path, world: Path, is_sampling: bool, is_sampling_ful
                    rounded_figures(piece_figures(solved, "header-check", list(HEADER_FIGURES)))),
         state_line("we solve the SIP floor panel on its four corner posts: utilisations, span, load, beams, posts and the allowable loads at 8, 10 and 12 ft",
                    SIP_SPAN_VALUES, (solver_answer(solved, "sip-span-check").get("status"), rounded(solver_values(solved, "sip-span-check")))),
+        state_line("we solve the SIP walls against wind: status and figures, unknown while the site's exposure is null",
+                   WALL_WIND_VALUES, (solver_answer(solved, "sip-wall-wind").get("status"), rounded(solver_values(solved, "sip-wall-wind")))),
+        state_line("we solve the posts' embedment by the pole method: status and figures, unknown while the site's exposure is null",
+                   POST_EMBEDMENT_VALUES, (solver_answer(solved, "post-embedment").get("status"), rounded(solver_values(solved, "post-embedment")))),
         door_rank_line(launcher, world),
     ] + floor_support_lines(launcher, world) + layout_lines(launcher, world) + enclosure_lines(launcher, world) + geometry_lines(launcher, world) + simulate_lines(launcher, world) + target_lines(launcher, world) + (sample_lines(launcher, world) if is_sampling else []) + (full_sample_lines(run_sample(launcher, world, FULL_SAMPLE_ARGUMENTS)[1]) if is_sampling_fully else [])
 
