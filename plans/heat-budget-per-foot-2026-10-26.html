@@ -32,16 +32,11 @@ th:first-child,td:first-child{text-align:left}th{font-weight:600;color:var(--mut
 <h2>1. Cutting the loss, one step at a time</h2>
 <table>
 <tr><th>Step</th><th>Cut</th><th>W/ft</th></tr>
-<tr><td>Bare single glass, SIP north wall, 1.1 air changes/hr</td><td></td><td>926</td></tr>
-<tr><td>Night curtain, 16 h drawn</td><td>&minus;315</td><td>611</td></tr>
-<tr><td>8 mm twin-wall instead of single</td><td>&minus;177</td><td>434</td></tr>
-<tr><td>North wall 12 ft, not 20</td><td>&minus;45</td><td>389</td></tr>
-<tr><td>Earth berm on north wall</td><td>&minus;2</td><td>387</td></tr>
-<tr><td>Barn as windbreak</td><td>about 0</td><td>387</td></tr>
-<tr><td>Tighter: 0.34 air changes/hr</td><td>&minus;44</td><td>343</td></tr>
+<tr><td>Seventy as built (8 mm twin-wall, no curtain, 1.0 air changes/hr) <span class="tag eng">engine</span></td><td></td><td>721</td></tr>
+<tr><td>Night curtain, 16 h drawn <span class="tag hand">hand</span></td><td>&minus;132</td><td>589</td></tr>
+<tr><td>Tighter: 0.34 air changes/hr <span class="tag hand">hand</span></td><td>&minus;90</td><td>499</td></tr>
 </table>
-<p class="mut"><span class="tag hand">hand</span> Single-glass U 1.1 Btu is a rule-of-thumb figure (Virginia Tech and Rutgers give 1.0 to 1.1); only the glass industry paper states test conditions, 1.02 at 0 F outside and a 12 mph wind. The north wall is already well insulated, so a berm adds almost nothing. Quad-wall: no sourced heat figure exists, so it is not in the table.</p>
-<p class="mut"><span class="tag eng">engine</span> At the &minus;20 F design night with no sun the model starts at 1,888 W and cuts it to 596 W through wall, glazing, night cover, tank cover, battery and snow: a 68% cut, against my 63%. The &minus;20 F is your own design cold in the seventy file; the sourced 99.6% design night for Grand Rapids is 3.6 F (&minus;15.8 C), and the coldest three days on record averaged 0.1 F.</p>
+<p class="mut"><span class="tag hand">hand</span> Curtain: published cuts to glass loss are 40 to 70%; I took 50% on about 395 W of glass loss, drawn 16 of 24 hours. Air: the leak term (137 W) scales with air changes. A shorter north wall, a berm and a windbreak each move the total by under 5 W or have no source, so they are left out. Quad-wall: no sourced heat figure exists.</p>
 
 <h2>2. What covers the loss</h2>
 <table>
@@ -57,17 +52,17 @@ th:first-child,td:first-child{text-align:left}th{font-weight:600;color:var(--mut
 <table>
 <tr><th>Loss case, W/ft</th><th>5 ft, 1 W</th><th>5 ft, 2 W</th><th>10 ft, 1 W</th><th>10 ft, 2 W</th></tr>
 <tr><td>2,000 (yours)</td><td>1405</td><td>1180</td><td>1180</td><td>730</td></tr>
-<tr><td>926 (bare parts)</td><td>331</td><td>106</td><td>106</td><td>&minus;344</td></tr>
-<tr><td>343 (all measures)</td><td>&minus;252</td><td>&minus;477</td><td>&minus;477</td><td>&minus;927</td></tr>
+<tr><td>721 (as built)</td><td>126</td><td>&minus;99</td><td>&minus;99</td><td>&minus;549</td></tr>
+<tr><td>499 (curtain and tight air)</td><td>&minus;96</td><td>&minus;321</td><td>&minus;321</td><td>&minus;771</td></tr>
 </table>
-<p class="mut"><span class="tag hand">hand</span> Watts of wood per foot, with sun at 370 W. Negative means the day's sun and compost already cover the loss. At 45.8 kWh per ft&sup3; of stacked hardwood, 1,000 W is 0.52 ft&sup3; a day, your 0.5. So 106 W is about 0.06 ft&sup3; a day and 730 W about 0.38.</p>
+<p class="mut"><span class="tag hand">hand</span> Watts of wood per foot, with sun at 370 W. Negative means the day's sun and compost already cover the loss. At 45.8 kWh per ft&sup3; of stacked hardwood, 1,000 W is 0.52 ft&sup3; a day, your 0.5. So 126 W is about 0.07 ft&sup3; a day and 730 W about 0.38.</p>
 <p class="mut">At the end of the ladder the problem is no longer wood. It is the night, so it is a storage question.</p>
 
 <h2>4. Heat stores per ft&sup3;, per degree F</h2>
 <p>Water 18.3 Wh <span class="tag hand">hand</span>, matching yours. Moist loam 7.9 <span class="tag hand">hand</span> (the model's clay gives 13.5, but that row has no quote behind it). Granite rock bed 6.0 to 6.5 <span class="tag hand">hand</span>. Fish cannot use a wide swing: tilapia grow best at about 0.7 C swing when grown, 5 C when tiny.</p>
 
 <h2>5. May in December (55 to 75 F, hour by hour)</h2>
-<p><b>Not run yet.</b> It needs: the one-foot slice rule (domains), sun on a sloped surface, quad-wall heat loss (no source), and the 24 winters of hourly weather (banked and checked). Worst stretch in them: 14 days under half of full sun, starting December 14, 2022. Coldest three days: &minus;17.7 C, January 30 to February 1, 2019. Sun there is a satellite estimate, so results stay conditional.</p>
+<p><b>Not run yet.</b> The one-foot slice now exists; it still needs: sun on a sloped surface, quad-wall heat loss (no source), and the 24 winters of hourly weather (banked and checked). Worst stretch in them: 14 days under half of full sun, starting December 14, 2022. Coldest three days: &minus;17.7 C, January 30 to February 1, 2019. Sun there is a satellite estimate, so results stay conditional.</p>
 <p class="bad"><b>One catch:</b> a 30 F difference in the coldest average week is air at 54 F. Tilapia stop eating below 61 F and die near 55 F. Fish water needs 71.6 F, about a 48 F difference that week.</p>
 <p class="mut">Rough water needed for dark days with zero sun <span class="tag hand">hand</span>: 29 to 53 ft&sup3; per foot for 3 days, 49 to 88 for 5. The real record says long stretches are half-sun, not no-sun.</p>
 
