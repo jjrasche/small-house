@@ -36,18 +36,20 @@ CASES_FILES = [f"{HOME}/.claude/references/jim-communication-cases.jsonl", f"{HO
 SYSTEM_PROMPT = (
     "You judge one message a user (Jim) typed to an AI assistant. You are given the start of the assistant's "
     "previous reply and Jim's message. Jim swears a lot when he is excited, thinking aloud or talking about other "
-    "people and companies; that alone is NOT a complaint. Answer five yes/no questions about Jim's message. "
-    'Answer with JSON only: {"q1":bool,"q2":bool,"q3":bool,"q4":bool,"q5":bool}.\n'
+    "people and companies; that alone is NOT a complaint. Answer six yes/no questions about Jim's message. "
+    'Answer with JSON only: {"q1":bool,"q2":bool,"q3":bool,"q4":bool,"q5":bool,"q6":bool}.\n'
     "q1: Does Jim explicitly say the assistant's previous answer or action was wrong, unwanted, useless or not what "
     "he asked for, or criticise the way it was designed or done? Criticism of other companies, AI labs or the world is NOT a yes. A plain question about what something means is NOT a yes (that is q3). Jim agreeing with the assistant, brainstorming, "
-    "or continuing his own long thought (often voice-dictated) is NOT a yes; q1 needs a statement that the assistant's output was bad.\n"
+    "or continuing his own long thought (often voice-dictated) is NOT a yes; q1 needs a statement that the assistant's output was bad. A passing remark on how the assistant behaves ('you keep pushing me') while he builds on the answer, without calling it wrong or unwanted, is NOT a yes.\n"
     "q2: Does Jim say he already told the assistant something, or repeat an earlier instruction because it was "
     "not followed ('I said ...', 'again', 'stop doing X')? New instructions are NOT a yes.\n"
     "q3: Does Jim say or ask that he does not understand something the assistant said or did (including 'what X?')?\n"
     "q4: Is Jim's anger, cursing or shouting (all caps, '!!!', 'fuck you', 'how the hell') directed at the assistant "
     "or at what it did or said? Triple exclamation marks or 'DUH' next to a complaint or challenge about what the assistant did, proposed or costs is a yes even when phrased as a question. Answer false if the cursing is excitement about ideas, enthusiasm, a rant about "
     "companies, the world or other people, or just casual speech with no complaint about the assistant.\n"
-    "q5: Does Jim praise the assistant or its work, or express delight at what it said?"
+    "q5: Does Jim praise the assistant or its work, or express delight at what it said?\n"
+    "q6: Does Jim build on the assistant's previous reply: continue the idea it gave, answer its question, accept it "
+    "('yes', 'go', 'ok'), or use it? Continuing his own thought after it, without complaint, is a yes."
 )
 
 IGNORED_PREFIXES = ("<",)
@@ -172,7 +174,7 @@ def build_user_prompt(assistant_text, jim_text):
 
 def parse_answers(raw):
     found = re.search(r"\{.*?\}", raw, re.S)
-    answers = {name: False for name in ("q1", "q2", "q3", "q4", "q5")}
+    answers = {name: False for name in ("q1", "q2", "q3", "q4", "q5", "q6")}
     if not found:
         return answers, False
     try:
@@ -250,6 +252,16 @@ def judge_many(pairs, workers=8):
     return [with_shout_marker(answers, pairs[index][1]) for index, answers in enumerate(results)]
 
 
+def likert(answers):
+    if answers["q4"] and (answers["q1"] or answers["q2"]):
+        return 1
+    if answers["q1"] or answers["q2"] or answers["q4"]:
+        return 2
+    if answers["q5"]:
+        return 5
+    return 4 if answers["q6"] else 3
+
+
 def is_friction(answers):
     return bool(answers["q1"] or answers["q2"] or answers["q4"])
 
@@ -297,6 +309,16 @@ def pick_own_cases(rows):
     return picked
 
 
+LABELS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jim_labels.jsonl")
+
+
+def load_jim_labels():
+    if not os.path.exists(LABELS_PATH):
+        return []
+    with open(LABELS_PATH) as handle:
+        return [json.loads(line) for line in handle if line.strip()]
+
+
 def selftest():
     main_path = f"{PROJECTS}/-home-deploy-workspace-small-house/{SMALL_HOUSE_MAIN}"
     cases = []
@@ -306,6 +328,9 @@ def selftest():
     for line in KNOWN_HAPPY:
         cases.append({"label": f"happy@{line}", "assistant": previous_assistant_for_line(main_path, line),
                       "jim": line_message(main_path, line), "expect_friction": False})
+    for row in load_jim_labels():
+        cases.append({"label": f"jim@{row['line']}", "assistant": previous_assistant_for_line(main_path, row["line"]),
+                      "jim": line_message(main_path, row["line"]), "expect_friction": row["friction"], "jim_likert": row.get("likert")})
     for row in pick_own_cases(load_known_cases()):
         cases.append({"label": f"own:{row['jim'][:20]}", **{k: row[k] for k in ("assistant", "jim", "expect_friction")}})
     answers = judge_many([(case["assistant"], case["jim"]) for case in cases], workers=4)
@@ -319,9 +344,9 @@ def selftest():
             positives_found += 1
         if right and case["label"].startswith("happy"):
             happy_left_alone += 1
-        print(f"{'ok ' if right else 'BAD'} {case['label']:28} friction={verdict} answers={answer}")
+        print(f"{'ok ' if right else 'BAD'} {case['label']:28} friction={verdict} likert={likert(answer) if answer else None} jim_likert={case.get('jim_likert')} answers={answer}")
     print(f"judge={judge_family()} angry_found={sum(1 for c, a in zip(cases, answers) if c['label'].startswith('angry') and a and is_friction(a))}/6 "
-          f"happy_left_alone={happy_left_alone}/7 own={len(cases) - 13} cases={len(cases)}")
+          f"happy_left_alone={happy_left_alone}/7 own={sum(1 for c in cases if c['label'].startswith('own:'))} jim_labels={sum(1 for c in cases if c['label'].startswith('jim@'))} cases={len(cases)}")
     print(f"knowns agree {agree}")
     return 0 if agree >= 14 else 1
 
