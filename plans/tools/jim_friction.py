@@ -201,7 +201,9 @@ def call_groq(user_prompt):
 def call_claude_haiku(user_prompt):
     command = ["claude", "-p", "--model", "haiku", "--system-prompt", SYSTEM_PROMPT, "--tools", "",
                "--no-session-persistence", "--disable-slash-commands", "--setting-sources", "", "--output-format", "json"]
-    finished = subprocess.run(command, input=user_prompt, capture_output=True, text=True, encoding="utf-8", timeout=180)
+    no_window = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+    finished = subprocess.run(command, input=user_prompt, capture_output=True, text=True, encoding="utf-8", timeout=180,
+                              creationflags=no_window)
     if finished.returncode != 0:
         raise RuntimeError(f"claude exited {finished.returncode}: {finished.stderr[:200]}")
     return json.loads(finished.stdout)["result"]
