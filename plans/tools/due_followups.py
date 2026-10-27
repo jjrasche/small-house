@@ -11,6 +11,8 @@ import sys
 
 DEFAULT_LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "comms", "outbound.jsonl")
 WAITING_STATUSES = ("sent-awaiting-reply",)
+HEARTBEAT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "comms", "last_run.txt")
+STALE_AFTER_HOURS = 36
 
 
 def read_rows(ledger_path):
@@ -27,11 +29,31 @@ def describe(row):
     return f"DUE {row['id']} to {row.get('to', '?')} since {row['follow_up_after']}: {row.get('subject', '')}"
 
 
+def heartbeat_problem(now, heartbeat_path):
+    if not os.path.exists(heartbeat_path):
+        return "STALE the daily follow-up job has never run (no heartbeat file)"
+    with open(heartbeat_path) as handle:
+        last = datetime.datetime.strptime(handle.read().strip(), "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=datetime.timezone.utc)
+    hours = (now - last).total_seconds() / 3600
+    if hours > STALE_AFTER_HOURS:
+        return f"STALE the daily follow-up job last ran {hours:.0f} hours ago"
+    return None
+
+
 def selftest():
     rows = [{"id": "a", "status": "sent-awaiting-reply", "follow_up_after": "2026-11-02", "to": "x@y", "subject": "s"},
             {"id": "b", "status": "replied", "follow_up_after": "2026-11-02"},
             {"id": "c", "status": "sent-awaiting-reply"}]
-    checks = [due_rows(rows, "2026-11-01") == [], [r["id"] for r in due_rows(rows, "2026-11-02")] == ["a"],
+    now = datetime.datetime(2026, 11, 2, 12, 0, tzinfo=datetime.timezone.utc)
+    import tempfile
+    with tempfile.TemporaryDirectory() as folder:
+        beat = os.path.join(folder, "beat.txt")
+        missing = heartbeat_problem(now, beat) is not None
+        open(beat, "w").write("2026-11-02T08:00:00Z\n")
+        fresh = heartbeat_problem(now, beat) is None
+        open(beat, "w").write("2026-10-30T08:00:00Z\n")
+        stale = heartbeat_problem(now, beat) is not None
+    checks = [missing, fresh, stale, due_rows(rows, "2026-11-01") == [], [r["id"] for r in due_rows(rows, "2026-11-02")] == ["a"],
               [r["id"] for r in due_rows(rows, "2026-12-01")] == ["a"]]
     print(f"selftest {sum(checks)} of {len(checks)} agree")
     return 0 if all(checks) else 1
@@ -46,7 +68,10 @@ def main():
     if args.command == "selftest":
         return selftest()
     due = due_rows(read_rows(args.ledger), args.today)
-    if not due:
+    problem = heartbeat_problem(datetime.datetime.now(datetime.timezone.utc), HEARTBEAT)
+    if problem:
+        print(problem)
+    if not due and not problem:
         print("NONE DUE")
         return 0
     for row in due:
