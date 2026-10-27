@@ -53,7 +53,7 @@ SYSTEM_PROMPT = (
 )
 
 IGNORED_PREFIXES = ("<",)
-IGNORED_SUBSTRINGS = ("continued from a previous conversation", "Base directory", "Another Claude session",
+IGNORED_SUBSTRINGS = ("Stop hook feedback", "continued from a previous conversation", "Base directory", "Another Claude session",
                       "Overnight chief-of-staff", "<system-reminder>", "[Request interrupted")
 
 
@@ -358,6 +358,18 @@ def draw_sample(messages, seed, cap):
     return random.Random(seed).sample(ordered, cap)
 
 
+def drop_repeated_messages(messages):
+    seen = set()
+    unique = []
+    for message in messages:
+        key = (message["day"], message["jim"][:300])
+        if key is not None and key in seen:
+            continue
+        seen.add(key)
+        unique.append(message)
+    return unique
+
+
 def collect_seat(seat):
     summaries = [summarise_session(seat, path) for path in seat_session_files(seat)]
     merged = {"jim": [], "interrupts": [], "tool_results": [], "models": [], "assistant_by_day": Counter(), "final_words": []}
@@ -365,7 +377,7 @@ def collect_seat(seat):
         for key in ("jim", "interrupts", "tool_results", "models", "final_words"):
             merged[key].extend(summary[key])
         merged["assistant_by_day"].update(summary["assistant_by_day"])
-    merged["jim"] = [m for m in merged["jim"] if in_window(m["day"])]
+    merged["jim"] = drop_repeated_messages([m for m in merged["jim"] if in_window(m["day"])])
     return merged
 
 
